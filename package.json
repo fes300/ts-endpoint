@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/cli": "^9.0.1",
+    "husky": "^4.2.5",
+    "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "bootstrap:ci": "lerna bootstrap --ci",
+    "release": "lerna publish --yes"
+  }
+}
