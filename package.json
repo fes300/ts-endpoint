@@ -2,14 +2,34 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "@commitlint/config-conventional": "^9.0.1",
     "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-backgrounds": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storysource": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
     "husky": "^4.2.5",
-    "lerna": "^3.22.1"
+    "lerna": "^3.22.1",
+    "markdown-loader": "^5.1.0",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "storybook": "^5.3.19",
+    "storybook-addon-react-docgen": "^1.2.39",
+    "storybook-readme": "^5.0.8",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "bootstrap:ci": "lerna bootstrap --ci",
-    "release": "lerna publish --yes"
+    "storybook": "start-storybook -s ./.storybook/public -p 6006",
+    "build-storybook": "build-storybook -s ./.storybook/public",
+    "release": "lerna publish --yes",
+    "test": "lerna run test"
   }
 }
