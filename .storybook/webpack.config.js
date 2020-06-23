@@ -14,18 +14,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.stories\.jsx?$/,
-        loaders: [require.resolve('@storybook/addon-storysource/loader')],
-        enforce: 'pre',
-      },
-      {
         test: /\.tsx?$/,
-        use: [
-          { loader: 'ts-loader' },
-          {
-            loader: 'react-docgen-typescript-loader',
-          },
-        ],
+        use: [{ loader: 'ts-loader' }],
       },
       {
         test: /\.(png|gif|jpg|svg)$/,
@@ -35,15 +25,6 @@ module.exports = {
             limit: 50000,
           },
         },
-      },
-      {
-        test: /\.md$/,
-        use: [
-          {
-            loader: 'markdown-loader',
-            options: {},
-          },
-        ],
       },
       {
         test: /\.(css|scss)$/,
@@ -67,6 +48,6 @@ module.exports = {
     alias: {
       'babel-runtime': path.resolve(__dirname, '../node_modules/babel-runtime'),
     },
-    extensions: ['js', 'jsx', '.tsx', '.ts'],
+    extensions: ['.tsx', '.ts'],
   },
 };

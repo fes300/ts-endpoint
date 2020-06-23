@@ -6,6 +6,7 @@
     "@commitlint/config-conventional": "^9.0.1",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-backgrounds": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addon-storysource": "^5.3.19",
@@ -16,9 +17,10 @@
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
     "markdown-loader": "^5.1.0",
-    "react-docgen-typescript-loader": "^3.7.2",
+    "react": "^16.13.1",
+    "react-is": "^16.13.1",
     "storybook": "^5.3.19",
-    "storybook-addon-react-docgen": "^1.2.39",
+    "storybook-addon-react-live-edit": "^2.0.4",
     "storybook-readme": "^5.0.8",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.5",
@@ -27,8 +29,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "bootstrap:ci": "lerna bootstrap --ci",
-    "storybook": "start-storybook -s ./.storybook/public -p 6006",
-    "build-storybook": "build-storybook -s ./.storybook/public",
+    "storybook": "start-storybook --docs -s ./.storybook/public -p 6006",
+    "build-storybook": "build-storybook --docs -s ./.storybook/public",
     "release": "lerna publish --yes",
     "test": "lerna run test"
   }

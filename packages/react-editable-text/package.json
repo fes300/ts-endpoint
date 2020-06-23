@@ -18,9 +18,13 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "fp-ts": "^2.6.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
   }
 }

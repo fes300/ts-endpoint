@@ -1,15 +1,19 @@
-import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Readme from './README.md';
 import EditableText from '.';
 
-storiesOf(`EditableText`, module)
-  .addParameters({
-    readme: {
-      sidebar: Readme,
-    },
-    props: { propTables: [EditableText] },
-  })
-  .add('all', () => {
-    return <EditableText />;
-  });
+// export default {
+//   title: 'EditableText',
+//   component: EditableText,
+// };
+
+export const basic = () => {
+  const [text, setText] = React.useState('some initial text');
+  return (
+    <EditableText
+      text={text}
+      onSetText={setText}
+      RenderText={({ TextComponent }) => <TextComponent />}
+      RenderInput={({ InputComponent }) => <InputComponent />}
+    />
+  );
+};
