@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2020-06-24)
+
+
+### Features
+
+* add examples ([e16f2cd](https://github.com/fes300/open-source/packages/react-editable-text/commit/e16f2cd9bd8c3942f44d27e25f0d2a078afb3965))
+* add minimal package ([88f9025](https://github.com/fes300/open-source/packages/react-editable-text/commit/88f9025b177497b40897f19a7dd01cff222a5d83))
+* monadic interface ([5594496](https://github.com/fes300/open-source/packages/react-editable-text/commit/5594496e5ef7a9adf3e1f4321ed79409929e5ff8))
+* update storybook ([04afa18](https://github.com/fes300/open-source/packages/react-editable-text/commit/04afa18debb609da5346eb8255937e1f88fae9e5))
+* **docs:** add storybook ([b686033](https://github.com/fes300/open-source/packages/react-editable-text/commit/b686033683328ef46edfdb153e17ee106de03e06))
+
+
+
+
+
 ## [1.0.1](https://github.com/fes300/open-source/packages/react-editable-text/compare/react-editable-text@1.2.1...react-editable-text@1.0.1) (2020-06-24)
 
 **Note:** Version bump only for package react-editable-text
