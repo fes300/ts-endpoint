@@ -11,16 +11,18 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: install dependencies
         run: yarn install
 
-      - name: Test
+      - name: test
         run: yarn test
 
-      - name: Release
+      - name: git login
         uses: oleksiyrudenko/gha-git-credentials@v1
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
