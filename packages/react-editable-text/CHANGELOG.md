@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.4 (2020-06-24)
+
+
+### Bug Fixes
+
+* errata corrige ([6af04c5](https://github.com/fes300/open-source/packages/react-editable-text/commit/6af04c538adfaef18c0aaf12d1292e00fb97aeab))
+
+
+
+
+
 ## [1.1.3](https://github.com/fes300/open-source/packages/react-editable-text/compare/@fes300/react-editable-text@1.1.2...@fes300/react-editable-text@1.1.3) (2020-06-24)
 
 **Note:** Version bump only for package @fes300/react-editable-text
