@@ -6,7 +6,7 @@
       "ignoreChanges": ["*.md"],
       "conventionalCommits": true,
       "message": "chore(release): publish",
-      "registry": "https://npm.pkg.github.com"
+      "registry": "https://registry.npmjs.org"
     }
   }
 }
