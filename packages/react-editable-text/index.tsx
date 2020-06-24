@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { Option, fromPredicate, getOrElse } from 'fp-ts/lib/Option';
+
+const nonEmptyString = fromPredicate((s: string) => s !== '');
+const defaultToEmptyString = getOrElse(() => '');
 
 interface StyleProps {
   className?: string;
@@ -7,7 +11,7 @@ interface StyleProps {
 }
 type InputComponent = React.FC<
   StyleProps & {
-    type?: 'tel' | 'url' | 'week' | 'date' | 'color' | 'file' | 'month' | 'datetime-local';
+    type?: 'tel' | 'url' | 'week' | 'date' | 'color' | 'month' | 'datetime-local';
   }
 >;
 type TextComponent = React.FC<StyleProps>;
@@ -23,10 +27,10 @@ interface Props {
   className?: string;
   disabled?: boolean;
   initialState?: EditState;
-  onChangeText?: (newText?: string) => void;
-  onClick?: (v: string) => void;
-  onSetText: (newText: string) => void;
-  text: string;
+  onChangeText?: (newText: Option<string>) => void;
+  onClick?: (v: Option<string>) => void;
+  onSetText: (newText: Option<string>) => void;
+  text: Option<string>;
 }
 
 let clickTriggers: number[] = [];
@@ -54,15 +58,14 @@ const EditableText: React.FunctionComponent<Props> = React.memo(
         className={className}
         style={style}
         disabled={disabled ?? false}
-        onChange={(e) => onChangeText?.(e.target.value)}
-        defaultValue={text}
+        onChange={(e) => onChangeText?.(nonEmptyString(e.target.value))}
+        defaultValue={defaultToEmptyString(text)}
         ref={inputEl}
         type={type ?? 'text'}
         autoFocus={true}
         onFocus={(e) => e.target.select()}
         onBlur={() => {
-          // TODO(quality) this is not the best api...
-          onChangeText?.(undefined);
+          onChangeText?.(text);
           setEditState('text');
         }}
         onKeyDown={(e) => {
@@ -70,12 +73,11 @@ const EditableText: React.FunctionComponent<Props> = React.memo(
             return;
           }
           if (e.key === 'Enter' || e.keyCode === 9 /* Tab */) {
-            onSetText(inputEl.current.value);
+            onSetText(nonEmptyString(inputEl.current.value));
             setEditState('text');
           }
           if (e.key === 'Escape') {
-            // TODO(quality) this is not the best api...
-            onChangeText?.(undefined);
+            onChangeText?.(text);
             setEditState('text');
           }
         }}
@@ -106,7 +108,7 @@ const EditableText: React.FunctionComponent<Props> = React.memo(
           setEditState('edit');
         }}
       >
-        {text}
+        {defaultToEmptyString(text)}
       </div>
     );
 

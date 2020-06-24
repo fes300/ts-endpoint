@@ -1,3 +1,4 @@
+import { some } from 'fp-ts/lib/Option';
 import * as React from 'react';
 import EditableText from '.';
 
@@ -19,15 +20,14 @@ export const basic = () => {
 };
 
 export const typesGallery = () => {
-  const [telText, setTelText] = React.useState('this text uses a tel type');
-  const [urlText, setUrlText] = React.useState('this text uses an url type');
-  const [weekText, setWeekText] = React.useState('this text uses a week type');
-  const [dateText, setDateText] = React.useState('this text uses a date type');
-  const [colorText, setColorText] = React.useState('this text uses a color type');
-  const [fileText, setFileText] = React.useState('this text uses a file type');
-  const [monthText, setMonthText] = React.useState('this text uses a month type');
+  const [telText, setTelText] = React.useState(some('this text uses a tel type'));
+  const [urlText, setUrlText] = React.useState(some('this text uses an url type'));
+  const [weekText, setWeekText] = React.useState(some('this text uses a week type'));
+  const [dateText, setDateText] = React.useState(some('this text uses a date type'));
+  const [colorText, setColorText] = React.useState(some('this text uses a color type'));
+  const [monthText, setMonthText] = React.useState(some('this text uses a month type'));
   const [datetimeLocalText, setDatetimeLocalText] = React.useState(
-    'this text uses a datetime-local type'
+    some('this text uses a datetime-local type')
   );
 
   return (
@@ -61,12 +61,6 @@ export const typesGallery = () => {
         onSetText={setColorText}
         RenderText={({ TextComponent }) => <TextComponent />}
         RenderInput={({ InputComponent }) => <InputComponent type="color" />}
-      />
-      <EditableText
-        text={fileText}
-        onSetText={setFileText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="file" />}
       />
       <EditableText
         text={monthText}

@@ -22,5 +22,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "^3.9.3"
-  }
+  },
+  "gitHead": "208b60f5b5bc9b112d1d38daf0be0cc8e281df1e"
 }
