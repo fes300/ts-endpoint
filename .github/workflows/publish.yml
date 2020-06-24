@@ -5,19 +5,25 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  install:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v1
 
-      - name: Install Packages
+      - name: Install dependencies
         run: yarn install
-
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Test
         run: yarn test
-
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare repository
+        run: git checkout "${GITHUB_REF:11}"
       - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc && yarn release
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc && yarn release --ci
