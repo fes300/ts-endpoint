@@ -1,6 +1,6 @@
 {
   "name": "react-editable-text",
-  "version": "1.2.1",
+  "version": "1.0.1",
   "description": "Simple component to edit text inline.",
   "main": "lib",
   "repository": "https://github.com/fes300/open-source/packages/react-editable-text",
@@ -23,5 +23,5 @@
     "react-dom": "^16.13.1",
     "typescript": "^3.9.3"
   },
-  "gitHead": "208b60f5b5bc9b112d1d38daf0be0cc8e281df1e"
+  "gitHead": "799c951474af40952d406a63da43b0cd4ec86cbd"
 }
