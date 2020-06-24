@@ -1,14 +1,16 @@
-import classNames from 'classnames';
 import * as React from 'react';
-import './react-editable-text.scss';
 import { useState } from 'react';
 
 interface StyleProps {
   className?: string;
   style?: React.CSSProperties;
 }
-type InputComponent = React.FC<StyleProps>;
-type TextComponent = React.FC<StyleProps & { withTooltip?: boolean }>;
+type InputComponent = React.FC<
+  StyleProps & {
+    type?: 'tel' | 'url' | 'week' | 'date' | 'color' | 'file' | 'month' | 'datetime-local';
+  }
+>;
+type TextComponent = React.FC<StyleProps>;
 
 type TextEditableInputComponent = React.FC<{ InputComponent: InputComponent }>;
 type TextEditableTextComponent = React.FC<{ TextComponent: TextComponent }>;
@@ -16,13 +18,15 @@ type TextEditableTextComponent = React.FC<{ TextComponent: TextComponent }>;
 export type EditState = 'edit' | 'text';
 
 interface Props {
+  RenderInput: TextEditableInputComponent;
+  RenderText: TextEditableTextComponent;
+  className?: string;
+  disabled?: boolean;
   initialState?: EditState;
-  text: string;
-  onSetText: (newText: string) => void;
   onChangeText?: (newText?: string) => void;
   onClick?: (v: string) => void;
-  RenderText: TextEditableTextComponent;
-  RenderInput: TextEditableInputComponent;
+  onSetText: (newText: string) => void;
+  text: string;
 }
 
 let clickTriggers: number[] = [];
@@ -31,18 +35,29 @@ let clickTriggers: number[] = [];
  * @description EditableText will only rerender if the "text" property changes.
  */
 const EditableText: React.FunctionComponent<Props> = React.memo(
-  ({ RenderInput, RenderText, initialState, onSetText, onChangeText, onClick, text }) => {
-    const [editState, setEditState] = useState(initialState ?? 'text');
+  ({
+    RenderInput,
+    RenderText,
+    className,
+    disabled,
+    initialState,
+    onChangeText,
+    onClick,
+    onSetText,
+    text,
+  }) => {
+    const [editState, setEditState] = useState<EditState>(initialState ?? 'text');
     const inputEl = React.useRef<HTMLInputElement | null>(null);
 
-    const InputComponent: InputComponent = ({ className, style }) => (
+    const InputComponent: InputComponent = ({ className, style, type }) => (
       <input
-        className={classNames('react-editable-text', className)}
+        className={className}
         style={style}
+        disabled={disabled ?? false}
         onChange={(e) => onChangeText?.(e.target.value)}
         defaultValue={text}
         ref={inputEl}
-        type="text"
+        type={type ?? 'text'}
         autoFocus={true}
         onFocus={(e) => e.target.select()}
         onBlur={() => {
@@ -74,12 +89,18 @@ const EditableText: React.FunctionComponent<Props> = React.memo(
         style={style}
         onClick={(e) => {
           e.stopPropagation();
+          if (disabled) {
+            return;
+          }
           // this is needed to avoid running onClick handlers on doubleClick
           const trigger = window.setTimeout(() => onClick?.(text), 200);
           clickTriggers.push(trigger);
         }}
         onDoubleClick={(e) => {
           e.stopPropagation();
+          if (disabled) {
+            return;
+          }
           clickTriggers.map(clearTimeout);
           clickTriggers = [];
           setEditState('edit');
@@ -89,10 +110,14 @@ const EditableText: React.FunctionComponent<Props> = React.memo(
       </div>
     );
 
-    return editState === 'edit' ? (
-      <RenderInput InputComponent={InputComponent} />
-    ) : (
-      <RenderText TextComponent={TextComponent} />
+    return (
+      <div className={`react-editable-text ${className ?? ''})`}>
+        {editState === 'edit' ? (
+          <RenderInput InputComponent={InputComponent} />
+        ) : (
+          <RenderText TextComponent={TextComponent} />
+        )}
+      </div>
     );
   },
   (oldProps, newProps) => oldProps.text === newProps.text

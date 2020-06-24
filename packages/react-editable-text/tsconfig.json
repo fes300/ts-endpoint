@@ -2,9 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "outDir": "./lib",
-    "jsx": "react"
+    "jsx": "react",
+    "esModuleInterop": true
   },
   "include": ["index.tsx"],
   "exclude": ["node_modules"]
