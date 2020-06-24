@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  install:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -18,6 +18,11 @@ jobs:
         run: yarn test
 
       - name: Release
+        uses: oleksiyrudenko/gha-git-credentials@v1
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc && yarn release --ci
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          yarn release --ci
