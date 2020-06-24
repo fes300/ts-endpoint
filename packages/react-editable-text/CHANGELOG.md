@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/fes300/open-source/packages/react-editable-text/compare/react-editable-text@1.1.0...react-editable-text@1.2.0) (2020-06-24)
+
+
+### Features
+
+* monadic interface ([5594496](https://github.com/fes300/open-source/packages/react-editable-text/commit/5594496e5ef7a9adf3e1f4321ed79409929e5ff8))
+
+
+
+
+
 # 1.1.0 (2020-06-24)
 
 
