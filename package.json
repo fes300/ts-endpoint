@@ -26,5 +26,8 @@
     "build-storybook": "build-storybook --quiet --docs -s ./.storybook/public",
     "release": "lerna publish --yes",
     "test": "lerna run test"
+  },
+  "dependencies": {
+    "fp-ts": "^2.6.7"
   }
 }
