@@ -1,6 +1,12 @@
-## React editble text
+## react-editble-text
 
-Very simple component to make your strings editable by double-clicking on them:
+### install
+yarn add @fes300/react-editable-text
+
+> *N.B.*: the component exposes monadic APIs, therefore it has `fp-ts` as a peer dependency
+
+
+`react-editable-text` is a very simple component to make your strings editable by double-clicking on them:
 
 ```ts
 <EditableText
@@ -20,10 +26,6 @@ Very simple component to make your strings editable by double-clicking on them:
   RenderInput={({ InputComponent }) => <InputComponent type={'tel' || 'url' || 'week' || 'date' || 'color' || 'month' || 'datetime-local'} />}
 />
 ```
-
-
-> *N.B.*: the component exposes monadic APIs, therefore it has `fp-ts` as a peer dependency
-
 
 **Props**:
 ```ts
