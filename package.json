@@ -23,7 +23,7 @@
     "bootstrap": "lerna bootstrap",
     "bootstrap:ci": "lerna bootstrap --ci",
     "storybook": "start-storybook --docs -s ./.storybook/public -p 6006",
-    "build-storybook": "build-storybook --docs -s ./.storybook/public",
+    "build-storybook": "build-storybook --quiet --docs -s ./.storybook/public",
     "release": "lerna publish --yes",
     "test": "lerna run test"
   }
