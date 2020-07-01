@@ -1,6 +1,6 @@
 {
   "name": "@fes300/react-editable-text",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Simple component to edit text inline.",
   "main": "lib",
   "repository": "https://github.com/fes300/open-source/packages/react-editable-text",
