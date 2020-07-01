@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.10 (2020-07-01)
+
+
+### Bug Fixes
+
+* add fp-ts dependency to main repo ([5b7c72d](https://github.com/fes300/open-source/packages/react-editable-text/commit/5b7c72d759607cbcc6a8db09fe0b8ce4c545cac4))
+
+
+
+
+
 ## 1.1.9 (2020-07-01)
 
 **Note:** Version bump only for package @fes300/react-editable-text
