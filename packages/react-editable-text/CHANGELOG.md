@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.8 (2020-07-01)
+
+
+### Bug Fixes
+
+* build script for netlify ([cd7b5e9](https://github.com/fes300/open-source/packages/react-editable-text/commit/cd7b5e999fd4c263e0c171b557d4b11441fe7f68))
+
+
+
+
+
 ## 1.1.7 (2020-07-01)
 
 **Note:** Version bump only for package @fes300/react-editable-text
