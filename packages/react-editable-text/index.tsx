@@ -38,7 +38,7 @@ let clickTriggers: number[] = [];
 /**
  * @description EditableText will only rerender if the "text" property changes.
  */
-const EditableText: React.FunctionComponent<Props> = React.memo(
+export const EditableText: React.FunctionComponent<Props> = React.memo(
   ({
     RenderInput,
     RenderText,

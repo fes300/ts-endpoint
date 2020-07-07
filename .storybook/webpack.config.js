@@ -15,7 +15,11 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{ loader: 'ts-loader' }],
+        loader: 'ts-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'react-docgen-typescript-loader',
       },
       {
         test: /\.(png|gif|jpg|svg)$/,

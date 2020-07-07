@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import * as stories from './react-editable-text.stories';
 import EditableText from '.';
 
@@ -8,7 +8,9 @@ import EditableText from '.';
 
 A simple component that lets you modify text inline:
 
-<Story name="basic">{stories.basic()}</Story>
+<Preview>
+  <Story name="basic">{stories.basic()}</Story>
+</Preview>
 
 It is built to allow many types and custom styles/structures:
 
@@ -17,3 +19,11 @@ It is built to allow many types and custom styles/structures:
 You can also mirror the typed text somewhere else in your app:
 
 <Story name="mirror">{stories.mirrorText()}</Story>
+
+--
+
+<br />
+
+## Props
+
+<Props of={EditableText} />

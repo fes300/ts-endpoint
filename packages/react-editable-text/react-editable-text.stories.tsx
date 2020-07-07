@@ -1,4 +1,4 @@
-import { some } from 'fp-ts/lib/Option';
+import { some, none, Option, getOrElse } from 'fp-ts/lib/Option';
 import * as React from 'react';
 import EditableText from '.';
 
@@ -8,7 +8,8 @@ export default {
 };
 
 export const basic = () => {
-  const [text, setText] = React.useState('try editing this text');
+  const [text, setText] = React.useState(some('try editing this text'));
+
   return (
     <EditableText
       text={text}
@@ -79,8 +80,8 @@ export const typesGallery = () => {
 };
 
 export const mirrorText = () => {
-  const [text, setText] = React.useState('try editing this text');
-  const [mirroredText, setMirroredText] = React.useState('');
+  const [text, setText] = React.useState(some('try editing this text'));
+  const [mirroredText, setMirroredText] = React.useState<Option<string>>(none);
 
   return (
     <div>
@@ -91,7 +92,7 @@ export const mirrorText = () => {
         RenderText={({ TextComponent }) => <TextComponent />}
         RenderInput={({ InputComponent }) => <InputComponent />}
       />
-      this is mirroredText: {mirroredText}
+      this is mirroredText: {getOrElse(() => '')(mirroredText)}
     </div>
   );
 };
