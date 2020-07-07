@@ -7,6 +7,6 @@
     "jsx": "react",
     "esModuleInterop": true
   },
-  "include": ["index.tsx"],
+  "include": ["./main.ts", "../packages"],
   "exclude": ["node_modules"]
 }

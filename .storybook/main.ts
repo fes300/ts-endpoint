@@ -1,7 +1,11 @@
+// import { StorybookConfig } from '@storybook/core/types';
+
 module.exports = {
   stories: ['../packages/**/*.stories.mdx'],
+  logLevel: 'debug',
   addons: ['@storybook/addon-docs'],
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    check: true,
+    checkOptions: {},
   },
 };

@@ -1,11 +1,7 @@
-import { some, none, Option, getOrElse } from 'fp-ts/lib/Option';
+import { alt, some, none, Option, getOrElse } from 'fp-ts/lib/Option';
+import { pipe } from 'fp-ts/lib/pipeable';
 import * as React from 'react';
 import EditableText from '.';
-
-export default {
-  title: 'EditableText',
-  component: EditableText,
-};
 
 export const basic = () => {
   const [text, setText] = React.useState(some('try editing this text'));
@@ -20,6 +16,20 @@ export const basic = () => {
   );
 };
 
+const Margin: React.FC<{
+  right?: string;
+  left?: string;
+  top?: string;
+  bottom?: string;
+  style?: React.CSSProperties;
+}> = ({ children, right, left, top, bottom, style }) => (
+  <div
+    style={{ ...style, marginRight: right, marginLeft: left, marginTop: top, marginBottom: bottom }}
+  >
+    {children}
+  </div>
+);
+
 export const typesGallery = () => {
   const [telText, setTelText] = React.useState(some('this text uses a tel type'));
   const [urlText, setUrlText] = React.useState(some('this text uses an url type'));
@@ -31,50 +41,70 @@ export const typesGallery = () => {
     some('this text uses a datetime-local type')
   );
 
+  const Wrapper: React.FC = ({ children }) => (
+    <Margin right="20px" bottom="40px">
+      {children}
+    </Margin>
+  );
+
   return (
-    <div>
-      <EditableText
-        text={telText}
-        onSetText={setTelText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="tel" />}
-      />
-      <EditableText
-        text={urlText}
-        onSetText={setUrlText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="url" />}
-      />
-      <EditableText
-        text={weekText}
-        onSetText={setWeekText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="week" />}
-      />
-      <EditableText
-        text={dateText}
-        onSetText={setDateText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="date" />}
-      />
-      <EditableText
-        text={colorText}
-        onSetText={setColorText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="color" />}
-      />
-      <EditableText
-        text={monthText}
-        onSetText={setMonthText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="month" />}
-      />
-      <EditableText
-        text={datetimeLocalText}
-        onSetText={setDatetimeLocalText}
-        RenderText={({ TextComponent }) => <TextComponent />}
-        RenderInput={({ InputComponent }) => <InputComponent type="datetime-local" />}
-      />
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <Wrapper>
+        <EditableText
+          text={telText}
+          onSetText={setTelText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="tel" />}
+        />
+      </Wrapper>
+      <Wrapper>
+        <EditableText
+          text={urlText}
+          onSetText={setUrlText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="url" />}
+        />
+      </Wrapper>
+      <Wrapper>
+        <EditableText
+          text={weekText}
+          onSetText={setWeekText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="week" />}
+        />
+      </Wrapper>
+      <Wrapper>
+        <EditableText
+          text={dateText}
+          onSetText={setDateText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="date" />}
+        />
+      </Wrapper>
+      <Wrapper>
+        <EditableText
+          text={colorText}
+          onSetText={setColorText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="color" />}
+        />
+      </Wrapper>
+      <Wrapper>
+        <EditableText
+          text={monthText}
+          onSetText={setMonthText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="month" />}
+        />
+      </Wrapper>
+      <Wrapper>
+        <EditableText
+          text={datetimeLocalText}
+          onSetText={setDatetimeLocalText}
+          RenderText={({ TextComponent }) => <TextComponent />}
+          RenderInput={({ InputComponent }) => <InputComponent type="datetime-local" />}
+        />
+      </Wrapper>
     </div>
   );
 };
@@ -92,7 +122,22 @@ export const mirrorText = () => {
         RenderText={({ TextComponent }) => <TextComponent />}
         RenderInput={({ InputComponent }) => <InputComponent />}
       />
-      this is mirroredText: {getOrElse(() => '')(mirroredText)}
+      <br />
+      <br />
+      <br />
+      <br />
+      <div style={{ marginLeft: 'auto', padding: '10px 20px', border: '1px solid', width: '40%' }}>
+        <div style={{ fontStyle: 'italic' }}>
+          somewhere ese in your app you can have mirrored text:
+        </div>
+        <div>
+          {pipe(
+            mirroredText,
+            alt(() => text),
+            getOrElse(() => '')
+          )}
+        </div>
+      </div>
     </div>
   );
 };
