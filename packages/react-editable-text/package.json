@@ -5,7 +5,7 @@
   "main": "lib",
   "repository": "https://github.com/fes300/open-source/packages/react-editable-text",
   "bugs": {
-    "url": "https://github.com/buildo/react-components/issues"
+    "url": "https://github.com/fes300/open-source/issues"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
