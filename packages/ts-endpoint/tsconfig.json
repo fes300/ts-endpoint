@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "outDir": "./lib",
+    "esModuleInterop": true
+  },
+  "include": ["index.ts"],
+  "exclude": ["node_modules"]
+}
