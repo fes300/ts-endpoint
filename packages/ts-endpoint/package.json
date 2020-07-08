@@ -21,5 +21,10 @@
   },
   "devDependencies": {
     "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@types/qs": "^6.9.3",
+    "io-ts": "^2.2.7",
+    "qs": "^6.9.4"
   }
 }

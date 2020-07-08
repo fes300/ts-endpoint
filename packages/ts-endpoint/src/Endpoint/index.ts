@@ -43,35 +43,25 @@ export interface EndpointOptions {
  * @typeparam R Endpoint `Output` type
  */
 export interface Endpoint<O extends EndpointOptions, P, H, Q, B, R> {
+  /* utils to get the full path given a set of query params */
+  getPath: P extends Record<any, any> ? (args: Record<keyof P, string>) => string : () => string;
   Method: HTTPMethod;
-  // `Path` is a function that accept `Input.Params` when is defined or no argument when is not defined
-  Path: P extends Record<any, any> ? (args: Record<keyof P, string>) => string : () => string;
   Opts: O;
   Input: {
     Headers?: t.ExactType<t.Type<H, unknown>>;
     Params?: t.ExactType<t.Type<P, unknown>>;
     Query?: t.ExactType<t.Type<Q, unknown>>;
+    // TODO: body should only be allowed when method === "POST"
     Body?: t.ExactType<t.Type<B, unknown>>;
   };
-  Output: t.Type<R, unknown> | t.ArrayType<t.Type<R>>;
+  Output: t.Type<R>;
 }
 
 /**
  * Constructor function for an endpoint
- *
- * @param Method The [HTTPMethod] used
- * @param Path The absolute path the enpoint can be reached at
- * @param Input A dictionary of `io-ts` codecs representing the type of the expected input
- * @param Output An `io-ts` codec representing the type of the expected output
  */
 export function Endpoint<O extends EndpointOptions, P, H, Q, B, R>(
   e: Endpoint<O, P, H, Q, B, R>
 ): Endpoint<O, P, H, Q, B, R> {
-  return {
-    Opts: e.Opts,
-    Method: e.Method,
-    Path: e.Path,
-    Input: e.Input,
-    Output: e.Output,
-  };
+  return e;
 }
