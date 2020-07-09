@@ -5,7 +5,7 @@ import { PathReporter } from 'io-ts/lib/PathReporter';
 import * as TA from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 import qs from 'qs';
-import { IOError, DecodeErrorStatus } from './errors';
+import { IOError, DecodeErrorStatus, NetworkErrorStatus } from './errors';
 import { HTTPClient, GetHTTPClient, FetchClient, FetchInput } from '.';
 import { Either, left } from 'fp-ts/lib/Either';
 
@@ -16,28 +16,6 @@ export const GetFetchHTTPClient = <
   endpoints: A,
   defaultHeaders?: { [key: string]: string }
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, defaultHeaders);
-
-const a = GetFetchHTTPClient(
-  {
-    protocol: 'http',
-    host: 'http://prova',
-    port: 2020,
-  },
-  {
-    prova: Endpoint({
-      Input: {
-        Query: t.strict({ color: t.string }),
-        Params: t.strict({ id: t.string }),
-      },
-      Method: 'GET',
-      getPath: ({ id }) => `users/${id}/crayons`,
-      Output: t.strict({ crayons: t.array(t.string) }),
-      Opts: { stringifyBody: true },
-    }),
-  }
-);
-
-a.prova({ Params: { id: '123' }, Query: { color: 'marrone' } }, Body: {foo: "baz"});
 
 const useBrowserFetch = <E extends Endpoint<any, any, any, any, any, any>>(
   baseURL: string,
@@ -51,13 +29,20 @@ const useBrowserFetch = <E extends Endpoint<any, any, any, any, any, any>>(
     const path = `${baseURL}/${e.getPath(anyArgs?.Params ?? {})}${
       anyArgs.Query ? `?${qs.stringify(anyArgs.Query)}` : ''
     }`;
-    const body = e.Opts.stringifyBody ? qs.stringify(anyArgs.Body) : anyArgs.Body;
+    const body = e.Opts?.stringifyBody ? qs.stringify(anyArgs.Body) : anyArgs.Body;
     const headers = { ...anyArgs.Headers, ...defaultHeaders };
 
     const response = pipe(
-      TA.taskEither.fromTask(() => fetch(path, { headers, body, method: e.Method })),
-      TA.mapLeft(
-        (e: any) => new IOError(e.NetworkErrorStatus, 'Network Error', { kind: 'NetworkError' })
+      TA.tryCatch(
+        () =>
+          fetch(path, {
+            ...{
+              headers,
+              method: e.Method,
+            },
+            ...(anyArgs.Body !== undefined ? { body } : {}),
+          }),
+        () => new IOError(NetworkErrorStatus, 'Network Error', { kind: 'NetworkError' })
       ),
       TA.chain((r: Response) => {
         if (!r.ok) {
@@ -72,7 +57,7 @@ const useBrowserFetch = <E extends Endpoint<any, any, any, any, any, any>>(
         }
 
         const res = pipe(
-          TA.taskEither.fromTask<t.Errors, any>(r.json),
+          TA.taskEither.fromTask<t.Errors, any>(() => r.json()),
           TA.alt(() => TA.right({})),
           TA.chain((json) =>
             TA.fromEither(e.Output.decode(json) as Either<t.Errors, t.TypeOf<E['Output']>>)

@@ -3,7 +3,7 @@ import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 
-export type FetchInput<E> = E extends Endpoint<any, infer P, infer H, infer Q, infer B, any>
+export type FetchInput<E> = E extends Endpoint<infer P, infer H, infer Q, infer B, any, any>
   ? (E extends object ? { Params: P } : { Params?: never }) &
       (H extends object ? { Headers: H } : { Headers?: never }) &
       (Q extends object ? { Query: Q } : { Query?: never }) &
