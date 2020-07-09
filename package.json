@@ -16,6 +16,7 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
+    "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
     "bootstrap:ci": "lerna bootstrap --ci",
     "storybook": "start-storybook --docs -s ./.storybook/public -p 6006",
