@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.17 (2020-07-09)
+
+
+### Bug Fixes
+
+* **cd:** publish lib ([fc78642](https://github.com/fes300/open-source/packages/react-editable-text/commit/fc78642b4cb9dfd769840032e06e4a1ba8aea0e1))
+
+
+
+
+
 ## 1.1.16 (2020-07-09)
 
 **Note:** Version bump only for package @fes300/react-editable-text

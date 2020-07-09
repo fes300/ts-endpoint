@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple endpoint definition for fullstack safety.",
   "files": [
     "lib"
