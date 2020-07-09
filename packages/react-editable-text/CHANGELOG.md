@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.15 (2020-07-09)
+
+
+### Bug Fixes
+
+* **ci:** specify yarn client ([6ec0373](https://github.com/fes300/open-source/packages/react-editable-text/commit/6ec03730ddf0bda28f60ad4ae444f37d72898b42))
+
+
+
+
+
 ## 1.1.14 (2020-07-07)
 
 **Note:** Version bump only for package @fes300/react-editable-text
