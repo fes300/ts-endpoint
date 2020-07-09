@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.18 (2020-07-09)
+
+
+### Bug Fixes
+
+* **cd:** add build step ([7b68df1](https://github.com/fes300/open-source/packages/react-editable-text/commit/7b68df1a62dddcba63dfca715b162cb0476b9197))
+
+
+
+
+
 ## 1.1.17 (2020-07-09)
 
 
