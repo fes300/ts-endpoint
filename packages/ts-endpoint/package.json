@@ -13,13 +13,23 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "peerDependencies": {
     "fp-ts": "^2.0.0",
     "io-ts": "^2.2.7"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "isomorphic-fetch": "^2.2.1",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
     "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@types/qs": "^6.9.3",
+    "io-ts": "^2.2.7",
+    "qs": "^6.9.4"
   }
 }
