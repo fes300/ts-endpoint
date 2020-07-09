@@ -2,7 +2,10 @@
   "name": "ts-endpoint",
   "version": "1.0.3",
   "description": "Simple endpoint definition for fullstack safety.",
-  "main": "lib",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
   "repository": "https://github.com/fes300/open-source/packages/ts-endpoint",
   "bugs": {
     "url": "https://github.com/fes300/open-source/packages/ts-endpoint/issues"
@@ -13,7 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf ./lib && tsc",
     "test": "jest"
   },
   "peerDependencies": {
