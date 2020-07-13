@@ -26,13 +26,13 @@ const noHeaderEndpoint = Endpoint({
 describe('withAuth types behave accordingly', () => {
   // when endpoint is wrapped header is present
   const authenticatedEndpoint = withAuth(endpoint);
-  authenticatedEndpoint.Input.Headers.id;
-  authenticatedEndpoint.Input.Headers.authorization;
+  authenticatedEndpoint.Input.Headers.type.props.id;
+  authenticatedEndpoint.Input.Headers.type.props.authorization;
   // @ts-expect-error
   authenticatedEndpoint.Input.Headers.fakeHeader;
 
   const authenticatedNoHeaderEndpoint = withAuth(noHeaderEndpoint);
-  authenticatedNoHeaderEndpoint.Input.Headers.authorization;
+  authenticatedNoHeaderEndpoint.Input.Headers.type.props.authorization;
   // @ts-expect-error
   authenticatedNoHeaderEndpoint.Input.Headers.fakeHeader;
 
