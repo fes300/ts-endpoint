@@ -20,65 +20,66 @@ const noPortOptions: StaticHTTPClientConfig = {
 const endpoints = {
   getEndpoint: Endpoint({
     Input: {
-      Query: t.strict({ color: t.string }),
-      Params: t.strict({ id: t.string }),
+      Query: { color: t.string },
+      Params: { id: t.string },
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.strict({ crayons: t.array(t.string) }),
+    Output: { crayons: t.array(t.string) },
   }),
   getEndpointWithLargeQuery: Endpoint({
     Input: {
-      Query: t.strict({ foo: t.string, bar: t.number, baz: t.string }),
-      Params: t.strict({ id: t.number, crayonSet: t.number }),
+      Query: { foo: t.string, bar: t.number, baz: t.string },
+      Params: { id: t.number, crayonSet: t.number },
     },
     Method: 'GET',
     getPath: ({ id, crayonSet }) => `users/${id}/crayons/${crayonSet}`,
-    Output: t.strict({ crayons: t.array(t.string) }),
+    Output: { crayons: t.array(t.string) },
   }),
   postEndpoint: Endpoint({
     Input: {
-      Body: t.strict({
+      Params: { id: t.string },
+      Body: {
         name: t.string,
         surname: t.string,
         age: t.number,
-      }),
+      },
     },
     Method: 'POST',
     getPath: () => 'users',
-    Output: t.strict({ id: t.string }),
+    Output: { id: t.string },
   }),
   putEndpoint: Endpoint({
     Input: {
-      Params: t.strict({ id: t.string }),
-      Body: t.strict({
+      Params: { id: t.string },
+      Body: {
         name: t.string,
         surname: t.string,
         age: t.number,
-      }),
+      },
     },
     Method: 'PUT',
     getPath: ({ id }) => `users/${id}`,
-    Output: t.strict({ userId: t.string }),
+    Output: { userId: t.string },
   }),
   deleteEndpoint: Endpoint({
     Input: {
-      Params: t.strict({ id: t.string }),
+      Params: { id: t.string },
     },
     Method: 'DELETE',
     getPath: ({ id }) => `users/${id}`,
-    Output: t.strict({ id: t.string }),
+    Output: { id: t.string },
   }),
   patchEndpoint: Endpoint({
     Input: {
-      Params: t.strict({ id: t.string }),
-      Body: t.strict({
+      Params: { id: t.string },
+      Body: {
         name: t.string,
-      }),
+      },
     },
     Method: 'PATCH',
     getPath: ({ id }) => `users/${id}`,
-    Output: t.strict({ id: t.string }),
+    Output: { id: t.string },
   }),
 };
 
@@ -113,9 +114,14 @@ describe('GetFetchHTTPClient', () => {
       'patchEndpoint',
     ]);
   });
+
   it('calls global.fetch with the correct params', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
-    await fetchClient.getEndpoint({ Params: { id: 'id' }, Query: { color: 'brown' } })();
+
+    await fetchClient.getEndpoint({
+      Params: { id: 'id' },
+      Query: { color: 'brown' },
+    })();
 
     expect(fetch).toBeCalledWith('http://test:2020/users/id/crayons?color=brown', {
       headers: { 'Content-type': 'application/json' },
