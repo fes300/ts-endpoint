@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.22 (2020-07-13)
+
+
+### Bug Fixes
+
+* parametric output ([021f666](https://github.com/fes300/open-source/packages/react-editable-text/commit/021f6663fded775c70ecd2f0dba26b1b4db1ee44))
+
+
+
+
+
 ## 1.1.21 (2020-07-13)
 
 
