@@ -84,3 +84,28 @@ describe('Endpoint types behave accordingly', () => {
     expect(true).toBeTruthy();
   });
 });
+
+describe('EndpointInstances typings are correct', () => {
+  const endpointInstance = Endpoint({
+    Input: {
+      Query: { color: t.string },
+      Params: { id: t.string },
+    },
+    Method: 'GET',
+    getPath: ({ id }) => `users/${id}/crayons`,
+    Output: { crayons: t.array(t.string) },
+    Opts: { stringifyBody: true },
+  });
+
+  endpointInstance.Input.Params.type.props.id;
+  endpointInstance.Input.Query.type.props.color;
+  // @ts-expect-error
+  endpointInstance.Input.Body?.prova;
+  // @ts-expect-error
+  endpointInstance.Output.type.props.fakeOutput;
+  endpointInstance.Output.type.props.crayons;
+
+  it("wrong input won't compile", () => {
+    expect(true).toBeTruthy();
+  });
+});

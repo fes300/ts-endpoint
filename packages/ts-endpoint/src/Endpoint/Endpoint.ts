@@ -90,12 +90,12 @@ export function Endpoint<
   return ({
     ...e,
     Output: t.strict(e.Output),
-    Input: t.strict({
-      ...(e.Input.Body ?? {}),
-      ...(e.Input.Headers ?? {}),
-      ...(e.Input.Params ?? {}),
-      ...(e.Input.Query ?? {}),
-    }),
+    Input: {
+      ...(e.Input.Body !== undefined ? { Body: t.strict(e.Input.Body as any) } : {}),
+      ...(e.Input.Headers !== undefined ? { Headers: t.strict(e.Input.Headers as any) } : {}),
+      ...(e.Input.Params !== undefined ? { Params: t.strict(e.Input.Params as any) } : {}),
+      ...(e.Input.Query !== undefined ? { Query: t.strict(e.Input.Query as any) } : {}),
+    },
     Opts: e.Opts ?? defaultOps,
   } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P>>;
 }
