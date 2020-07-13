@@ -8,8 +8,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
 
       - name: install dependencies
         run: yarn --force && yarn bootstrap:ci

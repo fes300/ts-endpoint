@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
       - uses: ouzi-dev/commit-status-updater@v1.0.4
         with:
           status: 'pending'
