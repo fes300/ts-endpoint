@@ -21,7 +21,7 @@ export function withAuth<E extends EndpointInstance<any>>(e: E): WithAuth<E> {
     ...e,
     Input: {
       ...e.Input,
-      Headers: newHeaders,
+      Headers: t.strict(newHeaders),
     },
   } as unknown) as WithAuth<E>;
 }
