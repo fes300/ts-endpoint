@@ -13,6 +13,7 @@ jobs:
         with:
           path: |
             **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
       - uses: ouzi-dev/commit-status-updater@v1.0.4
         with:
           status: 'pending'
