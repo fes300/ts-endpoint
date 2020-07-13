@@ -9,8 +9,10 @@ export const AuthHeader = {
 
 type DefaultEmpty<A> = A extends undefined ? {} : A;
 
-type WithAuth<E> = E extends EndpointInstance<Endpoint<infer M, infer H, infer Q, infer B, infer P>>
-  ? EndpointInstance<Endpoint<M, DefaultEmpty<H> & typeof AuthHeader, Q, B, P>>
+type WithAuth<E> = E extends EndpointInstance<
+  Endpoint<infer M, infer O, infer H, infer Q, infer B, infer P>
+>
+  ? EndpointInstance<Endpoint<M, O, DefaultEmpty<H> & typeof AuthHeader, Q, B, P>>
   : never;
 
 export function withAuth<E extends EndpointInstance<any>>(e: E): WithAuth<E> {

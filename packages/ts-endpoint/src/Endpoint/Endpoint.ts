@@ -30,6 +30,7 @@ export const defaultOps = {
  */
 export interface Endpoint<
   M extends HTTPMethod,
+  O extends t.Props,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
@@ -47,10 +48,10 @@ export interface Endpoint<
     Query?: Q;
     Body?: M extends 'POST' | 'PUT' | 'PATCH' ? B : never;
   };
-  Output: t.Props;
+  Output: O;
 }
 
-export type EndpointInstance<E extends Endpoint<any, any, any, any, any>> = {
+export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> = {
   getPath: E['getPath'];
   Method: E['Method'];
   Output: t.ExactC<t.TypeC<E['Output']>>;
@@ -80,11 +81,12 @@ export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
  */
 export function Endpoint<
   M extends HTTPMethod,
+  O extends t.Props,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
->(e: Endpoint<M, H, Q, B, P>): EndpointInstance<Endpoint<M, H, Q, B, P>> {
+>(e: Endpoint<M, O, H, Q, B, P>): EndpointInstance<Endpoint<M, O, H, Q, B, P>> {
   return ({
     ...e,
     Output: t.strict(e.Output),
@@ -95,5 +97,5 @@ export function Endpoint<
       ...(e.Input.Query ?? {}),
     }),
     Opts: e.Opts ?? defaultOps,
-  } as unknown) as EndpointInstance<Endpoint<M, H, Q, B, P>>;
+  } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P>>;
 }
