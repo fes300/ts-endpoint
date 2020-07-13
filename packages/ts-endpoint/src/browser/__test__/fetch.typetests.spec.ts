@@ -12,12 +12,12 @@ const options: StaticHTTPClientConfig = {
 const endpoints = {
   prova: Endpoint({
     Input: {
-      Query: t.strict({ color: t.string }),
-      Params: t.strict({ id: t.string }),
+      Query: { color: t.string },
+      Params: { id: t.string },
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.strict({ crayons: t.array(t.string) }),
+    Output: { crayons: t.array(t.string) },
     Opts: { stringifyBody: true },
   }),
 };
@@ -25,31 +25,32 @@ const endpoints = {
 const fetchClient = GetFetchHTTPClient(options, endpoints);
 
 describe('GetFetchHTTPClient types behave accordingly', () => {
-  try {
-    // @ts-expect-error
-    fetchClient.prova();
+  // @ts-expect-error
+  () => fetchClient.prova();
 
-    // @ts-expect-error
-    fetchClient.prova({});
+  // @ts-expect-error
+  () => fetchClient.prova({});
 
+  () =>
     // @ts-expect-error
     fetchClient.prova({
       Params: { id: '123' },
     });
 
+  () =>
     fetchClient.prova({
       // @ts-expect-error
       Params: { id: '123', foo: 'baz' },
       Query: { color: 'marrone' },
     });
 
+  () =>
     fetchClient.prova({
       Params: { id: '123' },
       Query: { color: 'marrone' },
       // @ts-expect-error
       Body: { foo: 'baz' },
     });
-  } catch (error) {}
 
   it("wrong input won't compile", () => {
     expect(true).toBeTruthy();

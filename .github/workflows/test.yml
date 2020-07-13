@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ouzi-dev/commit-status-updater@v1.0.4
+        with:
+          status: 'pending'
+          addHoldComment: 'true'
+          pendingComment: 'tests pending..'
+          successComment: 'tests success!'
+          failComment: 'tests failed'
+
+      - name: install dependencies
+        run: yarn --force && yarn bootstrap:ci
+
+      - name: test
+        run: yarn test

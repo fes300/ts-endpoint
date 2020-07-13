@@ -1,4 +1,4 @@
-import { Endpoint } from '../Endpoint';
+import { EndpointInstance, TypeOfEndpointInstance } from '../Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { PathReporter } from 'io-ts/lib/PathReporter';
@@ -6,23 +6,21 @@ import * as TA from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from './errors';
-import { HTTPClient, GetHTTPClient, FetchClient, FetchInput } from '.';
+import { HTTPClient, GetHTTPClient, FetchClient } from '.';
 import { Either, left } from 'fp-ts/lib/Either';
 
-export const GetFetchHTTPClient = <
-  A extends { [key: string]: Endpoint<any, any, any, any, any, any> }
->(
+export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   defaultHeaders?: { [key: string]: string }
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, defaultHeaders);
 
-const useBrowserFetch = <E extends Endpoint<any, any, any, any, any, any>>(
+const useBrowserFetch = <E extends EndpointInstance<any>>(
   baseURL: string,
   e: E,
   defaultHeaders?: { [key: string]: string }
 ): FetchClient<E, IOError> => {
-  return (i: FetchInput<E>) => {
+  return (i: TypeOfEndpointInstance<E>) => {
     // TODO: try to get rid of this
     const anyArgs: any = i;
 

@@ -1,30 +1,20 @@
-import { Endpoint } from '../Endpoint';
+import { EndpointInstance, TypeOfEndpointInstance } from '../Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 
-export type FetchInput<E> = E extends Endpoint<infer P, infer H, infer Q, infer B, any, any>
-  ? (E extends object ? { Params: P } : { Params?: never }) &
-      (H extends object ? { Headers: H } : { Headers?: never }) &
-      (Q extends object ? { Query: Q } : { Query?: never }) &
-      (B extends object ? { Body: B } : { Body?: never })
-  : never;
-
-export type FetchClient<E extends Endpoint<any, any, any, any, any, any>, W> = (
-  i: FetchInput<E>
+export type FetchClient<E extends EndpointInstance<any>, W> = (
+  i: TypeOfEndpointInstance<E>
 ) => TaskEither<W, t.TypeOf<E['Output']>>;
 
-export type HTTPClient<A extends Record<string, Endpoint<any, any, any, any, any, any>>, W> = {
+export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
   [K in keyof A]: FetchClient<A[K], W>;
 };
 
-export const GetHTTPClient = <
-  A extends { [key: string]: Endpoint<any, any, any, any, any, any> },
-  W
->(
+export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }, W>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  getFetchClient: <E extends Endpoint<any, any, any, any, any, any>>(
+  getFetchClient: <E extends EndpointInstance<any>>(
     baseURL: string,
     e: E,
     defaultHeaders?: { [key: string]: string }
