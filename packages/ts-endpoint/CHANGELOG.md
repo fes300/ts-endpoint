@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.8 (2020-07-13)
+
+
+### Bug Fixes
+
+* **ci:** add cache key ([bee5cc8](https://github.com/fes300/open-source/packages/ts-endpoint/commit/bee5cc8175684933d920f61e4176b8eb6fb3251c))
+
+
+
+
+
 ## 1.0.7 (2020-07-13)
 
 
