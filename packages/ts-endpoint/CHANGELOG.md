@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2020-07-14)
+
+
+### Features
+
+* add get static path util ([aa988bf](https://github.com/fes300/open-source/packages/ts-endpoint/commit/aa988bf072d73529c0e86dbac58e504bd63935a3))
+
+
+
+
+
 ## 1.0.9 (2020-07-13)
 
 
