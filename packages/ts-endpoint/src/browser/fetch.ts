@@ -5,7 +5,7 @@ import { PathReporter } from 'io-ts/lib/PathReporter';
 import * as TA from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 import qs from 'qs';
-import { IOError, DecodeErrorStatus, NetworkErrorStatus } from './errors';
+import { IOError, DecodeErrorStatus, NetworkErrorStatus } from '../shared/errors';
 import { HTTPClient, GetHTTPClient, FetchClient } from '.';
 import { Either, left } from 'fp-ts/lib/Either';
 

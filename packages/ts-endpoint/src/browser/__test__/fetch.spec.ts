@@ -4,7 +4,7 @@ import { Endpoint } from '../../Endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { isLeft } from 'fp-ts/lib/Either';
-import { DecodeErrorStatus, NetworkErrorStatus } from '../errors';
+import { DecodeErrorStatus, NetworkErrorStatus } from '../../shared/errors';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
