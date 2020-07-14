@@ -4,7 +4,14 @@
   "npmClient": "yarn",
   "command": {
     "publish": {
-      "ignoreChanges": ["*.md"],
+      "ignoreChanges": [
+        "**/CHANGELOG.md",
+        "**/node_modules/**",
+        "**/package.json",
+        "**/*.md",
+        "**/*.spec.*",
+        "**/*.stories.*"
+      ],
       "conventionalCommits": true,
       "message": "chore(release): publish",
       "registry": "https://registry.npmjs.org"
