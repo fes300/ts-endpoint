@@ -9,5 +9,13 @@
       "message": "chore(release): publish",
       "registry": "https://registry.npmjs.org"
     }
-  }
+  },
+  "ignoreChanges": [
+    "**/CHANGELOG.md",
+    "**/node_modules/**",
+    "**/package.json",
+    "**/*.md",
+    "**/*.spec.*",
+    "**/*.stories.*"
+  ]
 }
