@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2020-07-15)
+
+
+### Features
+
+* nestjs utils ([87227eb](https://github.com/fes300/open-source/packages/ts-endpoint/commit/87227eb28b636122fafc7109624e8c2f53446614))
+
+
+
+
+
 ## 1.1.5 (2020-07-15)
 
 **Note:** Version bump only for package ts-endpoint
