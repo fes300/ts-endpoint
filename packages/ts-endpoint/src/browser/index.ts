@@ -4,7 +4,7 @@ import { TaskEither } from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 
 export type FetchClient<E extends EndpointInstance<any>, W> = (
-  i: TypeOfEndpointInstance<E>
+  i: TypeOfEndpointInstance<E>['Input']
 ) => TaskEither<W, t.TypeOf<E['Output']>>;
 
 export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {

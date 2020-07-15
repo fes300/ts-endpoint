@@ -20,7 +20,7 @@ const useBrowserFetch = <E extends EndpointInstance<any>>(
   e: E,
   defaultHeaders?: { [key: string]: string }
 ): FetchClient<E, IOError> => {
-  return (i: TypeOfEndpointInstance<E>) => {
+  return (i: TypeOfEndpointInstance<E>['Input']) => {
     // TODO: try to get rid of this
     const anyArgs: any = i;
 

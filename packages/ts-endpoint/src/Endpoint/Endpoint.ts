@@ -123,9 +123,16 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> =
 };
 
 export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
-  [k in keyof E['Input']]: E['Input'][k] extends t.Type<any, any, any>
-    ? t.TypeOf<E['Input'][k]>
-    : string;
+  getPath: E['getPath'];
+  getStaticPath: E['getStaticPath'];
+  Opts: E['Opts'];
+  Method: E['Method'];
+  Output: t.TypeOf<E['Output']>;
+  Input: {
+    [k in keyof E['Input']]: E['Input'][k] extends t.Type<any, any, any>
+      ? t.TypeOf<E['Input'][k]>
+      : never;
+  };
 };
 
 /**
