@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "commonjs",
     "declaration": true,
     "target": "es6",
     "noFallthroughCasesInSwitch": true,
