@@ -16,6 +16,22 @@ import * as t from 'io-ts';
 import { EndpointInstance } from '..';
 import { IOError } from '../shared/errors';
 
+/**
+ * Create the correct @MethodDecorator from an endpoint instance.
+ *
+ * @example ```
+ * import { Controller, Req, Param } from "@nestjs/common";
+ * import { MethodDecorator } from "ts-endpoint/lib/server/NestJS"
+ *
+ * @Controller()
+ * export class AppController {
+ *   constructor(private readonly appService: AppService) {}
+ *
+ *   \@MethodDecorator(endpoints.getUser)
+ *   getUser(@Req() req, @Param() params) { ... }
+ * }
+ * ```
+ */
 export const MethodDecorator = <E extends EndpointInstance<any>>(endpoint: E) => {
   const path = endpoint.getStaticPath((p) => `:${p}`);
   switch (endpoint.Method) {
@@ -36,6 +52,14 @@ export const MethodDecorator = <E extends EndpointInstance<any>>(endpoint: E) =>
   }
 };
 
+/**
+ * Helper function to create a typesafe response for an endpoint
+ *
+ * @param  endpoint - the endpoint implemented
+ * @param  req - the express request
+ * @param  params - the params of the request (you can get this with NestJS @Param decorator)
+ *
+ */
 export const createResponse = <E extends EndpointInstance<any>>(
   endpoint: E,
   req: Request,
