@@ -48,7 +48,7 @@ export const createResponse = <E extends EndpointInstance<any>>(
   endpoint;
   endpoint.Input;
 
-  const validatedInputs = t.strict(endpoint.Input).decode({
+  const validatedInputs = t.strict(endpoint.Input as any).decode({
     ...(endpoint.Input.Params ? { Params: params } : {}),
     ...(endpoint.Input.Query ? { Query: req.query } : {}),
     ...(endpoint.Input.Headers ? { Headers: req.headers } : {}),
