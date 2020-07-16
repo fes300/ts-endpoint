@@ -11,10 +11,9 @@ import {
 } from '@nestjs/common';
 import { PathReporter } from 'io-ts/lib/PathReporter';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
-import { RequiredKeys } from 'typelevel-ts';
 import { Request } from 'express';
 import * as t from 'io-ts';
-import { EndpointInstance } from '..';
+import { EndpointInstance, PropsType } from '..';
 import { IOError } from '../shared/errors';
 
 /**
@@ -52,8 +51,6 @@ export const MethodDecorator = <E extends EndpointInstance<any>>(endpoint: E) =>
       return Put(path);
   }
 };
-
-type PropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
 
 /**
  * Helper function to create a typesafe response for an endpoint
