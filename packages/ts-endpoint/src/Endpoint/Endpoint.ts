@@ -4,6 +4,9 @@ import { RequiredKeys } from 'typelevel-ts';
 
 export type PropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
 
+export type EndpointInput<E extends EndpointInstance<any>> = PropsType<E['Input']>;
+export type EndpointOutput<E extends EndpointInstance<any>> = t.TypeOf<E['Output']>;
+
 export const HTTPMethod = t.keyof(
   {
     OPTIONS: null,

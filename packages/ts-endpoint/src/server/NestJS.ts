@@ -13,7 +13,7 @@ import { PathReporter } from 'io-ts/lib/PathReporter';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import { Request } from 'express';
 import * as t from 'io-ts';
-import { EndpointInstance, PropsType } from '..';
+import { EndpointInstance, PropsType, EndpointInput, EndpointOutput } from '..';
 import { IOError } from '../shared/errors';
 
 /**
@@ -65,8 +65,8 @@ export const createResponse = <E extends EndpointInstance<any>>(
   req: Request,
   params: { [k: string]: any }
 ) => (
-  f: (input: PropsType<E['Input']>) => TaskEither<IOError, t.TypeOf<E['Output']>>
-): Promise<t.OutputOf<E['Output']>> => {
+  f: (input: EndpointInput<E>) => TaskEither<IOError, EndpointOutput<E>>
+): Promise<EndpointOutput<E>> => {
   endpoint;
   endpoint.Input;
 
