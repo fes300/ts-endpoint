@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.2.1...ts-endpoint@1.2.2) (2020-07-16)
+
+
+### Bug Fixes
+
+* create response typings ([ac7bac1](https://github.com/fes300/open-source/packages/ts-endpoint/commit/ac7bac1f9845211b6afba13d575d8607157f8e79))
+
+
+
+
+
 ## [1.2.1](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.2.0...ts-endpoint@1.2.1) (2020-07-15)
 
 **Note:** Version bump only for package ts-endpoint
