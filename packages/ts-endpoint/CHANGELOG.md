@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.3.0...ts-endpoint@1.4.0) (2020-07-16)
+
+
+### Features
+
+* add endpoint-input and endpoint-output type helpers ([224d63e](https://github.com/fes300/open-source/packages/ts-endpoint/commit/224d63e7d6fe0140e20a3e3c2251c6df822aa01d))
+
+
+
+
+
 # [1.3.0](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.2.2...ts-endpoint@1.3.0) (2020-07-16)
 
 
