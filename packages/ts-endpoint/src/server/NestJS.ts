@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { PathReporter } from 'io-ts/lib/PathReporter';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
+import { RequiredKeys } from 'typelevel-ts';
 import { Request } from 'express';
 import * as t from 'io-ts';
 import { EndpointInstance } from '..';
@@ -20,15 +21,15 @@ import { IOError } from '../shared/errors';
  * Create the correct @MethodDecorator from an endpoint instance.
  *
  * @example ```
- * import { Controller, Req, Param } from "@nestjs/common";
+ * import { Controller, Req, Param } from "`@`nestjs/common";
  * import { MethodDecorator } from "ts-endpoint/lib/server/NestJS"
  *
- * @Controller()
+ * `@`Controller()
  * export class AppController {
  *   constructor(private readonly appService: AppService) {}
  *
- *   \@MethodDecorator(endpoints.getUser)
- *   getUser(@Req() req, @Param() params) { ... }
+ *   `@`MethodDecorator(endpoints.getUser)
+ *   getUser(`@`Req() req, `@`Param() params) { ... }
  * }
  * ```
  */
@@ -52,6 +53,8 @@ export const MethodDecorator = <E extends EndpointInstance<any>>(endpoint: E) =>
   }
 };
 
+type PropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
+
 /**
  * Helper function to create a typesafe response for an endpoint
  *
@@ -65,9 +68,7 @@ export const createResponse = <E extends EndpointInstance<any>>(
   req: Request,
   params: { [k: string]: any }
 ) => (
-  f: (
-    input: t.TypeOf<t.ExactType<t.Type<E['Input']>>>
-  ) => TaskEither<IOError, t.TypeOf<E['Output']>>
+  f: (input: PropsType<E['Input']>) => TaskEither<IOError, t.TypeOf<E['Output']>>
 ): Promise<t.OutputOf<E['Output']>> => {
   endpoint;
   endpoint.Input;
@@ -86,7 +87,7 @@ export const createResponse = <E extends EndpointInstance<any>>(
     );
   }
 
-  return f(validatedInputs.right)().then((result) => {
+  return f(validatedInputs.right as PropsType<E['Input']>)().then((result) => {
     if (result._tag === 'Left') {
       throw new HttpException(
         `${result.left.details.kind}: ${result.left.message}`,
