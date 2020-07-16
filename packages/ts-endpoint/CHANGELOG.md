@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.2.2...ts-endpoint@1.3.0) (2020-07-16)
+
+
+### Features
+
+* export props-type type constructor ([124dd13](https://github.com/fes300/open-source/packages/ts-endpoint/commit/124dd13e972b8e4fb1e1f42402969fbf0af1570a))
+* export props-type type constructor ([da22281](https://github.com/fes300/open-source/packages/ts-endpoint/commit/da22281a1c2bdfb34496fee48c55582d5c54dc53))
+
+
+
+
+
 ## [1.2.2](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.2.1...ts-endpoint@1.2.2) (2020-07-16)
 
 
