@@ -1,5 +1,8 @@
 import * as t from 'io-ts';
 import { identity } from 'fp-ts/lib/function';
+import { RequiredKeys } from 'typelevel-ts';
+
+export type PropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
 
 export const HTTPMethod = t.keyof(
   {
