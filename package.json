@@ -22,6 +22,7 @@
     "storybook": "start-storybook --docs -s ./.storybook/public -p 6006",
     "build-storybook": "build-storybook --quiet --docs -s ./.storybook/public",
     "release": "lerna publish --yes",
+    "pre-release": "lerna publish --yes --conventional-prerelease",
     "test": "lerna run test"
   },
   "dependencies": {
