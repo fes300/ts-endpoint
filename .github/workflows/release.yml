@@ -1,8 +1,9 @@
-name: Publish
+name: Release
 
 on:
   push:
-    branches: [master]
+    tags:
+      - 'RELEASE'
 
 jobs:
   publish:
@@ -36,9 +37,10 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
 
-      - name: pre-release
+      - name: release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-          yarn pre-release
+
+# yarn release
