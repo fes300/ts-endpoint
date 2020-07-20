@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.0](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.4.1-alpha.0...ts-endpoint@1.5.0-alpha.0) (2020-07-20)
+
+
+### Bug Fixes
+
+* **build:** dedupe types ([665f25d](https://github.com/fes300/open-source/packages/ts-endpoint/commit/665f25dd1d338e858b59d456e00a57502bf3ec9b))
+* **cleanup:** remove unecessary log ([a5ba29b](https://github.com/fes300/open-source/packages/ts-endpoint/commit/a5ba29b230e81dc9b4d56275b30997a97127b9b2))
+
+
+### Features
+
+* **bump:** bump deps ([89f1ab8](https://github.com/fes300/open-source/packages/ts-endpoint/commit/89f1ab8d17ae8b159c2442b91b36069b82df0132))
+* add swr util ([2ff4ead](https://github.com/fes300/open-source/packages/ts-endpoint/commit/2ff4ead9a19dedc65fd1e880797a1bc3da3ab999))
+
+
+
+
+
 ## 1.4.1-alpha.0 (2020-07-17)
 
 **Note:** Version bump only for package ts-endpoint
