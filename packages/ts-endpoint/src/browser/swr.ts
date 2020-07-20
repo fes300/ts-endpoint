@@ -56,17 +56,14 @@ const getSRWHook = <E extends EndpointInstance<any>>(
     const getResponse = () =>
       pipe(
         TA.tryCatch(
-          () => {
-            console.log(path);
-
-            return fetch(path, {
+          () =>
+            fetch(path, {
               ...{
                 headers,
                 method: e.Method,
               },
               ...(anyArgs.Body !== undefined ? { body } : {}),
-            });
-          },
+            }),
           () =>
             new IOError(NetworkErrorStatus, 'Network Error', {
               kind: 'NetworkError',
