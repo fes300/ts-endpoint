@@ -10,7 +10,8 @@
         "**/package.json",
         "**/*.md",
         "**/*.spec.*",
-        "**/*.stories.*"
+        "**/*.stories.*",
+        "**/yarn.lock"
       ],
       "conventionalCommits": true,
       "message": "chore(release): publish",
