@@ -5,6 +5,7 @@ import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { DecodeErrorStatus, NetworkErrorStatus } from '../../shared/errors';
 import { GetSWRHooks } from '../swr';
+import { cache } from 'swr';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -102,8 +103,13 @@ const lazyClientErrorRequest = () =>
     new Response(JSON.stringify({ foo: 'baz' }), { status: 404, statusText: 'client error' })
   );
 const lazyNetworkErrorRequest = () => Promise.reject('fail');
+const body = { name: 'John', surname: 'Doe', age: 24 };
 
-describe.skip('GetSWRHooks', () => {
+afterEach(() => {
+  cache.clear();
+});
+
+describe('GetSWRHooks', () => {
   it('implements all the endpoint definitions', () => {
     expect(Object.keys(swrHooks)).toEqual([
       'getEndpoint',
@@ -114,9 +120,9 @@ describe.skip('GetSWRHooks', () => {
       'patchEndpoint',
     ]);
   });
-
   it('calls global.fetch with the correct params', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+
     renderHook(() =>
       swrHooks.getEndpoint({
         Params: { id: 'id' },
@@ -131,6 +137,7 @@ describe.skip('GetSWRHooks', () => {
   });
   it('builds the path correctly when Params and Query are defined', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+
     renderHook(() =>
       swrHooks.getEndpointWithLargeQuery({
         Params: { id: 12, crayonSet: 4 },
@@ -148,6 +155,7 @@ describe.skip('GetSWRHooks', () => {
   });
   it('builds the path correctly when no port is given', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+
     renderHook(() =>
       noPortSwrHooks.getEndpointWithLargeQuery({
         Params: { id: 12, crayonSet: 4 },
@@ -160,9 +168,8 @@ describe.skip('GetSWRHooks', () => {
       method: 'GET',
     });
   });
-  it('adds the body correctly when Body is defined', async () => {
-    global.fetch = jest.fn();
-    const body = { name: 'John', surname: 'Doe', age: 24 };
+  it('POST request adds the body correctly when Body is defined', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
     renderHook(() =>
       noPortSwrHooks.postEndpoint({
@@ -176,7 +183,8 @@ describe.skip('GetSWRHooks', () => {
       method: 'POST',
       body: body,
     });
-
+  });
+  it('PUT request adds the body correctly when Body is defined', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
     renderHook(() =>
       noPortSwrHooks.putEndpoint({
@@ -190,7 +198,8 @@ describe.skip('GetSWRHooks', () => {
       method: 'PUT',
       body: body,
     });
-
+  });
+  it('DELETE request adds the body correctly when Body is defined', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
     renderHook(() =>
       noPortSwrHooks.deleteEndpoint({
@@ -202,7 +211,8 @@ describe.skip('GetSWRHooks', () => {
       headers: { 'Content-type': 'application/json' },
       method: 'DELETE',
     });
-
+  });
+  it('PATCH request adds the body correctly when Body is defined', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
     renderHook(() =>
       noPortSwrHooks.patchEndpoint({
@@ -217,98 +227,89 @@ describe.skip('GetSWRHooks', () => {
       body: { name: 'John' },
     });
   });
-  it('returns the correct IOError when decoding the server payload results in error', async () => {
+  it('PATCH returns the correct IOError when decoding the server payload results in error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
-    const {
-      result: {
-        current: { error: decodingError },
-      },
-    } = renderHook(() =>
+    cache.clear();
+    const { result, waitForValueToChange } = renderHook(() =>
       noPortSwrHooks.patchEndpoint({
         Params: { id: '1' },
         Body: { name: 'John' },
       })
     );
 
-    expect(decodingError?.details.kind).toBe('DecodingError');
-    expect(decodingError?.status).toBe(DecodeErrorStatus);
+    await waitForValueToChange(() => result.current.error !== undefined);
 
-    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
-    const {
-      result: {
-        current: { error: error2 },
-      },
-    } = renderHook(() =>
-      noPortSwrHooks.getEndpoint({
-        Params: { id: '1' },
-        Query: { color: 'blue' },
-      })
-    );
-
-    expect(error2?.details.kind).toBe('DecodingError');
-    expect(error2?.status).toBe(DecodeErrorStatus);
+    expect(result.current.error?.details.kind).toBe('DecodingError');
+    expect(result.current.error?.status).toBe(DecodeErrorStatus);
   });
-  it('returns the correct IOError when there is a server error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
-    const {
-      result: {
-        current: { error: serverError },
-      },
-    } = renderHook(() =>
-      noPortSwrHooks.patchEndpoint({
-        Params: { id: '1' },
-        Body: { name: 'John' },
-      })
-    );
-
-    expect(serverError?.details.kind).toBe('ServerError');
-    expect(serverError?.status).toBe(500);
-
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
-    const {
-      result: {
-        current: { error: serverError2 },
-      },
-    } = renderHook(() =>
+  it('GET returns the correct IOError when decoding the server payload results in error', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
+    const { result, waitForValueToChange } = renderHook(() =>
       noPortSwrHooks.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
     );
 
-    expect(serverError2?.details.kind).toBe('ServerError');
-    expect(serverError2?.status).toBe(500);
+    await waitForValueToChange(() => result.current.error !== undefined);
+
+    expect(result.current.error?.details.kind).toBe('DecodingError');
+    expect(result.current.error?.status).toBe(DecodeErrorStatus);
+  });
+  it('PATCH returns the correct IOError when there is a server error', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    const { result, waitForValueToChange } = renderHook(() =>
+      noPortSwrHooks.patchEndpoint({
+        Params: { id: '1' },
+        Body: { name: 'John' },
+      })
+    );
+
+    await waitForValueToChange(() => result.current.error !== undefined);
+
+    expect(result.current.error?.details.kind).toBe('ServerError');
+    expect(result.current.error?.status).toBe(500);
+  });
+  it('GET returns the correct IOError when there is a server error', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    const { result, waitForValueToChange } = renderHook(() =>
+      noPortSwrHooks.getEndpoint({
+        Params: { id: '1' },
+        Query: { color: 'blue' },
+      })
+    );
+
+    await waitForValueToChange(() => result.current.error !== undefined);
+
+    expect(result.current.error?.details.kind).toBe('ServerError');
+    expect(result.current.error?.status).toBe(500);
   });
   it('returns the correct IOError when there is a client error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
-    const {
-      result: {
-        current: { error: clientError },
-      },
-    } = renderHook(() =>
+    const { result, waitForValueToChange } = renderHook(() =>
       noPortSwrHooks.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
     );
 
-    expect(clientError?.details.kind).toBe('ClientError');
-    expect(clientError?.status).toBe(404);
+    await waitForValueToChange(() => result.current.error !== undefined);
+
+    expect(result.current.error?.details.kind).toBe('ClientError');
+    expect(result.current.error?.status).toBe(404);
   });
   it('returns the correct IOError when there is a network error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyNetworkErrorRequest());
-    const {
-      result: {
-        current: { error: networkError },
-      },
-    } = renderHook(() =>
+    const { result, waitForValueToChange } = renderHook(() =>
       noPortSwrHooks.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
     );
 
-    expect(networkError?.details.kind).toBe('NetworkError');
-    expect(networkError?.status).toBe(NetworkErrorStatus);
+    await waitForValueToChange(() => result.current.error !== undefined);
+
+    expect(result.current.error?.details.kind).toBe('NetworkError');
+    expect(result.current.error?.status).toBe(NetworkErrorStatus);
   });
 });
