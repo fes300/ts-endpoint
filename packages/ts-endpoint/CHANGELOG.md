@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.1](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.0...ts-endpoint@1.5.0-alpha.1) (2020-07-22)
+
+
+### Bug Fixes
+
+* **tests:** fix swr tests ([e1c9597](https://github.com/fes300/open-source/packages/ts-endpoint/commit/e1c9597725574e670b2becbe3ca2c4e7df48e410))
+
+
+### Features
+
+* add percentage-from-string ([b48a896](https://github.com/fes300/open-source/packages/ts-endpoint/commit/b48a896b0fcb05fff2ab6c6159b0eb523d39742d))
+
+
+
+
+
 # [1.5.0-alpha.0](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.4.1-alpha.0...ts-endpoint@1.5.0-alpha.0) (2020-07-20)
 
 
