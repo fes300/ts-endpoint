@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.3](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.2...ts-endpoint@1.5.0-alpha.3) (2020-07-22)
+
+
+### Bug Fixes
+
+* export percentage-brand ([c6e5fa3](https://github.com/fes300/open-source/packages/ts-endpoint/commit/c6e5fa3f86e4487a53866be08355f00faa8ec83c))
+
+
+
+
+
 # [1.5.0-alpha.2](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.1...ts-endpoint@1.5.0-alpha.2) (2020-07-22)
 
 **Note:** Version bump only for package ts-endpoint
