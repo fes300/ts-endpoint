@@ -1,6 +1,6 @@
 import * as t from 'io-ts';
 
-interface PercentageBrand {
+export interface PercentageBrand {
   readonly Percentage: unique symbol;
 }
 
