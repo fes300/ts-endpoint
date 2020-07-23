@@ -167,7 +167,7 @@ describe('GetFetchHTTPClient', () => {
     expect(fetch).toBeCalledWith('http://test/users', {
       headers: { 'Content-type': 'application/json' },
       method: 'POST',
-      body: body,
+      body: JSON.stringify(body),
     });
 
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
@@ -179,7 +179,7 @@ describe('GetFetchHTTPClient', () => {
     expect(fetch).toBeCalledWith('http://test/users/1', {
       headers: { 'Content-type': 'application/json' },
       method: 'PUT',
-      body: body,
+      body: JSON.stringify(body),
     });
 
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
@@ -201,7 +201,7 @@ describe('GetFetchHTTPClient', () => {
     expect(fetch).toBeCalledWith('http://test/users/1', {
       headers: { 'Content-type': 'application/json' },
       method: 'PATCH',
-      body: { name: 'John' },
+      body: JSON.stringify({ name: 'John' }),
     });
   });
   it('returns the correct IOError when decoding the server payload results in error', async () => {

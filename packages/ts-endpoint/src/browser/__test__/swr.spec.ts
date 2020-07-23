@@ -96,6 +96,8 @@ swrHooks.deleteEndpoint;
 const lazySuccesfullQueryRequest = () =>
   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
 const lazyWrongBodyRequest = () => Promise.resolve(new Response(JSON.stringify({ foo: 'baz' })));
+const lazySuccesfullCommandRequest = () =>
+  Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
 const lazyServerErrorRequest = () =>
   Promise.resolve(
     new Response(JSON.stringify({ foo: 'baz' }), { status: 500, statusText: 'server error' })
@@ -179,6 +181,19 @@ describe('GetSWRHooks', () => {
     expect(isLeft(patchResponse)).toBe(true);
     expect((patchResponse as any).left.details.kind).toBe('DecodingError');
     expect((patchResponse as any).left.status).toBe(DecodeErrorStatus);
+  });
+  it('PATCH is called correctly', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
+    await noPortSwrHooks.patchEndpoint({
+      Params: { id: '1' },
+      Body: { name: 'John' },
+    })();
+
+    expect(fetch).toBeCalledWith('http://test/users/1', {
+      headers: { 'Content-type': 'application/json' },
+      method: 'PATCH',
+      body: JSON.stringify({ name: 'John' }),
+    });
   });
   it('GET returns the correct IOError when decoding the server payload results in error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());

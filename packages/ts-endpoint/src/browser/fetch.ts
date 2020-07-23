@@ -38,7 +38,7 @@ export const useBrowserFetch = <E extends EndpointInstance<any>>(
               headers,
               method: e.Method,
             },
-            ...(anyArgs.Body !== undefined ? { body } : {}),
+            ...(anyArgs.Body !== undefined ? { body: JSON.stringify(body) } : {}),
           }),
         () => new IOError(NetworkErrorStatus, 'Network Error', { kind: 'NetworkError' })
       ),
