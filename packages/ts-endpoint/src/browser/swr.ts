@@ -1,6 +1,6 @@
 import useSWR, { responseInterface } from 'swr';
 import { PathReporter } from 'io-ts/lib/PathReporter';
-import { EndpointInstance, EndpointInput, EndpointOutput } from '../Endpoint';
+import { EndpointInstance, EndpointInput, EndpointOutput, Endpoint } from '../Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { IOError, NetworkErrorStatus, DecodeErrorStatus } from '../shared/errors';
 import { pipe } from 'fp-ts/lib/pipeable';
@@ -8,6 +8,8 @@ import * as TA from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 import qs from 'qs';
 import { Either, left } from 'fp-ts/lib/Either';
+import { FetchClient } from '.';
+import { useBrowserFetch } from './fetch';
 
 export const GetSWRHooks = <A extends { [key: string]: EndpointInstance<any> }>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
@@ -19,13 +21,15 @@ export const GetSWRHooks = <A extends { [key: string]: EndpointInstance<any> }>(
     config.port !== undefined ? `:${config.port.toString()}` : ''
   }`;
 
-  const clientWithMethods = Object.entries(endpoints).reduce(
-    (acc, [k, v]) => ({
+  const clientWithMethods = Object.entries(endpoints).reduce((acc, [k, v]) => {
+    return {
       ...acc,
-      [k]: getSRWHook(baseURL, v, defaultHeaders),
-    }),
-    {} as SRWClient<A>
-  );
+      [k]:
+        v.Method === 'GET'
+          ? getSRWHook(baseURL, v, defaultHeaders)
+          : useBrowserFetch(baseURL, v, defaultHeaders), // only use hooks wen it's a get request
+    };
+  }, {} as SRWClient<A>);
 
   return clientWithMethods;
 };
@@ -35,7 +39,11 @@ type RSWHook<E extends EndpointInstance<any>> = (
 ) => responseInterface<EndpointOutput<E>, IOError>;
 
 export type SRWClient<A extends Record<string, EndpointInstance<any>>> = {
-  [K in keyof A]: RSWHook<A[K]>;
+  [K in keyof A]: A[K] extends EndpointInstance<Endpoint<infer M, any, any, any, any, any>>
+    ? M extends 'GET'
+      ? RSWHook<A[K]>
+      : FetchClient<A[K], IOError>
+    : never;
 };
 
 const getSRWHook = <E extends EndpointInstance<any>>(

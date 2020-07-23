@@ -15,7 +15,7 @@ export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<a
   defaultHeaders?: { [key: string]: string }
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, defaultHeaders);
 
-const useBrowserFetch = <E extends EndpointInstance<any>>(
+export const useBrowserFetch = <E extends EndpointInstance<any>>(
   baseURL: string,
   e: E,
   defaultHeaders?: { [key: string]: string }
