@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.5](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.4...ts-endpoint@1.5.0-alpha.5) (2020-07-23)
+
+
+### Bug Fixes
+
+* json stringify body ([785ba09](https://github.com/fes300/open-source/packages/ts-endpoint/commit/785ba090e5426869fe3257c60a48807d47641543))
+
+
+
+
+
 # [1.5.0-alpha.4](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.3...ts-endpoint@1.5.0-alpha.4) (2020-07-23)
 
 **Note:** Version bump only for package ts-endpoint
