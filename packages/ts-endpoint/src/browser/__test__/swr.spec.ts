@@ -4,7 +4,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { DecodeErrorStatus, NetworkErrorStatus } from '../../shared/errors';
-import { GetSWRHooks } from '../swr';
+import { GetSWRImpl } from '../swr';
 import { cache } from 'swr';
 import { isLeft } from 'fp-ts/lib/Either';
 
@@ -20,78 +20,82 @@ const noPortOptions: StaticHTTPClientConfig = {
 };
 
 const endpoints = {
-  getEndpoint: Endpoint({
-    Input: {
-      Query: { color: t.string },
-      Params: { id: t.string },
-    },
-    Method: 'GET',
-    getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
-  }),
-  getEndpointWithLargeQuery: Endpoint({
-    Input: {
-      Query: { foo: t.string, bar: t.number, baz: t.string },
-      Params: { id: t.number, crayonSet: t.number },
-    },
-    Method: 'GET',
-    getPath: ({ id, crayonSet }) => `users/${id}/crayons/${crayonSet}`,
-    Output: t.type({ crayons: t.array(t.string) }),
-  }),
-  postEndpoint: Endpoint({
-    Input: {
-      Params: { id: t.string },
-      Body: {
-        name: t.string,
-        surname: t.string,
-        age: t.number,
+  queries: {
+    getEndpoint: Endpoint({
+      Input: {
+        Query: { color: t.string },
+        Params: { id: t.string },
       },
-    },
-    Method: 'POST',
-    getPath: () => 'users',
-    Output: t.type({ id: t.string }),
-  }),
-  putEndpoint: Endpoint({
-    Input: {
-      Params: { id: t.string },
-      Body: {
-        name: t.string,
-        surname: t.string,
-        age: t.number,
+      Method: 'GET',
+      getPath: ({ id }) => `users/${id}/crayons`,
+      Output: t.type({ crayons: t.array(t.string) }),
+    }),
+    getEndpointWithLargeQuery: Endpoint({
+      Input: {
+        Query: { foo: t.string, bar: t.number, baz: t.string },
+        Params: { id: t.number, crayonSet: t.number },
       },
-    },
-    Method: 'PUT',
-    getPath: ({ id }) => `users/${id}`,
-    Output: t.type({ userId: t.string }),
-  }),
-  deleteEndpoint: Endpoint({
-    Input: {
-      Params: { id: t.string },
-    },
-    Method: 'DELETE',
-    getPath: ({ id }) => `users/${id}`,
-    Output: t.type({ id: t.string }),
-  }),
-  patchEndpoint: Endpoint({
-    Input: {
-      Params: { id: t.string },
-      Body: {
-        name: t.string,
+      Method: 'GET',
+      getPath: ({ id, crayonSet }) => `users/${id}/crayons/${crayonSet}`,
+      Output: t.type({ crayons: t.array(t.string) }),
+    }),
+  },
+  commands: {
+    postEndpoint: Endpoint({
+      Input: {
+        Params: { id: t.string },
+        Body: {
+          name: t.string,
+          surname: t.string,
+          age: t.number,
+        },
       },
-    },
-    Method: 'PATCH',
-    getPath: ({ id }) => `users/${id}`,
-    Output: t.type({ id: t.string }),
-  }),
+      Method: 'POST',
+      getPath: () => 'users',
+      Output: t.type({ id: t.string }),
+    }),
+    putEndpoint: Endpoint({
+      Input: {
+        Params: { id: t.string },
+        Body: {
+          name: t.string,
+          surname: t.string,
+          age: t.number,
+        },
+      },
+      Method: 'PUT',
+      getPath: ({ id }) => `users/${id}`,
+      Output: t.type({ userId: t.string }),
+    }),
+    deleteEndpoint: Endpoint({
+      Input: {
+        Params: { id: t.string },
+      },
+      Method: 'DELETE',
+      getPath: ({ id }) => `users/${id}`,
+      Output: t.type({ id: t.string }),
+    }),
+    patchEndpoint: Endpoint({
+      Input: {
+        Params: { id: t.string },
+        Body: {
+          name: t.string,
+        },
+      },
+      Method: 'PATCH',
+      getPath: ({ id }) => `users/${id}`,
+      Output: t.type({ id: t.string }),
+    }),
+  },
 };
 
-const swrHooks = GetSWRHooks(options, endpoints, { 'Content-type': 'application/json' });
-const noPortSwrHooks = GetSWRHooks(noPortOptions, endpoints, {
+const swrHooks = GetSWRImpl(options, endpoints, { 'Content-type': 'application/json' });
+const noPortSwrHooks = GetSWRImpl(noPortOptions, endpoints, {
   'Content-type': 'application/json',
 });
 
-swrHooks.getEndpoint;
-swrHooks.deleteEndpoint;
+swrHooks.queries.getEndpoint;
+swrHooks.commands.deleteEndpoint;
 
 const lazySuccesfullQueryRequest = () =>
   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
@@ -112,11 +116,12 @@ afterEach(() => {
   cache.clear();
 });
 
-describe('GetSWRHooks', () => {
-  it('implements all the endpoint definitions', () => {
-    expect(Object.keys(swrHooks)).toEqual([
-      'getEndpoint',
-      'getEndpointWithLargeQuery',
+describe('GetSWRImpl', () => {
+  it('implements all the endpoint queries definitions', () => {
+    expect(Object.keys(swrHooks.queries)).toEqual(['getEndpoint', 'getEndpointWithLargeQuery']);
+  });
+  it('implements all the endpoint command definitions', () => {
+    expect(Object.keys(swrHooks.commands)).toEqual([
       'postEndpoint',
       'putEndpoint',
       'deleteEndpoint',
@@ -127,7 +132,7 @@ describe('GetSWRHooks', () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
     renderHook(() =>
-      swrHooks.getEndpoint({
+      swrHooks.queries.getEndpoint({
         Params: { id: 'id' },
         Query: { color: 'brown' },
       })
@@ -142,7 +147,7 @@ describe('GetSWRHooks', () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
     renderHook(() =>
-      swrHooks.getEndpointWithLargeQuery({
+      swrHooks.queries.getEndpointWithLargeQuery({
         Params: { id: 12, crayonSet: 4 },
         Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
       })
@@ -160,7 +165,7 @@ describe('GetSWRHooks', () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
     renderHook(() =>
-      noPortSwrHooks.getEndpointWithLargeQuery({
+      noPortSwrHooks.queries.getEndpointWithLargeQuery({
         Params: { id: 12, crayonSet: 4 },
         Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
       })
@@ -173,7 +178,7 @@ describe('GetSWRHooks', () => {
   });
   it('PATCH returns the correct IOError when decoding the server payload results in error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
-    const patchResponse = await noPortSwrHooks.patchEndpoint({
+    const patchResponse = await noPortSwrHooks.commands.patchEndpoint({
       Params: { id: '1' },
       Body: { name: 'John' },
     })();
@@ -184,7 +189,7 @@ describe('GetSWRHooks', () => {
   });
   it('PATCH is called correctly', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
-    await noPortSwrHooks.patchEndpoint({
+    await noPortSwrHooks.commands.patchEndpoint({
       Params: { id: '1' },
       Body: { name: 'John' },
     })();
@@ -198,7 +203,7 @@ describe('GetSWRHooks', () => {
   it('GET returns the correct IOError when decoding the server payload results in error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
     const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.getEndpoint({
+      noPortSwrHooks.queries.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
@@ -212,7 +217,7 @@ describe('GetSWRHooks', () => {
   it('GET returns the correct IOError when there is a server error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
     const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.getEndpoint({
+      noPortSwrHooks.queries.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
@@ -226,7 +231,7 @@ describe('GetSWRHooks', () => {
   it('returns the correct IOError when there is a client error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
     const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.getEndpoint({
+      noPortSwrHooks.queries.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
@@ -240,7 +245,7 @@ describe('GetSWRHooks', () => {
   it('returns the correct IOError when there is a network error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyNetworkErrorRequest());
     const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.getEndpoint({
+      noPortSwrHooks.queries.getEndpoint({
         Params: { id: '1' },
         Query: { color: 'blue' },
       })
