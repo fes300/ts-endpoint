@@ -27,7 +27,7 @@ const endpoints = {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
   }),
   getEndpointWithLargeQuery: Endpoint({
     Input: {
@@ -36,7 +36,7 @@ const endpoints = {
     },
     Method: 'GET',
     getPath: ({ id, crayonSet }) => `users/${id}/crayons/${crayonSet}`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
   }),
   postEndpoint: Endpoint({
     Input: {
@@ -49,7 +49,7 @@ const endpoints = {
     },
     Method: 'POST',
     getPath: () => 'users',
-    Output: { id: t.string },
+    Output: t.type({ id: t.string }),
   }),
   putEndpoint: Endpoint({
     Input: {
@@ -62,7 +62,7 @@ const endpoints = {
     },
     Method: 'PUT',
     getPath: ({ id }) => `users/${id}`,
-    Output: { userId: t.string },
+    Output: t.type({ userId: t.string }),
   }),
   deleteEndpoint: Endpoint({
     Input: {
@@ -70,7 +70,7 @@ const endpoints = {
     },
     Method: 'DELETE',
     getPath: ({ id }) => `users/${id}`,
-    Output: { id: t.string },
+    Output: t.type({ id: t.string }),
   }),
   patchEndpoint: Endpoint({
     Input: {
@@ -81,7 +81,7 @@ const endpoints = {
     },
     Method: 'PATCH',
     getPath: ({ id }) => `users/${id}`,
-    Output: { id: t.string },
+    Output: t.type({ id: t.string }),
   }),
 };
 

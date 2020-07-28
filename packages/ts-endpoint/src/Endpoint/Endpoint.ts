@@ -37,7 +37,7 @@ export const defaultOps = {
  */
 export interface Endpoint<
   M extends HTTPMethod,
-  O extends t.Props,
+  O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
@@ -112,7 +112,7 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> =
     ? () => string
     : (f: (paramName: string) => string) => string;
   Method: E['Method'];
-  Output: t.ExactC<t.TypeC<E['Output']>>;
+  Output: E['Output'];
   Opts: EndpointOptions;
   Input: (E['Input']['Params'] extends undefined
     ? { Params?: never }
@@ -147,7 +147,7 @@ export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
  */
 export function Endpoint<
   M extends HTTPMethod,
-  O extends t.Props,
+  O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
@@ -155,7 +155,7 @@ export function Endpoint<
 >(e: Endpoint<M, O, H, Q, B, P>): EndpointInstance<Endpoint<M, O, H, Q, B, P>> {
   return ({
     ...e,
-    Output: t.strict(e.Output),
+    Output: e.Output,
     getStaticPath: (f: P extends undefined ? undefined : (paramName: string) => string) =>
       e.getPath(
         Object.keys(e.Input.Params ?? {}).reduce(

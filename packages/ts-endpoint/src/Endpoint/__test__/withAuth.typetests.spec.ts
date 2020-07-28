@@ -9,7 +9,7 @@ const endpoint = Endpoint({
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
-  Output: { crayons: t.array(t.string) },
+  Output: t.type({ crayons: t.array(t.string) }),
   Opts: { stringifyBody: true },
 });
 
@@ -19,7 +19,7 @@ const noHeaderEndpoint = Endpoint({
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
-  Output: { crayons: t.array(t.string) },
+  Output: t.type({ crayons: t.array(t.string) }),
   Opts: { stringifyBody: true },
 });
 

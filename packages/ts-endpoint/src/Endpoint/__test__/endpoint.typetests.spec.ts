@@ -11,7 +11,7 @@ describe('Endpoint types behave accordingly', () => {
     Method: 'GET',
     // @ts-expect-error
     getPath: ({ foo }) => `users/${foo}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -23,7 +23,7 @@ describe('Endpoint types behave accordingly', () => {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -37,7 +37,7 @@ describe('Endpoint types behave accordingly', () => {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -50,7 +50,7 @@ describe('Endpoint types behave accordingly', () => {
     },
     Method: 'POST',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -63,7 +63,7 @@ describe('Endpoint types behave accordingly', () => {
     },
     Method: 'PUT',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -76,7 +76,7 @@ describe('Endpoint types behave accordingly', () => {
     },
     Method: 'PATCH',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -93,7 +93,7 @@ describe('EndpointInstances typings are correct', () => {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -104,8 +104,8 @@ describe('EndpointInstances typings are correct', () => {
   // @ts-expect-error
   endpointInstance.Input.Body?.prova;
   // @ts-expect-error
-  endpointInstance.Output.type.props.fakeOutput;
-  endpointInstance.Output.type.props.crayons;
+  endpointInstance.Output.props.fakeOutput;
+  endpointInstance.Output.props.crayons;
 
   it("wrong input won't compile", () => {
     expect(true).toBeTruthy();
@@ -120,7 +120,7 @@ describe('getPath works as intended', () => {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id.toString()}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -130,7 +130,7 @@ describe('getPath works as intended', () => {
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -168,7 +168,7 @@ describe('getStaticPath works as intended', () => {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id.toString()}/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 
@@ -178,7 +178,7 @@ describe('getStaticPath works as intended', () => {
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
-    Output: { crayons: t.array(t.string) },
+    Output: t.type({ crayons: t.array(t.string) }),
     Opts: { stringifyBody: true },
   });
 

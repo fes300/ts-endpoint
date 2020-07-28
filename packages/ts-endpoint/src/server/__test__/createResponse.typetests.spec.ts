@@ -12,7 +12,7 @@ const endpoints = {
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: { crayons: t.array(t.number) },
+    Output: t.type({ crayons: t.array(t.number) }),
   }),
 };
 
