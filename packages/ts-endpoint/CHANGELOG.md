@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.6](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.5...ts-endpoint@1.5.0-alpha.6) (2020-07-28)
+
+**Note:** Version bump only for package ts-endpoint
+
+
+
+
+
 # [1.5.0-alpha.5](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.4...ts-endpoint@1.5.0-alpha.5) (2020-07-23)
 
 
