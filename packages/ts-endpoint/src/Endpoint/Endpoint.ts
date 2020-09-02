@@ -104,8 +104,7 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> =
    *  Output: { crayons: t.array(t.string) },
    *});
    *
-   * endpoint.getStaticPath(param => `:${param}`)
-   * // returns "users/:id/crayons"
+   * endpoint.getStaticPath(param => `:${param}`) // returns "users/:id/crayons"
    * ```
    */
   getStaticPath: E['Input']['Params'] extends undefined
