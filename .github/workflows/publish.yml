@@ -13,11 +13,11 @@ jobs:
           # pulls all commits (needed for lerna / semantic release to correctly version)
           fetch-depth: '0'
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      # - uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       **/node_modules
+      #     key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
