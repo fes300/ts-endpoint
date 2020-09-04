@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.1](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.0...ts-endpoint-express@1.1.0-alpha.1) (2020-09-04)
+
+
+### Bug Fixes
+
+* **add-endpoint:** run taskeither ([f20efdf](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/f20efdf81ae7a9b1299e6b8f2afe6b6139dce1f4))
+
+
+
+
+
 # 1.1.0-alpha.0 (2020-09-02)
 
 
