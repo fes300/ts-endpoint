@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.10](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.9...ts-endpoint@1.5.0-alpha.10) (2020-09-04)
+
+
+### Features
+
+* **endpoint:** forgive unperfect paths ([acdfaef](https://github.com/fes300/open-source/packages/ts-endpoint/commit/acdfaef97082d936a2db883360d05104f9be3aaf))
+
+
+
+
+
 # [1.5.0-alpha.9](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.8...ts-endpoint@1.5.0-alpha.9) (2020-09-04)
 
 **Note:** Version bump only for package ts-endpoint

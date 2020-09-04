@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.5](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.4...ts-endpoint-express@1.1.0-alpha.5) (2020-09-04)
+
+
+### Bug Fixes
+
+* uncomment type test ([3497da8](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/3497da889185878fb8b4c68dcc7c690c01f0eb67))
+
+
+
+
+
 # [1.1.0-alpha.4](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.3...ts-endpoint-express@1.1.0-alpha.4) (2020-09-04)
 
 
