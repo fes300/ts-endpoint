@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.12](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.11...ts-endpoint@1.5.0-alpha.12) (2020-09-04)
+
+
+### Features
+
+* add infer-fetch-result ([9b1eb75](https://github.com/fes300/open-source/packages/ts-endpoint/commit/9b1eb75058881fcb95e9e81551864d7697e7701c))
+* add infer-fetch-result ([f783dfc](https://github.com/fes300/open-source/packages/ts-endpoint/commit/f783dfc5b52bd0a167856e512aced8d329000a80))
+
+
+
+
+
 # [1.5.0-alpha.11](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.10...ts-endpoint@1.5.0-alpha.11) (2020-09-04)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.7](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.6...ts-endpoint-express@1.1.0-alpha.7) (2020-09-04)
+
+
+### Features
+
+* add infer-fetch-result ([9b1eb75](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/9b1eb75058881fcb95e9e81551864d7697e7701c))
+
+
+
+
+
 # [1.1.0-alpha.6](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.5...ts-endpoint-express@1.1.0-alpha.6) (2020-09-04)
 
 **Note:** Version bump only for package ts-endpoint-express
