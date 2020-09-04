@@ -16,14 +16,14 @@ type WithAuth<E> = E extends EndpointInstance<
   : never;
 
 export function withAuth<E extends EndpointInstance<any>>(e: E): WithAuth<E> {
-  const originalHeadersProps: t.Props = e.Input.Headers?.type.props ?? {};
+  const originalHeadersProps: t.Props = e.Input.Headers?.props ?? {};
   const newHeaders = { ...originalHeadersProps, ...AuthHeader };
 
   return ({
     ...e,
     Input: {
       ...e.Input,
-      Headers: t.strict(newHeaders),
+      Headers: t.type(newHeaders),
     },
   } as unknown) as WithAuth<E>;
 }

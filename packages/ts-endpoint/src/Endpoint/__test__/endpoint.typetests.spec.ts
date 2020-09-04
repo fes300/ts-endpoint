@@ -97,8 +97,8 @@ describe('EndpointInstances typings are correct', () => {
     Opts: { stringifyBody: true },
   });
 
-  endpointInstance.Input.Params.type.props.id;
-  endpointInstance.Input.Query.type.props.color;
+  endpointInstance.Input.Params.props.id;
+  endpointInstance.Input.Query.props.color;
   endpointInstance.getStaticPath;
   endpointInstance.getStaticPath;
   // @ts-expect-error

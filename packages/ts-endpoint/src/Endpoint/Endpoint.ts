@@ -115,16 +115,16 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> =
   Opts: EndpointOptions;
   Input: (E['Input']['Params'] extends undefined
     ? { Params?: never }
-    : { Params: t.ExactC<t.TypeC<NonNullable<E['Input']['Params']>>> }) &
+    : { Params: t.TypeC<NonNullable<E['Input']['Params']>> }) &
     (E['Input']['Headers'] extends undefined
       ? { Headers?: never }
-      : { Headers: t.ExactC<t.TypeC<NonNullable<E['Input']['Headers']>>> }) &
+      : { Headers: t.TypeC<NonNullable<E['Input']['Headers']>> }) &
     (E['Input']['Query'] extends undefined
       ? { Query?: never }
-      : { Query: t.ExactC<t.TypeC<NonNullable<E['Input']['Query']>>> }) &
+      : { Query: t.TypeC<NonNullable<E['Input']['Query']>> }) &
     (E['Input']['Body'] extends undefined
       ? { Body?: never }
-      : { Body: t.ExactC<t.TypeC<NonNullable<E['Input']['Body']>>> });
+      : { Body: t.TypeC<NonNullable<E['Input']['Body']>> });
 };
 
 export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
@@ -163,10 +163,10 @@ export function Endpoint<
         )
       ),
     Input: {
-      ...(e.Input.Body !== undefined ? { Body: t.strict(e.Input.Body as any) } : {}),
-      ...(e.Input.Headers !== undefined ? { Headers: t.strict(e.Input.Headers as any) } : {}),
-      ...(e.Input.Params !== undefined ? { Params: t.strict(e.Input.Params as any) } : {}),
-      ...(e.Input.Query !== undefined ? { Query: t.strict(e.Input.Query as any) } : {}),
+      ...(e.Input.Body !== undefined ? { Body: t.type(e.Input.Body as t.Props) } : {}),
+      ...(e.Input.Headers !== undefined ? { Headers: t.type(e.Input.Headers as t.Props) } : {}),
+      ...(e.Input.Params !== undefined ? { Params: t.type(e.Input.Params as t.Props) } : {}),
+      ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props) } : {}),
     },
     Opts: e.Opts ?? defaultOps,
   } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P>>;

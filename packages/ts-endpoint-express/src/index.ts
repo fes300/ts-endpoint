@@ -78,7 +78,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
             res.set(httpResponse.headers);
           }
 
-          return res.status(httpResponse.statusCode).send(httpResponse.body);
+          res.status(httpResponse.statusCode).send(httpResponse.body);
         }
       )
     );
