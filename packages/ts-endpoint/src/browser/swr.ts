@@ -101,7 +101,7 @@ const getSRWHook = <E extends EndpointInstance<any>>(
     // TODO: try to get rid of this
     const anyArgs: any = i;
 
-    const path = `${baseURL}/${e.getPath(anyArgs?.Params ?? {})}${
+    const path = `${baseURL}${e.getPath(anyArgs?.Params ?? {})}${
       anyArgs.Query ? `?${qs.stringify(anyArgs.Query)}` : ''
     }`;
     const body = e.Opts?.stringifyBody ? qs.stringify(anyArgs.Body) : anyArgs.Body;

@@ -135,8 +135,8 @@ describe('getPath works as intended', () => {
   });
 
   it('adds the params correctly', () => {
-    expect(endpointWithParam.getPath({ id: 3 })).toEqual('users/3/crayons');
-    expect(endpointWithoutParam.getPath()).toEqual('users/crayons');
+    expect(endpointWithParam.getPath({ id: 3 })).toEqual('/users/3/crayons');
+    expect(endpointWithoutParam.getPath()).toEqual('/users/crayons');
   });
   it('does not allow to pass incorrect params', () => {
     // @ts-expect-error
