@@ -35,11 +35,11 @@ describe('AddEndpoint types behave accordingly', () => {
   });
 
   // won't compile if trying to access non defined body
-  // // @ts-expect-error
-  // AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id }, body: { foo } }) => () => {
-  //   console.log(auth, id, foo);
-  //   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
-  // });
+  // @ts-expect-error
+  AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id }, body: { foo } }) => () => {
+    console.log(auth, id, foo);
+    return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
+  });
 
   AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id } }) => () => {
     console.log(auth, id);
