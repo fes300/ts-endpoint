@@ -62,10 +62,11 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
 
   matcher.bind(router)(path, ...(m ?? []), async (req, res, next) => {
     const args = sequenceS(E.either)({
-      params: (e.Input.Params ?? t.undefined).decode(req.params),
-      headers: (e.Input.Headers ?? t.undefined).decode(req.headers),
-      query: (e.Input.Query ?? t.undefined).decode(req.query),
-      body: (e.Input.Body ?? t.undefined).decode(req.body),
+      params: e.Input.Params === undefined ? E.right(undefined) : e.Input.Params.decode(req.params),
+      headers:
+        e.Input.Headers === undefined ? E.right(undefined) : e.Input.Headers.decode(req.headers),
+      query: e.Input.Query === undefined ? E.right(undefined) : e.Input.Query.decode(req.query),
+      body: e.Input.Body === undefined ? E.right(undefined) : e.Input.Body.decode(req.body),
     });
 
     const taskRunner = pipe(
