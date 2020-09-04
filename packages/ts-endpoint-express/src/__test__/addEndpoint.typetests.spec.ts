@@ -17,29 +17,34 @@ const endpoint = Endpoint({
 const router = express.Router();
 
 describe('AddEndpoint types behave accordingly', () => {
-  // @ts-expect-error
-  AddEndpoint();
+  () => {
+    // @ts-expect-error
+    AddEndpoint();
+  };
 
   // won't compile if output oc controller is wrong
-  // @ts-expect-error
-  AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id } }) => () => {
-    console.log(auth, id);
-    return Promise.resolve(right({ body: { crayons: [22] }, statusCode: 200 }));
-  });
+  () =>
+    // @ts-expect-error
+    AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id } }) => () => {
+      console.log(auth, id);
+      return Promise.resolve(right({ body: { crayons: [22] }, statusCode: 200 }));
+    });
 
   // won't compile if trying to access non existent param
-  // @ts-expect-error
-  AddEndpoint(router)(endpoint, ({ headers: { baz }, params: { id } }) => () => {
-    console.log(baz, id);
-    return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
-  });
+  () =>
+    // @ts-expect-error
+    AddEndpoint(router)(endpoint, ({ headers: { baz }, params: { id } }) => () => {
+      console.log(baz, id);
+      return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
+    });
 
   // won't compile if trying to access non defined body
-  // @ts-expect-error
-  AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id }, body: { foo } }) => () => {
-    console.log(auth, id, foo);
-    return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
-  });
+  () =>
+    // @ts-expect-error
+    AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id }, body: { foo } }) => () => {
+      console.log(auth, id, foo);
+      return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
+    });
 
   AddEndpoint(router)(endpoint, ({ headers: { auth }, params: { id } }) => () => {
     console.log(auth, id);

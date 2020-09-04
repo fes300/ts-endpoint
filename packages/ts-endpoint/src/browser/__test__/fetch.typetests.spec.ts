@@ -2,6 +2,8 @@ import { GetFetchHTTPClient } from '../fetch';
 import { Endpoint } from '../../Endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
+import { InferFetchResult } from '..';
+import { right } from 'fp-ts/lib/Either';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -51,6 +53,16 @@ describe('GetFetchHTTPClient types behave accordingly', () => {
       // @ts-expect-error
       Body: { foo: 'baz' },
     });
+
+  () => {
+    // @ts-expect-error
+    const provaResultWrong: InferFetchResult<typeof fetchClient.prova> = right({});
+
+    const provaResultCorrect: InferFetchResult<typeof fetchClient.prova> = right({
+      crayons: ['brown'],
+    });
+    return [provaResultWrong, provaResultCorrect];
+  };
 
   it("wrong input won't compile", () => {
     expect(true).toBeTruthy();

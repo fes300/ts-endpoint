@@ -143,12 +143,6 @@ export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
 const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
 /**
- * Extracts the type of a function input
- * @returns an EndpointInstance
- */
-type FunctionInput<T> = T extends (...args: infer T) => any ? T : never;
-
-/**
  * Constructor function for an endpoint
  * @returns an EndpointInstance
  */
@@ -162,10 +156,10 @@ export function Endpoint<
 >(e: Endpoint<M, O, H, Q, B, P>): EndpointInstance<Endpoint<M, O, H, Q, B, P>> {
   return ({
     ...e,
-    getPath: (i: FunctionInput<typeof e.getPath>) => {
+    getPath: ((i) => {
       const path = e.getPath(i);
       return addSlash(path);
-    },
+    }) as typeof e.getPath,
     Output: e.Output,
     getStaticPath: (f: P extends undefined ? undefined : (paramName: string) => string) => {
       const path = e.getPath(
