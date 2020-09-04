@@ -1,7 +1,13 @@
 import { EndpointInstance, TypeOfEndpointInstance } from '../Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
+import { Either } from 'fp-ts/lib/Either';
 import * as t from 'io-ts';
+
+type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;
+type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> : never;
+
+export type InferFetchResult<FC extends FetchClient<any, any>> = ExtractEither<FunctionOutput<FC>>;
 
 export type FetchClient<E extends EndpointInstance<any>, W> = (
   i: TypeOfEndpointInstance<E>['Input']
