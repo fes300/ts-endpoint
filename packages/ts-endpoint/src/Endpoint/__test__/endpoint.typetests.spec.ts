@@ -183,8 +183,8 @@ describe('getStaticPath works as intended', () => {
   });
 
   it('adds the params correctly', () => {
-    expect(endpointWithParam.getStaticPath((param) => `:${param}`)).toEqual('users/:id/crayons');
-    expect(endpointWithoutParam.getStaticPath()).toEqual('users/crayons');
+    expect(endpointWithParam.getStaticPath((param) => `:${param}`)).toEqual('/users/:id/crayons');
+    expect(endpointWithoutParam.getStaticPath()).toEqual('/users/crayons');
   });
   it('does not allow to pass incorrect params', () => {
     // @ts-expect-error
