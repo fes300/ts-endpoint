@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.11](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.10...ts-endpoint@1.5.0-alpha.11) (2020-09-04)
+
+
+### Bug Fixes
+
+* **get-static-path:** always add initial slash ([5c15b4b](https://github.com/fes300/open-source/packages/ts-endpoint/commit/5c15b4b180d72fc72645f3302bd8c4af163861dd))
+
+
+
+
+
 # [1.5.0-alpha.10](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.9...ts-endpoint@1.5.0-alpha.10) (2020-09-04)
 
 
