@@ -68,7 +68,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
       body: (e.Input.Body ?? t.undefined).decode(req.body),
     });
 
-    pipe(
+    const taskRunner = pipe(
       TA.fromEither(args),
       TA.chain((args) => controller(args as any)),
       TA.bimap(
@@ -82,5 +82,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
         }
       )
     );
+
+    return taskRunner();
   });
 };
