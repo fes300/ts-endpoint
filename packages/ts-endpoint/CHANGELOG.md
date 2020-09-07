@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.13](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.12...ts-endpoint@1.5.0-alpha.13) (2020-09-07)
+
+
+### Features
+
+* **fetch:** add response body to error  "meta" field ([923f412](https://github.com/fes300/open-source/packages/ts-endpoint/commit/923f412d26a9d1c3a756219a164a3897d1f8fcac))
+
+
+
+
+
 # [1.5.0-alpha.12](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.11...ts-endpoint@1.5.0-alpha.12) (2020-09-04)
 
 
