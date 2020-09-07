@@ -6,6 +6,7 @@ import * as E from 'fp-ts/lib/Either';
 import { sequenceS } from 'fp-ts/lib/Apply';
 import { pipe } from 'fp-ts/lib/pipeable';
 import * as TA from 'fp-ts/lib/TaskEither';
+import { IOError, DecodeErrorStatus } from 'ts-endpoint/lib/shared/errors';
 
 const getRouterMatcher = (
   router: express.Router,
@@ -38,7 +39,6 @@ export type AddEndpoint = (
   router: express.Router,
   ...m: express.RequestHandler[]
 ) => <
-  E,
   O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
@@ -47,7 +47,7 @@ export type AddEndpoint = (
 >(
   e: EndpointInstance<Endpoint<any, O, H, Q, B, P>>,
   c: Controller<
-    E,
+    IOError,
     OutputOrNever<P>,
     OutputOrNever<H>,
     OutputOrNever<Q>,
@@ -60,7 +60,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
   const matcher = getRouterMatcher(router, e);
   const path = e.getStaticPath((param) => `:${param}`);
 
-  matcher.bind(router)(path, ...(m ?? []), async (req, res, next) => {
+  matcher.bind(router)(path, ...(m ?? []), async (req, res) => {
     const args = sequenceS(E.either)({
       params: e.Input.Params === undefined ? E.right(undefined) : e.Input.Params.decode(req.params),
       headers:
@@ -70,10 +70,17 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
     });
 
     const taskRunner = pipe(
-      TA.fromEither(args),
+      args,
+      E.mapLeft(
+        (errors) =>
+          new IOError(DecodeErrorStatus, 'error decoding args', { kind: 'DecodingError', errors })
+      ),
+      TA.fromEither,
       TA.chain((args) => controller(args as any)),
       TA.bimap(
-        (e) => next(e),
+        (e) => {
+          res.status(e.status).send(e);
+        },
         (httpResponse) => {
           if (httpResponse.headers !== undefined) {
             res.set(httpResponse.headers);
