@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.8](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.7...ts-endpoint-express@1.1.0-alpha.8) (2020-09-07)
+
+
+### Features
+
+* send errors as response ([e443ef3](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/e443ef37b36482a974f0cef453e9053359868e9f))
+
+
+
+
+
 # [1.1.0-alpha.7](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.6...ts-endpoint-express@1.1.0-alpha.7) (2020-09-04)
 
 
