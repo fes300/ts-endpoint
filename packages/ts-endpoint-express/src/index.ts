@@ -35,6 +35,11 @@ type OutputOrNever<T> = T extends { [k: string]: t.Type<any, any, any> }
   ? CodecRecordOutput<T>
   : never;
 
+export type ErrorMeta = {
+  message: string;
+  errors?: t.Errors;
+};
+
 export type AddEndpoint = (
   router: express.Router,
   ...m: express.RequestHandler[]
@@ -80,8 +85,9 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
       TA.bimap(
         (e) => {
           const { kind, ...errorPayload } = e.details;
+          const errorMeta: ErrorMeta = { ...errorPayload, message: e.message };
 
-          res.status(e.status).send({ ...errorPayload, message: e.message });
+          res.status(e.status).send(errorMeta);
         },
         (httpResponse) => {
           if (httpResponse.headers !== undefined) {
