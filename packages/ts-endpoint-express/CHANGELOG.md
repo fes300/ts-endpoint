@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.11](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.10...ts-endpoint-express@1.1.0-alpha.11) (2020-09-07)
+
+
+### Features
+
+* export error meta type ([6195e5e](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/6195e5e05434948899d448b564f3205421c2ab3b))
+
+
+
+
+
 # [1.1.0-alpha.10](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.9...ts-endpoint-express@1.1.0-alpha.10) (2020-09-07)
 
 **Note:** Version bump only for package ts-endpoint-express
