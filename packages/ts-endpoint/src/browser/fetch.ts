@@ -1,4 +1,4 @@
-import { EndpointInstance, TypeOfEndpointInstance } from '../Endpoint';
+import { EndpointInstance, TypeOfEndpointInstance, Endpoint, HTTPMethod } from '../Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { PathReporter } from 'io-ts/lib/PathReporter';
@@ -7,7 +7,7 @@ import * as t from 'io-ts';
 import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from '../shared/errors';
 import { HTTPClient, GetHTTPClient, FetchClient } from '.';
-import { Either, left } from 'fp-ts/lib/Either';
+import { left } from 'fp-ts/lib/Either';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
@@ -15,20 +15,24 @@ export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<a
   defaultHeaders?: { [key: string]: string }
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, defaultHeaders);
 
-export const useBrowserFetch = <E extends EndpointInstance<any>>(
+export const useBrowserFetch = <
+  M extends HTTPMethod,
+  O extends t.Type<any, any, any>,
+  H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
+>(
   baseURL: string,
-  e: E,
+  e: EndpointInstance<Endpoint<M, O, H, Q, B, P>>,
   defaultHeaders?: { [key: string]: string }
-): FetchClient<E, IOError> => {
-  return (i: TypeOfEndpointInstance<E>['Input']) => {
-    // TODO: try to get rid of this
-    const anyArgs: any = i;
-
-    const path = `${baseURL}${e.getPath(anyArgs?.Params ?? {})}${
-      anyArgs.Query ? `?${qs.stringify(anyArgs.Query)}` : ''
+): FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P>>, IOError> => {
+  return (i: TypeOfEndpointInstance<EndpointInstance<Endpoint<M, O, H, Q, B, P>>>['Input']) => {
+    const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
+      i.Query ? `?${qs.stringify(i.Query)}` : ''
     }`;
-    const body = e.Opts?.stringifyBody ? qs.stringify(anyArgs.Body) : anyArgs.Body;
-    const headers = { ...anyArgs.Headers, ...defaultHeaders };
+    const body = e.Opts?.stringifyBody ? qs.stringify(i.Body) : i.Body;
+    const headers = { ...i.Headers, ...defaultHeaders };
 
     const response = pipe(
       TA.tryCatch(
@@ -38,28 +42,38 @@ export const useBrowserFetch = <E extends EndpointInstance<any>>(
               headers,
               method: e.Method,
             },
-            ...(anyArgs.Body !== undefined ? { body: JSON.stringify(body) } : {}),
+            ...(i.Body !== undefined ? { body: JSON.stringify(body) } : {}),
           }),
         () => new IOError(NetworkErrorStatus, 'Network Error', { kind: 'NetworkError' })
       ),
       TA.chain((r: Response) => {
+        const responseJson: TA.TaskEither<any, any> = TA.fromTask(() => r.json());
+
         if (!r.ok) {
           if (r.status >= 400 && r.status <= 451) {
-            return TA.left<IOError, t.TypeOf<E['Output']>>(
-              new IOError(r.status, r.statusText, { kind: 'ClientError' })
+            return pipe(
+              responseJson,
+              TA.map(
+                (body) => new IOError(r.status, r.statusText, { kind: 'ClientError', meta: body })
+              ),
+              TA.swap
+            );
+          } else {
+            return pipe(
+              responseJson,
+              TA.map(
+                (body) => new IOError(r.status, r.statusText, { kind: 'ServerError', meta: body })
+              ),
+              TA.swap
             );
           }
-          return TA.left<IOError, t.TypeOf<E['Output']>>(
-            new IOError(r.status, r.statusText, { kind: 'ServerError' })
-          );
         }
 
+        e.Output;
+
         const res = pipe(
-          TA.taskEither.fromTask<t.Errors, any>(() => r.json()),
-          TA.alt(() => TA.right({})),
-          TA.chain((json) =>
-            TA.fromEither(e.Output.decode(json) as Either<t.Errors, t.TypeOf<E['Output']>>)
-          ),
+          responseJson,
+          TA.chain((json) => TA.fromEither(e.Output.decode(json))),
           TA.mapLeft(
             (errors) =>
               new IOError(

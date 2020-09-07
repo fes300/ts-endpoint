@@ -268,4 +268,22 @@ describe('GetFetchHTTPClient', () => {
     expect((getResponse as any).left.details.kind).toBe('NetworkError');
     expect((getResponse as any).left.status).toBe(NetworkErrorStatus);
   });
+  it('returns the response body in the ClientError meta', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
+    const getResponse = await noPortFetchClient.getEndpoint({
+      Params: { id: '1' },
+      Query: { color: 'blue' },
+    })();
+
+    expect((getResponse as any).left.details.meta).toEqual({ foo: 'baz' });
+  });
+  it('returns the response body in the ServerError meta', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    const getResponse = await noPortFetchClient.getEndpoint({
+      Params: { id: '1' },
+      Query: { color: 'blue' },
+    })();
+
+    expect((getResponse as any).left.details.meta).toEqual({ foo: 'baz' });
+  });
 });

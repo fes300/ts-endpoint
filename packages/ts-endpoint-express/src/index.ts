@@ -79,7 +79,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
       TA.chain((args) => controller(args as any)),
       TA.bimap(
         (e) => {
-          res.status(e.status).send(e);
+          res.status(e.status).send({ error: e });
         },
         (httpResponse) => {
           if (httpResponse.headers !== undefined) {
