@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InferFetchResult should return the type of the Endpoint.Output (type) should match snapshot 1`] = `
+"Type 'Either<IOError, {}>' is not assignable to type 'Either<IOError, { crayons: string[]; }>'.
+  Type 'Right<{}>' is not assignable to type 'Either<IOError, { crayons: string[]; }>'.
+    Type 'Right<{}>' is not assignable to type 'Right<{ crayons: string[]; }>'.
+      Property 'crayons' is missing in type '{}' but required in type '{ crayons: string[]; }'."
+`;
+
+exports[`InferFetchResult should return the type of the Endpoint.Output (type) should match snapshot 2`] = `"any"`;
+
+exports[`should not allow calls not specifing Query (if needed) (type) should match snapshot 1`] = `
+"Argument of type '{ Params: { id: string; }; }' is not assignable to parameter of type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'.
+  Property 'Query' is missing in type '{ Params: { id: string; }; }' but required in type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'."
+`;
+
+exports[`should not allow calls specifing Params not declared in the endpoint (type) should match snapshot 1`] = `
+"Type '{ id: string; foo: string; }' is not assignable to type '{ id: string; }'.
+  Object literal may only specify known properties, and 'foo' does not exist in type '{ id: string; }'."
+`;
+
+exports[`should not allow empty calls (type) should match snapshot 1`] = `"Expected 1 arguments, but got 0."`;
+
+exports[`should not allow empty-object as input (type) should match snapshot 1`] = `
+"Argument of type '{}' is not assignable to parameter of type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'.
+  Type '{}' is missing the following properties from type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }': Params, Query"
+`;
+
+exports[`should not allow to add Body when not declared in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'never'."`;

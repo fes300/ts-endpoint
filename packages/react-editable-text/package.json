@@ -27,7 +27,7 @@
     "fp-ts": "^2.6.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "typescript": "^3.9.3"
+    "typescript": "4.0.2"
   },
   "gitHead": "07ddf6f07cbe08b7309ee0162075d2932f356012"
 }

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Body is allowed with PATCH (type) should match snapshot 1`] = `"{ foo: StringC; }"`;
+
+exports[`Body is allowed with POST (type) should match snapshot 1`] = `"{ foo: StringC; }"`;
+
+exports[`Body is allowed with PUT (type) should match snapshot 1`] = `"{ foo: StringC; }"`;
+
+exports[`Body is not allowed with method !== POST | PUT | PATCH (type) should match snapshot 1`] = `"Type 'StringC' is not assignable to type 'never'."`;
+
+exports[`accessing defined Params in getPath is allowed (type) should match snapshot 1`] = `"({ id }: { id: string; }) => string"`;
+
+exports[`accessing non defined Params in getPath is not allowed (type) should match snapshot 1`] = `"Property 'foo' does not exist on type '{ id: string; }'."`;
+
+exports[`getPath args must have the same type as the Params defined in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'number'."`;
+
+exports[`getPath can be called with no args if no Params are defined in the endpoint (type) should match snapshot 1`] = `"string"`;
+
+exports[`getPath cannot be called with any arg if no Params are defined in the endpoint (type) should match snapshot 1`] = `"Expected 0 arguments, but got 1."`;
+
+exports[`getPath cannot be called with args different from the Params defined in the endpoint (type) should match snapshot 1`] = `
+"Argument of type '{ foo: string; }' is not assignable to parameter of type '{ id: number; }'.
+  Object literal may only specify known properties, and 'foo' does not exist in type '{ id: number; }'."
+`;
+
+exports[`getPath cannot be called with empty object if no Params are defined in the endpoint (type) should match snapshot 1`] = `"Expected 0 arguments, but got 1."`;
+
+exports[`getPath cannot be called with empty object if there are Params defined in the endpoint (type) should match snapshot 1`] = `
+"Argument of type '{}' is not assignable to parameter of type '{ id: number; }'.
+  Property 'id' is missing in type '{}' but required in type '{ id: number; }'."
+`;
+
+exports[`getPath cannot be called with no args if there are params defined in the endpoint (type) should match snapshot 1`] = `"Expected 1 arguments, but got 0."`;
+
+exports[`getStaticPath requires a mapping function if some Params are defined in the endpoint (type) should match snapshot 1`] = `"Expected 1 arguments, but got 0."`;
+
+exports[`getStaticPath requires a mapping function if some Params are defined in the endpoint (type) should match snapshot 2`] = `"string"`;
+
+exports[`getStaticPath requires no args if no Params are defined (type) should match snapshot 1`] = `"Expected 0 arguments, but got 1."`;
+
+exports[`getStaticPath requires no args if no Params are defined (type) should match snapshot 2`] = `"string"`;
+
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 1`] = `"StringC"`;
+
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 2`] = `"StringC"`;
+
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 3`] = `"(f: (paramName: string) => string) => string"`;
+
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 4`] = `"Property 'prova' does not exist on type 'never'."`;
+
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 5`] = `"Property 'fakeOutput' does not exist on type '{ crayons: ArrayC<StringC>; }'."`;
+
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 6`] = `"ArrayC<StringC>"`;

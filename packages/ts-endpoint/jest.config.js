@@ -8,5 +8,6 @@ module.exports = {
   },
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
-  testMatch: ['**/?(*.)(spec).ts?(x)'],
+  testMatch: ['**/+(*.)*(spec|typespec).ts'],
+  transform: { '/.+typespec\\.ts$': 'dts-jest/transform' },
 };
