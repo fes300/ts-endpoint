@@ -26,7 +26,7 @@ describe('createResponse types behave accordingly', () => {
   const correctImpl = ({ Params: { id } }: { Params: { id: number }; Query: { color: string } }) =>
     right({ crayons: [id] });
 
-  // @ts-expect-error
+  // @ts-expect-error should not accept incorrect implementations
   () => createResponse(endpoints.prova, req, params)(wrongImpl);
 
   () => createResponse(endpoints.prova, req, params)(correctImpl);

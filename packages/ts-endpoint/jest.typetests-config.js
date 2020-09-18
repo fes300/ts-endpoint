@@ -1,4 +1,4 @@
-const base = require('../../jest.config.base.js');
+const base = require('../../jest.typetests-config.base.js');
 
 module.exports = {
   ...base,

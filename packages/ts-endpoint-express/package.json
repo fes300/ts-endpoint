@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "rm -rf ./lib && tsc",
-    "test": "jest"
+    "test": "jest --config=jest.typetests-config.js && jest --config=jest.config.js"
   },
   "peerDependencies": {
     "express": "^4.17.1",
