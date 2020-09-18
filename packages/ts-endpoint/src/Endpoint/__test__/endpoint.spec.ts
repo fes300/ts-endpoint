@@ -27,6 +27,7 @@ describe('getStaticPath works as intended', () => {
     expect(endpointWithParam.getPath({ id: 3 })).toEqual('/users/3/crayons');
     expect(endpointWithoutParam.getPath()).toEqual('/users/crayons');
   });
+
   it('adds the params correctly', () => {
     expect(endpointWithParam.getStaticPath((param) => `:${param}`)).toEqual('/users/:id/crayons');
     expect(endpointWithoutParam.getStaticPath()).toEqual('/users/crayons');
