@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.5.0-alpha.14 (2020-09-18)
+
+
+### Bug Fixes
+
+* comment out tests using render-hook ([9c0986e](https://github.com/fes300/open-source/packages/ts-endpoint/commit/9c0986ed09e408edc71dd7c61735db478cdff229))
+* remove unused dependencies ([0885b21](https://github.com/fes300/open-source/packages/ts-endpoint/commit/0885b218b94424bd3200066e52678e5ab5d5e331))
+* tests ([66d8844](https://github.com/fes300/open-source/packages/ts-endpoint/commit/66d88446c1ec928c6d6b256273b9763a6595be94))
+
+
+### Features
+
+* add react express example ([42c6b2f](https://github.com/fes300/open-source/packages/ts-endpoint/commit/42c6b2f854e9810cc8c0f42d7b6561d2e0f5e9e5))
+* **test:** add typelevel tests with dts-jest ([142c714](https://github.com/fes300/open-source/packages/ts-endpoint/commit/142c714fbb421df4c61fc673b8be60414762aa14))
+
+
+
+
+
 # [1.5.0-alpha.13](https://github.com/fes300/open-source/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.12...ts-endpoint@1.5.0-alpha.13) (2020-09-07)
 
 

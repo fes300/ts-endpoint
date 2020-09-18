@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.12](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.11...ts-endpoint-express@1.1.0-alpha.12) (2020-09-18)
+
+
+### Bug Fixes
+
+* remove unused dependencies ([0885b21](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/0885b218b94424bd3200066e52678e5ab5d5e331))
+* tests ([66d8844](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/66d88446c1ec928c6d6b256273b9763a6595be94))
+
+
+### Features
+
+* **test:** add typelevel tests with dts-jest ([142c714](https://github.com/fes300/open-source/packages/ts-endpoint-express/commit/142c714fbb421df4c61fc673b8be60414762aa14))
+
+
+
+
+
 # [1.1.0-alpha.11](https://github.com/fes300/open-source/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.10...ts-endpoint-express@1.1.0-alpha.11) (2020-09-07)
 
 

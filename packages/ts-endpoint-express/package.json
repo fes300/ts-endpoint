@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-express",
-  "version": "1.1.0-alpha.11",
+  "version": "1.1.0-alpha.12",
   "description": "Adds typesafe endpoints to your express app.",
   "files": [
     "lib"
@@ -30,7 +30,7 @@
     "dts-jest": "^23.3.0",
     "express": "^4.17.1",
     "jest": "^26.4.2",
-    "ts-endpoint": "^1.5.0-alpha.13",
+    "ts-endpoint": "^1.5.0-alpha.14",
     "ts-jest": "^26.1.1",
     "typescript": "^4.0.2"
   },
