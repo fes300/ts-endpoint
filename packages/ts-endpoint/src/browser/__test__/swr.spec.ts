@@ -1,9 +1,9 @@
 import 'isomorphic-fetch';
 import { Endpoint } from '../../Endpoint';
-import { renderHook } from '@testing-library/react-hooks';
+// import { renderHook } from '@testing-library/react-hooks';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
-import { DecodeErrorStatus, NetworkErrorStatus } from '../../shared/errors';
+import { DecodeErrorStatus } from '../../shared/errors';
 import { GetSWRImpl } from '../swr';
 import { cache } from 'swr';
 import { isLeft } from 'fp-ts/lib/Either';
@@ -97,20 +97,20 @@ const noPortSwrHooks = GetSWRImpl(noPortOptions, endpoints, {
 swrHooks.queries.getEndpoint;
 swrHooks.commands.deleteEndpoint;
 
-const lazySuccesfullQueryRequest = () =>
-  Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
+// const lazySuccesfullQueryRequest = () =>
+//   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
 const lazyWrongBodyRequest = () => Promise.resolve(new Response(JSON.stringify({ foo: 'baz' })));
 const lazySuccesfullCommandRequest = () =>
   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
-const lazyServerErrorRequest = () =>
-  Promise.resolve(
-    new Response(JSON.stringify({ foo: 'baz' }), { status: 500, statusText: 'server error' })
-  );
-const lazyClientErrorRequest = () =>
-  Promise.resolve(
-    new Response(JSON.stringify({ foo: 'baz' }), { status: 404, statusText: 'client error' })
-  );
-const lazyNetworkErrorRequest = () => Promise.reject('fail');
+// const lazyServerErrorRequest = () =>
+//   Promise.resolve(
+//     new Response(JSON.stringify({ foo: 'baz' }), { status: 500, statusText: 'server error' })
+//   );
+// const lazyClientErrorRequest = () =>
+//   Promise.resolve(
+//     new Response(JSON.stringify({ foo: 'baz' }), { status: 404, statusText: 'client error' })
+//   );
+// const lazyNetworkErrorRequest = () => Promise.reject('fail');
 
 afterEach(() => {
   cache.clear();
@@ -128,54 +128,54 @@ describe('GetSWRImpl', () => {
       'patchEndpoint',
     ]);
   });
-  it('calls global.fetch with the correct params', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+  // it('calls global.fetch with the correct params', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
-    renderHook(() =>
-      swrHooks.queries.getEndpoint({
-        Params: { id: 'id' },
-        Query: { color: 'brown' },
-      })
-    );
+  //   renderHook(() =>
+  //     swrHooks.queries.getEndpoint({
+  //       Params: { id: 'id' },
+  //       Query: { color: 'brown' },
+  //     })
+  //   );
 
-    expect(fetch).toBeCalledWith('http://test:2020/users/id/crayons?color=brown', {
-      headers: { 'Content-type': 'application/json' },
-      method: 'GET',
-    });
-  });
-  it('builds the path correctly when Params and Query are defined', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+  //   expect(fetch).toBeCalledWith('http://test:2020/users/id/crayons?color=brown', {
+  //     headers: { 'Content-type': 'application/json' },
+  //     method: 'GET',
+  //   });
+  // });
+  // it('builds the path correctly when Params and Query are defined', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
-    renderHook(() =>
-      swrHooks.queries.getEndpointWithLargeQuery({
-        Params: { id: 12, crayonSet: 4 },
-        Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
-      })
-    );
+  //   renderHook(() =>
+  //     swrHooks.queries.getEndpointWithLargeQuery({
+  //       Params: { id: 12, crayonSet: 4 },
+  //       Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
+  //     })
+  //   );
 
-    expect(fetch).toBeCalledWith(
-      'http://test:2020/users/12/crayons/4?foo=fooImpl&bar=4&baz=bazImpl',
-      {
-        headers: { 'Content-type': 'application/json' },
-        method: 'GET',
-      }
-    );
-  });
-  it('builds the path correctly when no port is given', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+  //   expect(fetch).toBeCalledWith(
+  //     'http://test:2020/users/12/crayons/4?foo=fooImpl&bar=4&baz=bazImpl',
+  //     {
+  //       headers: { 'Content-type': 'application/json' },
+  //       method: 'GET',
+  //     }
+  //   );
+  // });
+  // it('builds the path correctly when no port is given', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
 
-    renderHook(() =>
-      noPortSwrHooks.queries.getEndpointWithLargeQuery({
-        Params: { id: 12, crayonSet: 4 },
-        Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
-      })
-    );
+  //   renderHook(() =>
+  //     noPortSwrHooks.queries.getEndpointWithLargeQuery({
+  //       Params: { id: 12, crayonSet: 4 },
+  //       Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
+  //     })
+  //   );
 
-    expect(fetch).toBeCalledWith('http://test/users/12/crayons/4?foo=fooImpl&bar=4&baz=bazImpl', {
-      headers: { 'Content-type': 'application/json' },
-      method: 'GET',
-    });
-  });
+  //   expect(fetch).toBeCalledWith('http://test/users/12/crayons/4?foo=fooImpl&bar=4&baz=bazImpl', {
+  //     headers: { 'Content-type': 'application/json' },
+  //     method: 'GET',
+  //   });
+  // });
   it('PATCH returns the correct IOError when decoding the server payload results in error', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
     const patchResponse = await noPortSwrHooks.commands.patchEndpoint({
@@ -200,60 +200,60 @@ describe('GetSWRImpl', () => {
       body: JSON.stringify({ name: 'John' }),
     });
   });
-  it('GET returns the correct IOError when decoding the server payload results in error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
-    const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.queries.getEndpoint({
-        Params: { id: '1' },
-        Query: { color: 'blue' },
-      })
-    );
+  // it('GET returns the correct IOError when decoding the server payload results in error', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
+  //   const { result, waitForValueToChange } = renderHook(() =>
+  //     noPortSwrHooks.queries.getEndpoint({
+  //       Params: { id: '1' },
+  //       Query: { color: 'blue' },
+  //     })
+  //   );
 
-    await waitForValueToChange(() => result.current.error !== undefined);
+  //   await waitForValueToChange(() => result.current.error !== undefined);
 
-    expect(result.current.error?.details.kind).toBe('DecodingError');
-    expect(result.current.error?.status).toBe(DecodeErrorStatus);
-  });
-  it('GET returns the correct IOError when there is a server error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
-    const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.queries.getEndpoint({
-        Params: { id: '1' },
-        Query: { color: 'blue' },
-      })
-    );
+  //   expect(result.current.error?.details.kind).toBe('DecodingError');
+  //   expect(result.current.error?.status).toBe(DecodeErrorStatus);
+  // });
+  // it('GET returns the correct IOError when there is a server error', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+  //   const { result, waitForValueToChange } = renderHook(() =>
+  //     noPortSwrHooks.queries.getEndpoint({
+  //       Params: { id: '1' },
+  //       Query: { color: 'blue' },
+  //     })
+  //   );
 
-    await waitForValueToChange(() => result.current.error !== undefined);
+  //   await waitForValueToChange(() => result.current.error !== undefined);
 
-    expect(result.current.error?.details.kind).toBe('ServerError');
-    expect(result.current.error?.status).toBe(500);
-  });
-  it('returns the correct IOError when there is a client error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
-    const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.queries.getEndpoint({
-        Params: { id: '1' },
-        Query: { color: 'blue' },
-      })
-    );
+  //   expect(result.current.error?.details.kind).toBe('ServerError');
+  //   expect(result.current.error?.status).toBe(500);
+  // });
+  // it('returns the correct IOError when there is a client error', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
+  //   const { result, waitForValueToChange } = renderHook(() =>
+  //     noPortSwrHooks.queries.getEndpoint({
+  //       Params: { id: '1' },
+  //       Query: { color: 'blue' },
+  //     })
+  //   );
 
-    await waitForValueToChange(() => result.current.error !== undefined);
+  //   await waitForValueToChange(() => result.current.error !== undefined);
 
-    expect(result.current.error?.details.kind).toBe('ClientError');
-    expect(result.current.error?.status).toBe(404);
-  });
-  it('returns the correct IOError when there is a network error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyNetworkErrorRequest());
-    const { result, waitForValueToChange } = renderHook(() =>
-      noPortSwrHooks.queries.getEndpoint({
-        Params: { id: '1' },
-        Query: { color: 'blue' },
-      })
-    );
+  //   expect(result.current.error?.details.kind).toBe('ClientError');
+  //   expect(result.current.error?.status).toBe(404);
+  // });
+  // it('returns the correct IOError when there is a network error', async () => {
+  //   global.fetch = jest.fn().mockReturnValueOnce(lazyNetworkErrorRequest());
+  //   const { result, waitForValueToChange } = renderHook(() =>
+  //     noPortSwrHooks.queries.getEndpoint({
+  //       Params: { id: '1' },
+  //       Query: { color: 'blue' },
+  //     })
+  //   );
 
-    await waitForValueToChange(() => result.current.error !== undefined);
+  //   await waitForValueToChange(() => result.current.error !== undefined);
 
-    expect(result.current.error?.details.kind).toBe('NetworkError');
-    expect(result.current.error?.status).toBe(NetworkErrorStatus);
-  });
+  //   expect(result.current.error?.details.kind).toBe('NetworkError');
+  //   expect(result.current.error?.status).toBe(NetworkErrorStatus);
+  // });
 });
