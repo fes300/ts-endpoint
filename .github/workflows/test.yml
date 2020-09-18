@@ -23,7 +23,7 @@ jobs:
           failComment: 'tests failed'
 
       - name: install dependencies
-        run: yarn --force && yarn bootstrap:ci
+        run: yarn --force && yarn bootstrap
 
       - name: test
         run: yarn test
