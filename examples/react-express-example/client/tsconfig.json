@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "outDir": "dist",
+    "rootDir": "src",
+    "lib": ["DOM", "DOM.Iterable"]
+  },
+  "include": ["src"],
+  "references": [{ "path": "../shared" }]
+}
