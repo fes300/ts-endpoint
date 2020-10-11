@@ -1,4 +1,8 @@
-## ts-endpoint-express
+---
+id: ts-endpoint-express
+title: ts-endpoint-express
+sidebar_label: Using `ts-endpoint` with an `express` app.
+---
 
 ### install
 
@@ -15,7 +19,7 @@ $> yarn add ts-endpoint-express
 ### description
 
 `ts-endpoint-express` works in tandem with `ts-endpoint` in order to let you define endpoints just once for both client and server.
-It is specifically developed to target the express framework.
+It is specifically developed to target the `express` framework.
 
 ### simple guide
 
@@ -35,7 +39,7 @@ const getCrayons = Endpoint({
 });
 ```
 
-Then define the endpoints of your express server:
+Then build add the endpoints to your `express` router:
 
 ```ts
 import { AddEndpoint } from 'ts-endpoint-express';
@@ -45,7 +49,7 @@ import * as TA from 'fp-ts/lib/TaskEither';
 const router = express.Router();
 
 AddEndpoint(router)(getCrayons, ({ params: { id } }) => {
-  const user: TA.TaskEither<any, { crayons: string[] }> = userService.getByID(id);
+  const user: TA.TaskEither<unknown, { crayons: string[] }> = userService.getByID(id);
 
   return pipe(
     user,

@@ -1,4 +1,8 @@
-## ts-endpoint
+---
+id: ts-endpoint
+title: ts-endpoint
+sidebar_label: Brief intro to `ts-endpoint`
+---
 
 ### install
 
@@ -60,7 +64,7 @@ const fetchClient = GetFetchHTTPClient(
 );
 ```
 
-Use it however you wish:
+Use it in your client apps:
 
 ```ts
 const myCrayons: TaskEither<IOError, { crayons: string[] }> = fetchClient.getCrayons({
@@ -93,7 +97,15 @@ const createdUserId: TaskEither<IOError, { id: string }> = fetchClient.createUse
  */
 ```
 
-`GetFetchHTTPClient` will format errors in its own opinionated way, returning either a **NetworkError** (if the request fails without further info) a 'ClientError' (if the response status is >= 400 and <= 451), a **DecodingError** (if the body of the response is different from the specification in the `Endpoint` definition), or a **ServerError** (in all other cases).
-The only difference between the errors being the `kind` (accessible under the error `details`) and the fact that if the error has `kind=DecodingError` it will also have an array of errors in its `details` object.
+### `IOError`
 
-**N.B.**: `GetFetchHTTPClient` is very opinionated, if you need a less opinionated version you can derive your own implementation using `GetHTTPClient`.
+`GetFetchHTTPClient` formats errors in its own opinionated way, returning:
+
+- **NetworkError** if the request fails without info about the failure
+- **ClientError** if the response status is >= 400 and <= 451),
+- **DecodingError** if the body of the response is different from the specification in the `Endpoint` definition, or a
+- **ServerError** (in all other cases).
+
+The only difference between each error is the `kind` (accessible under the error `details`) and the fact that if the error kind is `DecodingError` it will also expose an array of errors in its `details` object.
+
+**N.B.**: if you need a less opinionated version of `GetFetchHTTPClient` you can derive your own implementation using `GetHTTPClient`.
