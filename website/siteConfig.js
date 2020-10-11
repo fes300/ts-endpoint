@@ -38,8 +38,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'ts-endpoint', label: 'ts-endpoint'},
-    {doc: 'ts-endpoint-express', label: 'ts-endpoint-express'},
+    {doc: 'ts-endpoint/intro', label: 'ts-endpoint'},
+    {doc: 'ts-endpoint-express/intro', label: 'ts-endpoint-express'},
+    { search: true },
   ],
 
   // If you have users set above, you add it here:

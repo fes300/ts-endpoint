@@ -5,22 +5,29 @@
     "previous": "Previous",
     "tagline": "A simple solution for full stack typescript projects.",
     "docs": {
-      "ts-endpoint-express": {
-        "title": "ts-endpoint-express",
+      "ts-endpoint-express/intro": {
+        "title": "setup",
+        "sidebar_label": "setting up `ts-endpoint-express`"
+      },
+      "ts-endpoint-express/simple-guide": {
+        "title": "simple-guide to start with `ts-endpoint-express`",
         "sidebar_label": "Using `ts-endpoint` with an `express` app."
       },
-      "ts-endpoint": {
-        "title": "ts-endpoint",
-        "sidebar_label": "Brief intro to `ts-endpoint`"
+      "ts-endpoint/intro": {
+        "title": "setup",
+        "sidebar_label": "setting up `ts-endpoint`"
+      },
+      "ts-endpoint/simple-guide": {
+        "title": "simple guide to start with `ts-endpoint`"
       }
     },
     "links": {
-      "Docs": "Docs"
+      "ts-endpoint": "ts-endpoint",
+      "ts-endpoint-express": "ts-endpoint-express"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "setup": "setup",
+      "simple guide": "simple guide"
     }
   },
   "pages-strings": {
