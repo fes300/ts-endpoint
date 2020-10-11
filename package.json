@@ -8,8 +8,6 @@
     "@babel/plugin-proposal-export-default-from": "^7.10.1",
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
-    "@storybook/addon-docs": "6.0.21",
-    "@storybook/react": "6.0.21",
     "babel-loader": "^8.1.0",
     "@types/jest": "^26.0.7",
     "husky": "^4.2.5",
@@ -22,8 +20,6 @@
   "scripts": {
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
-    "storybook": "start-storybook --docs -s ./.storybook/public -p 6006",
-    "build-storybook": "build-storybook --quiet --docs -s ./.storybook/public",
     "release": "lerna publish --yes",
     "pre-release": "lerna publish --yes --conventional-prerelease",
     "test": "lerna run test"
