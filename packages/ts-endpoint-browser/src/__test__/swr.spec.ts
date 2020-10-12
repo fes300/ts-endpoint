@@ -3,7 +3,7 @@ import { Endpoint } from 'ts-endpoint';
 // import { renderHook } from '@testing-library/react-hooks';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
-import { DecodeErrorStatus } from 'ts-shared/src/errors';
+import { DecodeErrorStatus } from '../../../ts-shared/src/errors';
 import { GetSWRImpl } from '../swr';
 import { cache } from 'swr';
 import { isLeft } from 'fp-ts/lib/Either';

@@ -1,5 +1,5 @@
 import * as t from 'io-ts';
-import { BearerToken } from 'ts-shared/src/BearerToken';
+import { BearerToken } from '../../../ts-shared/src/BearerToken';
 import { EndpointInstance } from '.';
 import { Endpoint } from './Endpoint';
 
