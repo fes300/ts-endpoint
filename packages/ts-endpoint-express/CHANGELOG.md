@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.13](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.12...ts-endpoint-express@1.1.0-alpha.13) (2020-10-12)
+
+
+### Bug Fixes
+
+* jest config ([4965e07](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/commit/4965e07b5d3774e6beb78bdd9fe19b365a4cfe97))
+
+
+
+
+
 # [1.1.0-alpha.12](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.11...ts-endpoint-express@1.1.0-alpha.12) (2020-09-18)
 
 
