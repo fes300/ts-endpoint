@@ -82,7 +82,6 @@ const endpoints = {
     Output: t.type({ id: t.string }),
   }),
 };
-
 const fetchClient = GetFetchHTTPClient(options, endpoints, { 'Content-type': 'application/json' });
 const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints, {
   'Content-type': 'application/json',

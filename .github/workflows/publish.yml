@@ -23,7 +23,7 @@ jobs:
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: install dependencies
-        run: yarn --force && yarn bootstrap
+        run: yarn bootstrap
 
       - name: test
         run: yarn test
