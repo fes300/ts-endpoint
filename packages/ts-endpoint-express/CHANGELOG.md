@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.14](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.13...ts-endpoint-express@1.1.0-alpha.14) (2020-10-12)
+
+
+### Features
+
+* build after bootstrap ([e3c8ab4](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/commit/e3c8ab4c025841ca8a998b9cfa1c9044d1c9ecf0))
+
+
+
+
+
 # [1.1.0-alpha.13](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.12...ts-endpoint-express@1.1.0-alpha.13) (2020-10-12)
 
 
