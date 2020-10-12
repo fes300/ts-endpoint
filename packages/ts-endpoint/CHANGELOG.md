@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.17](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.16...ts-endpoint@1.5.0-alpha.17) (2020-10-12)
+
+
+### Bug Fixes
+
+* build packages ([817655a](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/commit/817655a1a6e51ec1f7cfb01368a763aaab92cec8))
+* relative import for shared ([997cd19](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/commit/997cd19bfcbbd075ae583c2eb0649294e614be0e))
+
+
+
+
+
 # [1.5.0-alpha.16](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.15...ts-endpoint@1.5.0-alpha.16) (2020-10-12)
 
 **Note:** Version bump only for package ts-endpoint
