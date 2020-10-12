@@ -1,14 +1,14 @@
 {
-  "name": "ts-endpoint",
-  "version": "1.5.0-alpha.15",
-  "description": "Simple endpoint definition for fullstack safety.",
+  "name": "ts-endpoint-browser",
+  "version": "1.1.0-alpha.13",
+  "description": "Adds typesafe endpoints to your browser.",
   "files": [
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint",
+  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser",
   "bugs": {
-    "url": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint/issues"
+    "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fopen-source%2F4"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
@@ -19,7 +19,7 @@
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
-    "test": "yarn type-test && yarn runtime-test"
+    "test": "yarn runtime-test && yarn type-test"
   },
   "peerDependencies": {
     "fp-ts": "^2.0.0",
@@ -27,19 +27,19 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.7",
-    "@types/qs": "^6.9.3",
     "dts-jest": "^23.3.0",
     "jest": "^26.4.2",
+    "react": "^16.13.1",
     "ts-jest": "^26.1.1",
-    "typescript": "4.0.2"
+    "typescript": "^4.0.2"
   },
   "dependencies": {
-    "io-ts": "^2.2.7",
+    "swr": "^0.3.5",
     "io-ts-types": "^0.5.8",
+    "isomorphic-fetch": "^2.2.1",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "qs": "^6.9.4",
-    "rxjs": "^6.6.0",
+    "ts-endpoint": "^1.5.0-alpha.15",
     "ts-shared": "^1.0.1-alpha.0",
     "typelevel-ts": "^0.4.0"
   }

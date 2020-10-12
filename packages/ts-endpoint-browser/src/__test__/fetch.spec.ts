@@ -1,10 +1,10 @@
 import 'isomorphic-fetch';
 import { GetFetchHTTPClient } from '../fetch';
-import { Endpoint } from '../../Endpoint';
+import { Endpoint } from 'ts-endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { isLeft } from 'fp-ts/lib/Either';
-import { DecodeErrorStatus, NetworkErrorStatus } from '../../shared/errors';
+import { DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/src/errors';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -82,7 +82,6 @@ const endpoints = {
     Output: t.type({ id: t.string }),
   }),
 };
-
 const fetchClient = GetFetchHTTPClient(options, endpoints, { 'Content-type': 'application/json' });
 const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints, {
   'Content-type': 'application/json',

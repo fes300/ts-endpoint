@@ -1,14 +1,15 @@
 {
-  "name": "ts-endpoint",
-  "version": "1.5.0-alpha.15",
-  "description": "Simple endpoint definition for fullstack safety.",
+  "name": "ts-shared",
+  "version": "1.0.1-alpha.0",
+  "private": "true",
+  "description": "shared lib for ts-endpoint packages.",
   "files": [
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint",
+  "repository": "https://github.com/fes300/ts-endpoint/packages/shared",
   "bugs": {
-    "url": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint/issues"
+    "url": "https://github.com/fes300/ts-endpoint/issues"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
@@ -19,13 +20,14 @@
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
-    "test": "yarn type-test && yarn runtime-test"
+    "test": "yarn runtime-test && yarn type-test --passWithNoTests"
   },
   "peerDependencies": {
     "fp-ts": "^2.0.0",
     "io-ts": "^2.2.7"
   },
   "devDependencies": {
+    "@types/express": "^4.17.7",
     "@types/jest": "^26.0.7",
     "@types/qs": "^6.9.3",
     "dts-jest": "^23.3.0",
@@ -40,7 +42,6 @@
     "newtype-ts": "^0.3.4",
     "qs": "^6.9.4",
     "rxjs": "^6.6.0",
-    "ts-shared": "^1.0.1-alpha.0",
     "typelevel-ts": "^0.4.0"
   }
 }

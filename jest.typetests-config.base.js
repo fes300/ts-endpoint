@@ -9,5 +9,4 @@ module.exports = {
   roots: ['<rootDir>/src'],
   transform: { '^.+typespec\\.ts$': 'dts-jest/transform' },
   testMatch: ['**/+(*.)*(typespec).ts'],
-  verbose: true,
 };

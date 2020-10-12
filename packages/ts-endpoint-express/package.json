@@ -1,14 +1,14 @@
 {
   "name": "ts-endpoint-express",
-  "version": "1.1.0-alpha.12",
+  "version": "1.1.0-alpha.13",
   "description": "Adds typesafe endpoints to your express app.",
   "files": [
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/open-source/packages/ts-endpoint-express",
+  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express",
   "bugs": {
-    "url": "https://github.com/fes300/open-source/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fopen-source%2F4"
+    "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fopen-source%2F4"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
@@ -17,7 +17,9 @@
   },
   "scripts": {
     "build": "rm -rf ./lib && tsc",
-    "test": "jest --config=jest.typetests-config.js && jest --config=jest.config.js"
+    "type-test": "jest --config=jest.typetests-config.js",
+    "runtime-test": "jest --config=jest.config.js",
+    "test": "yarn runtime-test --passWithNoTests && yarn type-test"
   },
   "peerDependencies": {
     "express": "^4.17.1",
@@ -30,7 +32,6 @@
     "dts-jest": "^23.3.0",
     "express": "^4.17.1",
     "jest": "^26.4.2",
-    "ts-endpoint": "^1.5.0-alpha.14",
     "ts-jest": "^26.1.1",
     "typescript": "^4.0.2"
   },
@@ -38,6 +39,7 @@
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
+    "ts-endpoint": "^1.5.0-alpha.15",
     "typelevel-ts": "^0.4.0"
   }
 }

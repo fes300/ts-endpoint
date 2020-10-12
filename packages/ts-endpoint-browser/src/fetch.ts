@@ -1,11 +1,11 @@
-import { EndpointInstance, TypeOfEndpointInstance, Endpoint, HTTPMethod } from '../Endpoint';
+import { EndpointInstance, TypeOfEndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint/src/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { PathReporter } from 'io-ts/lib/PathReporter';
 import * as TA from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 import qs from 'qs';
-import { IOError, DecodeErrorStatus, NetworkErrorStatus } from '../shared/errors';
+import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/src/errors';
 import { HTTPClient, GetHTTPClient, FetchClient } from '.';
 import { left } from 'fp-ts/lib/Either';
 
