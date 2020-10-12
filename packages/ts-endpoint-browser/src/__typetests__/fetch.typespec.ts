@@ -1,5 +1,5 @@
 import { GetFetchHTTPClient } from '../fetch';
-import { Endpoint } from '../../Endpoint';
+import { Endpoint } from 'ts-endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { InferFetchResult } from '..';

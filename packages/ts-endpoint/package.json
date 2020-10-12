@@ -6,9 +6,9 @@
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/open-source/packages/ts-endpoint",
+  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint",
   "bugs": {
-    "url": "https://github.com/fes300/open-source/packages/ts-endpoint/issues"
+    "url": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint/issues"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
@@ -17,34 +17,30 @@
   },
   "scripts": {
     "build": "rm -rf ./lib && tsc",
-    "test": "jest --config=jest.typetests-config.js && jest --config=jest.config.js"
+    "type-test": "jest --config=jest.typetests-config.js",
+    "runtime-test": "jest --config=jest.config.js",
+    "test": "yarn type-test && yarn runtime-test"
   },
   "peerDependencies": {
     "fp-ts": "^2.0.0",
     "io-ts": "^2.2.7"
   },
   "devDependencies": {
-    "@nestjs/common": "^7.3.2",
-    "@testing-library/react-hooks": "^3.3.0",
-    "@types/express": "^4.17.7",
     "@types/jest": "^26.0.7",
     "@types/qs": "^6.9.3",
     "dts-jest": "^23.3.0",
-    "isomorphic-fetch": "^2.2.1",
     "jest": "^26.4.2",
     "ts-jest": "^26.1.1",
     "typescript": "4.0.2"
   },
   "dependencies": {
-    "express": "^4.17.1",
     "io-ts": "^2.2.7",
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
     "qs": "^6.9.4",
-    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.0",
-    "swr": "0.3.2",
+    "ts-shared": "^1.0.0",
     "typelevel-ts": "^0.4.0"
   }
 }

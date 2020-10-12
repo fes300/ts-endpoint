@@ -1,12 +1,12 @@
 {
-  "name": "ts-endpoint-express",
+  "name": "ts-endpoint-browser",
   "version": "1.1.0-alpha.12",
-  "description": "Adds typesafe endpoints to your express app.",
+  "description": "Adds typesafe endpoints to your browser.",
   "files": [
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express",
+  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fopen-source%2F4"
   },
@@ -17,27 +17,31 @@
   },
   "scripts": {
     "build": "rm -rf ./lib && tsc",
-    "test": "jest --config=jest.typetests-config.js && jest --config=jest.config.js"
+    "type-test": "jest --config=jest.typetests-config.js",
+    "runtime-test": "jest --config=jest.config.js",
+    "test": "yarn runtime-test && yarn type-test"
   },
   "peerDependencies": {
-    "express": "^4.17.1",
     "fp-ts": "^2.0.0",
+    "swr": "^0.3.5",
     "io-ts": "^2.2.7"
   },
   "devDependencies": {
-    "@types/express": "^4.17.7",
     "@types/jest": "^26.0.7",
     "dts-jest": "^23.3.0",
-    "express": "^4.17.1",
     "jest": "^26.4.2",
+    "react": "^16.13.1",
+    "ts-endpoint": "^1.5.0-alpha.14",
     "ts-jest": "^26.1.1",
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "ts-endpoint": "^1.5.0-alpha.14",
     "io-ts-types": "^0.5.8",
+    "isomorphic-fetch": "^2.2.1",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
+    "ts-endpoint": "^1.5.0-alpha.14",
+    "ts-shared": "^1.0.0",
     "typelevel-ts": "^0.4.0"
   }
 }

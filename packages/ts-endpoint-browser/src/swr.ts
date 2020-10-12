@@ -1,8 +1,8 @@
 import useSWR, { responseInterface } from 'swr';
 import { PathReporter } from 'io-ts/lib/PathReporter';
-import { EndpointInstance, EndpointInput, EndpointOutput } from '../Endpoint';
+import { EndpointInstance, EndpointInput, EndpointOutput } from 'ts-endpoint/src/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { IOError, NetworkErrorStatus, DecodeErrorStatus } from '../shared/errors';
+import { IOError, NetworkErrorStatus, DecodeErrorStatus } from 'ts-shared/src/errors';
 import * as TA from 'fp-ts/lib/TaskEither';
 import * as O from 'fp-ts/lib/Option';
 import { pipe } from 'fp-ts/lib/pipeable';
