@@ -1,5 +1,5 @@
 import * as t from 'io-ts';
-import { PositiveNumber } from '../../ts-shared/src/PositiveNumber';
+import { PositiveNumber } from 'ts-shared/src/PositiveNumber';
 
 export const HTTPProtocol = t.keyof(
   {
