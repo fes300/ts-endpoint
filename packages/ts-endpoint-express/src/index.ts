@@ -6,7 +6,7 @@ import * as E from 'fp-ts/lib/Either';
 import { sequenceS } from 'fp-ts/lib/Apply';
 import { pipe } from 'fp-ts/lib/pipeable';
 import * as TA from 'fp-ts/lib/TaskEither';
-import { IOError, DecodeErrorStatus } from 'ts-shared/src/errors';
+import { IOError, DecodeErrorStatus } from 'ts-shared/lib/errors';
 
 const getRouterMatcher = (
   router: express.Router,

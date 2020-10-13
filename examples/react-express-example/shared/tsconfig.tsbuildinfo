@@ -396,7 +396,7 @@
         "signature": "72a66fd5caf229e8d974b203f15f3ae3ae50fac3155a3487b6a3433eaca03844",
         "affectsGlobalScope": false
       },
-      "../../../packages/ts-shared/src/bearertoken.ts": {
+      "../../../packages/ts-shared/lib/bearertoken.ts": {
         "version": "ae05274571138372a680db200d6acd346799ebce4a5129b4fab995c4a3fda155",
         "affectsGlobalScope": false
       },
@@ -2309,7 +2309,7 @@
       ],
       "../node_modules/ts-endpoint/lib/endpoint/withauth.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../../../packages/ts-shared/src/bearertoken.ts",
+        "../../../packages/ts-shared/lib/bearertoken.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
         "../node_modules/@types/node/ts3.1/util.d.ts",
@@ -3018,7 +3018,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../../../packages/ts-shared/src/bearertoken.ts": [
+      "../../../packages/ts-shared/lib/bearertoken.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4364,7 +4364,7 @@
       ],
       "../node_modules/ts-endpoint/lib/endpoint/withauth.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../../../packages/ts-shared/src/bearertoken.ts",
+        "../../../packages/ts-shared/lib/bearertoken.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
         "../node_modules/@types/node/ts3.1/util.d.ts",
@@ -5258,7 +5258,7 @@
       "../../../node_modules/jest-diff/build/index.d.ts",
       "../../../node_modules/jest-diff/build/printdiffs.d.ts",
       "../../../node_modules/jest-diff/build/types.d.ts",
-      "../../../packages/ts-shared/src/bearertoken.ts"
+      "../../../packages/ts-shared/lib/bearertoken.ts"
     ]
   },
   "version": "3.9.7"
