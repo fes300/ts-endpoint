@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0-alpha.17 (2020-10-13)
+
+
+### Bug Fixes
+
+* import from lib ([c3d217f](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser/commit/c3d217f9791beb3d1127b437a51d66e5045ae28d))
+
+
+
+
+
 # [1.1.0-alpha.16](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.0-alpha.15...ts-endpoint-browser@1.1.0-alpha.16) (2020-10-13)
 
 

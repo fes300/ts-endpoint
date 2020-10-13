@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.5.0-alpha.19 (2020-10-13)
+
+
+### Bug Fixes
+
+* import from lib ([c3d217f](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/commit/c3d217f9791beb3d1127b437a51d66e5045ae28d))
+
+
+
+
+
 # [1.5.0-alpha.18](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.17...ts-endpoint@1.5.0-alpha.18) (2020-10-13)
 
 
