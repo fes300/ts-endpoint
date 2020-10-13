@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.3](https://github.com/fes300/ts-endpoint/packages/shared/compare/ts-shared@1.0.1-alpha.2...ts-shared@1.0.1-alpha.3) (2020-10-13)
+
+
+### Bug Fixes
+
+* publish also shared ([d8f3def](https://github.com/fes300/ts-endpoint/packages/shared/commit/d8f3def6993b9db3df96dc030ca5e625c36cfec5))
+
+
+
+
+
 ## [1.0.1-alpha.2](https://github.com/fes300/ts-endpoint/packages/shared/compare/ts-shared@1.0.1-alpha.1...ts-shared@1.0.1-alpha.2) (2020-10-12)
 
 

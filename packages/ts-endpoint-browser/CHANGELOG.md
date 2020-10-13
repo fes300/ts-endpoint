@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.16](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.0-alpha.15...ts-endpoint-browser@1.1.0-alpha.16) (2020-10-13)
+
+
+### Bug Fixes
+
+* publish also shared ([d8f3def](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser/commit/d8f3def6993b9db3df96dc030ca5e625c36cfec5))
+
+
+
+
+
 # [1.1.0-alpha.15](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.0-alpha.14...ts-endpoint-browser@1.1.0-alpha.15) (2020-10-12)
 
 
