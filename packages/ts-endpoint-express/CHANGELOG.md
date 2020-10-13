@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.17](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.16...ts-endpoint-express@1.1.0-alpha.17) (2020-10-13)
+
+
+### Bug Fixes
+
+* wrong package import ([b21528c](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/commit/b21528c2f7b70538ec46093a5684435047bb14aa))
+
+
+
+
+
 # [1.1.0-alpha.16](https://github.com/fes300/ts-endpoint/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.15...ts-endpoint-express@1.1.0-alpha.16) (2020-10-13)
 
 
