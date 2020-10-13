@@ -1,7 +1,7 @@
 import * as React from "react";
 import { apiClient } from "./api";
 import * as E from "fp-ts/lib/Either";
-import { InferFetchResult } from "ts-endpoint/lib/browser";
+import { InferFetchResult } from "ts-endpoint-browser";
 import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/pipeable";
 

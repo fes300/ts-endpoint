@@ -1,5 +1,5 @@
 import { getUser } from "shared";
-import { GetFetchHTTPClient } from "ts-endpoint/lib/browser/fetch";
+import { GetFetchHTTPClient } from "ts-endpoint-browser/lib/fetch";
 
 export const apiClient = GetFetchHTTPClient(
   {

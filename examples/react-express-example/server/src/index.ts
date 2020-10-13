@@ -1,10 +1,10 @@
 import { getUser } from 'shared';
-import { AddEndpoint } from 'ts-endpoint-express';
+import { AddEndpoint } from 'ts-endpoint-express/lib/ts-endpoint-express/src';
 import express from 'express';
 import * as TA from 'fp-ts/lib/TaskEither';
 import * as E from 'fp-ts/lib/Either';
 import { pipe } from 'fp-ts/lib/pipeable';
-import { IOError } from 'ts-endpoint/lib/shared/errors';
+import { IOError } from 'ts-shared/lib/errors';
 
 const database = [
   { id: 1, name: 'John', surname: 'Doe', age: 22 },
