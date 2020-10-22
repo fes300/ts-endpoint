@@ -1,5 +1,5 @@
 import { getUser } from 'shared';
-import { AddEndpoint } from 'ts-endpoint-express/lib/ts-endpoint-express/src';
+import { AddEndpoint } from 'ts-endpoint-express/lib';
 import express from 'express';
 import * as TA from 'fp-ts/lib/TaskEither';
 import * as E from 'fp-ts/lib/Either';

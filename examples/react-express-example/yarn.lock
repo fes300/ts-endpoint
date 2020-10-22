@@ -4319,36 +4319,36 @@ traverse@0.6.6:
   resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
-ts-endpoint-browser@^1.1.0-alpha.15:
-  version "1.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/ts-endpoint-browser/-/ts-endpoint-browser-1.1.0-alpha.16.tgz#302d2539f9f98393c1326ca183589d451f5ca421"
-  integrity sha512-f9G5wIODXTH197VWXwScmGbVakWgK7ZxSpn7JRaTd/IQmBh3Zz6NdSLFS9uOTFIK7X+syKSLRG/4XH6t3kU0SQ==
+ts-endpoint-browser@^1.1.0-alpha.17:
+  version "1.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/ts-endpoint-browser/-/ts-endpoint-browser-1.1.0-alpha.17.tgz#943b17f12497f2f6ce9286f8776582155b2636a5"
+  integrity sha512-pUXJstVzDERpsbxcXIx9rcuYOx4+pt7Go4iR2MMKpVgMVSG8gq9rUo201eYWwFywfvPVUI8/Nxb6YsOSOepkvg==
   dependencies:
     io-ts-types "^0.5.8"
     isomorphic-fetch "^2.2.1"
     monocle-ts "^2.3.3"
     newtype-ts "^0.3.4"
     swr "^0.3.5"
-    ts-endpoint "^1.5.0-alpha.18"
+    ts-endpoint "^1.5.0-alpha.19"
     ts-shared "^1.0.1-alpha.3"
     typelevel-ts "^0.4.0"
 
-ts-endpoint-express@^1.1.0-alpha.15:
-  version "1.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/ts-endpoint-express/-/ts-endpoint-express-1.1.0-alpha.16.tgz#a06059e823b7ccaf0cc29fd2726fb2f5dfac81bb"
-  integrity sha512-aqQjwaScABxsSXdXCb+CFrKd47keUwPiMBuYU5CVwbLV0Im3GXy83d6BHr4ciscYVm4UpoHXfuwr+RXJChlR6Q==
+ts-endpoint-express@^1.1.0-alpha.18:
+  version "1.1.0-alpha.18"
+  resolved "https://registry.yarnpkg.com/ts-endpoint-express/-/ts-endpoint-express-1.1.0-alpha.18.tgz#0852a4cfaf58849d676dd65167d72e53c0d6ab13"
+  integrity sha512-Dgf4mnNSwH6sQX9mZDDn5H6GEumY7iCvt1ibVDFk9/tGA8uohdYfvFhufNbskpLOMIyvfcBjVgrCUZbtRyVzuA==
   dependencies:
     io-ts-types "^0.5.8"
     monocle-ts "^2.3.3"
     newtype-ts "^0.3.4"
-    ts-endpoint "^1.5.0-alpha.18"
+    ts-endpoint "^1.5.0-alpha.19"
     ts-shared "^1.0.1-alpha.3"
     typelevel-ts "^0.4.0"
 
-ts-endpoint@^1.5.0-alpha.17, ts-endpoint@^1.5.0-alpha.18:
-  version "1.5.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/ts-endpoint/-/ts-endpoint-1.5.0-alpha.18.tgz#2365a7afb43f15f082f13e6fd055322034e18d31"
-  integrity sha512-hDfEe4pqdY3W/ZWoAoOn6u0zt9y5zB2oN7wfTnvcT1FdhUPXFhfnOKO/0fmxyvfsYa6vFvtKeEm7hvvKkfNx1A==
+ts-endpoint@^1.5.0-alpha.19:
+  version "1.5.0-alpha.19"
+  resolved "https://registry.yarnpkg.com/ts-endpoint/-/ts-endpoint-1.5.0-alpha.19.tgz#d3fd057e882ac7e0544ecd6069d44d236443ce05"
+  integrity sha512-qXPhZXSyq/GrtGau7jku4LXr0uEyjanu6PACKQTuSMoF94Mz5oj3jAzEwyTiBFlqdEOYJZ0WW2NiJnopHTiPMQ==
   dependencies:
     io-ts "^2.2.7"
     io-ts-types "^0.5.8"
