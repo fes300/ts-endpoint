@@ -1,6 +1,7 @@
 ---
 id: simple-guide
-title: simple guide to start with `ts-endpoint`
+title: simple-guide to start with `ts-endpoint-browser`
+sidebar_label: using `ts-endpoint` in your browser
 ---
 
 First define your endpoints:
@@ -9,13 +10,14 @@ First define your endpoints:
 import * as t from 'io-ts';
 import { Endpoint } from 'ts-endpoint';
 
-export const getUser = Endpoint({
+const getCrayons = Endpoint({
   Input: {
-    Params: { id: NumberFromString },
+    Query: t.strict({ color: t.string }),
+    Params: t.strict({ id: t.string }),
   },
-  Method: "GET",
-  getPath: ({ id }) => `user/${id}`,
-  Output: t.strict({ user: User }),
+  Method: 'GET',
+  getPath: ({ id }) => `users/${id}/crayons`,
+  Output: t.strict({ crayons: t.array(t.string) }),
 });
 
 const createUser = Endpoint({
@@ -32,52 +34,10 @@ const createUser = Endpoint({
 });
 ```
 
-Then add implementations to your express server:
-
-```ts
-import express from 'express';
-import { getUser } from 'shared';
-import { AddEndpoint } from 'ts-endpoint-express/lib';
-import * as TA from 'fp-ts/lib/TaskEither';
-import * as E from 'fp-ts/lib/Either';
-import { pipe } from 'fp-ts/lib/pipeable';
-import { IOError } from 'ts-shared/lib/errors';
-
-const database = [
-  { id: 1, name: 'John', surname: 'Doe', age: 22 },
-  { id: 2, name: 'Michael', surname: 'Black', age: 51 },
-];
-
-function getUserFromDB(id: number) {
-  return TA.fromEither(E.fromNullable('user not found')(database.find((u) => u.id === id)));
-}
-
-const app = express();
-
-const router = express.Router();
-
-AddEndpoint(router)(getUser, ({ params: { id } }) => {
-  const user = getUserFromDB(id);
-
-  return pipe(
-    user,
-    TA.mapLeft((e) => new IOError(404, e, { kind: 'ClientError' })),
-    TA.map((userFromDB) => ({
-      body: { user: userFromDB },
-      statusCode: 200,
-    }))
-  );
-});
-
-app.use(router);
-
-app.listen(3000, () => {});
-```
-
 Then derive your fetch client for it:
 
 ```ts
-import { GetFetchHTTPClient } from 'ts-endpoint/browser/fetch';
+import { GetFetchHTTPClient } from 'ts-endpoint-browser/lib/fetch';
 
 const fetchClient = GetFetchHTTPClient(
   { protocol: 'http', host: 'test' },

@@ -40,6 +40,7 @@ const siteConfig = {
   headerLinks: [
     {doc: 'ts-endpoint/intro', label: 'ts-endpoint'},
     {doc: 'ts-endpoint-express/intro', label: 'ts-endpoint-express'},
+    {doc: 'ts-endpoint-browser/intro', label: 'ts-endpoint-browser'},
     { search: true },
   ],
 

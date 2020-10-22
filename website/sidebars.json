@@ -10,5 +10,11 @@
     "simple guide": [
       "ts-endpoint-express/simple-guide"
     ]
+  },
+  "ts-endpoint-browser": {
+    "setup": ["ts-endpoint-browser/intro"],
+    "simple guide": [
+      "ts-endpoint-browser/simple-guide"
+    ]
   }
 }

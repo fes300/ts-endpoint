@@ -1,7 +1,7 @@
 ---
 id: simple-guide
 title: simple-guide to start with `ts-endpoint-express`
-sidebar_label: Using `ts-endpoint` with an `express` app.
+sidebar_label: using `ts-endpoint` with an `express` app.
 ---
 
 First define your endpoints with `ts-endpoint`:
