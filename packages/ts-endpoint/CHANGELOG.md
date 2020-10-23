@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-alpha.20](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.19...ts-endpoint@1.5.0-alpha.20) (2020-10-23)
+
+
+### Features
+
+* remove unused dependencies ([ba8cb50](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/commit/ba8cb501796c6b9271c20e67a2ceb9657c4aa728))
+
+
+
+
+
 # 1.5.0-alpha.19 (2020-10-13)
 
 

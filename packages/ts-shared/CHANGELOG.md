@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.1-alpha.4 (2020-10-23)
+
+
+### Bug Fixes
+
+* spaces ([19a0846](https://github.com/fes300/ts-endpoint/packages/shared/commit/19a0846c164532a7c3138e8dcdab933057b0df39))
+
+
+
+
+
 ## [1.0.1-alpha.3](https://github.com/fes300/ts-endpoint/packages/shared/compare/ts-shared@1.0.1-alpha.2...ts-shared@1.0.1-alpha.3) (2020-10-13)
 
 
