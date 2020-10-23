@@ -16,7 +16,7 @@
   "scripts": {
     "build": "lerna run build",
     "bootstrap": "yarn && lerna bootstrap",
-    "release": "lerna publish --yes",
+    "release": "lerna publish --yes --conventional-graduate --force-publish",
     "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag next",
     "test": "lerna run test"
   },
