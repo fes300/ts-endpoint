@@ -17,7 +17,7 @@
     "build": "lerna run build",
     "bootstrap": "yarn && lerna bootstrap",
     "release": "lerna publish --yes",
-    "pre-release": "lerna publish --yes --conventional-prerelease",
+    "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag next",
     "test": "lerna run test"
   },
   "dependencies": {
