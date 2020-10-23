@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.1-alpha.5 (2020-10-23)
+
+
+### Bug Fixes
+
+* **cd:** checkout to master when releasing ([e76c79e](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-shared/commit/e76c79e002bd208e43c80fe7d3fd6db782a4a35e))
+
+
+
+
+
 ## 1.0.1-alpha.4 (2020-10-23)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.5.0-alpha.21 (2020-10-23)
+
+
+### Bug Fixes
+
+* **cd:** checkout to master when releasing ([e76c79e](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/e76c79e002bd208e43c80fe7d3fd6db782a4a35e))
+
+
+
+
+
 # [1.5.0-alpha.20](https://github.com/fes300/ts-endpoint/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.19...ts-endpoint@1.5.0-alpha.20) (2020-10-23)
 
 
