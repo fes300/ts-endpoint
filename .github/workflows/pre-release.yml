@@ -1,11 +1,11 @@
-name: Publish
+name: Pre-release
 
 on:
   push:
     branches: [master]
 
 jobs:
-  publish:
+  pre-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
