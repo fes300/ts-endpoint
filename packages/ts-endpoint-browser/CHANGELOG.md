@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.20](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.0-alpha.19...ts-endpoint-browser@1.1.0-alpha.20) (2020-10-23)
+
+**Note:** Version bump only for package ts-endpoint-browser
+
+
+
+
+
 # 1.1.0-alpha.19 (2020-10-23)
 
 
