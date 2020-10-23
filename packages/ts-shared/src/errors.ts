@@ -20,12 +20,15 @@ export class BaseError extends Error {
 }
 
 export type DecodingError = 'DecodingError';
+
 export type CommunicationError = 'ClientError' | 'ServerError' | 'NetworkError';
+
 export type IOErrorDetails =
   | { kind: DecodingError; errors: t.Errors }
   | { kind: CommunicationError; meta?: unknown };
 
 export const NetworkErrorStatus = 99;
+
 export const DecodeErrorStatus = 600;
 
 export class IOError extends BaseError {
