@@ -6,7 +6,7 @@
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/ts-endpoint/packages/shared",
+  "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-shared",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues"
   },

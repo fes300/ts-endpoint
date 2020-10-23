@@ -6,9 +6,9 @@
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint",
+  "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint",
   "bugs": {
-    "url": "https://github.com/fes300/ts-endpoint/packages/ts-endpoint/issues"
+    "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F3"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
