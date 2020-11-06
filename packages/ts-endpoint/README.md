@@ -2,7 +2,7 @@
 Only define your endpoints once. Use them in both clients and servers.
 
 ### docs
-documentation of every package can be found at ts-endpoint.federicosordillo.com
+documentation of every package can be found [here](https://ts-endpoint.federicosordillo.com)
 
 ### examples
 a working monorepo example can be found under the `/examples` foder.

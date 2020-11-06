@@ -5,7 +5,7 @@
 `ts-endpoint-browser` uses endpoints created with `ts-endpoint` to generate a fetch client to use in browsers.
 
 ### docs
-documentation of every package can be found at ts-endpoint.federicosordillo.com
+documentation of every package can be found [here](https://ts-endpoint.federicosordillo.com)
 
 ### examples
 a working monorepo example can be found under the `/examples` foder.
