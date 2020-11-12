@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0-alpha.0 (2020-11-12)
+
+
+### Bug Fixes
+
+* pass with no tests ([a3c05cc](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/commit/a3c05ccd43f90a59d3af0ed61b34a1ed000e2e8b))
+* remove unused tests ([373d9a4](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/commit/373d9a4b1ab6f08efb3e3180c6393bda66505be8))
+
+
+### Features
+
+* create package ([56d99a3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/commit/56d99a33396887e9e33333cb9616377aeb4304fc))
+* initial api ([db7ef04](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/commit/db7ef0477ac4d3468475fd46a55322a3258e4160))
+
+
+
+
+
 # [1.1.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.0-alpha.20...ts-endpoint-browser@1.1.0) (2020-10-23)
 
 **Note:** Version bump only for package ts-endpoint-browser
