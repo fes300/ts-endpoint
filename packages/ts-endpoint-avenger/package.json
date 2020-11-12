@@ -19,7 +19,7 @@
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
-    "test": "yarn runtime-test && yarn type-test"
+    "test": "yarn runtime-test --passWithNoTests  && yarn type-test --passWithNoTests"
   },
   "peerDependencies": {
     "fp-ts": "^2.0.0",

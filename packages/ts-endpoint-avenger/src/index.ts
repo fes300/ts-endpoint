@@ -16,8 +16,8 @@ import { ObservableQuery } from 'avenger/lib/Query';
  */
 type FilterIn<K, V, F> = V extends F ? K : never
 
-type TSCompose<A> = never;
-type TSproduct<A> = never;
+type TSCompose<A> = A;
+type TSproduct<A> = A;
 
 type TSQuery<E extends EndpointInstance<any> | TSCompose<any> | TSproduct<any>> = E extends EndpointInstance<infer EP> ? EP extends Endpoint<
   any,
@@ -58,7 +58,7 @@ type EndpointToQuery<E extends EndpointInstance<Endpoint<any, any>>> = E extends
     : never
   : never;
 
-declare function GetAvengerClient<ES extends Record<string, TSEndpoint<any, any>>>(
+export declare function GetAvengerClient<ES extends Record<string, TSEndpoint<any, any>>>(
   e: ES
 ): {
   queries: {
