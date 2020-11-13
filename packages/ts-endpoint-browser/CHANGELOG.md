@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.1-alpha.0 (2020-11-13)
+
+
+### Bug Fixes
+
+* **ts-endpoint-browser:** return error when response is not a json ([dd3e6d7](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/dd3e6d7eea3c8dc0dcfaf05fcb6f215b152d0730))
+
+
+
+
+
 # [1.1.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.0-alpha.20...ts-endpoint-browser@1.1.0) (2020-10-23)
 
 **Note:** Version bump only for package ts-endpoint-browser
