@@ -1,4 +1,9 @@
-import { EndpointInstance, TypeOfEndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint/src/Endpoint';
+import {
+  EndpointInstance,
+  TypeOfEndpointInstance,
+  Endpoint,
+  HTTPMethod,
+} from 'ts-endpoint/src/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { PathReporter } from 'io-ts/lib/PathReporter';
@@ -14,6 +19,17 @@ export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<a
   endpoints: A,
   defaultHeaders?: { [key: string]: string }
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, defaultHeaders);
+
+const getResponseJson = (r: Response) => {
+  return TA.tryCatch(
+    () => r.json(),
+    () =>
+      new IOError(r.status, r.statusText, {
+        kind: 'ServerError',
+        meta: { message: 'response is not a json.' },
+      })
+  );
+};
 
 export const useBrowserFetch = <
   M extends HTTPMethod,
@@ -47,24 +63,29 @@ export const useBrowserFetch = <
         () => new IOError(NetworkErrorStatus, 'Network Error', { kind: 'NetworkError' })
       ),
       TA.chain((r: Response) => {
-        const responseJson: TA.TaskEither<any, any> = TA.fromTask(() => r.json());
+        const responseJson: TA.TaskEither<any, any> = TA.tryCatch(
+          () => r.json(),
+          () =>
+            new IOError(r.status, r.statusText, {
+              kind: 'ServerError',
+              meta: { message: 'response is not a json.' },
+            })
+        );
 
         if (!r.ok) {
           if (r.status >= 400 && r.status <= 451) {
             return pipe(
-              responseJson,
-              TA.map(
-                (body) => new IOError(r.status, r.statusText, { kind: 'ClientError', meta: body })
-              ),
-              TA.swap
+              getResponseJson(r),
+              TA.chain((meta) =>
+                TA.left(new IOError(r.status, r.statusText, { kind: 'ClientError', meta }))
+              )
             );
           } else {
             return pipe(
-              responseJson,
-              TA.map(
-                (body) => new IOError(r.status, r.statusText, { kind: 'ServerError', meta: body })
-              ),
-              TA.swap
+              getResponseJson(r),
+              TA.chain((meta) =>
+                TA.left(new IOError(r.status, r.statusText, { kind: 'ServerError', meta }))
+              )
             );
           }
         }
@@ -73,17 +94,21 @@ export const useBrowserFetch = <
 
         const res = pipe(
           responseJson,
-          TA.chain((json) => TA.fromEither(e.Output.decode(json))),
-          TA.mapLeft(
-            (errors) =>
-              new IOError(
-                DecodeErrorStatus,
-                `Error decoding server response: ${PathReporter.report(left(errors))}`,
-                {
-                  kind: 'DecodingError',
-                  errors,
-                }
+          TA.chain((json) =>
+            pipe(
+              TA.fromEither(e.Output.decode(json)),
+              TA.mapLeft(
+                (errors) =>
+                  new IOError(
+                    DecodeErrorStatus,
+                    `Error decoding server response: ${PathReporter.report(left(errors))}`,
+                    {
+                      kind: 'DecodingError',
+                      errors,
+                    }
+                  )
               )
+            )
           )
         );
 

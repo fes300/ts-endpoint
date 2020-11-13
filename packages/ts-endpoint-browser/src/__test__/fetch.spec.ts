@@ -96,6 +96,8 @@ const lazyServerErrorRequest = () =>
   Promise.resolve(
     new Response(JSON.stringify({ foo: 'baz' }), { status: 500, statusText: 'server error' })
   );
+const lazyBlobResponse = () =>
+  Promise.resolve(new Response(new Blob([], { type: 'application/json' })));
 const lazyClientErrorRequest = () =>
   Promise.resolve(
     new Response(JSON.stringify({ foo: 'baz' }), { status: 404, statusText: 'client error' })
@@ -284,5 +286,14 @@ describe('GetFetchHTTPClient', () => {
     })();
 
     expect((getResponse as any).left.details.meta).toEqual({ foo: 'baz' });
+  });
+  it.only('returns a ServerError when the response is not a json', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyBlobResponse());
+    const getResponse = await noPortFetchClient.getEndpoint({
+      Params: { id: '1' },
+      Query: { color: 'blue' },
+    })();
+
+    expect((getResponse as any).left.details.meta).toEqual({ message: 'response is not a json.' });
   });
 });
