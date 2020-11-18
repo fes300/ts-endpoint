@@ -11,3 +11,8 @@ A working monorepo example can be found under the `/examples` foder.
 
 ### contibuting
 Just pick a card on the github projects found here, please be sure to follow `conventional-commits` guidelines.
+
+### release routine
+- update docs
+- update examples
+- push a RELEASE-${DD_MM_YYY}.${release} tag on master
