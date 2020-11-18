@@ -35,8 +35,6 @@
     "typescript": "^4.1.1-rc"
   },
   "dependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
     "@types/jest": "^26.0.7",
     "fp-ts": "^2.6.7",
     "husky": "^4.2.5",
