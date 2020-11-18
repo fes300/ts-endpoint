@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Body is allowed with PATCH (type) should match snapshot 1`] = `"{ foo: StringC; }"`;
+exports[`Body is allowed with PATCH (type) should match snapshot 1`] = `"TypeC<{ foo: StringC; }>"`;
 
-exports[`Body is allowed with POST (type) should match snapshot 1`] = `"{ foo: StringC; }"`;
+exports[`Body is allowed with POST (type) should match snapshot 1`] = `"TypeC<{ foo: StringC; }>"`;
 
-exports[`Body is allowed with PUT (type) should match snapshot 1`] = `"{ foo: StringC; }"`;
+exports[`Body is allowed with PUT (type) should match snapshot 1`] = `"TypeC<{ foo: StringC; }>"`;
 
-exports[`Body is not allowed with method !== POST | PUT | PATCH (type) should match snapshot 1`] = `"Type 'StringC' is not assignable to type 'never'."`;
+exports[`Body is not allowed with method !== POST | PUT | PATCH (type) should match snapshot 1`] = `"Type 'TypeC<{ foo: StringC; }>' is not assignable to type 'never'."`;
 
 exports[`accessing defined Params in getPath is allowed (type) should match snapshot 1`] = `"({ id }: { id: string; }) => string"`;
 

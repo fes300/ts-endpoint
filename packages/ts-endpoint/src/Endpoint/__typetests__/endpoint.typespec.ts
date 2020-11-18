@@ -30,7 +30,7 @@ Endpoint({
     Query: { color: t.string },
     Params: { id: t.string },
     // @dts-jest:fail:snap Body is not allowed with method !== POST | PUT | PATCH
-    Body: { foo: t.string },
+    Body: t.type({ foo: t.string }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
@@ -43,7 +43,7 @@ Endpoint({
     Query: { color: t.string },
     Params: { id: t.string },
     // @dts-jest:pass:snap  Body is allowed with POST
-    Body: { foo: t.string },
+    Body: t.type({ foo: t.string }),
   },
   Method: 'POST',
   getPath: ({ id }) => `users/${id}/crayons`,
@@ -56,7 +56,7 @@ Endpoint({
     Query: { color: t.string },
     Params: { id: t.string },
     // @dts-jest:pass:snap Body is allowed with PUT
-    Body: { foo: t.string },
+    Body: t.type({ foo: t.string }),
   },
   Method: 'PUT',
   getPath: ({ id }) => `users/${id}/crayons`,
@@ -69,7 +69,7 @@ Endpoint({
     Query: { color: t.string },
     Params: { id: t.string },
     // @dts-jest:pass:snap Body is allowed with PATCH
-    Body: { foo: t.string },
+    Body: t.type({ foo: t.string }),
   },
   Method: 'PATCH',
   getPath: ({ id }) => `users/${id}/crayons`,

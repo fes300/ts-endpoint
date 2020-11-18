@@ -40,7 +40,7 @@ export interface Endpoint<
   O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
 > {
   /* utils to get the full path given a set of query params */
@@ -122,9 +122,7 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> =
     (E['Input']['Query'] extends undefined
       ? { Query?: never }
       : { Query: t.TypeC<NonNullable<E['Input']['Query']>> }) &
-    (E['Input']['Body'] extends undefined
-      ? { Body?: never }
-      : { Body: t.TypeC<NonNullable<E['Input']['Body']>> });
+    (E['Input']['Body'] extends undefined ? { Body?: never } : { Body: E['Input']['Body'] });
 };
 
 export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
@@ -151,7 +149,7 @@ export function Endpoint<
   O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P>): EndpointInstance<Endpoint<M, O, H, Q, B, P>> {
   return ({
@@ -171,7 +169,7 @@ export function Endpoint<
       return addSlash(path);
     },
     Input: {
-      ...(e.Input.Body !== undefined ? { Body: t.type(e.Input.Body as t.Props) } : {}),
+      Body: e.Input.Body,
       ...(e.Input.Headers !== undefined ? { Headers: t.type(e.Input.Headers as t.Props) } : {}),
       ...(e.Input.Params !== undefined ? { Params: t.type(e.Input.Params as t.Props) } : {}),
       ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props) } : {}),
