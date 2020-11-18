@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.0...ts-endpoint-express@2.0.0-alpha.1) (2020-11-18)
+
+
+### Features
+
+* **deps:** update typescript ([aa2dc4d](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/aa2dc4ddb217c8289a330f52b0f64a66c2d23010))
+
+
+
+
+
 # [2.0.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0...ts-endpoint-express@2.0.0-alpha.0) (2020-11-18)
 
 

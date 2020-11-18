@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/compare/ts-endpoint-avenger@1.1.1-alpha.0...ts-endpoint-avenger@1.2.0-alpha.0) (2020-11-18)
+
+
+### Features
+
+* **bump-deps:** update deps ([7212d7b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/commit/7212d7b67c90792b4d0a5c91951e29809c92f76c))
+
+
+
+
+
 ## [1.1.1-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-avenger/compare/ts-endpoint-avenger@1.1.0...ts-endpoint-avenger@1.1.1-alpha.0) (2020-11-18)
 
 **Note:** Version bump only for package ts-endpoint-avenger

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.0...ts-endpoint@2.0.0-alpha.1) (2020-11-18)
+
+
+### Bug Fixes
+
+* body definition ([dfc79a1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/dfc79a12923468e76513a60c29c9d69b73809bab))
+
+
+
+
+
 # [2.0.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@1.5.0...ts-endpoint@2.0.0-alpha.0) (2020-11-18)
 
 

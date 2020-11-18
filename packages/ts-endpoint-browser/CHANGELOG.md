@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.0...ts-endpoint-browser@2.0.0-alpha.1) (2020-11-18)
+
+
+### Bug Fixes
+
+* **tests:** fix broken tests ([1613213](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/1613213c5339ad00c6390736f58e9a41f09929a2))
+
+
+### Features
+
+* **bump-deps:** update deps ([7212d7b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/7212d7b67c90792b4d0a5c91951e29809c92f76c))
+* **deps:** update typescript ([aa2dc4d](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/aa2dc4ddb217c8289a330f52b0f64a66c2d23010))
+
+
+
+
+
 # [2.0.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.1...ts-endpoint-browser@2.0.0-alpha.0) (2020-11-18)
 
 
