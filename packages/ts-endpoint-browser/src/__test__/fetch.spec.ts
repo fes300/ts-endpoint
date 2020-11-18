@@ -287,7 +287,7 @@ describe('GetFetchHTTPClient', () => {
 
     expect((getResponse as any).left.details.meta).toEqual({ foo: 'baz' });
   });
-  it.only('returns a ServerError when the response is not a json', async () => {
+  it('returns a ServerError when the response is not a json', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazyBlobResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
       Params: { id: '1' },

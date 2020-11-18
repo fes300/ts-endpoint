@@ -47,7 +47,7 @@ export type AddEndpoint = (
   O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  B extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
 >(
   e: EndpointInstance<Endpoint<any, O, H, Q, B, P>>,
