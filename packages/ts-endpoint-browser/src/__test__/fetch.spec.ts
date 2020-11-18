@@ -39,11 +39,11 @@ const endpoints = {
   postEndpoint: Endpoint({
     Input: {
       Params: { id: t.string },
-      Body: {
+      Body: t.type({
         name: t.string,
         surname: t.string,
         age: t.number,
-      },
+      }),
     },
     Method: 'POST',
     getPath: () => 'users',
@@ -52,11 +52,11 @@ const endpoints = {
   putEndpoint: Endpoint({
     Input: {
       Params: { id: t.string },
-      Body: {
+      Body: t.type({
         name: t.string,
         surname: t.string,
         age: t.number,
-      },
+      }),
     },
     Method: 'PUT',
     getPath: ({ id }) => `users/${id}`,
@@ -73,9 +73,9 @@ const endpoints = {
   patchEndpoint: Endpoint({
     Input: {
       Params: { id: t.string },
-      Body: {
+      Body: t.type({
         name: t.string,
-      },
+      }),
     },
     Method: 'PATCH',
     getPath: ({ id }) => `users/${id}`,
