@@ -12,12 +12,12 @@ import { Endpoint } from 'ts-endpoint';
 
 const getCrayons = Endpoint({
   Input: {
-    Query: t.strict({ color: t.string }),
-    Params: t.strict({ id: t.string }),
+    Query: { color: t.string },
+    Params: { id: t.string },
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
-  Output: t.strict({ crayons: t.array(t.string) }),
+  Output: t.type({ crayons: t.array(t.string) }),
 });
 
 const createUser = Endpoint({
@@ -30,7 +30,7 @@ const createUser = Endpoint({
   },
   Method: 'POST',
   getPath: () => 'users',
-  Output: t.strict({ id: t.string }),
+  Output: { id: t.string },
 });
 ```
 

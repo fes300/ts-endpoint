@@ -12,7 +12,7 @@ import { Endpoint } from 'ts-endpoint';
 
 const getCrayons = Endpoint({
   Input: {
-    Params: t.strict({ id: t.string }),
+    Params: { id: t.string },
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
