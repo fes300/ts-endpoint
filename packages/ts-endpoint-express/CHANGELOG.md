@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0...ts-endpoint-express@2.0.0-alpha.0) (2020-11-18)
+
+
+* feat(ts-endpoint)!: body as free codec ([246b975](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/246b9756a5da6c83039170507b22eab8e51f10be))
+
+
+### Features
+
+* change readme ([77fa1de](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/77fa1de209a62277c393406876ae15e80a340463))
+* create package ([56d99a3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/56d99a33396887e9e33333cb9616377aeb4304fc))
+* update typescript ([dbe26a8](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/dbe26a80edf9db534a0a9efc49bf66b405d639dc))
+
+
+### BREAKING CHANGES
+
+* Input.Body must now be an io-ts codec
+
+
+
+
+
 # [1.1.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@1.1.0-alpha.21...ts-endpoint-express@1.1.0) (2020-10-23)
 
 **Note:** Version bump only for package ts-endpoint-express

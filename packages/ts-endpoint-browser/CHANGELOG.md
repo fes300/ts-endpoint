@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.1...ts-endpoint-browser@2.0.0-alpha.0) (2020-11-18)
+
+
+* feat(ts-endpoint)!: body as free codec ([246b975](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/246b9756a5da6c83039170507b22eab8e51f10be))
+
+
+### BREAKING CHANGES
+
+* Input.Body must now be an io-ts codec
+
+
+
+
+
 ## [1.1.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@1.1.1-alpha.0...ts-endpoint-browser@1.1.1) (2020-11-13)
 
 **Note:** Version bump only for package ts-endpoint-browser

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@1.5.0...ts-endpoint@2.0.0-alpha.0) (2020-11-18)
+
+
+* feat(ts-endpoint)!: body as free codec ([246b975](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/246b9756a5da6c83039170507b22eab8e51f10be))
+
+
+### Bug Fixes
+
+* readme ([b87cb03](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/b87cb03b51e7b8e999c6ef2a19757a4ac11ce789))
+
+
+### Features
+
+* create package ([56d99a3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/56d99a33396887e9e33333cb9616377aeb4304fc))
+* initial api ([db7ef04](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/db7ef0477ac4d3468475fd46a55322a3258e4160))
+
+
+### BREAKING CHANGES
+
+* Input.Body must now be an io-ts codec
+
+
+
+
+
 # [1.5.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@1.5.0-alpha.22...ts-endpoint@1.5.0) (2020-10-23)
 
 **Note:** Version bump only for package ts-endpoint
