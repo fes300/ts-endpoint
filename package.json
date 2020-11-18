@@ -5,14 +5,13 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
     "@types/jest": "^26.0.7",
-    "husky": "^4.2.5",
+    "husky": "^5.0.1",
     "lerna": "^3.22.1",
     "typescript": "^4.1.1-rc"
   },
   "scripts": {
+    "postinstall": "husky install",
     "build": "lerna run build",
     "bootstrap": "yarn && lerna bootstrap",
     "release": "lerna publish --yes --conventional-graduate --force-publish",
