@@ -32,7 +32,7 @@ jobs:
         run: yarn test
 
       - name: git login
-        uses: oleksiyrudenko/gha-git-credentials@v1
+        uses: oleksiyrudenko/gha-git-credentials@v2
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
 
