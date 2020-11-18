@@ -122,7 +122,9 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any>> =
     (E['Input']['Query'] extends undefined
       ? { Query?: never }
       : { Query: t.TypeC<NonNullable<E['Input']['Query']>> }) &
-    (E['Input']['Body'] extends undefined ? { Body?: never } : { Body: E['Input']['Body'] });
+    (E['Input']['Body'] extends undefined
+      ? { Body?: never }
+      : { Body: NonNullable<E['Input']['Body']> });
 };
 
 export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
@@ -169,7 +171,7 @@ export function Endpoint<
       return addSlash(path);
     },
     Input: {
-      Body: e.Input.Body,
+      ...(e.Input.Body !== undefined ? { Body: e.Input.Body } : {}),
       ...(e.Input.Headers !== undefined ? { Headers: t.type(e.Input.Headers as t.Props) } : {}),
       ...(e.Input.Params !== undefined ? { Params: t.type(e.Input.Params as t.Props) } : {}),
       ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props) } : {}),
