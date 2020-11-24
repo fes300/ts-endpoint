@@ -77,6 +77,34 @@ Endpoint({
   Opts: { stringifyBody: true },
 });
 
+Endpoint({
+  Input: {
+    Query: { color: t.string },
+    Params: { id: t.string },
+    // @dts-jest:pass:snap Body is allowed with unions
+    Body: t.union([t.type({ foo: t.string }), t.type({ baz: t.string })]),
+  },
+  Method: 'PATCH',
+  getPath: ({ id }) => `users/${id}/crayons`,
+  // @dts-jest:pass:snap Body is allowed with unions
+  Output: t.union([t.type({ foo: t.string }), t.type({ baz: t.string })]),
+  Opts: { stringifyBody: true },
+});
+
+Endpoint({
+  Input: {
+    Query: { color: t.string },
+    Params: { id: t.string },
+    // @dts-jest:pass:snap Body is allowed with intersections
+    Body: t.intersection([t.type({ foo: t.string }), t.type({ baz: t.string })]),
+  },
+  Method: 'PATCH',
+  getPath: ({ id }) => `users/${id}/crayons`,
+  // @dts-jest:pass:snap Body is allowed with intersections
+  Output: t.union([t.type({ foo: t.string }), t.type({ baz: t.string })]),
+  Opts: { stringifyBody: true },
+});
+
 const endpointInstance = Endpoint({
   Input: {
     Query: { color: t.string },

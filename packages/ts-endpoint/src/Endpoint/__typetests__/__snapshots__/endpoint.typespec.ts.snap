@@ -6,6 +6,14 @@ exports[`Body is allowed with POST (type) should match snapshot 1`] = `"TypeC<{ 
 
 exports[`Body is allowed with PUT (type) should match snapshot 1`] = `"TypeC<{ foo: StringC; }>"`;
 
+exports[`Body is allowed with intersections (type) should match snapshot 1`] = `"IntersectionC<[TypeC<{ foo: StringC; }>, TypeC<{ baz: StringC; }>]>"`;
+
+exports[`Body is allowed with intersections (type) should match snapshot 2`] = `"UnionC<[TypeC<{ foo: StringC; }>, TypeC<{ baz: StringC; }>]>"`;
+
+exports[`Body is allowed with unions (type) should match snapshot 1`] = `"UnionC<[TypeC<{ foo: StringC; }>, TypeC<{ baz: StringC; }>]>"`;
+
+exports[`Body is allowed with unions (type) should match snapshot 2`] = `"UnionC<[TypeC<{ foo: StringC; }>, TypeC<{ baz: StringC; }>]>"`;
+
 exports[`Body is not allowed with method !== POST | PUT | PATCH (type) should match snapshot 1`] = `"Type 'TypeC<{ foo: StringC; }>' is not assignable to type 'never'."`;
 
 exports[`accessing defined Params in getPath is allowed (type) should match snapshot 1`] = `"({ id }: { id: string; }) => string"`;
