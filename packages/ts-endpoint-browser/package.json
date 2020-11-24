@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@types/jest": "^26.0.7",
-    "fp-ts": "^2.6.7",
     "husky": "^4.2.5",
     "io-ts-types": "^0.5.8",
     "isomorphic-fetch": "^3.0.0",
