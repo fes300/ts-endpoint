@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.2](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.1...ts-endpoint@2.0.0-alpha.2) (2020-11-24)
+
+
+### Features
+
+* move peerdeps to workspace ([4c0633a](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/4c0633a36e9acd3bd2e935955b4328fc1d4d854d))
+
+
+
+
+
 # [2.0.0-alpha.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.0...ts-endpoint@2.0.0-alpha.1) (2020-11-18)
 
 
