@@ -2,6 +2,8 @@
 
 exports[`correct constructions should work (type) should match snapshot 1`] = `"void"`;
 
+exports[`correct constructions should work (type) should match snapshot 2`] = `"void"`;
+
 exports[`should not allow empty calls (type) should match snapshot 1`] = `"Expected at least 1 arguments, but got 0."`;
 
 exports[`won't compile if output oc controller is wrong (type) should match snapshot 1`] = `
