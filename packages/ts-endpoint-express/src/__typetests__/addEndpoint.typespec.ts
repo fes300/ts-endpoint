@@ -43,13 +43,12 @@ AddEndpoint(router)(getEndpoint, ({ headers: { auth }, params: { id } }) => () =
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
 
-
 const postEndpoint = Endpoint({
   Input: {
-    Body: t.type({ content: t.string })
+    Body: t.type({ content: t.string }),
   },
   Method: 'POST',
-  getPath: ({ id }) => `users/${id}/crayons`,
+  getPath: () => `users/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
 });
 

@@ -18,6 +18,6 @@ exports[`won't compile if output oc controller is wrong (type) should match snap
                 Type 'number' is not assignable to type 'string'."
 `;
 
-exports[`won't compile if trying to access non defined body (type) should match snapshot 1`] = `"Property 'foo' does not exist on type '{}'."`;
+exports[`won't compile if trying to access non defined body (type) should match snapshot 1`] = `"Property 'foo' does not exist on type 'undefined'."`;
 
 exports[`won't compile if trying to access non existent param (type) should match snapshot 1`] = `"Property 'baz' does not exist on type 'CodecRecordOutput<{ auth: StringC; }>'."`;

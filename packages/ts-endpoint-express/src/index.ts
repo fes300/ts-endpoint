@@ -57,7 +57,7 @@ export type AddEndpoint = (
     OutputOrNever<P>,
     OutputOrNever<H>,
     OutputOrNever<Q>,
-    B extends t.Type<any, any, any> ? t.TypeOf<B> : never,
+    B extends undefined ? undefined : B extends t.Type<any, any, any> ? t.TypeOf<B> : undefined,
     t.TypeOf<O>
   >
 ) => void;
