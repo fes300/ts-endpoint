@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.2...ts-endpoint-express@2.0.0-alpha.3) (2021-01-06)
+
+
+### Bug Fixes
+
+* endpoint body type inference ([#59](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/issues/59)) ([ab15856](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/ab158563d09033166ed99a3feb25ced24f5e6db1))
+
+
+
+
+
 # [2.0.0-alpha.2](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.1...ts-endpoint-express@2.0.0-alpha.2) (2020-11-24)
 
 **Note:** Version bump only for package ts-endpoint-express
