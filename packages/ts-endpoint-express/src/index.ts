@@ -1,4 +1,4 @@
-import { EndpointInstance, Endpoint } from 'ts-endpoint';
+import { EndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';
@@ -44,19 +44,20 @@ export type AddEndpoint = (
   router: express.Router,
   ...m: express.RequestHandler[]
 ) => <
+  M extends HTTPMethod,
   O extends t.Type<any, any, any>,
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
 >(
-  e: EndpointInstance<Endpoint<any, O, H, Q, B, P>>,
+  e: EndpointInstance<Endpoint<M, O, H, Q, B, P>>,
   c: Controller<
     IOError,
     OutputOrNever<P>,
     OutputOrNever<H>,
     OutputOrNever<Q>,
-    OutputOrNever<B>,
+    B extends undefined ? undefined : B extends t.Type<any, any, any> ? t.TypeOf<B> : undefined,
     t.TypeOf<O>
   >
 ) => void;

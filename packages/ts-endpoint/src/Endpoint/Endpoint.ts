@@ -172,9 +172,9 @@ export function Endpoint<
     },
     Input: {
       ...(e.Input.Body !== undefined ? { Body: e.Input.Body } : {}),
-      ...(e.Input.Headers !== undefined ? { Headers: t.type(e.Input.Headers as t.Props) } : {}),
-      ...(e.Input.Params !== undefined ? { Params: t.type(e.Input.Params as t.Props) } : {}),
-      ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props) } : {}),
+      ...(e.Input.Headers !== undefined ? { Headers: t.type(e.Input.Headers as t.Props, 'Headers') } : {}),
+      ...(e.Input.Params !== undefined ? { Params: t.type(e.Input.Params as t.Props, 'Params') } : {}),
+      ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props, 'Query') } : {}),
     },
     Opts: e.Opts ?? defaultOps,
   } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P>>;
