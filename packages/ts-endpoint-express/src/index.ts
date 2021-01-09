@@ -66,7 +66,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
   const matcher = getRouterMatcher(router, e);
   const path = e.getStaticPath((param) => `:${param}`);
 
-  matcher.bind(router)(path, ...(m ?? []), async (req, res) => {
+  matcher.bind(router)(path, ...(m ?? []), async (req, res, next) => {
     const args = sequenceS(E.either)({
       params: e.Input.Params === undefined ? E.right(undefined) : e.Input.Params.decode(req.params),
       headers:
@@ -85,10 +85,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
       TA.chain((args) => controller(args as any)),
       TA.bimap(
         (e) => {
-          const { kind, ...errorPayload } = e.details;
-          const errorMeta: ErrorMeta = { ...errorPayload, message: e.message };
-
-          res.status(e.status).send(errorMeta);
+          return next(e)
         },
         (httpResponse) => {
           if (httpResponse.headers !== undefined) {
