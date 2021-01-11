@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.4](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.3...ts-endpoint-express@2.0.0-alpha.4) (2021-01-11)
+
+
+### Bug Fixes
+
+* pass error to next express handler ([#60](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/issues/60)) ([a7b4d52](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/a7b4d52ef4f1428969f5d7c03cb0d6eb69192e44))
+
+
+
+
+
 # [2.0.0-alpha.3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.2...ts-endpoint-express@2.0.0-alpha.3) (2021-01-06)
 
 
