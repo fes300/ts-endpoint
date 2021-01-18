@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0-alpha.4 (2021-01-18)
+
+
+### Features
+
+* add handleError to get-http-client options ([e3ed306](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/e3ed30694ca0ee9631bb006e8ad1d4fff3319f64))
+
+
+### BREAKING CHANGES
+
+* the third argument of GetHTTPClient and GetFetchHTTPClient changed shape
+
+
+
+
+
 # [2.0.0-alpha.3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.2...ts-endpoint-browser@2.0.0-alpha.3) (2021-01-06)
 
 **Note:** Version bump only for package ts-endpoint-browser

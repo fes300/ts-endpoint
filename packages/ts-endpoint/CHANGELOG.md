@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0-alpha.4 (2021-01-18)
+
+
+### Features
+
+* add with-headers util ([fd8489f](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/fd8489fb008dfdcf230fa7533366afda5dc2ec5f))
+
+
+### BREAKING CHANGES
+
+* `withAuth` is now exported from lib/withHeader
+
+
+
+
+
 # [2.0.0-alpha.3](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.2...ts-endpoint@2.0.0-alpha.3) (2021-01-06)
 
 
