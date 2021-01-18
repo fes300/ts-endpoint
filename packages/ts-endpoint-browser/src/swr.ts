@@ -46,7 +46,7 @@ export const GetSWRImpl = <
       Object.entries(qs).reduce(
         (acc, [k, v]) => ({
           ...acc,
-          [k]: useBrowserFetch(baseURL, v, defaultHeaders),
+          [k]: useBrowserFetch(baseURL, v, { defaultHeaders }),
         }),
         {} as { [k: string]: FetchClient<EndpointInstance<any>, IOError> }
       )

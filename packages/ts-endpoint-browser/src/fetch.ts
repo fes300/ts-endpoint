@@ -11,14 +11,14 @@ import * as TA from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
 import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
-import { HTTPClient, GetHTTPClient, FetchClient } from '.';
+import { HTTPClient, GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import { left } from 'fp-ts/lib/Either';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  defaultHeaders?: { [key: string]: string }
-): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, defaultHeaders);
+  options?: GetHTTPClientOptions<IOError>
+): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, options);
 
 const getResponseJson = (r: Response) => {
   return TA.tryCatch(
@@ -41,14 +41,14 @@ export const useBrowserFetch = <
 >(
   baseURL: string,
   e: EndpointInstance<Endpoint<M, O, H, Q, B, P>>,
-  defaultHeaders?: { [key: string]: string }
+  options?: GetHTTPClientOptions<IOError>
 ): FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P>>, IOError> => {
   return (i: TypeOfEndpointInstance<EndpointInstance<Endpoint<M, O, H, Q, B, P>>>['Input']) => {
     const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
       i.Query ? `?${qs.stringify(i.Query)}` : ''
     }`;
     const body = e.Opts?.stringifyBody ? qs.stringify(i.Body) : i.Body;
-    const headers = { ...i.Headers, ...defaultHeaders };
+    const headers = { ...i.Headers, ...options?.defaultHeaders };
 
     const response = pipe(
       TA.tryCatch(
@@ -113,7 +113,13 @@ export const useBrowserFetch = <
         );
 
         return res;
-      })
+      }),
+      TA.mapLeft(e => {
+        if(options?.handleError !== undefined) {
+          return options.handleError(e)
+        }
+        return e
+      }),
     );
 
     return response;

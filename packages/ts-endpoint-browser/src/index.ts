@@ -17,15 +17,20 @@ export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
   [K in keyof A]: FetchClient<A[K], W>;
 };
 
+export type GetHTTPClientOptions<W> = {
+  defaultHeaders?: { [key: string]: string },
+  handleError?: (e: W) => W
+}
+
 export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }, W>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   getFetchClient: <E extends EndpointInstance<any>>(
     baseURL: string,
-    e: E,
-    defaultHeaders?: { [key: string]: string }
+    error: E,
+    options?: GetHTTPClientOptions<W>
   ) => FetchClient<E, W>,
-  defaultHeaders?: { [key: string]: string }
+  options?: GetHTTPClientOptions<W>
 ): HTTPClient<A, W> => {
   const config = HTTPClientConfig.is(c) ? HTTPClientConfig.encode(c) : c;
   const baseURL = `${config.protocol}://${config.host}${
@@ -35,7 +40,7 @@ export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }
   const clientWithMethods = Object.entries(endpoints).reduce(
     (acc, [k, v]) => ({
       ...acc,
-      [k]: getFetchClient(baseURL, v, defaultHeaders),
+      [k]: getFetchClient(baseURL, v, options),
     }),
     {} as HTTPClient<A, W>
   );

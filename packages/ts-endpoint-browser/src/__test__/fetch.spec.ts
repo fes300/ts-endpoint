@@ -4,7 +4,7 @@ import { Endpoint } from 'ts-endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { isLeft } from 'fp-ts/lib/Either';
-import { DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
+import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -82,10 +82,12 @@ const endpoints = {
     Output: t.type({ id: t.string }),
   }),
 };
-const fetchClient = GetFetchHTTPClient(options, endpoints, { 'Content-type': 'application/json' });
-const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints, {
-  'Content-type': 'application/json',
-});
+const HandledError = new IOError(112, "this is a handled error", { kind: 'ClientError' })
+const fetchClient = GetFetchHTTPClient(options, endpoints, { defaultHeaders: {'Content-type': 'application/json'} });
+const handleErrorClient = GetFetchHTTPClient(options, endpoints, { defaultHeaders: {'Content-type': 'application/json'}, handleError: () => {
+  return HandledError
+} });
+const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints,  { defaultHeaders: {'Content-type': 'application/json'} });
 
 const lazySuccesfullQueryRequest = () =>
   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
@@ -295,5 +297,14 @@ describe('GetFetchHTTPClient', () => {
     })();
 
     expect((getResponse as any).left.details.meta).toEqual({ message: 'response is not a json.' });
+  });
+  it('returns the modified error when using handleError', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    const getResponse = await handleErrorClient.getEndpoint({
+      Params: { id: '1' },
+      Query: { color: 'blue' },
+    })();
+
+    expect((getResponse as any).left).toEqual(HandledError);
   });
 });
