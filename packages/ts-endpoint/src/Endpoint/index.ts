@@ -1,2 +1,2 @@
 export * from './Endpoint';
-export { withAuth } from './withAuth';
+export { withAuth } from './withHeaders';

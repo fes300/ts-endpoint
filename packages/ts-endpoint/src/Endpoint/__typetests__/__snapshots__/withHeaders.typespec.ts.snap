@@ -4,6 +4,12 @@ exports[`when endpoint is not wrapped you must not pass the header (type) should
 
 exports[`when endpoint is wrapped authorization header is present (type) should match snapshot 1`] = `"BrandC<StringC, BearerTokenBrand>"`;
 
+exports[`when endpoint is wrapped foo header is present (type) should match snapshot 1`] = `"StringC"`;
+
 exports[`when endpoint is wrapped other headers are still present (type) should match snapshot 1`] = `"StringC"`;
 
+exports[`when endpoint is wrapped other headers are still present (type) should match snapshot 2`] = `"StringC"`;
+
 exports[`when endpoint with no previous headers is wrapped, authorization header is present (type) should match snapshot 1`] = `"BrandC<StringC, BearerTokenBrand>"`;
+
+exports[`when endpoint with no previous headers is wrapped, foo header is present (type) should match snapshot 1`] = `"StringC"`;
