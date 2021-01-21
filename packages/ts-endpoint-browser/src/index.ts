@@ -18,9 +18,10 @@ export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
 };
 
 export type GetHTTPClientOptions<W> = {
-  defaultHeaders?: { [key: string]: string },
-  handleError?: (e: W) => W
-}
+  defaultHeaders?: { [key: string]: string };
+  handleError?: (e: W) => W;
+  mapInput?: (a: any) => any;
+};
 
 export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }, W>(
   c: HTTPClientConfig | StaticHTTPClientConfig,

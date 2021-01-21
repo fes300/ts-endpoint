@@ -90,13 +90,13 @@ export const useBrowserFetch = <
           }
         }
 
-        e.Output;
-
         const res = pipe(
           responseJson,
           TA.chain((json) =>
             pipe(
-              TA.fromEither(e.Output.decode(json)),
+              options?.mapInput ? options.mapInput(json) : json,
+              e.Output.decode,
+              TA.fromEither,
               TA.mapLeft(
                 (errors) =>
                   new IOError(
@@ -114,12 +114,12 @@ export const useBrowserFetch = <
 
         return res;
       }),
-      TA.mapLeft(e => {
-        if(options?.handleError !== undefined) {
-          return options.handleError(e)
+      TA.mapLeft((e) => {
+        if (options?.handleError !== undefined) {
+          return options.handleError(e);
         }
-        return e
-      }),
+        return e;
+      })
     );
 
     return response;
