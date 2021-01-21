@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.5](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.4...ts-endpoint-browser@2.0.0-alpha.5) (2021-01-21)
+
+
+### Features
+
+* map-input ([350783f](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/350783faab8083cac9184a822ffdd44e76c7ab4b))
+
+
+
+
+
 # 2.0.0-alpha.4 (2021-01-18)
 
 
