@@ -114,11 +114,11 @@ export const useBrowserFetch = <
 
         return res;
       }),
-      TA.mapLeft((e) => {
+      TA.mapLeft((err) => {
         if (options?.handleError !== undefined) {
-          return options.handleError(e);
+          return options.handleError(err, e);
         }
-        return e;
+        return err;
       })
     );
 

@@ -24,7 +24,9 @@ const endpoints = {
   }),
 };
 
-const fetchClient = GetFetchHTTPClient(options, endpoints);
+const fetchClient = GetFetchHTTPClient(options, endpoints, {
+  handleError: (err, e) => err
+});
 
 // @dts-jest:fail:snap should not allow empty calls
 fetchClient.prova();

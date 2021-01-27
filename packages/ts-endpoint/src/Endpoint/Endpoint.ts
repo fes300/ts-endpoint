@@ -2,10 +2,13 @@ import * as t from 'io-ts';
 import { identity } from 'fp-ts/lib/function';
 import { RequiredKeys } from 'typelevel-ts';
 
-export type PropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
+export type DecodedPropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
+export type EncodedPropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.OutputOf<P[k]> } : never;
 
-export type EndpointInput<E extends EndpointInstance<any>> = PropsType<E['Input']>;
-export type EndpointOutput<E extends EndpointInstance<any>> = t.TypeOf<E['Output']>;
+export type DecodedInput<E extends EndpointInstance<any>> = DecodedPropsType<E['Input']>;
+export type EncodedInput<E extends EndpointInstance<any>> = EncodedPropsType<E['Input']>;
+export type DecodedOutput<E extends EndpointInstance<any>> = t.TypeOf<E['Output']>;
+export type EncodedOutput<E extends EndpointInstance<any>> = t.TypeOf<E['Output']>;
 
 export const HTTPMethod = t.keyof(
   {

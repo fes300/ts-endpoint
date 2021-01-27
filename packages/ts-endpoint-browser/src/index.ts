@@ -3,15 +3,14 @@ import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import { Either } from 'fp-ts/lib/Either';
 import * as t from 'io-ts';
+import { ReaderTaskEither } from 'fp-ts/lib/ReaderTaskEither';
 
 type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;
 type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> : never;
 
 export type InferFetchResult<FC extends FetchClient<any, any>> = ExtractEither<FunctionOutput<FC>>;
 
-export type FetchClient<E extends EndpointInstance<any>, W> = (
-  i: TypeOfEndpointInstance<E>['Input']
-) => TaskEither<W, t.TypeOf<E['Output']>>;
+export type FetchClient<E extends EndpointInstance<any>, W> = ReaderTaskEither<TypeOfEndpointInstance<E>['Input'], W, t.TypeOf<E['Output']>>;
 
 export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
   [K in keyof A]: FetchClient<A[K], W>;
@@ -19,7 +18,7 @@ export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
 
 export type GetHTTPClientOptions<W> = {
   defaultHeaders?: { [key: string]: string };
-  handleError?: (e: W) => W;
+  handleError?: (err: W, e: EndpointInstance<any>) => W;
   mapInput?: (a: any) => any;
 };
 
