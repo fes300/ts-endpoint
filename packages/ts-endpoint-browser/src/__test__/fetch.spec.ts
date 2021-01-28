@@ -49,6 +49,24 @@ const endpoints = {
     getPath: () => 'users',
     Output: t.type({ id: t.string }),
   }),
+  postReturningUndefined: Endpoint({
+    Input: {
+      Params: { id: t.string },
+      Body: t.type({ foo: t.string }),
+    },
+    Method: 'POST',
+    getPath: () => 'users',
+    Output: t.undefined,
+  }),
+  postReturningNull: Endpoint({
+    Input: {
+      Params: { id: t.string },
+      Body: t.type({ foo: t.string }),
+    },
+    Method: 'POST',
+    getPath: () => 'users',
+    Output: t.null,
+  }),
   putEndpoint: Endpoint({
     Input: {
       Params: { id: t.string },
@@ -82,25 +100,35 @@ const endpoints = {
     Output: t.type({ id: t.string }),
   }),
 };
-const HandledError = new IOError(112, "this is a handled error", { kind: 'ClientError' })
-const fetchClient = GetFetchHTTPClient(options, endpoints, { defaultHeaders: {'Content-type': 'application/json'} });
-const handleErrorClient = GetFetchHTTPClient(options, endpoints, { defaultHeaders: {'Content-type': 'application/json'}, handleError: () => {
-  return HandledError
-} });
-const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints,  { defaultHeaders: {'Content-type': 'application/json'} });
+const HandledError = new IOError(112, 'this is a handled error', { kind: 'ClientError' });
+const fetchClient = GetFetchHTTPClient(options, endpoints, {
+  defaultHeaders: { 'Content-type': 'application/json' },
+});
+const handleErrorClient = GetFetchHTTPClient(options, endpoints, {
+  defaultHeaders: { 'Content-type': 'application/json' },
+  handleError: () => {
+    return HandledError;
+  },
+});
+const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints, {
+  defaultHeaders: { 'Content-type': 'application/json' },
+});
 
-const lazySuccesfullQueryRequest = () =>
+const lazySuccesfullQueryResponse = () =>
   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
-const lazySuccesfullCommandRequest = () =>
+const lazySuccesfullCommandResponse = () =>
   Promise.resolve(new Response(JSON.stringify({ crayons: ['lightBrown'] })));
-const lazyWrongBodyRequest = () => Promise.resolve(new Response(JSON.stringify({ foo: 'baz' })));
-const lazyServerErrorRequest = () =>
+const lazySuccesfullUndefinedResponse = () =>
+  Promise.resolve(new Response(JSON.stringify(undefined)));
+const lazySuccesfullNullResponse = () => Promise.resolve(new Response(JSON.stringify(null)));
+const lazyWrongBodyResponse = () => Promise.resolve(new Response(JSON.stringify({ foo: 'baz' })));
+const lazyServerErrorResponse = () =>
   Promise.resolve(
     new Response(JSON.stringify({ foo: 'baz' }), { status: 500, statusText: 'server error' })
   );
 const lazyBlobResponse = () =>
   Promise.resolve(new Response(new Blob([], { type: 'application/json' })));
-const lazyClientErrorRequest = () =>
+const lazyClientErrorResponse = () =>
   Promise.resolve(
     new Response(JSON.stringify({ foo: 'baz' }), { status: 404, statusText: 'client error' })
   );
@@ -112,6 +140,8 @@ describe('GetFetchHTTPClient', () => {
       'getEndpoint',
       'getEndpointWithLargeQuery',
       'postEndpoint',
+      'postReturningUndefined',
+      'postReturningNull',
       'putEndpoint',
       'deleteEndpoint',
       'patchEndpoint',
@@ -119,7 +149,7 @@ describe('GetFetchHTTPClient', () => {
   });
 
   it('calls global.fetch with the correct params', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryResponse());
 
     await fetchClient.getEndpoint({
       Params: { id: 'id' },
@@ -132,7 +162,7 @@ describe('GetFetchHTTPClient', () => {
     });
   });
   it('builds the path correctly when Params and Query are defined', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryResponse());
     await fetchClient.getEndpointWithLargeQuery({
       Params: { id: 12, crayonSet: 4 },
       Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
@@ -147,7 +177,7 @@ describe('GetFetchHTTPClient', () => {
     );
   });
   it('builds the path correctly when no port is given', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryResponse());
     await noPortFetchClient.getEndpointWithLargeQuery({
       Params: { id: 12, crayonSet: 4 },
       Query: { foo: 'fooImpl', bar: 4, baz: 'bazImpl' },
@@ -159,7 +189,7 @@ describe('GetFetchHTTPClient', () => {
     });
   });
   it('adds the body correctly when Body is defined', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandResponse());
     const body = { name: 'John', surname: 'Doe', age: 24 };
 
     await noPortFetchClient.postEndpoint({
@@ -173,7 +203,7 @@ describe('GetFetchHTTPClient', () => {
       body: JSON.stringify(body),
     });
 
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandResponse());
     await noPortFetchClient.putEndpoint({
       Params: { id: '1' },
       Body: { ...body },
@@ -185,7 +215,7 @@ describe('GetFetchHTTPClient', () => {
       body: JSON.stringify(body),
     });
 
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandResponse());
     await noPortFetchClient.deleteEndpoint({
       Params: { id: '1' },
     })();
@@ -195,7 +225,7 @@ describe('GetFetchHTTPClient', () => {
       method: 'DELETE',
     });
 
-    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullCommandResponse());
     await noPortFetchClient.patchEndpoint({
       Params: { id: '1' },
       Body: { name: 'John' },
@@ -208,7 +238,7 @@ describe('GetFetchHTTPClient', () => {
     });
   });
   it('returns the correct IOError when decoding the server payload results in error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyResponse());
     const patchResponse = await noPortFetchClient.patchEndpoint({
       Params: { id: '1' },
       Body: { name: 'John' },
@@ -218,7 +248,7 @@ describe('GetFetchHTTPClient', () => {
     expect((patchResponse as any).left.details.kind).toBe('DecodingError');
     expect((patchResponse as any).left.status).toBe(DecodeErrorStatus);
 
-    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
       Params: { id: '1' },
       Query: { color: 'blue' },
@@ -229,7 +259,7 @@ describe('GetFetchHTTPClient', () => {
     expect((getResponse as any).left.status).toBe(DecodeErrorStatus);
   });
   it('returns the correct IOError when there is a server error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorResponse());
     const patchResponse = await noPortFetchClient.patchEndpoint({
       Params: { id: '1' },
       Body: { name: 'John' },
@@ -239,7 +269,7 @@ describe('GetFetchHTTPClient', () => {
     expect((patchResponse as any).left.details.kind).toBe('ServerError');
     expect((patchResponse as any).left.status).toBe(500);
 
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
       Params: { id: '1' },
       Query: { color: 'blue' },
@@ -250,7 +280,7 @@ describe('GetFetchHTTPClient', () => {
     expect((getResponse as any).left.status).toBe(500);
   });
   it('returns the correct IOError when there is a client error', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
       Params: { id: '1' },
       Query: { color: 'blue' },
@@ -272,7 +302,7 @@ describe('GetFetchHTTPClient', () => {
     expect((getResponse as any).left.status).toBe(NetworkErrorStatus);
   });
   it('returns the response body in the ClientError meta', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyClientErrorResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
       Params: { id: '1' },
       Query: { color: 'blue' },
@@ -281,7 +311,7 @@ describe('GetFetchHTTPClient', () => {
     expect((getResponse as any).left.details.meta).toEqual({ foo: 'baz' });
   });
   it('returns the response body in the ServerError meta', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
       Params: { id: '1' },
       Query: { color: 'blue' },
@@ -299,12 +329,32 @@ describe('GetFetchHTTPClient', () => {
     expect((getResponse as any).left.details.meta).toEqual({ message: 'response is not a json.' });
   });
   it('returns the modified error when using handleError', async () => {
-    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorRequest());
+    global.fetch = jest.fn().mockReturnValueOnce(lazyServerErrorResponse());
     const getResponse = await handleErrorClient.getEndpoint({
       Params: { id: '1' },
       Query: { color: 'blue' },
     })();
 
     expect((getResponse as any).left).toEqual(HandledError);
+  });
+
+  it('POST calls returning undefined work as expected', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullUndefinedResponse());
+    const getResponse = await fetchClient.postReturningUndefined({
+      Params: { id: '1' },
+      Body: { foo: 'baz' },
+    })();
+
+    expect(getResponse._tag).toEqual('Right');
+  });
+
+  it('POST calls returning null work as expected', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullNullResponse());
+    const getResponse = await fetchClient.postReturningNull({
+      Params: { id: '1' },
+      Body: { foo: 'baz' },
+    })();
+
+    expect(getResponse._tag).toEqual('Right');
   });
 });

@@ -1,6 +1,6 @@
 import useSWR, { responseInterface } from 'swr';
 import { PathReporter } from 'io-ts/lib/PathReporter';
-import { EndpointInstance, EndpointInput, EndpointOutput } from 'ts-endpoint/src/Endpoint';
+import { EndpointInstance, DecodedInput, DecodedOutput } from 'ts-endpoint/src/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { IOError, NetworkErrorStatus, DecodeErrorStatus } from 'ts-shared/lib/errors';
 import * as TA from 'fp-ts/lib/TaskEither';
@@ -66,8 +66,8 @@ export const GetSWRImpl = <
 };
 
 type RSWHook<E extends EndpointInstance<any>> = (
-  key: EndpointInput<E>
-) => responseInterface<EndpointOutput<E>, IOError>;
+  key: DecodedInput<E>
+) => responseInterface<DecodedOutput<E>, IOError>;
 
 export type SRWClient<
   A extends {
@@ -97,7 +97,7 @@ const getSRWHook = <E extends EndpointInstance<any>>(
   e: E,
   defaultHeaders?: { [key: string]: string }
 ): RSWHook<E> => {
-  return (i: EndpointInput<E>) => {
+  return (i: DecodedInput<E>) => {
     // TODO: try to get rid of this
     const anyArgs: any = i;
 

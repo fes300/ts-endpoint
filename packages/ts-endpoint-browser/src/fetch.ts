@@ -21,6 +21,9 @@ export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<a
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, options);
 
 const getResponseJson = (r: Response) => {
+  if (r.body === null) {
+    TA.left(undefined);
+  }
   return TA.tryCatch(
     () => r.json(),
     () =>
@@ -64,61 +67,61 @@ export const useBrowserFetch = <
       ),
       TA.chain((r: Response) => {
         const responseJson: TA.TaskEither<any, any> = TA.tryCatch(
-          () => r.json(),
-          () =>
-            new IOError(r.status, r.statusText, {
+          () => (r.body === null ? Promise.resolve(undefined) : r.json()),
+          () => {
+            return new IOError(r.status, r.statusText, {
               kind: 'ServerError',
               meta: { message: 'response is not a json.' },
-            })
+            });
+          }
         );
 
         if (!r.ok) {
           if (r.status >= 400 && r.status <= 451) {
             return pipe(
               getResponseJson(r),
-              TA.chain((meta) =>
-                TA.left(new IOError(r.status, r.statusText, { kind: 'ClientError', meta }))
-              )
+              TA.chain((meta) => {
+                return TA.left(new IOError(r.status, r.statusText, { kind: 'ClientError', meta }));
+              })
             );
           } else {
             return pipe(
               getResponseJson(r),
-              TA.chain((meta) =>
-                TA.left(new IOError(r.status, r.statusText, { kind: 'ServerError', meta }))
-              )
+              TA.chain((meta) => {
+                return TA.left(new IOError(r.status, r.statusText, { kind: 'ServerError', meta }));
+              })
             );
           }
         }
 
         const res = pipe(
           responseJson,
-          TA.chain((json) =>
-            pipe(
+          TA.chain((json) => {
+            return pipe(
               options?.mapInput ? options.mapInput(json) : json,
               e.Output.decode,
               TA.fromEither,
-              TA.mapLeft(
-                (errors) =>
-                  new IOError(
-                    DecodeErrorStatus,
-                    `Error decoding server response: ${PathReporter.report(left(errors))}`,
-                    {
-                      kind: 'DecodingError',
-                      errors,
-                    }
-                  )
-              )
-            )
-          )
+              TA.mapLeft((errors) => {
+                return new IOError(
+                  DecodeErrorStatus,
+                  `Error decoding server response: ${PathReporter.report(left(errors))}`,
+                  {
+                    kind: 'DecodingError',
+                    errors,
+                  }
+                );
+              })
+            );
+          })
         );
 
         return res;
       }),
-      TA.mapLeft((e) => {
+      TA.mapLeft((err) => {
         if (options?.handleError !== undefined) {
-          return options.handleError(e);
+          return options.handleError(err, e);
         }
-        return e;
+        return err;
       })
     );
 
