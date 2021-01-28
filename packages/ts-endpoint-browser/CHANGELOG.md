@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.6](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.5...ts-endpoint-browser@2.0.0-alpha.6) (2021-01-28)
+
+
+### Bug Fixes
+
+* handle undefined responses ([03c729d](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/03c729d5622a72769d5fc1714da307407d3c60a1))
+
+
+### Features
+
+* small improvements ([d241bd4](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/d241bd4f43d7ba693f6789b9f00a8aad6113b6a3))
+
+
+
+
+
 # [2.0.0-alpha.5](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.4...ts-endpoint-browser@2.0.0-alpha.5) (2021-01-21)
 
 

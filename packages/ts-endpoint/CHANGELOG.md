@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0-alpha.5 (2021-01-28)
+
+
+### Features
+
+* small improvements ([d241bd4](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/d241bd4f43d7ba693f6789b9f00a8aad6113b6a3))
+
+
+
+
+
 # 2.0.0-alpha.4 (2021-01-18)
 
 
