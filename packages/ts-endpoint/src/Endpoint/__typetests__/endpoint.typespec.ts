@@ -10,7 +10,6 @@ Endpoint({
   // @dts-jest:fail:snap accessing non defined Params in getPath is not allowed
   getPath: ({ foo }) => `users/${foo}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 Endpoint({
@@ -22,7 +21,6 @@ Endpoint({
   // @dts-jest:pass:snap accessing defined Params in getPath is allowed
   getPath: ({ id }) => `users/${id}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 Endpoint({
@@ -48,7 +46,6 @@ Endpoint({
   Method: 'POST',
   getPath: ({ id }) => `users/${id}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 Endpoint({
@@ -61,7 +58,6 @@ Endpoint({
   Method: 'PUT',
   getPath: ({ id }) => `users/${id}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 Endpoint({
@@ -74,7 +70,6 @@ Endpoint({
   Method: 'PATCH',
   getPath: ({ id }) => `users/${id}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 Endpoint({
@@ -88,7 +83,6 @@ Endpoint({
   getPath: ({ id }) => `users/${id}/crayons`,
   // @dts-jest:pass:snap Body is allowed with unions
   Output: t.union([t.type({ foo: t.string }), t.type({ baz: t.string })]),
-  Opts: { stringifyBody: true },
 });
 
 Endpoint({
@@ -102,7 +96,6 @@ Endpoint({
   getPath: ({ id }) => `users/${id}/crayons`,
   // @dts-jest:pass:snap Body is allowed with intersections
   Output: t.union([t.type({ foo: t.string }), t.type({ baz: t.string })]),
-  Opts: { stringifyBody: true },
 });
 
 const endpointInstance = Endpoint({
@@ -113,7 +106,6 @@ const endpointInstance = Endpoint({
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 // @dts-jest:pass:snap resulting EndpointInstances typings are correct
@@ -137,7 +129,6 @@ const endpointWithParam = Endpoint({
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 const endpointWithoutParam = Endpoint({
@@ -147,7 +138,6 @@ const endpointWithoutParam = Endpoint({
   Method: 'GET',
   getPath: () => `users/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
 });
 
 const endpointWithErrors = Endpoint({
@@ -158,12 +148,10 @@ const endpointWithErrors = Endpoint({
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Opts: { stringifyBody: true },
-  Errors: [
-    [404, t.type({ message: t.string })],
-    [401, t.undefined],
-  ],
+  Errors: [[404, t.type({ message: t.string })] as const, [401, t.undefined] as const],
 });
+
+endpointWithErrors.Errors;
 
 // @dts-jest:fail:snap getPath cannot be called with no args if there are params defined in the endpoint
 endpointWithParam.getPath();

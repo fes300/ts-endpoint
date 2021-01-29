@@ -1,16 +1,6 @@
 import * as t from 'io-ts';
 import { identity } from 'fp-ts/lib/function';
-import { RequiredKeys } from 'typelevel-ts';
-
-export type DecodedPropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
-export type EncodedPropsType<P> = P extends {}
-  ? { [k in RequiredKeys<P>]: t.OutputOf<P[k]> }
-  : never;
-
-export type DecodedInput<E extends EndpointInstance<any>> = DecodedPropsType<E['Input']>;
-export type EncodedInput<E extends EndpointInstance<any>> = EncodedPropsType<E['Input']>;
-export type DecodedOutput<E extends EndpointInstance<any>> = t.TypeOf<E['Output']>;
-export type EncodedOutput<E extends EndpointInstance<any>> = t.TypeOf<E['Output']>;
+import { addSlash } from './helpers';
 
 export const HTTPMethod = t.keyof(
   {
@@ -25,17 +15,6 @@ export const HTTPMethod = t.keyof(
   'HTTPMethod'
 );
 export type HTTPMethod = t.TypeOf<typeof HTTPMethod>;
-
-/**
- * Endpoint options type
- */
-export interface EndpointOptions {
-  stringifyBody?: boolean;
-}
-
-export const defaultOps = {
-  stringifyBody: false,
-};
 
 /**
  * Represents an endpoint of our API
@@ -56,7 +35,6 @@ export interface Endpoint<
     ? () => string
     : (args: { [k in keyof P]: P[k] extends t.Any ? t.TypeOf<P[k]> : never }) => string;
   Method: M;
-  Opts?: EndpointOptions;
   Errors?: E;
   Input: {
     Headers?: H;
@@ -121,7 +99,6 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any, an
     : (f: (paramName: string) => string) => string;
   Method: E['Method'];
   Output: E['Output'];
-  Opts: EndpointOptions;
   Input: (E['Input']['Params'] extends undefined
     ? { Params?: never }
     : { Params: t.TypeC<NonNullable<E['Input']['Params']>> }) &
@@ -135,8 +112,6 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any, an
       ? { Body?: never }
       : { Body: NonNullable<E['Input']['Body']> });
 } & (E['Errors'] extends undefined ? { Errors?: never } : { Errors: E['Errors'] });
-
-const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
 /**
  * Constructor function for an endpoint
@@ -180,6 +155,5 @@ export function Endpoint<
         : {}),
       ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props, 'Query') } : {}),
     },
-    Opts: e.Opts ?? defaultOps,
   } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>;
 }
