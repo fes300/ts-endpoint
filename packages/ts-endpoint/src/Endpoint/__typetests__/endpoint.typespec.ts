@@ -150,6 +150,21 @@ const endpointWithoutParam = Endpoint({
   Opts: { stringifyBody: true },
 });
 
+const endpointWithErrors = Endpoint({
+  Input: {
+    Query: { color: t.string },
+    Params: { id: t.number },
+  },
+  Method: 'GET',
+  getPath: ({ id }) => `users/${id.toString()}/crayons`,
+  Output: t.type({ crayons: t.array(t.string) }),
+  Opts: { stringifyBody: true },
+  Errors: [
+    [404, t.type({ message: t.string })],
+    [401, t.undefined],
+  ],
+});
+
 // @dts-jest:fail:snap getPath cannot be called with no args if there are params defined in the endpoint
 endpointWithParam.getPath();
 // @dts-jest:fail:snap getPath cannot be called with empty object if there are Params defined in the endpoint
