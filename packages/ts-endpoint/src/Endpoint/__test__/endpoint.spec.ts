@@ -10,7 +10,6 @@ describe('getStaticPath works as intended', () => {
     Method: 'GET',
     getPath: ({ id }) => `users/${id.toString()}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
-    Opts: { stringifyBody: true },
   });
 
   const endpointWithoutParam = Endpoint({
@@ -20,7 +19,6 @@ describe('getStaticPath works as intended', () => {
     Method: 'GET',
     getPath: () => `users/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
-    Opts: { stringifyBody: true },
   });
 
   it('adds the params correctly', () => {

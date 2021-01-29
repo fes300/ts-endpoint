@@ -50,7 +50,7 @@ export const useBrowserFetch = <
     const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
       i.Query ? `?${qs.stringify(i.Query)}` : ''
     }`;
-    const body = e.Opts?.stringifyBody ? qs.stringify(i.Body) : i.Body;
+    const body = i.Body;
     const headers = { ...i.Headers, ...options?.defaultHeaders };
 
     const response = pipe(

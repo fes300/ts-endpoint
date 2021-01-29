@@ -104,7 +104,7 @@ const getSRWHook = <E extends EndpointInstance<any>>(
     const path = `${baseURL}${e.getPath(anyArgs?.Params ?? {})}${
       anyArgs.Query ? `?${qs.stringify(anyArgs.Query)}` : ''
     }`;
-    const body = e.Opts?.stringifyBody ? qs.stringify(anyArgs.Body) : anyArgs.Body;
+    const body = anyArgs.Body;
     const headers = { ...anyArgs.Headers, ...defaultHeaders };
 
     const getResponse = () =>

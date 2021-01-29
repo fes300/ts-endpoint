@@ -20,12 +20,11 @@ const endpoints = {
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
-    Opts: { stringifyBody: true },
   }),
 };
 
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
-  handleError: (err, e) => err
+  handleError: (err, e) => err,
 });
 
 // @dts-jest:fail:snap should not allow empty calls
