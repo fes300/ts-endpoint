@@ -1,6 +1,7 @@
 import * as t from 'io-ts';
 import { identity } from 'fp-ts/lib/function';
 import { addSlash } from './helpers';
+import { iso, Newtype } from 'newtype-ts';
 
 export const HTTPMethod = t.keyof(
   {
@@ -26,9 +27,7 @@ export interface Endpoint<
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends
-    | Array<readonly [responseStatus: number, responseBody: t.Type<any, any, any>]>
-    | undefined = undefined
+  E extends Array<EndpointError<any, any>> | undefined = undefined
 > {
   /* utils to get the full path given a set of query params */
   getPath: P extends undefined
@@ -113,6 +112,20 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any, an
       : { Body: NonNullable<E['Input']['Body']> });
 } & (E['Errors'] extends undefined ? { Errors?: never } : { Errors: E['Errors'] });
 
+type _EndpointError<S extends number, B extends t.Type<any, any, any>> = t.TupleC<
+  [t.LiteralC<S>, B]
+>;
+export interface EndpointError<S extends number, B extends t.Type<any, any, any>>
+  extends Newtype<{ readonly EndpointError: unique symbol }, _EndpointError<S, B>> {}
+
+export const EndpointError = <S extends number, B extends t.Type<any, any, any>>(
+  status: S,
+  body: B
+) => {
+  const isoEndpointError = iso<EndpointError<S, B>>();
+
+  return isoEndpointError.wrap(t.tuple([t.literal(status), body]));
+};
 /**
  * Constructor function for an endpoint
  * @returns an EndpointInstance
@@ -124,9 +137,7 @@ export function Endpoint<
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends
-    | Array<readonly [responseStatus: number, responseBody: t.Type<any, any, any>]>
-    | undefined = undefined
+  E extends Array<EndpointError<any, any>> | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
   return ({
     ...e,

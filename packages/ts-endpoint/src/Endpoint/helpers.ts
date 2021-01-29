@@ -1,6 +1,7 @@
 import * as t from 'io-ts';
 import { EndpointInstance } from '.';
 import { RequiredKeys } from 'typelevel-ts';
+import { AnyNewtype } from 'newtype-ts';
 
 export const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
@@ -10,10 +11,11 @@ export type TypeOfEndpointInstance<E extends EndpointInstance<any>> = {
   Method: E['Method'];
   Output: t.TypeOf<E['Output']>;
   Errors: {
-    [k in keyof E['Errors']]: E['Errors'][k][1] extends t.Type<any, any, any>
-      ? t.TypeOf<E['Errors'][k][1]>
+    [k in keyof E['Errors']]: E['Errors'][k] extends AnyNewtype
+      ? t.TypeOf<E['Errors'][k]['_A']>
       : never;
   };
+
   Input: {
     [k in keyof E['Input']]: E['Input'][k] extends t.Type<any, any, any>
       ? t.TypeOf<E['Input'][k]>

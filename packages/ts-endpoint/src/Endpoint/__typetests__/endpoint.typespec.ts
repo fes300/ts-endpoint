@@ -1,5 +1,6 @@
-import { Endpoint } from '..';
+import { Endpoint, EndpointError } from '..';
 import * as t from 'io-ts';
+import { TypeOfEndpointInstance } from '../helpers';
 
 Endpoint({
   Input: {
@@ -98,6 +99,20 @@ Endpoint({
   Output: t.union([t.type({ foo: t.string }), t.type({ baz: t.string })]),
 });
 
+Endpoint({
+  Input: {
+    Query: { color: t.string },
+    Params: { id: t.number },
+  },
+  Method: 'GET',
+  getPath: ({ id }) => `users/${id.toString()}/crayons`,
+  Output: t.type({ crayons: t.array(t.string) }),
+  Errors: [
+    // @dts-jest:fail:snap you must use EndpointError constructor
+    t.tuple([t.literal(401), t.undefined]),
+  ],
+});
+
 const endpointInstance = Endpoint({
   Input: {
     Query: { color: t.string },
@@ -107,19 +122,6 @@ const endpointInstance = Endpoint({
   getPath: ({ id }) => `users/${id}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
 });
-
-// @dts-jest:pass:snap resulting EndpointInstances typings are correct
-endpointInstance.Input.Params.props.id;
-// @dts-jest:pass:snap resulting EndpointInstances typings are correct
-endpointInstance.Input.Query.props.color;
-// @dts-jest:pass:snap resulting EndpointInstances typings are correct
-endpointInstance.getStaticPath;
-// @dts-jest:fail:snap resulting EndpointInstances typings are correct
-endpointInstance.Input.Body?.prova;
-// @dts-jest:fail:snap resulting EndpointInstances typings are correct
-endpointInstance.Output.props.fakeOutput;
-// @dts-jest:pass:snap resulting EndpointInstances typings are correct
-endpointInstance.Output.props.crayons;
 
 const endpointWithParam = Endpoint({
   Input: {
@@ -148,10 +150,33 @@ const endpointWithErrors = Endpoint({
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Errors: [[404, t.type({ message: t.string })] as const, [401, t.undefined] as const],
+  Errors: [
+    EndpointError(401, t.undefined),
+    EndpointError(404, t.type({ message: t.string })),
+    EndpointError(500, t.type({ foo: t.number })),
+  ],
 });
 
+// @dts-jest:pass:snap resulting EndpointInstances typings are correct
+endpointInstance.Input.Params.props.id;
+// @dts-jest:pass:snap resulting EndpointInstances typings are correct
+endpointInstance.Input.Query.props.color;
+// @dts-jest:pass:snap resulting EndpointInstances typings are correct
+endpointInstance.getStaticPath;
+// @dts-jest:fail:snap resulting EndpointInstances typings are correct
+endpointInstance.Input.Body?.prova;
+// @dts-jest:fail:snap resulting EndpointInstances typings are correct
+endpointInstance.Output.props.fakeOutput;
+// @dts-jest:pass:snap resulting EndpointInstances typings are correct
+endpointInstance.Output.props.crayons;
+
+// @dts-jest:pass:snap Errors are well formatted
 endpointWithErrors.Errors;
+
+endpointWithErrors.Errors.map((e) => {
+  // @dts-jest:fail:snap You cannot access potentially non existing values
+  e._A.types[1].props.message;
+});
 
 // @dts-jest:fail:snap getPath cannot be called with no args if there are params defined in the endpoint
 endpointWithParam.getPath();
@@ -178,3 +203,10 @@ endpointWithParam.getStaticPath((param) => `:${param}`);
 endpointWithoutParam.getStaticPath((param) => `:${param}`);
 // @dts-jest:pass:snap getStaticPath requires no args if no Params are defined
 endpointWithoutParam.getStaticPath();
+
+// @dts-jest:pass:snap
+type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors>;
+// @dts-jest:pass:snap
+type ErrorStatuses = EndpointType['Errors'][number][0];
+// @dts-jest:pass:snap
+type ErrorBodies = EndpointType['Errors'][number][1];

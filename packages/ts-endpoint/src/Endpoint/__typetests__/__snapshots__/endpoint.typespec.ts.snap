@@ -16,6 +16,13 @@ exports[`Body is allowed with unions (type) should match snapshot 2`] = `"UnionC
 
 exports[`Body is not allowed with method !== POST | PUT | PATCH (type) should match snapshot 1`] = `"Type 'TypeC<{ foo: StringC; }>' is not assignable to type 'never'."`;
 
+exports[`Errors are well formatted (type) should match snapshot 1`] = `"(EndpointError<401, UndefinedC> | EndpointError<404, TypeC<{ message: StringC; }>> | EndpointError<500, TypeC<{ foo: NumberC; }>>)[]"`;
+
+exports[`You cannot access potentially non existing values (type) should match snapshot 1`] = `
+"Property 'props' does not exist on type 'UndefinedC | TypeC<{ message: StringC; }> | TypeC<{ foo: NumberC; }>'.
+  Property 'props' does not exist on type 'UndefinedC'."
+`;
+
 exports[`accessing defined Params in getPath is allowed (type) should match snapshot 1`] = `"({ id }: { id: string; }) => string"`;
 
 exports[`accessing non defined Params in getPath is not allowed (type) should match snapshot 1`] = `"Property 'foo' does not exist on type '{ id: string; }'."`;
@@ -59,3 +66,11 @@ exports[`resulting EndpointInstances typings are correct (type) should match sna
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 5`] = `"Property 'fakeOutput' does not exist on type '{ crayons: ArrayC<StringC>; }'."`;
 
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 6`] = `"ArrayC<StringC>"`;
+
+exports[`type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors> (type) should match snapshot 1`] = `"any"`;
+
+exports[`type ErrorBodies = EndpointType['Errors'][number][1] (type) should match snapshot 1`] = `"any"`;
+
+exports[`type ErrorStatuses = EndpointType['Errors'][number][0] (type) should match snapshot 1`] = `"any"`;
+
+exports[`you must use EndpointError constructor (type) should match snapshot 1`] = `"Property '_URI' is missing in type 'TupleC<[LiteralC<401>, UndefinedC]>' but required in type 'EndpointError<any, any>'."`;
