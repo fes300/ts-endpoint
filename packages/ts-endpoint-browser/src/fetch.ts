@@ -1,9 +1,4 @@
-import {
-  EndpointInstance,
-  TypeOfEndpointInstance,
-  Endpoint,
-  HTTPMethod,
-} from 'ts-endpoint/src/Endpoint';
+import { EndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint/lib/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { PathReporter } from 'io-ts/lib/PathReporter';
@@ -13,6 +8,7 @@ import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
 import { HTTPClient, GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import { left } from 'fp-ts/lib/Either';
+import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,

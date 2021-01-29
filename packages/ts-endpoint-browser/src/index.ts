@@ -1,4 +1,5 @@
-import { EndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint/src/Endpoint';
+import { EndpointInstance } from 'ts-endpoint/lib/Endpoint';
+import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import { Either } from 'fp-ts/lib/Either';
@@ -10,7 +11,11 @@ type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> 
 
 export type InferFetchResult<FC extends FetchClient<any, any>> = ExtractEither<FunctionOutput<FC>>;
 
-export type FetchClient<E extends EndpointInstance<any>, W> = ReaderTaskEither<TypeOfEndpointInstance<E>['Input'], W, t.TypeOf<E['Output']>>;
+export type FetchClient<E extends EndpointInstance<any>, W> = ReaderTaskEither<
+  TypeOfEndpointInstance<E>['Input'],
+  W,
+  t.TypeOf<E['Output']>
+>;
 
 export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
   [K in keyof A]: FetchClient<A[K], W>;
