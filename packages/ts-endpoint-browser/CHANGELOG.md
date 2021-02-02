@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.7](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.6...ts-endpoint-browser@2.0.0-alpha.7) (2021-02-02)
+
+
+### Bug Fixes
+
+* remove leftover opts ([f0fe50c](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/f0fe50c85bdd175620194cc0191c5a1b84898668))
+
+
+### Features
+
+* ignoreNonJSONResponses ([6332500](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/6332500c19312689a687b76f53b7247d371db414))
+* remove swr ([533343a](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/533343a57961422696e1acdfccfc8a82b4a5f074))
+
+
+
+
+
 # [2.0.0-alpha.6](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.5...ts-endpoint-browser@2.0.0-alpha.6) (2021-01-28)
 
 

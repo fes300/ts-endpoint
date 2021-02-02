@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.6](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.5...ts-endpoint@2.0.0-alpha.6) (2021-02-02)
+
+
+### Bug Fixes
+
+* remove leftover opts ([f0fe50c](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/f0fe50c85bdd175620194cc0191c5a1b84898668))
+
+
+### Features
+
+* add errors ([3379c2e](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/3379c2e71e059d7b941fc0304f6d030d215822f5))
+* add errors to Endpoint ([34fc11d](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/34fc11de8890dc817f97754e22a58a3539274a1e))
+
+
+
+
+
 # 2.0.0-alpha.5 (2021-01-28)
 
 
