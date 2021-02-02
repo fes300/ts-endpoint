@@ -23,7 +23,22 @@ export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
 
 export type GetHTTPClientOptions<W> = {
   defaultHeaders?: { [key: string]: string };
+  /**
+   * Used to perform side effect on api Errors,
+   * like logging on external services, or to manipulate errors before
+   * individually handling them.
+   *
+   */
   handleError?: (err: W, e: EndpointInstance<any>) => W;
+  /**
+   * If true a non-JSON response will be treated like
+   * a JSON response returning undefined. Defaults to false.
+   */
+  ignoreNonJSONResponse?: boolean;
+  /**
+   * Used to map the response JSON before parsing it with the Endpoint codecs.
+   * N.B. This is a last resource and you should avoid it since it holds no static guarantee
+   */
   mapInput?: (a: any) => any;
 };
 

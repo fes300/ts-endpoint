@@ -104,6 +104,10 @@ const HandledError = new IOError(112, 'this is a handled error', { kind: 'Client
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
 });
+const fetchClientIgnoreNonJSONResponse = GetFetchHTTPClient(options, endpoints, {
+  defaultHeaders: { 'Content-type': 'application/json' },
+  ignoreNonJSONResponse: true,
+});
 const handleErrorClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
   handleError: () => {
@@ -121,6 +125,16 @@ const lazySuccesfullCommandResponse = () =>
 const lazySuccesfullUndefinedResponse = () =>
   Promise.resolve(new Response(JSON.stringify(undefined)));
 const lazySuccesfullNullResponse = () => Promise.resolve(new Response(JSON.stringify(null)));
+const lazySuccesfullNonJSONResponse = () =>
+  Promise.resolve(
+    new Response(new Blob(), {
+      headers: {
+        'content-type': 'image/png',
+        link:
+          '<https://www.gravatar.com/avatar/d0638b61ec94e9bf48e38117ce1a1290?d=404>; rel="canonical"',
+      },
+    })
+  );
 const lazyWrongBodyResponse = () => Promise.resolve(new Response(JSON.stringify({ foo: 'baz' })));
 const lazyServerErrorResponse = () =>
   Promise.resolve(
@@ -351,6 +365,27 @@ describe('GetFetchHTTPClient', () => {
   it('POST calls returning null work as expected', async () => {
     global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullNullResponse());
     const getResponse = await fetchClient.postReturningNull({
+      Params: { id: '1' },
+      Body: { foo: 'baz' },
+    })();
+
+    expect(getResponse._tag).toEqual('Right');
+  });
+
+  it('FAILS with non-JSON responses ', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullNonJSONResponse());
+    const getResponse = await fetchClient.postReturningUndefined({
+      Params: { id: '1' },
+      Body: { foo: 'baz' },
+    })();
+
+    expect(getResponse._tag).toEqual('Left');
+    expect((getResponse as any).left.details.kind).toEqual('ServerError');
+  });
+
+  it('DOES NOT FAIL with non-JSON responses and ignoreNonJSONResponse option', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullNonJSONResponse());
+    const getResponse = await fetchClientIgnoreNonJSONResponse.postReturningUndefined({
       Params: { id: '1' },
       Body: { foo: 'baz' },
     })();
