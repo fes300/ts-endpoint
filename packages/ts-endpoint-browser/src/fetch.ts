@@ -1,9 +1,4 @@
-import {
-  EndpointInstance,
-  TypeOfEndpointInstance,
-  Endpoint,
-  HTTPMethod,
-} from 'ts-endpoint/src/Endpoint';
+import { EndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint/lib/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { PathReporter } from 'io-ts/lib/PathReporter';
@@ -13,6 +8,7 @@ import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
 import { HTTPClient, GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import { left } from 'fp-ts/lib/Either';
+import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
@@ -20,11 +16,11 @@ export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<a
   options?: GetHTTPClientOptions<IOError>
 ): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, options);
 
-const getResponseJson = (r: Response) => {
+const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
   if (r.body === null) {
     TA.left(undefined);
   }
-  return TA.tryCatch(
+  const jsonResponse = TA.tryCatch(
     () => r.json(),
     () =>
       new IOError(r.status, r.statusText, {
@@ -32,6 +28,13 @@ const getResponseJson = (r: Response) => {
         meta: { message: 'response is not a json.' },
       })
   );
+
+  return ignoreNonJSONResponse
+    ? pipe(
+        jsonResponse,
+        TA.alt(() => TA.of(undefined))
+      )
+    : jsonResponse;
 };
 
 export const useBrowserFetch = <
@@ -50,7 +53,7 @@ export const useBrowserFetch = <
     const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
       i.Query ? `?${qs.stringify(i.Query)}` : ''
     }`;
-    const body = e.Opts?.stringifyBody ? qs.stringify(i.Body) : i.Body;
+    const body = i.Body;
     const headers = { ...i.Headers, ...options?.defaultHeaders };
 
     const response = pipe(
@@ -76,17 +79,26 @@ export const useBrowserFetch = <
           }
         );
 
+        const responseJsonWithDefault = options?.ignoreNonJSONResponse
+          ? pipe(
+              responseJson,
+              TA.alt(() => {
+                return TA.of(undefined);
+              })
+            )
+          : responseJson;
+
         if (!r.ok) {
           if (r.status >= 400 && r.status <= 451) {
             return pipe(
-              getResponseJson(r),
+              getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
               TA.chain((meta) => {
                 return TA.left(new IOError(r.status, r.statusText, { kind: 'ClientError', meta }));
               })
             );
           } else {
             return pipe(
-              getResponseJson(r),
+              getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
               TA.chain((meta) => {
                 return TA.left(new IOError(r.status, r.statusText, { kind: 'ServerError', meta }));
               })
@@ -95,7 +107,7 @@ export const useBrowserFetch = <
         }
 
         const res = pipe(
-          responseJson,
+          responseJsonWithDefault,
           TA.chain((json) => {
             return pipe(
               options?.mapInput ? options.mapInput(json) : json,

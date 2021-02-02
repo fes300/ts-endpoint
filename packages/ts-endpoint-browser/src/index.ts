@@ -1,4 +1,5 @@
-import { EndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint/src/Endpoint';
+import { EndpointInstance } from 'ts-endpoint/lib/Endpoint';
+import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import { Either } from 'fp-ts/lib/Either';
@@ -10,7 +11,11 @@ type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> 
 
 export type InferFetchResult<FC extends FetchClient<any, any>> = ExtractEither<FunctionOutput<FC>>;
 
-export type FetchClient<E extends EndpointInstance<any>, W> = ReaderTaskEither<TypeOfEndpointInstance<E>['Input'], W, t.TypeOf<E['Output']>>;
+export type FetchClient<E extends EndpointInstance<any>, W> = ReaderTaskEither<
+  TypeOfEndpointInstance<E>['Input'],
+  W,
+  t.TypeOf<E['Output']>
+>;
 
 export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
   [K in keyof A]: FetchClient<A[K], W>;
@@ -18,7 +23,22 @@ export type HTTPClient<A extends Record<string, EndpointInstance<any>>, W> = {
 
 export type GetHTTPClientOptions<W> = {
   defaultHeaders?: { [key: string]: string };
+  /**
+   * Used to perform side effect on api Errors,
+   * like logging on external services, or to manipulate errors before
+   * individually handling them.
+   *
+   */
   handleError?: (err: W, e: EndpointInstance<any>) => W;
+  /**
+   * If true a non-JSON response will be treated like
+   * a JSON response returning undefined. Defaults to false.
+   */
+  ignoreNonJSONResponse?: boolean;
+  /**
+   * Used to map the response JSON before parsing it with the Endpoint codecs.
+   * N.B. This is a last resource and you should avoid it since it holds no static guarantee
+   */
   mapInput?: (a: any) => any;
 };
 
