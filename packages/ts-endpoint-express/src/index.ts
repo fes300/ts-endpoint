@@ -79,13 +79,16 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
       args,
       E.mapLeft(
         (errors) =>
-          new IOError(DecodeErrorStatus, 'error decoding args', { kind: 'DecodingError', errors })
+          new IOError(DecodeErrorStatus, 'error decoding args', {
+            kind: 'DecodingError',
+            errors,
+          })
       ),
       TA.fromEither,
-      TA.chain((args) => controller(args as any)),
+      TA.chain((args) => controller(args as any, req, res)),
       TA.bimap(
         (e) => {
-          return next(e)
+          return next(e);
         },
         (httpResponse) => {
           if (httpResponse.headers !== undefined) {
