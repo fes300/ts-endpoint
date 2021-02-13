@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.8](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.7...ts-endpoint-express@2.0.0-alpha.8) (2021-02-13)
+
+
+### Bug Fixes
+
+* passing req and res to ts-endpoint-express controller ([#70](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/issues/70)) ([4271c4a](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/4271c4a7a9a008708dd4f353732fd87400f6fecf))
+
+
+
+
+
 # [2.0.0-alpha.7](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.6...ts-endpoint-express@2.0.0-alpha.7) (2021-02-02)
 
 **Note:** Version bump only for package ts-endpoint-express
