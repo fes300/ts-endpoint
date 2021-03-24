@@ -26,9 +26,13 @@ type ErrorBody<K> = K extends EndpointError<infer S, infer B>
   ? { status: S; body: t.TypeOf<B> }
   : never;
 
+export type EndpointInstanceError<E extends GenericInstance> = IOError<
+  ErrorBody<InferEndpointInstanceParams<E>['errors'][number]>
+>;
+
 export type FetchClient<E extends GenericInstance> = ReaderTaskEither<
   TypeOfEndpointInstance<E>['Input'],
-  IOError<ErrorBody<InferEndpointInstanceParams<E>['errors'][number]>>,
+  EndpointInstanceError<E>,
   t.TypeOf<E['Output']>
 >;
 
