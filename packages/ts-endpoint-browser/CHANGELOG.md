@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.9](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.8...ts-endpoint-browser@2.0.0-alpha.9) (2021-03-24)
+
+
+### Features
+
+* endpoint-instance-error type constructor ([71201b1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/71201b1e0ca6d7852b3a50085e7a10da2a1deed8))
+
+
+
+
+
 # 2.0.0-alpha.8 (2021-03-24)
 
 
