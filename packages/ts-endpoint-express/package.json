@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-express",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.10",
   "description": "Adds typesafe endpoints to your express app.",
   "files": [
     "lib"
@@ -34,8 +34,8 @@
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "ts-endpoint": "^2.0.0-alpha.6",
-    "ts-shared": "^1.0.1",
+    "ts-endpoint": "^2.0.0-alpha.7",
+    "ts-shared": "^1.1.0-alpha.0",
     "typelevel-ts": "^0.4.0"
   }
 }

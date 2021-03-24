@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0-alpha.8 (2021-03-24)
+
+
+### Features
+
+* use known errors in ts-endpoint-browser ([aceafe1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/aceafe17b8566c32e3f551c5d81153cc2001c1ae))
+
+
+
+
+
 # [2.0.0-alpha.7](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.6...ts-endpoint-browser@2.0.0-alpha.7) (2021-02-02)
 
 

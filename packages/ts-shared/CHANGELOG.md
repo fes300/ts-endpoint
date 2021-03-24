@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0-alpha.0 (2021-03-24)
+
+
+### Features
+
+* use known errors in ts-endpoint-browser ([aceafe1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-shared/commit/aceafe17b8566c32e3f551c5d81153cc2001c1ae))
+
+
+
+
+
 ## [1.0.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-shared/compare/ts-shared@1.0.1-alpha.6...ts-shared@1.0.1) (2020-10-23)
 
 **Note:** Version bump only for package ts-shared
