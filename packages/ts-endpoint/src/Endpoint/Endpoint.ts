@@ -118,6 +118,10 @@ type _EndpointError<S extends number, B extends t.Type<any, any, any>> = t.Tuple
 export interface EndpointError<S extends number, B extends t.Type<any, any, any>>
   extends Newtype<{ readonly EndpointError: unique symbol }, _EndpointError<S, B>> {}
 
+export const errorIso = <S extends number, B extends t.Type<any, any, any>>(
+  _: EndpointError<S, B>
+) => iso<EndpointError<S, B>>();
+
 export const EndpointError = <S extends number, B extends t.Type<any, any, any>>(
   status: S,
   body: B

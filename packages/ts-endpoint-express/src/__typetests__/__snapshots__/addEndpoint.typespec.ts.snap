@@ -7,10 +7,10 @@ exports[`correct constructions should work (type) should match snapshot 2`] = `"
 exports[`should not allow empty calls (type) should match snapshot 1`] = `"Expected at least 1 arguments, but got 0."`;
 
 exports[`won't compile if output oc controller is wrong (type) should match snapshot 1`] = `
-"Type '() => Promise<Left<IOError> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'TaskEither<IOError, HTTPResponse<{ crayons: string[]; }>>'.
-  Type 'Promise<Left<IOError> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'Promise<Either<IOError, HTTPResponse<{ crayons: string[]; }>>>'.
-    Type 'Left<IOError> | Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError, HTTPResponse<{ crayons: string[]; }>>'.
-      Type 'Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError, HTTPResponse<{ crayons: string[]; }>>'.
+"Type '() => Promise<Left<IOError<never>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'TaskEither<IOError<never>, HTTPResponse<{ crayons: string[]; }>>'.
+  Type 'Promise<Left<IOError<never>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'Promise<Either<IOError<never>, HTTPResponse<{ crayons: string[]; }>>>'.
+    Type 'Left<IOError<never>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError<never>, HTTPResponse<{ crayons: string[]; }>>'.
+      Type 'Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError<never>, HTTPResponse<{ crayons: string[]; }>>'.
         Type 'Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Right<HTTPResponse<{ crayons: string[]; }>>'.
           Type '{ body: { crayons: number[]; }; statusCode: number; }' is not assignable to type 'HTTPResponse<{ crayons: string[]; }>'.
             The types of 'body.crayons' are incompatible between these types.

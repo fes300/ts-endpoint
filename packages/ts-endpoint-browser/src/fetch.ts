@@ -1,20 +1,28 @@
-import { EndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint/lib/Endpoint';
+import {
+  errorIso,
+  EndpointInstance,
+  Endpoint,
+  HTTPMethod,
+  EndpointError,
+} from 'ts-endpoint/lib/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { pipe } from 'fp-ts/lib/pipeable';
-import { PathReporter } from 'io-ts/lib/PathReporter';
-import * as TA from 'fp-ts/lib/TaskEither';
+import { pipe } from 'fp-ts/pipeable';
+import { PathReporter } from 'io-ts/PathReporter';
+import * as TA from 'fp-ts/TaskEither';
+import * as O from 'fp-ts/Option';
 import * as t from 'io-ts';
 import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
-import { HTTPClient, GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
-import { left } from 'fp-ts/lib/Either';
+import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
+import * as E from 'fp-ts/Either';
 import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
+import { findFirst } from 'fp-ts/Array';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  options?: GetHTTPClientOptions<IOError>
-): HTTPClient<A, IOError> => GetHTTPClient(config, endpoints, useBrowserFetch, options);
+  options?: GetHTTPClientOptions
+) => GetHTTPClient(config, endpoints, useBrowserFetch as any, options);
 
 const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
   if (r.body === null) {
@@ -43,16 +51,18 @@ export const useBrowserFetch = <
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
-  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
+  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  E extends Array<EndpointError<any, any>> | undefined = undefined
 >(
   baseURL: string,
-  e: EndpointInstance<Endpoint<M, O, H, Q, B, P>>,
-  options?: GetHTTPClientOptions<IOError>
-): FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P>>, IOError> => {
-  return (i: TypeOfEndpointInstance<EndpointInstance<Endpoint<M, O, H, Q, B, P>>>['Input']) => {
+  e: EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>,
+  options?: GetHTTPClientOptions
+): FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>> => {
+  return ((i: TypeOfEndpointInstance<EndpointInstance<Endpoint<M, O, H, Q, B, P>>>['Input']) => {
     const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
       i.Query ? `?${qs.stringify(i.Query)}` : ''
     }`;
+
     const body = i.Body;
     const headers = { ...i.Headers, ...options?.defaultHeaders };
 
@@ -89,6 +99,55 @@ export const useBrowserFetch = <
           : responseJson;
 
         if (!r.ok) {
+          if (e.Errors !== undefined) {
+            const actualKnownError = pipe(
+              e.Errors as NonNullable<E>,
+              findFirst((knownErr) => {
+                return (knownErr as any).types[0].value === r.status;
+              }),
+              O.map((v) => errorIso(v).unwrap(v))
+            );
+
+            if (O.isSome(actualKnownError)) {
+              const parsedKnownError = pipe(
+                responseJsonWithDefault,
+                TA.map((body) => actualKnownError.value.decode([r.status, body])),
+                TA.chain((validation) => {
+                  return pipe(
+                    TA.fromEither(validation),
+                    TA.fold(
+                      (errors) => {
+                        return TA.left(
+                          new IOError(
+                            DecodeErrorStatus,
+                            `Error decoding server KnownError response: ${PathReporter.report(
+                              E.left(errors)
+                            )}`,
+                            {
+                              kind: 'DecodingError',
+                              errors,
+                            }
+                          )
+                        );
+                      },
+
+                      (parsedError) => {
+                        return TA.left(
+                          new IOError(parsedError[0], r.statusText, {
+                            kind: 'KnownError',
+                            error: { status: parsedError[0], body: parsedError[1] },
+                          })
+                        );
+                      }
+                    )
+                  );
+                })
+              );
+
+              return parsedKnownError;
+            }
+          }
+
           if (r.status >= 400 && r.status <= 451) {
             return pipe(
               getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
@@ -116,7 +175,7 @@ export const useBrowserFetch = <
               TA.mapLeft((errors) => {
                 return new IOError(
                   DecodeErrorStatus,
-                  `Error decoding server response: ${PathReporter.report(left(errors))}`,
+                  `Error decoding server response: ${PathReporter.report(E.left(errors))}`,
                   {
                     kind: 'DecodingError',
                     errors,
@@ -131,12 +190,12 @@ export const useBrowserFetch = <
       }),
       TA.mapLeft((err) => {
         if (options?.handleError !== undefined) {
-          return options.handleError(err, e);
+          return options.handleError(err, e as EndpointInstance<any>);
         }
         return err;
       })
     );
 
     return response;
-  };
+  }) as FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>>;
 };

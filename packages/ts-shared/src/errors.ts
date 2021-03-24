@@ -21,9 +21,12 @@ export class BaseError extends Error {
 
 export type DecodingError = 'DecodingError';
 
+export type KnownError = 'KnownError';
+
 export type CommunicationError = 'ClientError' | 'ServerError' | 'NetworkError';
 
-export type IOErrorDetails =
+export type IOErrorDetails<KE> =
+  | { kind: KnownError; error: KE }
   | { kind: DecodingError; errors: t.Errors }
   | { kind: CommunicationError; meta?: unknown };
 
@@ -31,10 +34,10 @@ export const NetworkErrorStatus = 99;
 
 export const DecodeErrorStatus = 600;
 
-export class IOError extends BaseError {
-  details: IOErrorDetails;
+export class IOError<KE = never> extends BaseError {
+  details: IOErrorDetails<KE>;
 
-  constructor(status: number, message: string, details: IOErrorDetails) {
+  constructor(status: number, message: string, details: IOErrorDetails<KE>) {
     super(status, message);
     this.details = details;
 

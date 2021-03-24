@@ -1,9 +1,11 @@
 import { GetFetchHTTPClient } from '../fetch';
-import { Endpoint } from 'ts-endpoint';
+import { Endpoint, EndpointError } from 'ts-endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { InferFetchResult } from '..';
-import { right } from 'fp-ts/lib/Either';
+import { right } from 'fp-ts/Either';
+import * as TA from 'fp-ts/TaskEither';
+import { pipe } from 'fp-ts/pipeable';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -17,6 +19,19 @@ const endpoints = {
       Query: { color: t.string },
       Params: { id: t.string },
     },
+    Method: 'GET',
+    getPath: ({ id }) => `users/${id}/crayons`,
+    Output: t.type({ crayons: t.array(t.string) }),
+  }),
+  provaWithError: Endpoint({
+    Input: {
+      Query: { color: t.string },
+      Params: { id: t.string },
+    },
+    Errors: [
+      EndpointError(401, t.type({ foo: t.string })),
+      EndpointError(402, t.type({ baz: t.string })),
+    ],
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
@@ -58,3 +73,21 @@ const provaResultWrong: InferFetchResult<typeof fetchClient.prova> = right({});
 const provaResultCorrect: InferFetchResult<typeof fetchClient.prova> = right({
   crayons: ['brown'],
 });
+
+const provaWithError = pipe(
+  fetchClient.provaWithError({
+    Params: { id: '123' },
+    Query: { color: 'marrone' },
+  }),
+  TA.mapLeft((err) => {
+    if (err.details.kind === 'KnownError') {
+      if (err.details.error.status === 401) {
+        // @dts-jest:pass:snap you can access KnownErrors with the correct typeguard
+        err.details.error.body.foo;
+
+        // @dts-jest:fail:snap you cannot access KnownErrors without the correct typeguard
+        err.details.error.body.baz;
+      }
+    }
+  })
+);
