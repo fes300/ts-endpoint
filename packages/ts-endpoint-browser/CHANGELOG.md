@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.10](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.9...ts-endpoint-browser@2.0.0-alpha.10) (2021-03-26)
+
+
+### Features
+
+* ts-endpoint-express use errors ([5366d62](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/5366d62727376a8e00b1086f2c2390dda8634a52))
+
+
+### BREAKING CHANGES
+
+* IOError now accepts only two arguments
+
+
+
+
+
 # [2.0.0-alpha.9](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.8...ts-endpoint-browser@2.0.0-alpha.9) (2021-03-24)
 
 
