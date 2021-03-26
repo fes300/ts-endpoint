@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InferFetchResult should return the type of the Endpoint.Output (type) should match snapshot 1`] = `
-"Type 'Either<EndpointInstanceError<EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, { color: StringC; }, undefined, { id: StringC; }, undefined>>>, {}>' is not assignable to type 'Either<EndpointInstanceError<EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, { color: StringC; }, undefined, { id: StringC; }, undefined>>>, { ...; }>'.
-  Type 'Right<{}>' is not assignable to type 'Either<EndpointInstanceError<EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, { color: StringC; }, undefined, { id: StringC; }, undefined>>>, { ...; }>'.
+"Type 'Either<IOError<never>, {}>' is not assignable to type 'Either<IOError<never>, { crayons: string[]; }>'.
+  Type 'Right<{}>' is not assignable to type 'Either<IOError<never>, { crayons: string[]; }>'.
     Type 'Right<{}>' is not assignable to type 'Right<{ crayons: string[]; }>'.
       Property 'crayons' is missing in type '{}' but required in type '{ crayons: string[]; }'."
 `;

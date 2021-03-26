@@ -1,8 +1,9 @@
-import { Endpoint, EndpointError, EndpointInstance } from 'ts-endpoint/lib/Endpoint';
 import {
-  InferEndpointInstanceParams,
-  TypeOfEndpointInstance,
-} from 'ts-endpoint/lib/Endpoint/helpers';
+  EndpointInstance,
+  EndpointInstanceError,
+  GenericEndpointInstance,
+} from 'ts-endpoint/lib/Endpoint';
+import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/lib/TaskEither';
 import { Either } from 'fp-ts/lib/Either';
@@ -13,30 +14,15 @@ import { IOError } from 'ts-shared/lib/errors';
 type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;
 type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> : never;
 
-export type InferFetchResult<FC extends FetchClient<any>> = ExtractEither<FunctionOutput<FC>>;
+export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 
-export type GenericInstance = Omit<
-  EndpointInstance<
-    Endpoint<any, any, any, any, any, any, Array<EndpointError<any, any>> | undefined>
-  >,
-  'Errors'
-> & { Errors?: Array<EndpointError<any, any>> };
-
-type ErrorBody<K> = K extends EndpointError<infer S, infer B>
-  ? { status: S; body: t.TypeOf<B> }
-  : never;
-
-export type EndpointInstanceError<E extends GenericInstance> = IOError<
-  ErrorBody<InferEndpointInstanceParams<E>['errors'][number]>
->;
-
-export type FetchClient<E extends GenericInstance> = ReaderTaskEither<
+export type FetchClient<E extends EndpointInstance<any>> = ReaderTaskEither<
   TypeOfEndpointInstance<E>['Input'],
-  EndpointInstanceError<E>,
+  IOError<EndpointInstanceError<E>>,
   t.TypeOf<E['Output']>
 >;
 
-export type HTTPClient<A extends Record<string, GenericInstance>> = {
+export type HTTPClient<A extends Record<string, EndpointInstance<any>>> = {
   [K in keyof A]: FetchClient<A[K]>;
 };
 
@@ -61,10 +47,10 @@ export type GetHTTPClientOptions = {
   mapInput?: (a: any) => any;
 };
 
-export const GetHTTPClient = <A extends { [key: string]: GenericInstance }>(
+export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  getFetchClient: <E extends EndpointInstance<any>>(
+  getFetchClient: <E extends GenericEndpointInstance>(
     baseURL: string,
     endpoint: E,
     options?: GetHTTPClientOptions
@@ -79,7 +65,7 @@ export const GetHTTPClient = <A extends { [key: string]: GenericInstance }>(
   const clientWithMethods = Object.entries(endpoints).reduce(
     (acc, [k, v]) => ({
       ...acc,
-      [k]: getFetchClient(baseURL, v, options),
+      [k]: getFetchClient(baseURL, v as GenericEndpointInstance, options),
     }),
     {} as HTTPClient<A>
   );

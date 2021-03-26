@@ -48,7 +48,7 @@ export interface Endpoint<
  * Data type representing an endpoint instance.
  * @public getStaticPath accepts a formatting function (param: string) -> string and returns
  **/
-export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any, any>> = {
+export type EndpointInstance<E extends GenericEndpoint> = {
   /**
    * helper to get a path given a set of runtime params.
    *
@@ -112,6 +112,18 @@ export type EndpointInstance<E extends Endpoint<any, any, any, any, any, any, an
       : { Body: NonNullable<E['Input']['Body']> });
 } & (E['Errors'] extends undefined ? { Errors?: never } : { Errors: E['Errors'] });
 
+type GenericEndpoint = Endpoint<
+  HTTPMethod,
+  t.Type<any, any, any>,
+  { [k: string]: t.Type<any, any, any> } | undefined,
+  { [k: string]: t.Type<any, any, any> } | undefined,
+  t.Type<any, any, any> | undefined,
+  { [k: string]: t.Type<any, any, any> } | undefined,
+  Array<EndpointError<any, any>> | undefined
+>;
+
+export type GenericEndpointInstance = EndpointInstance<GenericEndpoint>;
+
 type _EndpointError<S extends number, B extends t.Type<any, any, any>> = t.TupleC<
   [t.LiteralC<S>, B]
 >;
@@ -121,6 +133,14 @@ export interface EndpointError<S extends number, B extends t.Type<any, any, any>
 export const errorIso = <S extends number, B extends t.Type<any, any, any>>(
   _: EndpointError<S, B>
 ) => iso<EndpointError<S, B>>();
+
+type ErrorBody<K> = K extends EndpointError<infer S, infer B>
+  ? { status: S; body: t.TypeOf<B> }
+  : never;
+
+export type EndpointInstanceError<EI extends EndpointInstance<any>> = EI['Errors'] extends undefined
+  ? never
+  : ErrorBody<EI['Errors'][number]>;
 
 export const EndpointError = <S extends number, B extends t.Type<any, any, any>>(
   status: S,

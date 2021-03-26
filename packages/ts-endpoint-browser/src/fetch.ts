@@ -1,16 +1,9 @@
-import {
-  errorIso,
-  EndpointInstance,
-  Endpoint,
-  HTTPMethod,
-  EndpointError,
-} from 'ts-endpoint/lib/Endpoint';
+import { errorIso, EndpointInstance, GenericEndpointInstance } from 'ts-endpoint/lib/Endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/pipeable';
 import { PathReporter } from 'io-ts/PathReporter';
 import * as TA from 'fp-ts/TaskEither';
 import * as O from 'fp-ts/Option';
-import * as t from 'io-ts';
 import qs from 'qs';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
 import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
@@ -22,7 +15,7 @@ export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<a
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   options?: GetHTTPClientOptions
-) => GetHTTPClient(config, endpoints, useBrowserFetch as any, options);
+) => GetHTTPClient(config, endpoints, useBrowserFetch, options);
 
 const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
   if (r.body === null) {
@@ -45,20 +38,12 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
     : jsonResponse;
 };
 
-export const useBrowserFetch = <
-  M extends HTTPMethod,
-  O extends t.Type<any, any, any>,
-  H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  B extends t.Type<any, any, any> | undefined = undefined,
-  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends Array<EndpointError<any, any>> | undefined = undefined
->(
+export const useBrowserFetch = <E extends GenericEndpointInstance>(
   baseURL: string,
-  e: EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>,
+  e: E,
   options?: GetHTTPClientOptions
-): FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>> => {
-  return ((i: TypeOfEndpointInstance<EndpointInstance<Endpoint<M, O, H, Q, B, P>>>['Input']) => {
+): FetchClient<E> => {
+  return ((i: TypeOfEndpointInstance<E>['Input']) => {
     const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
       i.Query ? `?${qs.stringify(i.Query)}` : ''
     }`;
@@ -101,7 +86,7 @@ export const useBrowserFetch = <
         if (!r.ok) {
           if (e.Errors !== undefined) {
             const actualKnownError = pipe(
-              e.Errors as NonNullable<E>,
+              e.Errors,
               findFirst((knownErr) => {
                 return (knownErr as any).types[0].value === r.status;
               }),
@@ -197,5 +182,5 @@ export const useBrowserFetch = <
     );
 
     return response;
-  }) as FetchClient<EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>>;
+  }) as FetchClient<E>;
 };

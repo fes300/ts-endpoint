@@ -1,4 +1,4 @@
-import { EndpointInstance, Endpoint, HTTPMethod } from 'ts-endpoint';
+import { EndpointInstance, Endpoint, HTTPMethod, EndpointError } from 'ts-endpoint';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';
@@ -8,9 +8,17 @@ import { pipe } from 'fp-ts/lib/pipeable';
 import * as TA from 'fp-ts/lib/TaskEither';
 import { IOError, DecodeErrorStatus } from 'ts-shared/lib/errors';
 
-const getRouterMatcher = (
+const getRouterMatcher = <
+  M extends HTTPMethod,
+  O extends t.Type<any, any, any>,
+  H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  B extends t.Type<any, any, any> | undefined = undefined,
+  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  E extends Array<EndpointError<any, any>> | undefined = undefined
+>(
   router: express.Router,
-  e: EndpointInstance<any>
+  e: EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>
 ): express.IRouterMatcher<express.Router> => {
   switch (e.Method) {
     case 'POST':
@@ -49,9 +57,10 @@ export type AddEndpoint = (
   H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
-  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined
+  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
+  E extends Array<EndpointError<any, any>> | undefined = undefined
 >(
-  e: EndpointInstance<Endpoint<M, O, H, Q, B, P>>,
+  e: EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>,
   c: Controller<
     IOError,
     OutputOrNever<P>,

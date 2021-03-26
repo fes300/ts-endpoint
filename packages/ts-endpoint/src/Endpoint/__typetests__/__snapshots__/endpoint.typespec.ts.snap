@@ -52,3 +52,7 @@ exports[`type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors> (
 exports[`type ErrorBodies = EndpointType['Errors'][number][1] (type) should match snapshot 1`] = `"any"`;
 
 exports[`type ErrorStatuses = EndpointType['Errors'][number][0] (type) should match snapshot 1`] = `"any"`;
+
+exports[`you can infer KnownErrors with EndpointInstanceError (type) should match snapshot 1`] = `"any"`;
+
+exports[`you can infer KnownErrors with EndpointInstanceError (type) should match snapshot 2`] = `"any"`;

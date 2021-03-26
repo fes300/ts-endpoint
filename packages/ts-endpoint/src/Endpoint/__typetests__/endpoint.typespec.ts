@@ -1,4 +1,4 @@
-import { Endpoint, EndpointError } from '..';
+import { Endpoint, EndpointError, EndpointInstanceError } from '..';
 import * as t from 'io-ts';
 import { TypeOfEndpointInstance } from '../helpers';
 
@@ -99,3 +99,9 @@ type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors>;
 type ErrorStatuses = EndpointType['Errors'][number][0];
 // @dts-jest:pass:snap
 type ErrorBodies = EndpointType['Errors'][number][1];
+
+// @dts-jest:pass:snap you can infer KnownErrors with EndpointInstanceError
+type errs = EndpointInstanceError<typeof endpointWithErrors>;
+
+// @dts-jest:pass:snap you can infer KnownErrors with EndpointInstanceError
+type noerrs = EndpointInstanceError<typeof endpointInstance>;
