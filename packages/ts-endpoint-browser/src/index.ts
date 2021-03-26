@@ -2,13 +2,13 @@ import {
   EndpointInstance,
   EndpointInstanceError,
   GenericEndpointInstance,
-} from 'ts-endpoint/lib/Endpoint';
-import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
+  TypeOfEndpointInstance,
+} from 'ts-endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { TaskEither } from 'fp-ts/lib/TaskEither';
-import { Either } from 'fp-ts/lib/Either';
+import { TaskEither } from 'fp-ts/TaskEither';
+import { Either } from 'fp-ts/Either';
 import * as t from 'io-ts';
-import { ReaderTaskEither } from 'fp-ts/lib/ReaderTaskEither';
+import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
 import { IOError } from 'ts-shared/lib/errors';
 
 type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;

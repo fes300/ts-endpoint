@@ -1,4 +1,9 @@
-import { errorIso, EndpointInstance, GenericEndpointInstance } from 'ts-endpoint/lib/Endpoint';
+import {
+  errorIso,
+  EndpointInstance,
+  GenericEndpointInstance,
+  TypeOfEndpointInstance,
+} from 'ts-endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/pipeable';
 import { PathReporter } from 'io-ts/PathReporter';
@@ -8,7 +13,6 @@ import qs from 'qs';
 import { IOError, NetworkErrorStatus } from 'ts-shared/lib/errors';
 import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import * as E from 'fp-ts/Either';
-import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 import { findFirst } from 'fp-ts/Array';
 import * as t from 'io-ts';
 

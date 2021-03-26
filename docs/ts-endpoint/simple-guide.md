@@ -38,9 +38,9 @@ Then add implementations to your express server:
 import express from 'express';
 import { getUser } from 'shared';
 import { AddEndpoint } from 'ts-endpoint-express/lib';
-import * as TA from 'fp-ts/lib/TaskEither';
-import * as E from 'fp-ts/lib/Either';
-import { pipe } from 'fp-ts/lib/pipeable';
+import * as TA from 'fp-ts/TaskEither';
+import * as E from 'fp-ts/Either';
+import { pipe } from 'fp-ts/pipeable';
 import { IOError } from 'ts-shared/lib/errors';
 
 const database = [

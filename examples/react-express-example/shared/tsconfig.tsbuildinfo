@@ -201,7 +201,7 @@
         "signature": "cd6efb9467a8b6338ece2e2855e37765700f2cd061ca54b01b33878cf5c7677e",
         "affectsGlobalScope": true
       },
-      "../node_modules/fp-ts/lib/function.d.ts": {
+      "../node_modules/fp-ts/function.d.ts": {
         "version": "476f104ce40770979f82218f0f622cfc5da87fb99ee403cd443ea1f8588bb307",
         "signature": "476f104ce40770979f82218f0f622cfc5da87fb99ee403cd443ea1f8588bb307",
         "affectsGlobalScope": false
@@ -211,167 +211,167 @@
         "signature": "54a098c654bd4a1b420702693a923df4a2e767c82fc4461550ff32b43f965511",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/functor.d.ts": {
+      "../node_modules/fp-ts/functor.d.ts": {
         "version": "95652e5c3398426e171c1ee53f6ccc7043846667072423d592baaae257af302d",
         "signature": "95652e5c3398426e171c1ee53f6ccc7043846667072423d592baaae257af302d",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/alt.d.ts": {
+      "../node_modules/fp-ts/alt.d.ts": {
         "version": "5c3fab10db01d3693457f87f570af8a735d5e5f49c6afc6af491c462ab8d58ac",
         "signature": "5c3fab10db01d3693457f87f570af8a735d5e5f49c6afc6af491c462ab8d58ac",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/apply.d.ts": {
+      "../node_modules/fp-ts/apply.d.ts": {
         "version": "7e45bd1d3b8fb1a84e572ade2b7cb189f810a6fba05291a61a4405c431b8a24b",
         "signature": "7e45bd1d3b8fb1a84e572ade2b7cb189f810a6fba05291a61a4405c431b8a24b",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/applicative.d.ts": {
+      "../node_modules/fp-ts/applicative.d.ts": {
         "version": "16e204fc72a65e0589b4120c52817bc5e110df780f76d54af7feb04c20c73db3",
         "signature": "16e204fc72a65e0589b4120c52817bc5e110df780f76d54af7feb04c20c73db3",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/bifunctor.d.ts": {
+      "../node_modules/fp-ts/bifunctor.d.ts": {
         "version": "168ac212cb3450fdae5870a7aab058be48f77ff6a7c9c6e2d2fe18fe1b4b6307",
         "signature": "168ac212cb3450fdae5870a7aab058be48f77ff6a7c9c6e2d2fe18fe1b4b6307",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/chain.d.ts": {
+      "../node_modules/fp-ts/chain.d.ts": {
         "version": "528175b35c1fcd948d135ecb5b8f38045488b3fbaa33410929c74be5864d6ff2",
         "signature": "528175b35c1fcd948d135ecb5b8f38045488b3fbaa33410929c74be5864d6ff2",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/chainrec.d.ts": {
+      "../node_modules/fp-ts/chainrec.d.ts": {
         "version": "8e1562c1007a9607099190e50e1f209ccdb4851012d60678597fde9011936a59",
         "signature": "8e1562c1007a9607099190e50e1f209ccdb4851012d60678597fde9011936a59",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/contravariant.d.ts": {
+      "../node_modules/fp-ts/contravariant.d.ts": {
         "version": "27f53cbb8bca360fec4caeabb124bc29d371b19fd5183ae7067b1ae62f27a1d1",
         "signature": "27f53cbb8bca360fec4caeabb124bc29d371b19fd5183ae7067b1ae62f27a1d1",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/magma.d.ts": {
+      "../node_modules/fp-ts/magma.d.ts": {
         "version": "d86e0824f362d8bc50fd96342ee506b8db3fa371310f3ad344b9e65ccbaac846",
         "signature": "d86e0824f362d8bc50fd96342ee506b8db3fa371310f3ad344b9e65ccbaac846",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/alternative.d.ts": {
+      "../node_modules/fp-ts/alternative.d.ts": {
         "version": "376697226b23441755bd9b183f350a013e5fbaa1e86ec939bb187d6ca809d72d",
         "signature": "376697226b23441755bd9b183f350a013e5fbaa1e86ec939bb187d6ca809d72d",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/extend.d.ts": {
+      "../node_modules/fp-ts/extend.d.ts": {
         "version": "6ee39c4fb749b48fef9ce908cba025fc774b40790c5f2c0d19ed70e55d688fb6",
         "signature": "6ee39c4fb749b48fef9ce908cba025fc774b40790c5f2c0d19ed70e55d688fb6",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/filterable.d.ts": {
+      "../node_modules/fp-ts/filterable.d.ts": {
         "version": "702b939f2426d0a1cf9404b1eb714271c1321f11f6a3df54b7523af11ddbd221",
         "signature": "702b939f2426d0a1cf9404b1eb714271c1321f11f6a3df54b7523af11ddbd221",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/monad.d.ts": {
+      "../node_modules/fp-ts/monad.d.ts": {
         "version": "f52166acadbc6ce500281d9d1ddc767c12f28d2664356cb8e3c095abe049b4c1",
         "signature": "f52166acadbc6ce500281d9d1ddc767c12f28d2664356cb8e3c095abe049b4c1",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/foldable.d.ts": {
+      "../node_modules/fp-ts/foldable.d.ts": {
         "version": "5d9d8f024cb8d716a31934103ad466d5325560035f3c03175fe7527400796a00",
         "signature": "5d9d8f024cb8d716a31934103ad466d5325560035f3c03175fe7527400796a00",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/monadthrow.d.ts": {
+      "../node_modules/fp-ts/monadthrow.d.ts": {
         "version": "25c318c9a9e87a1163cabfc325c6b85b14b8cfb4a01679ef4211217cb843f174",
         "signature": "25c318c9a9e87a1163cabfc325c6b85b14b8cfb4a01679ef4211217cb843f174",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/show.d.ts": {
+      "../node_modules/fp-ts/show.d.ts": {
         "version": "157ad24896df24ac6faa6cc0d838c15cf5b11fd5b5bc5f9bcd7a3bae747e1756",
         "signature": "157ad24896df24ac6faa6cc0d838c15cf5b11fd5b5bc5f9bcd7a3bae747e1756",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/traversable.d.ts": {
+      "../node_modules/fp-ts/traversable.d.ts": {
         "version": "cffd1890715b61ced2622280cd5ed0553aa960255e747c91d89b69cb01bb746f",
         "signature": "cffd1890715b61ced2622280cd5ed0553aa960255e747c91d89b69cb01bb746f",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/witherable.d.ts": {
+      "../node_modules/fp-ts/witherable.d.ts": {
         "version": "1326b1489b72536037d6c6b7bb0db45e95ae940c12d5a5d4dddefc907f38aec4",
         "signature": "1326b1489b72536037d6c6b7bb0db45e95ae940c12d5a5d4dddefc907f38aec4",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/option.d.ts": {
+      "../node_modules/fp-ts/option.d.ts": {
         "version": "d8587ec7b2af7de9121d6de575bab1844e8de280cee560aa67f14150d0b7efff",
         "signature": "d8587ec7b2af7de9121d6de575bab1844e8de280cee560aa67f14150d0b7efff",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/compactable.d.ts": {
+      "../node_modules/fp-ts/compactable.d.ts": {
         "version": "4a70e0caac8a77c43749ff31a6af96c327208eaed4ffe8b98452da81a3b4a73e",
         "signature": "4a70e0caac8a77c43749ff31a6af96c327208eaed4ffe8b98452da81a3b4a73e",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/functorwithindex.d.ts": {
+      "../node_modules/fp-ts/functorwithindex.d.ts": {
         "version": "b5c3cdc3a9e43b3760887e8a9617c3fef6f166fd5bbdf4b187c2c314a62d8e0f",
         "signature": "b5c3cdc3a9e43b3760887e8a9617c3fef6f166fd5bbdf4b187c2c314a62d8e0f",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/filterablewithindex.d.ts": {
+      "../node_modules/fp-ts/filterablewithindex.d.ts": {
         "version": "96c709d9b4655ad0ff4323ea245ab3aa1b5eba1b7be59c8fcc10ccfbf2be7361",
         "signature": "96c709d9b4655ad0ff4323ea245ab3aa1b5eba1b7be59c8fcc10ccfbf2be7361",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/foldablewithindex.d.ts": {
+      "../node_modules/fp-ts/foldablewithindex.d.ts": {
         "version": "83107c85b273401c75234cd54a079d570e0c3b7a14c9c4ca1bcc8db497f90cd0",
         "signature": "83107c85b273401c75234cd54a079d570e0c3b7a14c9c4ca1bcc8db497f90cd0",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/traversablewithindex.d.ts": {
+      "../node_modules/fp-ts/traversablewithindex.d.ts": {
         "version": "5509d07a6a598798b9a03a97e9a01ce9a949ef6914cbcb16314b9e62e74b7dd0",
         "signature": "5509d07a6a598798b9a03a97e9a01ce9a949ef6914cbcb16314b9e62e74b7dd0",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/unfoldable.d.ts": {
+      "../node_modules/fp-ts/unfoldable.d.ts": {
         "version": "3a84da3d0bddb1854642016f7860853850c2073628f5e278559cac66d7ad7e7f",
         "signature": "3a84da3d0bddb1854642016f7860853850c2073628f5e278559cac66d7ad7e7f",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/readonlyrecord.d.ts": {
+      "../node_modules/fp-ts/readonlyrecord.d.ts": {
         "version": "3d61273d1f558113b82efc2ad4407f384d6952ab4a7fff14d067ede27149608c",
         "signature": "3d61273d1f558113b82efc2ad4407f384d6952ab4a7fff14d067ede27149608c",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/semigroup.d.ts": {
+      "../node_modules/fp-ts/semigroup.d.ts": {
         "version": "59a39bafac5d753fe2bbdb82aa9c6bf1b52b45d4ef399f1035a7e58085b3e3ee",
         "signature": "59a39bafac5d753fe2bbdb82aa9c6bf1b52b45d4ef399f1035a7e58085b3e3ee",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/ordering.d.ts": {
+      "../node_modules/fp-ts/ordering.d.ts": {
         "version": "0242dea1cf844b31a654c9f6806d70e999683e0f6045bb29b29cbcb187cbb5a0",
         "signature": "0242dea1cf844b31a654c9f6806d70e999683e0f6045bb29b29cbcb187cbb5a0",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/ord.d.ts": {
+      "../node_modules/fp-ts/ord.d.ts": {
         "version": "a5235ec4a0912b10436a52fb7e9a62a5cfdc56b6ebc79f2858fbcb487edeb902",
         "signature": "a5235ec4a0912b10436a52fb7e9a62a5cfdc56b6ebc79f2858fbcb487edeb902",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/bounded.d.ts": {
+      "../node_modules/fp-ts/bounded.d.ts": {
         "version": "f9f75302784e02478da6917f4820efb633867da8bb037cec96b2318818a7ca13",
         "signature": "f9f75302784e02478da6917f4820efb633867da8bb037cec96b2318818a7ca13",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/monoid.d.ts": {
+      "../node_modules/fp-ts/monoid.d.ts": {
         "version": "8b49028c981ad124d191928e1d2605685ad6d180ee5bbf833f5b115348aa424d",
         "signature": "8b49028c981ad124d191928e1d2605685ad6d180ee5bbf833f5b115348aa424d",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/eq.d.ts": {
+      "../node_modules/fp-ts/eq.d.ts": {
         "version": "077699f2100eeeee5fa16992321302e42eeb9c07077249d2bcb58f29acf49f2b",
         "signature": "077699f2100eeeee5fa16992321302e42eeb9c07077249d2bcb58f29acf49f2b",
         "affectsGlobalScope": false
       },
-      "../node_modules/fp-ts/lib/either.d.ts": {
+      "../node_modules/fp-ts/either.d.ts": {
         "version": "d2dd5991d8be2269be34d8c8d08f486288b2bf2df30b77d825097c05bd219741",
         "signature": "d2dd5991d8be2269be34d8c8d08f486288b2bf2df30b77d825097c05bd219741",
         "affectsGlobalScope": false
@@ -2151,7 +2151,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../node_modules/fp-ts/lib/alt.d.ts": [
+      "../node_modules/fp-ts/alt.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2160,10 +2160,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/alternative.d.ts": [
+      "../node_modules/fp-ts/alternative.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2172,10 +2172,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/alt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts"
+        "../node_modules/fp-ts/alt.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts"
       ],
-      "../node_modules/fp-ts/lib/applicative.d.ts": [
+      "../node_modules/fp-ts/applicative.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2184,10 +2184,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/apply.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/apply.d.ts",
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/apply.d.ts": [
+      "../node_modules/fp-ts/apply.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2196,9 +2196,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/bifunctor.d.ts": [
+      "../node_modules/fp-ts/bifunctor.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2208,7 +2208,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts"
       ],
-      "../node_modules/fp-ts/lib/bounded.d.ts": [
+      "../node_modules/fp-ts/bounded.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2216,20 +2216,9 @@
         "../node_modules/@types/node/ts3.4/fs.d.ts",
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts"
+        "../node_modules/fp-ts/ord.d.ts"
       ],
-      "../node_modules/fp-ts/lib/chain.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/apply.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/chainrec.d.ts": [
+      "../node_modules/fp-ts/chain.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2238,10 +2227,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/chain.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts"
+        "../node_modules/fp-ts/apply.d.ts"
       ],
-      "../node_modules/fp-ts/lib/compactable.d.ts": [
+      "../node_modules/fp-ts/chainrec.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2250,11 +2238,23 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/chain.d.ts",
+        "../node_modules/fp-ts/either.d.ts"
       ],
-      "../node_modules/fp-ts/lib/contravariant.d.ts": [
+      "../node_modules/fp-ts/compactable.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/hkt.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
+      ],
+      "../node_modules/fp-ts/contravariant.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2264,7 +2264,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts"
       ],
-      "../node_modules/fp-ts/lib/either.d.ts": [
+      "../node_modules/fp-ts/either.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2273,28 +2273,28 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/alt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/bifunctor.d.ts",
-        "../node_modules/fp-ts/lib/chainrec.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/extend.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts",
-        "../node_modules/fp-ts/lib/monadthrow.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts",
-        "../node_modules/fp-ts/lib/show.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts",
-        "../node_modules/fp-ts/lib/witherable.d.ts"
+        "../node_modules/fp-ts/alt.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/bifunctor.d.ts",
+        "../node_modules/fp-ts/chainrec.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/extend.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/monad.d.ts",
+        "../node_modules/fp-ts/monadthrow.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts",
+        "../node_modules/fp-ts/show.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts",
+        "../node_modules/fp-ts/witherable.d.ts"
       ],
-      "../node_modules/fp-ts/lib/eq.d.ts": [
+      "../node_modules/fp-ts/eq.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2303,14 +2303,14 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/contravariant.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts"
+        "../node_modules/fp-ts/contravariant.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts"
       ],
-      "../node_modules/fp-ts/lib/extend.d.ts": [
+      "../node_modules/fp-ts/extend.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2319,9 +2319,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/filterable.d.ts": [
+      "../node_modules/fp-ts/filterable.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2330,13 +2330,13 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
       ],
-      "../node_modules/fp-ts/lib/filterablewithindex.d.ts": [
+      "../node_modules/fp-ts/filterablewithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2345,13 +2345,13 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/functorwithindex.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
       ],
-      "../node_modules/fp-ts/lib/foldable.d.ts": [
+      "../node_modules/fp-ts/foldable.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2360,11 +2360,11 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/monad.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts"
       ],
-      "../node_modules/fp-ts/lib/foldablewithindex.d.ts": [
+      "../node_modules/fp-ts/foldablewithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2373,10 +2373,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts"
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts"
       ],
-      "../node_modules/fp-ts/lib/function.d.ts": [
+      "../node_modules/fp-ts/function.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2385,7 +2385,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../node_modules/fp-ts/lib/functor.d.ts": [
+      "../node_modules/fp-ts/functor.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2395,7 +2395,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts"
       ],
-      "../node_modules/fp-ts/lib/functorwithindex.d.ts": [
+      "../node_modules/fp-ts/functorwithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2404,9 +2404,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/magma.d.ts": [
+      "../node_modules/fp-ts/magma.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2415,7 +2415,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../node_modules/fp-ts/lib/monad.d.ts": [
+      "../node_modules/fp-ts/monad.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2424,10 +2424,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/chain.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/chain.d.ts"
       ],
-      "../node_modules/fp-ts/lib/monadthrow.d.ts": [
+      "../node_modules/fp-ts/monadthrow.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2436,9 +2436,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts"
+        "../node_modules/fp-ts/monad.d.ts"
       ],
-      "../node_modules/fp-ts/lib/monoid.d.ts": [
+      "../node_modules/fp-ts/monoid.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2446,42 +2446,12 @@
         "../node_modules/@types/node/ts3.4/fs.d.ts",
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/bounded.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts"
+        "../node_modules/fp-ts/bounded.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts"
       ],
-      "../node_modules/fp-ts/lib/option.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/alt.d.ts",
-        "../node_modules/fp-ts/lib/alternative.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/extend.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts",
-        "../node_modules/fp-ts/lib/monadthrow.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts",
-        "../node_modules/fp-ts/lib/show.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts",
-        "../node_modules/fp-ts/lib/witherable.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/ord.d.ts": [
+      "../node_modules/fp-ts/option.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2490,81 +2460,28 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/contravariant.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ordering.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts"
+        "../node_modules/fp-ts/alt.d.ts",
+        "../node_modules/fp-ts/alternative.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/extend.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/monad.d.ts",
+        "../node_modules/fp-ts/monadthrow.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts",
+        "../node_modules/fp-ts/show.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts",
+        "../node_modules/fp-ts/witherable.d.ts"
       ],
-      "../node_modules/fp-ts/lib/ordering.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/readonlyrecord.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/filterablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/foldablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-        "../node_modules/fp-ts/lib/magma.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts",
-        "../node_modules/fp-ts/lib/show.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts",
-        "../node_modules/fp-ts/lib/traversablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/unfoldable.d.ts",
-        "../node_modules/fp-ts/lib/witherable.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/semigroup.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/magma.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/show.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/traversable.d.ts": [
+      "../node_modules/fp-ts/ord.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2573,11 +2490,28 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/contravariant.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ordering.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts"
       ],
-      "../node_modules/fp-ts/lib/traversablewithindex.d.ts": [
+      "../node_modules/fp-ts/ordering.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts"
+      ],
+      "../node_modules/fp-ts/readonlyrecord.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2586,12 +2520,51 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/foldablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/filterablewithindex.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/foldablewithindex.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/functorwithindex.d.ts",
+        "../node_modules/fp-ts/magma.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts",
+        "../node_modules/fp-ts/show.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts",
+        "../node_modules/fp-ts/traversablewithindex.d.ts",
+        "../node_modules/fp-ts/unfoldable.d.ts",
+        "../node_modules/fp-ts/witherable.d.ts"
       ],
-      "../node_modules/fp-ts/lib/unfoldable.d.ts": [
+      "../node_modules/fp-ts/semigroup.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/magma.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts"
+      ],
+      "../node_modules/fp-ts/show.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts"
+      ],
+      "../node_modules/fp-ts/traversable.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2600,9 +2573,11 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/witherable.d.ts": [
+      "../node_modules/fp-ts/traversablewithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -2611,12 +2586,37 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/foldablewithindex.d.ts",
+        "../node_modules/fp-ts/functorwithindex.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts"
+      ],
+      "../node_modules/fp-ts/unfoldable.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/hkt.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
+      ],
+      "../node_modules/fp-ts/witherable.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/hkt.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts"
       ],
       "../node_modules/io-ts-types/lib/numberfromstring.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
@@ -2636,8 +2636,8 @@
         "../node_modules/@types/node/ts3.4/fs.d.ts",
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts"
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/function.d.ts"
       ],
       "../node_modules/source-map/source-map.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
@@ -4204,7 +4204,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../node_modules/fp-ts/lib/alt.d.ts": [
+      "../node_modules/fp-ts/alt.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4213,10 +4213,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/alternative.d.ts": [
+      "../node_modules/fp-ts/alternative.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4225,10 +4225,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/alt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts"
+        "../node_modules/fp-ts/alt.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts"
       ],
-      "../node_modules/fp-ts/lib/applicative.d.ts": [
+      "../node_modules/fp-ts/applicative.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4237,10 +4237,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/apply.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/apply.d.ts",
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/apply.d.ts": [
+      "../node_modules/fp-ts/apply.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4249,9 +4249,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/bifunctor.d.ts": [
+      "../node_modules/fp-ts/bifunctor.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4261,7 +4261,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts"
       ],
-      "../node_modules/fp-ts/lib/bounded.d.ts": [
+      "../node_modules/fp-ts/bounded.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4269,20 +4269,9 @@
         "../node_modules/@types/node/ts3.4/fs.d.ts",
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts"
+        "../node_modules/fp-ts/ord.d.ts"
       ],
-      "../node_modules/fp-ts/lib/chain.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/apply.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/chainrec.d.ts": [
+      "../node_modules/fp-ts/chain.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4291,10 +4280,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/chain.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts"
+        "../node_modules/fp-ts/apply.d.ts"
       ],
-      "../node_modules/fp-ts/lib/compactable.d.ts": [
+      "../node_modules/fp-ts/chainrec.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4303,11 +4291,23 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/chain.d.ts",
+        "../node_modules/fp-ts/either.d.ts"
       ],
-      "../node_modules/fp-ts/lib/contravariant.d.ts": [
+      "../node_modules/fp-ts/compactable.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/hkt.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
+      ],
+      "../node_modules/fp-ts/contravariant.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4317,7 +4317,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts"
       ],
-      "../node_modules/fp-ts/lib/either.d.ts": [
+      "../node_modules/fp-ts/either.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4326,28 +4326,28 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/alt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/bifunctor.d.ts",
-        "../node_modules/fp-ts/lib/chainrec.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/extend.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts",
-        "../node_modules/fp-ts/lib/monadthrow.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts",
-        "../node_modules/fp-ts/lib/show.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts",
-        "../node_modules/fp-ts/lib/witherable.d.ts"
+        "../node_modules/fp-ts/alt.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/bifunctor.d.ts",
+        "../node_modules/fp-ts/chainrec.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/extend.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/monad.d.ts",
+        "../node_modules/fp-ts/monadthrow.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts",
+        "../node_modules/fp-ts/show.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts",
+        "../node_modules/fp-ts/witherable.d.ts"
       ],
-      "../node_modules/fp-ts/lib/eq.d.ts": [
+      "../node_modules/fp-ts/eq.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4356,14 +4356,14 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/contravariant.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts"
+        "../node_modules/fp-ts/contravariant.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts"
       ],
-      "../node_modules/fp-ts/lib/extend.d.ts": [
+      "../node_modules/fp-ts/extend.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4372,9 +4372,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/filterable.d.ts": [
+      "../node_modules/fp-ts/filterable.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4383,13 +4383,13 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
       ],
-      "../node_modules/fp-ts/lib/filterablewithindex.d.ts": [
+      "../node_modules/fp-ts/filterablewithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4398,13 +4398,13 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/functorwithindex.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
       ],
-      "../node_modules/fp-ts/lib/foldable.d.ts": [
+      "../node_modules/fp-ts/foldable.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4413,11 +4413,11 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/monad.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts"
       ],
-      "../node_modules/fp-ts/lib/foldablewithindex.d.ts": [
+      "../node_modules/fp-ts/foldablewithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4426,10 +4426,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts"
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts"
       ],
-      "../node_modules/fp-ts/lib/function.d.ts": [
+      "../node_modules/fp-ts/function.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4438,7 +4438,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../node_modules/fp-ts/lib/functor.d.ts": [
+      "../node_modules/fp-ts/functor.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4448,7 +4448,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts"
       ],
-      "../node_modules/fp-ts/lib/functorwithindex.d.ts": [
+      "../node_modules/fp-ts/functorwithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4457,9 +4457,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/magma.d.ts": [
+      "../node_modules/fp-ts/magma.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4468,7 +4468,7 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
-      "../node_modules/fp-ts/lib/monad.d.ts": [
+      "../node_modules/fp-ts/monad.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4477,10 +4477,10 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/chain.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/chain.d.ts"
       ],
-      "../node_modules/fp-ts/lib/monadthrow.d.ts": [
+      "../node_modules/fp-ts/monadthrow.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4489,9 +4489,9 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts"
+        "../node_modules/fp-ts/monad.d.ts"
       ],
-      "../node_modules/fp-ts/lib/monoid.d.ts": [
+      "../node_modules/fp-ts/monoid.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4499,42 +4499,12 @@
         "../node_modules/@types/node/ts3.4/fs.d.ts",
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/bounded.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts"
+        "../node_modules/fp-ts/bounded.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts"
       ],
-      "../node_modules/fp-ts/lib/option.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/alt.d.ts",
-        "../node_modules/fp-ts/lib/alternative.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/extend.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/monad.d.ts",
-        "../node_modules/fp-ts/lib/monadthrow.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts",
-        "../node_modules/fp-ts/lib/show.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts",
-        "../node_modules/fp-ts/lib/witherable.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/ord.d.ts": [
+      "../node_modules/fp-ts/option.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4543,81 +4513,28 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/contravariant.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ordering.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts"
+        "../node_modules/fp-ts/alt.d.ts",
+        "../node_modules/fp-ts/alternative.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/extend.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/monad.d.ts",
+        "../node_modules/fp-ts/monadthrow.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts",
+        "../node_modules/fp-ts/show.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts",
+        "../node_modules/fp-ts/witherable.d.ts"
       ],
-      "../node_modules/fp-ts/lib/ordering.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/readonlyrecord.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/eq.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/filterablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/foldablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts",
-        "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-        "../node_modules/fp-ts/lib/magma.d.ts",
-        "../node_modules/fp-ts/lib/monoid.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/semigroup.d.ts",
-        "../node_modules/fp-ts/lib/show.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts",
-        "../node_modules/fp-ts/lib/traversablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/unfoldable.d.ts",
-        "../node_modules/fp-ts/lib/witherable.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/semigroup.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/magma.d.ts",
-        "../node_modules/fp-ts/lib/ord.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/show.d.ts": [
-        "../../../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/ts3.1/fs.d.ts",
-        "../node_modules/@types/node/ts3.1/process.d.ts",
-        "../node_modules/@types/node/ts3.1/util.d.ts",
-        "../node_modules/@types/node/ts3.4/fs.d.ts",
-        "../node_modules/@types/node/ts3.4/process.d.ts",
-        "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/readonlyrecord.d.ts"
-      ],
-      "../node_modules/fp-ts/lib/traversable.d.ts": [
+      "../node_modules/fp-ts/ord.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4626,11 +4543,28 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/foldable.d.ts",
-        "../node_modules/fp-ts/lib/functor.d.ts"
+        "../node_modules/fp-ts/contravariant.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ordering.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts"
       ],
-      "../node_modules/fp-ts/lib/traversablewithindex.d.ts": [
+      "../node_modules/fp-ts/ordering.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts"
+      ],
+      "../node_modules/fp-ts/readonlyrecord.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4639,12 +4573,51 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/foldablewithindex.d.ts",
-        "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/eq.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/filterablewithindex.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/foldablewithindex.d.ts",
+        "../node_modules/fp-ts/function.d.ts",
+        "../node_modules/fp-ts/functor.d.ts",
+        "../node_modules/fp-ts/functorwithindex.d.ts",
+        "../node_modules/fp-ts/magma.d.ts",
+        "../node_modules/fp-ts/monoid.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/semigroup.d.ts",
+        "../node_modules/fp-ts/show.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts",
+        "../node_modules/fp-ts/traversablewithindex.d.ts",
+        "../node_modules/fp-ts/unfoldable.d.ts",
+        "../node_modules/fp-ts/witherable.d.ts"
       ],
-      "../node_modules/fp-ts/lib/unfoldable.d.ts": [
+      "../node_modules/fp-ts/semigroup.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/magma.d.ts",
+        "../node_modules/fp-ts/ord.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts"
+      ],
+      "../node_modules/fp-ts/show.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/readonlyrecord.d.ts"
+      ],
+      "../node_modules/fp-ts/traversable.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4653,9 +4626,11 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/foldable.d.ts",
+        "../node_modules/fp-ts/functor.d.ts"
       ],
-      "../node_modules/fp-ts/lib/witherable.d.ts": [
+      "../node_modules/fp-ts/traversablewithindex.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4664,12 +4639,37 @@
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/fp-ts/hkt.d.ts",
-        "../node_modules/fp-ts/lib/applicative.d.ts",
-        "../node_modules/fp-ts/lib/compactable.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/filterable.d.ts",
-        "../node_modules/fp-ts/lib/option.d.ts",
-        "../node_modules/fp-ts/lib/traversable.d.ts"
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/foldablewithindex.d.ts",
+        "../node_modules/fp-ts/functorwithindex.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts"
+      ],
+      "../node_modules/fp-ts/unfoldable.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/hkt.d.ts",
+        "../node_modules/fp-ts/option.d.ts"
+      ],
+      "../node_modules/fp-ts/witherable.d.ts": [
+        "../../../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/ts3.1/fs.d.ts",
+        "../node_modules/@types/node/ts3.1/process.d.ts",
+        "../node_modules/@types/node/ts3.1/util.d.ts",
+        "../node_modules/@types/node/ts3.4/fs.d.ts",
+        "../node_modules/@types/node/ts3.4/process.d.ts",
+        "../node_modules/@types/node/ts3.4/util.d.ts",
+        "../node_modules/fp-ts/hkt.d.ts",
+        "../node_modules/fp-ts/applicative.d.ts",
+        "../node_modules/fp-ts/compactable.d.ts",
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/filterable.d.ts",
+        "../node_modules/fp-ts/option.d.ts",
+        "../node_modules/fp-ts/traversable.d.ts"
       ],
       "../node_modules/io-ts-types/lib/numberfromstring.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
@@ -4689,8 +4689,8 @@
         "../node_modules/@types/node/ts3.4/fs.d.ts",
         "../node_modules/@types/node/ts3.4/process.d.ts",
         "../node_modules/@types/node/ts3.4/util.d.ts",
-        "../node_modules/fp-ts/lib/either.d.ts",
-        "../node_modules/fp-ts/lib/function.d.ts"
+        "../node_modules/fp-ts/either.d.ts",
+        "../node_modules/fp-ts/function.d.ts"
       ],
       "../node_modules/source-map/source-map.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
@@ -5193,40 +5193,40 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/csstype/index.d.ts",
       "../node_modules/fp-ts/hkt.d.ts",
-      "../node_modules/fp-ts/lib/alt.d.ts",
-      "../node_modules/fp-ts/lib/alternative.d.ts",
-      "../node_modules/fp-ts/lib/applicative.d.ts",
-      "../node_modules/fp-ts/lib/apply.d.ts",
-      "../node_modules/fp-ts/lib/bifunctor.d.ts",
-      "../node_modules/fp-ts/lib/bounded.d.ts",
-      "../node_modules/fp-ts/lib/chain.d.ts",
-      "../node_modules/fp-ts/lib/chainrec.d.ts",
-      "../node_modules/fp-ts/lib/compactable.d.ts",
-      "../node_modules/fp-ts/lib/contravariant.d.ts",
-      "../node_modules/fp-ts/lib/either.d.ts",
-      "../node_modules/fp-ts/lib/eq.d.ts",
-      "../node_modules/fp-ts/lib/extend.d.ts",
-      "../node_modules/fp-ts/lib/filterable.d.ts",
-      "../node_modules/fp-ts/lib/filterablewithindex.d.ts",
-      "../node_modules/fp-ts/lib/foldable.d.ts",
-      "../node_modules/fp-ts/lib/foldablewithindex.d.ts",
-      "../node_modules/fp-ts/lib/function.d.ts",
-      "../node_modules/fp-ts/lib/functor.d.ts",
-      "../node_modules/fp-ts/lib/functorwithindex.d.ts",
-      "../node_modules/fp-ts/lib/magma.d.ts",
-      "../node_modules/fp-ts/lib/monad.d.ts",
-      "../node_modules/fp-ts/lib/monadthrow.d.ts",
-      "../node_modules/fp-ts/lib/monoid.d.ts",
-      "../node_modules/fp-ts/lib/option.d.ts",
-      "../node_modules/fp-ts/lib/ord.d.ts",
-      "../node_modules/fp-ts/lib/ordering.d.ts",
-      "../node_modules/fp-ts/lib/readonlyrecord.d.ts",
-      "../node_modules/fp-ts/lib/semigroup.d.ts",
-      "../node_modules/fp-ts/lib/show.d.ts",
-      "../node_modules/fp-ts/lib/traversable.d.ts",
-      "../node_modules/fp-ts/lib/traversablewithindex.d.ts",
-      "../node_modules/fp-ts/lib/unfoldable.d.ts",
-      "../node_modules/fp-ts/lib/witherable.d.ts",
+      "../node_modules/fp-ts/alt.d.ts",
+      "../node_modules/fp-ts/alternative.d.ts",
+      "../node_modules/fp-ts/applicative.d.ts",
+      "../node_modules/fp-ts/apply.d.ts",
+      "../node_modules/fp-ts/bifunctor.d.ts",
+      "../node_modules/fp-ts/bounded.d.ts",
+      "../node_modules/fp-ts/chain.d.ts",
+      "../node_modules/fp-ts/chainrec.d.ts",
+      "../node_modules/fp-ts/compactable.d.ts",
+      "../node_modules/fp-ts/contravariant.d.ts",
+      "../node_modules/fp-ts/either.d.ts",
+      "../node_modules/fp-ts/eq.d.ts",
+      "../node_modules/fp-ts/extend.d.ts",
+      "../node_modules/fp-ts/filterable.d.ts",
+      "../node_modules/fp-ts/filterablewithindex.d.ts",
+      "../node_modules/fp-ts/foldable.d.ts",
+      "../node_modules/fp-ts/foldablewithindex.d.ts",
+      "../node_modules/fp-ts/function.d.ts",
+      "../node_modules/fp-ts/functor.d.ts",
+      "../node_modules/fp-ts/functorwithindex.d.ts",
+      "../node_modules/fp-ts/magma.d.ts",
+      "../node_modules/fp-ts/monad.d.ts",
+      "../node_modules/fp-ts/monadthrow.d.ts",
+      "../node_modules/fp-ts/monoid.d.ts",
+      "../node_modules/fp-ts/option.d.ts",
+      "../node_modules/fp-ts/ord.d.ts",
+      "../node_modules/fp-ts/ordering.d.ts",
+      "../node_modules/fp-ts/readonlyrecord.d.ts",
+      "../node_modules/fp-ts/semigroup.d.ts",
+      "../node_modules/fp-ts/show.d.ts",
+      "../node_modules/fp-ts/traversable.d.ts",
+      "../node_modules/fp-ts/traversablewithindex.d.ts",
+      "../node_modules/fp-ts/unfoldable.d.ts",
+      "../node_modules/fp-ts/witherable.d.ts",
       "../node_modules/io-ts-types/lib/numberfromstring.d.ts",
       "../node_modules/io-ts/lib/index.d.ts",
       "../node_modules/source-map/source-map.d.ts",

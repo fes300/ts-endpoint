@@ -1,5 +1,5 @@
 import * as t from 'io-ts';
-import { identity } from 'fp-ts/lib/function';
+import { identity } from 'fp-ts/function';
 import { addSlash } from './helpers';
 import { iso, Newtype } from 'newtype-ts';
 

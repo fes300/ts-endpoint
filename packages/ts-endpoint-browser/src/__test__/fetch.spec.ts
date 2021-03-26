@@ -3,7 +3,7 @@ import { GetFetchHTTPClient } from '../fetch';
 import { Endpoint } from 'ts-endpoint';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
-import { isLeft } from 'fp-ts/lib/Either';
+import { isLeft } from 'fp-ts/Either';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
 import { EndpointError } from 'ts-endpoint/lib/Endpoint';
 

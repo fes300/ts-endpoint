@@ -2,7 +2,7 @@ import { AddEndpoint } from 'ts-endpoint-express/src';
 import { Endpoint, EndpointError } from 'ts-endpoint';
 import * as t from 'io-ts';
 import * as express from 'express';
-import { left, right } from 'fp-ts/lib/Either';
+import { left, right } from 'fp-ts/Either';
 import { IOError } from 'ts-shared/lib/errors';
 
 const getEndpoint = Endpoint({

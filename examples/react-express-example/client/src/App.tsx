@@ -1,9 +1,9 @@
 import * as React from "react";
 import { apiClient } from "./api";
-import * as E from "fp-ts/lib/Either";
+import * as E from "fp-ts/Either";
 import { InferFetchResult } from "ts-endpoint-browser";
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/pipeable";
+import * as O from "fp-ts/Option";
+import { pipe } from "fp-ts/pipeable";
 
 type APIResult = InferFetchResult<typeof apiClient.getUser>;
 type Meta = { message: string };

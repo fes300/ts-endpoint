@@ -1,12 +1,17 @@
-import { EndpointInstance, Endpoint, HTTPMethod, EndpointError } from 'ts-endpoint';
-import { InferEndpointInstanceParams } from 'ts-endpoint/lib/Endpoint/helpers';
+import {
+  InferEndpointInstanceParams,
+  EndpointInstance,
+  Endpoint,
+  HTTPMethod,
+  EndpointError,
+} from 'ts-endpoint';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';
-import * as E from 'fp-ts/lib/Either';
-import { sequenceS } from 'fp-ts/lib/Apply';
-import { pipe } from 'fp-ts/lib/pipeable';
-import * as TA from 'fp-ts/lib/TaskEither';
+import * as E from 'fp-ts/Either';
+import { sequenceS } from 'fp-ts/Apply';
+import { pipe } from 'fp-ts/pipeable';
+import * as TA from 'fp-ts/TaskEither';
 import { IOError } from 'ts-shared/lib/errors';
 
 const getRouterMatcher = <

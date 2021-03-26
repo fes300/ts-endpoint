@@ -25,7 +25,7 @@ Then build add the endpoints to your `express` router:
 ```ts
 import { AddEndpoint } from 'ts-endpoint-express';
 import * as express from 'express';
-import * as TA from 'fp-ts/lib/TaskEither';
+import * as TA from 'fp-ts/TaskEither';
 
 const router = express.Router();
 
