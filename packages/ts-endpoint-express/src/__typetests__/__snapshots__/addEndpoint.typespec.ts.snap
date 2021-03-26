@@ -6,11 +6,11 @@ exports[`correct constructions should work (type) should match snapshot 2`] = `"
 
 exports[`should not allow empty calls (type) should match snapshot 1`] = `"Expected at least 1 arguments, but got 0."`;
 
-exports[`won't compile if output oc controller is wrong (type) should match snapshot 1`] = `
-"Type '() => Promise<Left<IOError<never>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'TaskEither<IOError<never>, HTTPResponse<{ crayons: string[]; }>>'.
-  Type 'Promise<Left<IOError<never>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'Promise<Either<IOError<never>, HTTPResponse<{ crayons: string[]; }>>>'.
-    Type 'Left<IOError<never>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError<never>, HTTPResponse<{ crayons: string[]; }>>'.
-      Type 'Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError<never>, HTTPResponse<{ crayons: string[]; }>>'.
+exports[`won't compile if output of controller is wrong (type) should match snapshot 1`] = `
+"Type '() => Promise<Left<IOError<never[]>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'TaskEither<IOError<never[]>, HTTPResponse<{ crayons: string[]; }>>'.
+  Type 'Promise<Left<IOError<never[]>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>>' is not assignable to type 'Promise<Either<IOError<never[]>, HTTPResponse<{ crayons: string[]; }>>>'.
+    Type 'Left<IOError<never[]>> | Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError<never[]>, HTTPResponse<{ crayons: string[]; }>>'.
+      Type 'Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Either<IOError<never[]>, HTTPResponse<{ crayons: string[]; }>>'.
         Type 'Right<{ body: { crayons: number[]; }; statusCode: number; }>' is not assignable to type 'Right<HTTPResponse<{ crayons: string[]; }>>'.
           Type '{ body: { crayons: number[]; }; statusCode: number; }' is not assignable to type 'HTTPResponse<{ crayons: string[]; }>'.
             The types of 'body.crayons' are incompatible between these types.
@@ -21,3 +21,24 @@ exports[`won't compile if output oc controller is wrong (type) should match snap
 exports[`won't compile if trying to access non defined body (type) should match snapshot 1`] = `"Property 'foo' does not exist on type 'undefined'."`;
 
 exports[`won't compile if trying to access non existent param (type) should match snapshot 1`] = `"Property 'baz' does not exist on type 'CodecRecordOutput<{ auth: StringC; }>'."`;
+
+exports[`you can return a well formatted error (type) should match snapshot 1`] = `"void"`;
+
+exports[`you cannot return a badly formatted error (type) should match snapshot 1`] = `
+"Type '() => Promise<Right<HTTPResponse<{ crayons: string[]; }>> | Left<{ foo: string; }>>' is not assignable to type 'TaskEither<IOError<({ status: 404; body: { error: string; }; } | { status: 401; body: { baz: string; }; })[]>, HTTPResponse<{ crayons: string[]; }>>'.
+  Type 'Promise<Right<HTTPResponse<{ crayons: string[]; }>> | Left<{ foo: string; }>>' is not assignable to type 'Promise<Either<IOError<({ status: 404; body: { error: string; }; } | { status: 401; body: { baz: string; }; })[]>, HTTPResponse<{ crayons: string[]; }>>>'.
+    Type 'Right<HTTPResponse<{ crayons: string[]; }>> | Left<{ foo: string; }>' is not assignable to type 'Either<IOError<({ status: 404; body: { error: string; }; } | { status: 401; body: { baz: string; }; })[]>, HTTPResponse<{ crayons: string[]; }>>'.
+      Type 'Left<{ foo: string; }>' is not assignable to type 'Either<IOError<({ status: 404; body: { error: string; }; } | { status: 401; body: { baz: string; }; })[]>, HTTPResponse<{ crayons: string[]; }>>'.
+        Type 'Left<{ foo: string; }>' is not assignable to type 'Left<IOError<({ status: 404; body: { error: string; }; } | { status: 401; body: { baz: string; }; })[]>>'.
+          Type '{ foo: string; }' is missing the following properties from type 'IOError<({ status: 404; body: { error: string; }; } | { status: 401; body: { baz: string; }; })[]>': details, status, name, message"
+`;
+
+exports[`you cannot return a badly formatted error (type) should match snapshot 2`] = `
+"Argument of type '{ kind: \\"KnownError\\"; error: string; }' is not assignable to parameter of type '{ kind: \\"DecodingError\\"; errors: Errors; } | { kind: CommunicationError; meta?: unknown; status: number; } | ({ kind: \\"KnownError\\"; } & ({ status: 404; body: { error: string; }; } | { ...; }))'.
+  Object literal may only specify known properties, and 'error' does not exist in type '{ kind: \\"DecodingError\\"; errors: Errors; } | { kind: CommunicationError; meta?: unknown; status: number; } | ({ kind: \\"KnownError\\"; } & ({ status: 404; body: { error: string; }; } | { ...; }))'."
+`;
+
+exports[`you cannot return a badly formatted error (type) should match snapshot 3`] = `
+"Type '{ error: string; }' is not assignable to type '{ baz: string; }'.
+  Object literal may only specify known properties, and 'error' does not exist in type '{ baz: string; }'."
+`;

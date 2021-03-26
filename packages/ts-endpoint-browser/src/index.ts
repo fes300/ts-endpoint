@@ -18,7 +18,7 @@ export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 
 export type FetchClient<E extends EndpointInstance<any>> = ReaderTaskEither<
   TypeOfEndpointInstance<E>['Input'],
-  IOError<EndpointInstanceError<E>>,
+  IOError<EndpointInstanceError<E>[]>,
   t.TypeOf<E['Output']>
 >;
 

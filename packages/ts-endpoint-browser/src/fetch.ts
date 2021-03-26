@@ -5,11 +5,12 @@ import { PathReporter } from 'io-ts/PathReporter';
 import * as TA from 'fp-ts/TaskEither';
 import * as O from 'fp-ts/Option';
 import qs from 'qs';
-import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
+import { IOError, NetworkErrorStatus } from 'ts-shared/lib/errors';
 import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import * as E from 'fp-ts/Either';
 import { TypeOfEndpointInstance } from 'ts-endpoint/lib/Endpoint/helpers';
 import { findFirst } from 'fp-ts/Array';
+import * as t from 'io-ts';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
@@ -24,7 +25,8 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
   const jsonResponse = TA.tryCatch(
     () => r.json(),
     () =>
-      new IOError(r.status, r.statusText, {
+      new IOError(r.statusText, {
+        status: r.status,
         kind: 'ServerError',
         meta: { message: 'response is not a json.' },
       })
@@ -61,13 +63,14 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
             },
             ...(i.Body !== undefined ? { body: JSON.stringify(body) } : {}),
           }),
-        () => new IOError(NetworkErrorStatus, 'Network Error', { kind: 'NetworkError' })
+        () => new IOError('Network Error', { kind: 'NetworkError', status: NetworkErrorStatus })
       ),
       TA.chain((r: Response) => {
         const responseJson: TA.TaskEither<any, any> = TA.tryCatch(
           () => (r.body === null ? Promise.resolve(undefined) : r.json()),
           () => {
-            return new IOError(r.status, r.statusText, {
+            return new IOError(r.statusText, {
+              status: r.status,
               kind: 'ServerError',
               meta: { message: 'response is not a json.' },
             });
@@ -101,10 +104,9 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
                   return pipe(
                     TA.fromEither(validation),
                     TA.fold(
-                      (errors) => {
+                      (errors: t.Errors) => {
                         return TA.left(
                           new IOError(
-                            DecodeErrorStatus,
                             `Error decoding server KnownError response: ${PathReporter.report(
                               E.left(errors)
                             )}`,
@@ -118,9 +120,10 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
 
                       (parsedError) => {
                         return TA.left(
-                          new IOError(parsedError[0], r.statusText, {
+                          new IOError<{ status: any; body: any }[]>(r.statusText, {
                             kind: 'KnownError',
-                            error: { status: parsedError[0], body: parsedError[1] },
+                            status: parsedError[0],
+                            body: parsedError[1],
                           })
                         );
                       }
@@ -137,14 +140,18 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
             return pipe(
               getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
               TA.chain((meta) => {
-                return TA.left(new IOError(r.status, r.statusText, { kind: 'ClientError', meta }));
+                return TA.left(
+                  new IOError(r.statusText, { kind: 'ClientError', meta, status: r.status })
+                );
               })
             );
           } else {
             return pipe(
               getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
               TA.chain((meta) => {
-                return TA.left(new IOError(r.status, r.statusText, { kind: 'ServerError', meta }));
+                return TA.left(
+                  new IOError(r.statusText, { kind: 'ServerError', meta, status: r.status })
+                );
               })
             );
           }
@@ -159,7 +166,6 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
               TA.fromEither,
               TA.mapLeft((errors) => {
                 return new IOError(
-                  DecodeErrorStatus,
                   `Error decoding server response: ${PathReporter.report(E.left(errors))}`,
                   {
                     kind: 'DecodingError',

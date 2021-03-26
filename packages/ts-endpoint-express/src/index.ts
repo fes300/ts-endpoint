@@ -1,4 +1,5 @@
 import { EndpointInstance, Endpoint, HTTPMethod, EndpointError } from 'ts-endpoint';
+import { InferEndpointInstanceParams } from 'ts-endpoint/lib/Endpoint/helpers';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';
@@ -6,7 +7,7 @@ import * as E from 'fp-ts/lib/Either';
 import { sequenceS } from 'fp-ts/lib/Apply';
 import { pipe } from 'fp-ts/lib/pipeable';
 import * as TA from 'fp-ts/lib/TaskEither';
-import { IOError, DecodeErrorStatus } from 'ts-shared/lib/errors';
+import { IOError } from 'ts-shared/lib/errors';
 
 const getRouterMatcher = <
   M extends HTTPMethod,
@@ -48,26 +49,28 @@ export type ErrorMeta = {
   errors?: t.Errors;
 };
 
+type ErrorsOrNever<E> = E extends Array<infer EE>
+  ? EE extends EndpointError<infer S, infer B>
+    ? { status: S; body: t.TypeOf<B> }
+    : never
+  : never;
+
 export type AddEndpoint = (
   router: express.Router,
   ...m: express.RequestHandler[]
-) => <
-  M extends HTTPMethod,
-  O extends t.Type<any, any, any>,
-  H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  B extends t.Type<any, any, any> | undefined = undefined,
-  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends Array<EndpointError<any, any>> | undefined = undefined
->(
-  e: EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>,
+) => <E extends EndpointInstance<any>>(
+  e: E,
   c: Controller<
-    IOError,
-    OutputOrNever<P>,
-    OutputOrNever<H>,
-    OutputOrNever<Q>,
-    B extends undefined ? undefined : B extends t.Type<any, any, any> ? t.TypeOf<B> : undefined,
-    t.TypeOf<O>
+    IOError<ErrorsOrNever<E['Errors']>[]>,
+    OutputOrNever<InferEndpointInstanceParams<E>['params']>,
+    OutputOrNever<InferEndpointInstanceParams<E>['headers']>,
+    OutputOrNever<InferEndpointInstanceParams<E>['query']>,
+    InferEndpointInstanceParams<E>['body'] extends undefined
+      ? undefined
+      : InferEndpointInstanceParams<E>['body'] extends t.Type<any, any, any>
+      ? t.TypeOf<InferEndpointInstanceParams<E>['body']>
+      : undefined,
+    t.TypeOf<InferEndpointInstanceParams<E>['output']>
   >
 ) => void;
 
@@ -88,9 +91,9 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
       args,
       E.mapLeft(
         (errors) =>
-          new IOError(DecodeErrorStatus, 'error decoding args', {
+          new IOError('error decoding args', {
             kind: 'DecodingError',
-            errors,
+            errors: errors as t.Errors,
           })
       ),
       TA.fromEither,

@@ -114,7 +114,7 @@ const endpoints = {
     Output: t.type({ crayons: t.array(t.string) }),
   }),
 };
-const HandledError = new IOError(112, 'this is a handled error', { kind: 'ClientError' });
+const HandledError = new IOError('this is a handled error', { status: 112, kind: 'ClientError' });
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
 });
@@ -328,9 +328,9 @@ describe('GetFetchHTTPClient', () => {
     })();
 
     expect(isLeft(correctKnownErrorResponse)).toBe(true);
-    expect((correctKnownErrorResponse as any).left.details.kind).toBe('KnownError');
     expect((correctKnownErrorResponse as any).left.status).toBe(401);
-    expect((correctKnownErrorResponse as any).left.details.error).toEqual({
+    expect((correctKnownErrorResponse as any).left.details).toEqual({
+      kind: 'KnownError',
       status: 401,
       body: { foo: 'baz' },
     });

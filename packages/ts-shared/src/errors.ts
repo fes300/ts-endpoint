@@ -25,20 +25,42 @@ export type KnownError = 'KnownError';
 
 export type CommunicationError = 'ClientError' | 'ServerError' | 'NetworkError';
 
-export type IOErrorDetails<KE> =
-  | { kind: KnownError; error: KE }
-  | { kind: DecodingError; errors: t.Errors }
-  | { kind: CommunicationError; meta?: unknown };
+type ArrayType<T extends Array<any>> = T extends (infer U)[] ? U : never;
+
+export type IOErrorDetails<KE extends { body: any; status: number }[] = never> = [KE] extends [
+  never
+]
+  ?
+      | { kind: DecodingError; errors: t.Errors }
+      | { kind: CommunicationError; meta?: unknown; status: number }
+  :
+      | { kind: DecodingError; errors: t.Errors }
+      | { kind: CommunicationError; meta?: unknown; status: number }
+      | ({ kind: KnownError } & ArrayType<KE>);
 
 export const NetworkErrorStatus = 99;
 
 export const DecodeErrorStatus = 600;
 
-export class IOError<KE = never> extends BaseError {
+const getDetailsStatus = <D extends { body: any; status: number }>(
+  d: IOErrorDetails<Array<D>>
+): number => {
+  switch (d.kind) {
+    case 'ClientError':
+    case 'ServerError':
+    case 'NetworkError':
+      return d.status;
+    case 'DecodingError':
+      return DecodeErrorStatus;
+    case 'KnownError':
+      return d.status;
+  }
+};
+export class IOError<KE extends { body: any; status: number }[] | never = never> extends BaseError {
   details: IOErrorDetails<KE>;
 
-  constructor(status: number, message: string, details: IOErrorDetails<KE>) {
-    super(status, message);
+  constructor(message: string, details: IOErrorDetails<KE>) {
+    super(getDetailsStatus(details), message);
     this.details = details;
 
     if (typeof Error.captureStackTrace === 'function') {

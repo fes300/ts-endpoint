@@ -81,12 +81,12 @@ const provaWithError = pipe(
   }),
   TA.mapLeft((err) => {
     if (err.details.kind === 'KnownError') {
-      if (err.details.error.status === 401) {
+      if (err.details.status === 401) {
         // @dts-jest:pass:snap you can access KnownErrors with the correct typeguard
-        err.details.error.body.foo;
+        err.details.body.foo;
 
         // @dts-jest:fail:snap you cannot access KnownErrors without the correct typeguard
-        err.details.error.body.baz;
+        err.details.body.baz;
       }
     }
   })
