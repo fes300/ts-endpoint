@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.9](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.8...ts-endpoint@2.0.0-alpha.9) (2021-03-27)
+
+
+### Features
+
+* import dirctly from ts-endpoint ([f65feea](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/f65feea162a96076aec7357fab0b0c31d3ac2519))
+* optional input ([7a4f5a0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/7a4f5a09f0c1507ade3cfb45154aa8c28de862c1))
+
+
+### BREAKING CHANGES
+
+* ts-endpoint imports are now from root
+
+
+
+
+
 # 2.0.0-alpha.8 (2021-03-26)
 
 **Note:** Version bump only for package ts-endpoint
