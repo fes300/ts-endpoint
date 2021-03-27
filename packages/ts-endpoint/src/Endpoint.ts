@@ -149,7 +149,7 @@ type ErrorBody<K> = K extends EndpointError<infer S, infer B>
 
 export type EndpointInstanceError<EI extends MinimalEndpoint> = EI['Errors'] extends undefined
   ? never
-  : ErrorBody<EI['Errors'][number]>;
+  : ErrorBody<NonNullable<EI['Errors']>[number]>;
 
 export const EndpointError = <S extends number, B extends t.Type<any, any, any>>(
   status: S,
