@@ -23,6 +23,11 @@ const endpoints = {
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
   }),
+  provaWithoutInput: Endpoint({
+    Method: 'GET',
+    getPath: () => `users`,
+    Output: t.type({ noInput: t.array(t.string) }),
+  }),
   provaWithError: Endpoint({
     Input: {
       Query: { color: t.string },
@@ -40,6 +45,31 @@ const endpoints = {
 
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
   handleError: (err, e) => err,
+});
+
+type A = typeof fetchClient.provaWithoutInput;
+
+// @dts-jest:pass:snap should allow empty calls when input is not defined
+fetchClient.provaWithoutInput({});
+
+fetchClient.provaWithoutInput({
+  // @dts-jest:fail:snap should not allow calls with Body when input is not defined
+  Body: 1,
+});
+
+fetchClient.provaWithoutInput({
+  // @dts-jest:fail:snap should not allow calls with Query when input is not defined
+  Query: 1,
+});
+
+fetchClient.provaWithoutInput({
+  // @dts-jest:fail:snap should not allow calls with Params when input is not defined
+  Params: 1,
+});
+
+fetchClient.provaWithoutInput({
+  // @dts-jest:fail:snap should not allow calls with Header when input is not defined
+  Headers: 1,
 });
 
 // @dts-jest:fail:snap should not allow empty calls

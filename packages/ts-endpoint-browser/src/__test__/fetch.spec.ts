@@ -114,6 +114,7 @@ const endpoints = {
     Output: t.type({ crayons: t.array(t.string) }),
   }),
 };
+
 const HandledError = new IOError('this is a handled error', { status: 112, kind: 'ClientError' });
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },

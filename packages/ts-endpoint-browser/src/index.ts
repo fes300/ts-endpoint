@@ -1,9 +1,4 @@
-import {
-  EndpointInstance,
-  EndpointInstanceError,
-  GenericEndpointInstance,
-  TypeOfEndpointInstance,
-} from 'ts-endpoint';
+import { EndpointInstanceError, MinimalEndpoint, TypeOfEndpointInstance } from 'ts-endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { Either } from 'fp-ts/Either';
@@ -16,13 +11,13 @@ type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> 
 
 export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 
-export type FetchClient<E extends EndpointInstance<any>> = ReaderTaskEither<
+export type FetchClient<E extends MinimalEndpoint> = ReaderTaskEither<
   TypeOfEndpointInstance<E>['Input'],
   IOError<EndpointInstanceError<E>[]>,
   t.TypeOf<E['Output']>
 >;
 
-export type HTTPClient<A extends Record<string, EndpointInstance<any>>> = {
+export type HTTPClient<A extends Record<string, MinimalEndpoint>> = {
   [K in keyof A]: FetchClient<A[K]>;
 };
 
@@ -34,7 +29,7 @@ export type GetHTTPClientOptions = {
    * individually handling them.
    *
    */
-  handleError?: (err: any, e: EndpointInstance<any>) => any;
+  handleError?: <E extends MinimalEndpoint>(err: any, e: E) => any;
   /**
    * If true a non-JSON response will be treated like
    * a JSON response returning undefined. Defaults to false.
@@ -47,10 +42,10 @@ export type GetHTTPClientOptions = {
   mapInput?: (a: any) => any;
 };
 
-export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
+export const GetHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  getFetchClient: <E extends GenericEndpointInstance>(
+  getFetchClient: <E extends MinimalEndpoint>(
     baseURL: string,
     endpoint: E,
     options?: GetHTTPClientOptions
@@ -65,7 +60,7 @@ export const GetHTTPClient = <A extends { [key: string]: EndpointInstance<any> }
   const clientWithMethods = Object.entries(endpoints).reduce(
     (acc, [k, v]) => ({
       ...acc,
-      [k]: getFetchClient(baseURL, v as GenericEndpointInstance, options),
+      [k]: getFetchClient(baseURL, v, options),
     }),
     {} as HTTPClient<A>
   );

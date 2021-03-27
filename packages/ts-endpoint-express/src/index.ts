@@ -1,10 +1,4 @@
-import {
-  InferEndpointInstanceParams,
-  EndpointInstance,
-  Endpoint,
-  HTTPMethod,
-  EndpointError,
-} from 'ts-endpoint';
+import { InferEndpointInstanceParams, EndpointError, MinimalEndpoint } from 'ts-endpoint';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';
@@ -14,17 +8,9 @@ import { pipe } from 'fp-ts/pipeable';
 import * as TA from 'fp-ts/TaskEither';
 import { IOError } from 'ts-shared/lib/errors';
 
-const getRouterMatcher = <
-  M extends HTTPMethod,
-  O extends t.Type<any, any, any>,
-  H extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  B extends t.Type<any, any, any> | undefined = undefined,
-  P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends Array<EndpointError<any, any>> | undefined = undefined
->(
+const getRouterMatcher = <E extends MinimalEndpoint>(
   router: express.Router,
-  e: EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>
+  e: E
 ): express.IRouterMatcher<express.Router> => {
   switch (e.Method) {
     case 'POST':
@@ -63,7 +49,7 @@ type ErrorsOrNever<E> = E extends Array<infer EE>
 export type AddEndpoint = (
   router: express.Router,
   ...m: express.RequestHandler[]
-) => <E extends EndpointInstance<any>>(
+) => <E extends MinimalEndpoint>(
   e: E,
   c: Controller<
     IOError<ErrorsOrNever<E['Errors']>[]>,

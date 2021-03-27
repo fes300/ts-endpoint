@@ -1,9 +1,4 @@
-import {
-  errorIso,
-  EndpointInstance,
-  GenericEndpointInstance,
-  TypeOfEndpointInstance,
-} from 'ts-endpoint';
+import { errorIso, MinimalEndpoint, EndpointError } from 'ts-endpoint';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/pipeable';
 import { PathReporter } from 'io-ts/PathReporter';
@@ -16,7 +11,7 @@ import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
 import * as t from 'io-ts';
 
-export const GetFetchHTTPClient = <A extends { [key: string]: EndpointInstance<any> }>(
+export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   options?: GetHTTPClientOptions
@@ -44,18 +39,16 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
     : jsonResponse;
 };
 
-export const useBrowserFetch = <E extends GenericEndpointInstance>(
+export const useBrowserFetch = <E extends MinimalEndpoint>(
   baseURL: string,
   e: E,
   options?: GetHTTPClientOptions
 ): FetchClient<E> => {
-  return ((i: TypeOfEndpointInstance<E>['Input']) => {
-    const path = `${baseURL}${e.getPath(i?.Params ?? {})}${
-      i.Query ? `?${qs.stringify(i.Query)}` : ''
-    }`;
+  return ((i) => {
+    const path = `${baseURL}${e.getPath(i?.Params)}${i.Query ? `?${qs.stringify(i.Query)}` : ''}`;
 
     const body = i.Body;
-    const headers = { ...i.Headers, ...options?.defaultHeaders };
+    const headers = { ...(i.Headers !== undefined ? i.Headers : {}), ...options?.defaultHeaders };
 
     const response = pipe(
       TA.tryCatch(
@@ -93,7 +86,7 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
         if (!r.ok) {
           if (e.Errors !== undefined) {
             const actualKnownError = pipe(
-              e.Errors,
+              e.Errors as EndpointError<any, t.Type<any, any>>[],
               findFirst((knownErr) => {
                 return (knownErr as any).types[0].value === r.status;
               }),
@@ -185,7 +178,7 @@ export const useBrowserFetch = <E extends GenericEndpointInstance>(
       }),
       TA.mapLeft((err) => {
         if (options?.handleError !== undefined) {
-          return options.handleError(err, e as EndpointInstance<any>);
+          return options.handleError(err, e);
         }
         return err;
       })

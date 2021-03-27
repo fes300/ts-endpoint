@@ -1,7 +1,8 @@
 import * as t from 'io-ts';
 import { identity } from 'fp-ts/function';
-import { addSlash } from './helpers';
+import { addSlash, InferEndpointParams } from './helpers';
 import { iso, Newtype } from 'newtype-ts';
+import { MinimalEndpoint } from '.';
 
 export const HTTPMethod = t.keyof(
   {
@@ -31,11 +32,11 @@ export interface Endpoint<
 > {
   /* utils to get the full path given a set of query params */
   getPath: P extends undefined
-    ? () => string
+    ? (i?: never) => string
     : (args: { [k in keyof P]: P[k] extends t.Any ? t.TypeOf<P[k]> : never }) => string;
   Method: M;
   Errors?: E;
-  Input: {
+  Input?: {
     Headers?: H;
     Params?: P;
     Query?: Q;
@@ -43,6 +44,16 @@ export interface Endpoint<
   };
   Output: O;
 }
+
+type GenericEndpoint = Endpoint<
+  HTTPMethod,
+  t.Type<any, any, any>,
+  { [k: string]: t.Type<any, any, any> } | undefined,
+  { [k: string]: t.Type<any, any, any> } | undefined,
+  t.Type<any, any, any> | undefined,
+  { [k: string]: t.Type<any, any, any> } | undefined,
+  Array<EndpointError<any, any>> | undefined
+>;
 
 /**
  * Data type representing an endpoint instance.
@@ -93,34 +104,32 @@ export type EndpointInstance<E extends GenericEndpoint> = {
    * endpoint.getStaticPath(param => `:${param}`) // returns "users/:id/crayons"
    * ```
    */
-  getStaticPath: E['Input']['Params'] extends undefined
-    ? () => string
-    : (f: (paramName: string) => string) => string;
+  getStaticPath: E['Input'] extends undefined
+    ? (i?: never) => string
+    : InferEndpointParams<E>['params'] extends undefined
+    ? (i?: never) => string
+    : (f: (paramName: keyof InferEndpointParams<E>['params']) => string) => string;
   Method: E['Method'];
   Output: E['Output'];
-  Input: (E['Input']['Params'] extends undefined
-    ? { Params?: never }
-    : { Params: t.TypeC<NonNullable<E['Input']['Params']>> }) &
-    (E['Input']['Headers'] extends undefined
-      ? { Headers?: never }
-      : { Headers: t.TypeC<NonNullable<E['Input']['Headers']>> }) &
-    (E['Input']['Query'] extends undefined
-      ? { Query?: never }
-      : { Query: t.TypeC<NonNullable<E['Input']['Query']>> }) &
-    (E['Input']['Body'] extends undefined
-      ? { Body?: never }
-      : { Body: NonNullable<E['Input']['Body']> });
-} & (E['Errors'] extends undefined ? { Errors?: never } : { Errors: E['Errors'] });
-
-type GenericEndpoint = Endpoint<
-  HTTPMethod,
-  t.Type<any, any, any>,
-  { [k: string]: t.Type<any, any, any> } | undefined,
-  { [k: string]: t.Type<any, any, any> } | undefined,
-  t.Type<any, any, any> | undefined,
-  { [k: string]: t.Type<any, any, any> } | undefined,
-  Array<EndpointError<any, any>> | undefined
->;
+} & (E['Input'] extends undefined
+  ? {
+      Input?: never;
+    }
+  : {
+      Input: (InferEndpointParams<E>['params'] extends undefined
+        ? { Params?: never }
+        : { Params: t.TypeC<NonNullable<InferEndpointParams<E>['params']>> }) &
+        (InferEndpointParams<E>['headers'] extends undefined
+          ? { Headers?: never }
+          : { Headers: t.TypeC<NonNullable<InferEndpointParams<E>['headers']>> }) &
+        (InferEndpointParams<E>['query'] extends undefined
+          ? { Query?: never }
+          : { Query: t.TypeC<NonNullable<InferEndpointParams<E>['query']>> }) &
+        (InferEndpointParams<E>['body'] extends undefined
+          ? { Body?: never }
+          : { Body: NonNullable<InferEndpointParams<E>['body']> });
+    }) &
+  (E['Errors'] extends undefined ? { Errors?: never } : { Errors: E['Errors'] });
 
 export type GenericEndpointInstance = EndpointInstance<GenericEndpoint>;
 
@@ -138,7 +147,7 @@ type ErrorBody<K> = K extends EndpointError<infer S, infer B>
   ? { status: S; body: t.TypeOf<B> }
   : never;
 
-export type EndpointInstanceError<EI extends EndpointInstance<any>> = EI['Errors'] extends undefined
+export type EndpointInstanceError<EI extends MinimalEndpoint> = EI['Errors'] extends undefined
   ? never
   : ErrorBody<EI['Errors'][number]>;
 
@@ -165,30 +174,30 @@ export function Endpoint<
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
   return ({
     ...e,
-    getPath: ((i) => {
+    getPath: ((i: never) => {
       const path = e.getPath(i);
       return addSlash(path);
     }) as typeof e.getPath,
-    getStaticPath: (f: P extends undefined ? undefined : (paramName: string) => string) => {
+    getStaticPath: (f: P extends undefined ? undefined : (paramName: keyof P) => string) => {
       const path = e.getPath(
-        Object.keys(e.Input.Params ?? {}).reduce(
+        Object.keys(e.Input?.Params ?? {}).reduce(
           (acc, k) => ({ ...acc, [k]: (f ?? identity)(k) }),
           {}
-        )
+        ) as never
       );
       return addSlash(path);
     },
     Output: e.Output,
     ...(e.Errors ? { Errors: e.Errors } : {}),
     Input: {
-      ...(e.Input.Body !== undefined ? { Body: e.Input.Body } : {}),
-      ...(e.Input.Headers !== undefined
+      ...(e.Input?.Body !== undefined ? { Body: e.Input.Body } : {}),
+      ...(e.Input?.Headers !== undefined
         ? { Headers: t.type(e.Input.Headers as t.Props, 'Headers') }
         : {}),
-      ...(e.Input.Params !== undefined
+      ...(e.Input?.Params !== undefined
         ? { Params: t.type(e.Input.Params as t.Props, 'Params') }
         : {}),
-      ...(e.Input.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props, 'Query') } : {}),
+      ...(e.Input?.Query !== undefined ? { Query: t.type(e.Input.Query as t.Props, 'Query') } : {}),
     },
   } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>;
 }
