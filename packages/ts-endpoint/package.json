@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.10",
   "description": "Simple endpoint definition for fullstack safety.",
   "files": [
     "lib"
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "postversion": "cp package.json lib && cp ../../.npmrc . && npm publish lib",
+    "postversion": "ls lib && cp package.json lib && cp ../../.npmrc . && npm publish lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
@@ -30,7 +30,7 @@
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "ts-shared": "^2.0.0-alpha.0",
+    "ts-shared": "^2.0.0-alpha.1",
     "typelevel-ts": "^0.4.0"
   }
 }
