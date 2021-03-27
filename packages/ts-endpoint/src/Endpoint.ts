@@ -32,7 +32,7 @@ export interface Endpoint<
 > {
   /* utils to get the full path given a set of query params */
   getPath: P extends undefined
-    ? (i?: never) => string
+    ? (i?: {}) => string
     : (args: { [k in keyof P]: P[k] extends t.Any ? t.TypeOf<P[k]> : never }) => string;
   Method: M;
   Errors?: E;
@@ -105,9 +105,9 @@ export type EndpointInstance<E extends GenericEndpoint> = {
    * ```
    */
   getStaticPath: E['Input'] extends undefined
-    ? (i?: never) => string
+    ? (i?: {}) => string
     : InferEndpointParams<E>['params'] extends undefined
-    ? (i?: never) => string
+    ? (i?: {}) => string
     : (f: (paramName: keyof InferEndpointParams<E>['params']) => string) => string;
   Method: E['Method'];
   Output: E['Output'];

@@ -28,6 +28,14 @@ const endpoints = {
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
   }),
+  getEndpointNoParams: Endpoint({
+    Input: {
+      Query: { color: t.string },
+    },
+    Method: 'GET',
+    getPath: () => `users/crayons`,
+    Output: t.type({ crayons: t.array(t.string) }),
+  }),
   getEndpointWithLargeQuery: Endpoint({
     Input: {
       Query: { foo: t.string, bar: t.number, baz: t.string },
@@ -175,6 +183,7 @@ describe('GetFetchHTTPClient', () => {
   it('implements all the endpoint definitions', () => {
     expect(Object.keys(fetchClient)).toEqual([
       'getEndpoint',
+      'getEndpointNoParams',
       'getEndpointWithLargeQuery',
       'postEndpoint',
       'postReturningUndefined',

@@ -11,14 +11,10 @@ exports[`getPath args must have the same type as the Params defined in the endpo
 
 exports[`getPath can be called with no args if no Params are defined in the endpoint (type) should match snapshot 1`] = `"string"`;
 
-exports[`getPath cannot be called with any arg if no Params are defined in the endpoint (type) should match snapshot 1`] = `"Type 'number' is not assignable to type 'never'."`;
-
 exports[`getPath cannot be called with args different from the Params defined in the endpoint (type) should match snapshot 1`] = `
 "Argument of type '{ foo: string; }' is not assignable to parameter of type '{ id: number; }'.
   Object literal may only specify known properties, and 'foo' does not exist in type '{ id: number; }'."
 `;
-
-exports[`getPath cannot be called with empty object if no Params are defined in the endpoint (type) should match snapshot 1`] = `"Argument of type '{}' is not assignable to parameter of type 'never'."`;
 
 exports[`getPath cannot be called with empty object if there are Params defined in the endpoint (type) should match snapshot 1`] = `
 "Argument of type '{}' is not assignable to parameter of type '{ id: number; }'.
@@ -31,9 +27,7 @@ exports[`getStaticPath requires a mapping function if some Params are defined in
 
 exports[`getStaticPath requires a mapping function if some Params are defined in the endpoint (type) should match snapshot 2`] = `"string"`;
 
-exports[`getStaticPath requires no args if no Params are defined (type) should match snapshot 1`] = `"Argument of type '(param: any) => string' is not assignable to parameter of type 'never'."`;
-
-exports[`getStaticPath requires no args if no Params are defined (type) should match snapshot 2`] = `"string"`;
+exports[`getStaticPath requires no args if no Params are defined (type) should match snapshot 1`] = `"string"`;
 
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 1`] = `"StringC"`;
 

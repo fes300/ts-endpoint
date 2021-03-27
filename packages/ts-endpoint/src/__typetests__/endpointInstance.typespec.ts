@@ -78,18 +78,12 @@ endpointWithParam.getPath({ id: '' });
 
 // @dts-jest:pass:snap getPath can be called with no args if no Params are defined in the endpoint
 endpointWithoutParam.getPath();
-// @dts-jest:fail:snap getPath cannot be called with empty object if no Params are defined in the endpoint
-endpointWithoutParam.getPath({});
-// @dts-jest:fail:snap getPath cannot be called with any arg if no Params are defined in the endpoint
-endpointWithoutParam.getPath({ id: 2 });
 
 // @dts-jest:fail:snap getStaticPath requires a mapping function if some Params are defined in the endpoint
 endpointWithParam.getStaticPath();
 // @dts-jest:pass:snap getStaticPath requires a mapping function if some Params are defined in the endpoint
 endpointWithParam.getStaticPath((param) => `:${param}`);
 
-// @dts-jest:fail:snap getStaticPath requires no args if no Params are defined
-endpointWithoutParam.getStaticPath((param) => `:${param}`);
 // @dts-jest:pass:snap getStaticPath requires no args if no Params are defined
 endpointWithoutParam.getStaticPath();
 
