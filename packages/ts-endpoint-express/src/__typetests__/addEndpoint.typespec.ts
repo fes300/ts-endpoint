@@ -1,5 +1,5 @@
 import { AddEndpoint } from 'ts-endpoint-express/src';
-import { Endpoint, EndpointError } from 'ts-endpoint';
+import { Endpoint, EndpointError } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { left, right } from 'fp-ts/Either';

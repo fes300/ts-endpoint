@@ -1,4 +1,4 @@
-import { InferEndpointInstanceParams, EndpointError, MinimalEndpoint } from 'ts-endpoint';
+import { InferEndpointInstanceParams, EndpointError, MinimalEndpoint } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';

@@ -1,11 +1,8 @@
 {
   "name": "ts-endpoint-express",
-  "version": "2.0.0-alpha.14",
+  "version": "2.0.0-alpha.16",
   "description": "Adds typesafe endpoints to your express app.",
-  "files": [
-    "lib"
-  ],
-  "main": "lib/index.js",
+  "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F4"
@@ -16,7 +13,7 @@
     "access": "public"
   },
   "scripts": {
-    "postversion": "cp package.json lib && cp ../../.npmrc . && ls lib && npm publish lib",
+    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib && npm publish lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
@@ -35,8 +32,8 @@
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "ts-endpoint": "^2.0.0-alpha.11",
-    "ts-shared": "^2.0.0-alpha.2",
+    "ts-endpoint": "^2.0.0-alpha.12",
+    "ts-shared": "^2.0.0-alpha.3",
     "typelevel-ts": "^0.4.0"
   }
 }

@@ -1,4 +1,4 @@
-import { errorIso, MinimalEndpoint, EndpointError } from 'ts-endpoint';
+import { errorIso, MinimalEndpoint, EndpointError } from 'ts-endpoint/lib';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/pipeable';
 import { PathReporter } from 'io-ts/PathReporter';

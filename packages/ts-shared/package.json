@@ -1,11 +1,8 @@
 {
   "name": "ts-shared",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.4",
   "description": "shared lib for ts-endpoint packages.",
-  "files": [
-    "lib"
-  ],
-  "main": "lib/index.js",
+  "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-shared",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues"
@@ -16,7 +13,7 @@
     "access": "public"
   },
   "scripts": {
-    "postversion": "cp package.json lib && cp ../../.npmrc . && ls lib && npm publish lib",
+    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib && npm publish lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
