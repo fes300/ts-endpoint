@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-browser",
-  "version": "2.0.0-alpha.11",
+  "version": "2.0.0-alpha.12",
   "description": "Adds typesafe endpoints to your browser.",
   "files": [
     "lib"
@@ -31,8 +31,8 @@
     "isomorphic-fetch": "^3.0.0",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "ts-endpoint": "^2.0.0-alpha.9",
-    "ts-shared": "^2.0.0-alpha.0",
+    "ts-endpoint": "^2.0.0-alpha.10",
+    "ts-shared": "^2.0.0-alpha.1",
     "typelevel-ts": "^0.4.0"
   }
 }
