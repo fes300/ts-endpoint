@@ -1,4 +1,4 @@
-import { EndpointInstanceError, MinimalEndpoint, TypeOfEndpointInstance } from 'ts-endpoint';
+import { EndpointInstanceError, MinimalEndpoint, TypeOfEndpointInstance } from 'ts-endpoint/lib';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { Either } from 'fp-ts/Either';

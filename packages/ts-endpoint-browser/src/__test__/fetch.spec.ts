@@ -1,6 +1,6 @@
 import 'isomorphic-fetch';
 import { GetFetchHTTPClient } from '../fetch';
-import { Endpoint } from 'ts-endpoint';
+import { Endpoint } from 'ts-endpoint/lib';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { isLeft } from 'fp-ts/Either';
