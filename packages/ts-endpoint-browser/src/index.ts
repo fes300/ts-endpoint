@@ -7,6 +7,7 @@ import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
 import { IOError } from 'ts-shared/lib/errors';
 
 type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;
+
 type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> : never;
 
 export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;

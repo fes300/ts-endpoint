@@ -61,6 +61,7 @@ export class IOError<KE extends { body: any; status: number }[] | never = never>
 
   constructor(message: string, details: IOErrorDetails<KE>) {
     super(getDetailsStatus(details), message);
+
     this.details = details;
 
     if (typeof Error.captureStackTrace === 'function') {
