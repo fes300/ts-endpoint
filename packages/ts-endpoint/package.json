@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint",
-  "version": "2.0.0-alpha.11",
+  "version": "2.0.0-alpha.12",
   "description": "Simple endpoint definition for fullstack safety.",
   "files": [
     "lib"
@@ -30,7 +30,7 @@
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "ts-shared": "^2.0.0-alpha.2",
+    "ts-shared": "^2.0.0-alpha.3",
     "typelevel-ts": "^0.4.0"
   }
 }
