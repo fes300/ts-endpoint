@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.15](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.14...ts-endpoint@2.0.0-alpha.15) (2021-03-27)
+
+
+### Bug Fixes
+
+* getpath contravariance ([5fe400e](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/5fe400eba4632d230ee5eaeea1d5fdfe71a95e52))
+
+
+
+
+
 # [2.0.0-alpha.14](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.9...ts-endpoint@2.0.0-alpha.14) (2021-03-27)
 
 
