@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.17](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.12...ts-endpoint-express@2.0.0-alpha.17) (2021-03-27)
+
+
+### Bug Fixes
+
+* copy npmrc in packages before publishing ([6374abd](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/6374abd039b3231c6989644a3de0442e59e70897))
+* publish lib and not dist ([1895489](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/1895489b44e8e480393d391566d69a9f4b63e9f1))
+
+
+### Features
+
+* only publish the dist folder ([4a3287b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/4a3287b909ed3d92e38fc311993cf39930da0214))
+* spaces ([f79b0ed](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/f79b0ed82e727b7a96a752cb2964eee71ca28452))
+
+
+
+
+
 # [2.0.0-alpha.15](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.12...ts-endpoint-express@2.0.0-alpha.15) (2021-03-27)
 
 
