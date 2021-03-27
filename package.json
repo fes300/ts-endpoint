@@ -19,8 +19,8 @@
     "postinstall": "husky install",
     "build": "lerna run build",
     "bootstrap": "yarn && lerna bootstrap",
-    "release": "lerna publish --yes --conventional-graduate --force-publish",
-    "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag next",
+    "release": "lerna publish --yes --conventional-graduate --force-publish --skip-npm",
+    "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag next --skip-npm",
     "test": "lerna run test"
   },
   "dependencies": {

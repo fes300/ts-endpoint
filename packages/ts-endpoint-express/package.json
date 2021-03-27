@@ -16,6 +16,7 @@
     "access": "public"
   },
   "scripts": {
+    "postversion": "cp package.json dist && npm publish dist",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
