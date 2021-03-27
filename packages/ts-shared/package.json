@@ -1,6 +1,6 @@
 {
   "name": "ts-shared",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "shared lib for ts-endpoint packages.",
   "files": [
     "lib"
