@@ -15,16 +15,14 @@ export type TypeOfEndpointInstance<E extends MinimalEndpoint> = {
   getStaticPath: E['getStaticPath'];
   Method: E['Method'];
   Output: t.TypeOf<E['Output']>;
-  Errors: E['Errors'] extends undefined
-    ? undefined
-    : {
-        [k in keyof E['Errors']]: E['Errors'][k] extends t.Type<any, any>
-          ? t.TypeOf<E['Errors'][k]>
-          : never;
-      };
+  Errors: {
+    [k in keyof NonNullable<E['Errors']>]: NonNullable<E['Errors']>[k] extends t.Type<any, any>
+      ? t.TypeOf<NonNullable<E['Errors']>[k]>
+      : never;
+  };
   Input: {
-    [k in keyof E['Input']]: E['Input'][k] extends t.Type<any, any, any>
-      ? t.TypeOf<E['Input'][k]>
+    [k in keyof NonNullable<E['Input']>]: NonNullable<E['Input']>[k] extends t.Type<any, any, any>
+      ? t.TypeOf<NonNullable<E['Input']>[k]>
       : never;
   };
 };
