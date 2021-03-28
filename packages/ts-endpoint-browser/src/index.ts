@@ -1,4 +1,4 @@
-import { EndpointInstanceError, MinimalEndpoint, TypeOfEndpointInstance } from 'ts-endpoint/lib';
+import { MinimalEndpoint, TypeOfEndpointInstance } from 'ts-endpoint/lib';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { Either } from 'fp-ts/Either';
@@ -12,9 +12,13 @@ type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> 
 
 export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 
+type FetchClientError<E> = E extends Record<number, t.Type<any, any, unknown>>
+  ? IOError<E>
+  : IOError;
+
 export type FetchClient<E extends MinimalEndpoint> = ReaderTaskEither<
   TypeOfEndpointInstance<E>['Input'],
-  IOError<EndpointInstanceError<E>[]>,
+  E['Errors'] extends undefined ? IOError : FetchClientError<E['Errors']>,
   t.TypeOf<E['Output']>
 >;
 

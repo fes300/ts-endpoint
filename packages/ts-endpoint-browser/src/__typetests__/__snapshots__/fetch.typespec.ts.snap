@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InferFetchResult should return the type of the Endpoint.Output (type) should match snapshot 1`] = `
-"Type 'Either<IOError<never[]>, {}>' is not assignable to type 'Either<IOError<never[]>, { crayons: string[]; }>'.
-  Type 'Right<{}>' is not assignable to type 'Either<IOError<never[]>, { crayons: string[]; }>'.
+"Type 'Either<IOError<never>, {}>' is not assignable to type 'Either<IOError<never>, { crayons: string[]; }>'.
+  Type 'Right<{}>' is not assignable to type 'Either<IOError<never>, { crayons: string[]; }>'.
     Type 'Right<{}>' is not assignable to type 'Right<{ crayons: string[]; }>'.
       Property 'crayons' is missing in type '{}' but required in type '{ crayons: string[]; }'."
 `;
 
 exports[`InferFetchResult should return the type of the Endpoint.Output (type) should match snapshot 2`] = `"any"`;
 
-exports[`should allow empty calls when input is not defined (type) should match snapshot 1`] = `"TaskEither<IOError<never[]>, { noInput: string[]; }>"`;
+exports[`should allow empty calls when input is not defined (type) should match snapshot 1`] = `"TaskEither<IOError<never>, { noInput: string[]; }>"`;
 
 exports[`should not allow calls not specifing Query (if needed) (type) should match snapshot 1`] = `
 "Argument of type '{ Params: { id: string; }; }' is not assignable to parameter of type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'.

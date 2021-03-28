@@ -1,11 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Errors are well formatted (type) should match snapshot 1`] = `"(EndpointError<401, UndefinedC> | EndpointError<404, TypeC<{ message: StringC; }>> | EndpointError<500, TypeC<{ foo: NumberC; }>>)[]"`;
-
-exports[`You cannot access potentially non existing values (type) should match snapshot 1`] = `
-"Property 'props' does not exist on type 'UndefinedC | TypeC<{ message: StringC; }> | TypeC<{ foo: NumberC; }>'.
-  Property 'props' does not exist on type 'UndefinedC'."
-`;
+exports[`Errors are well formatted (type) should match snapshot 1`] = `"{ 401: UndefinedC; 404: TypeC<{ message: StringC; }>; 500: TypeC<{ foo: NumberC; }>; }"`;
 
 exports[`getPath args must have the same type as the Params defined in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'number'."`;
 
@@ -42,7 +37,3 @@ exports[`resulting EndpointInstances typings are correct (type) should match sna
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 6`] = `"ArrayC<StringC>"`;
 
 exports[`type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors> (type) should match snapshot 1`] = `"any"`;
-
-exports[`type ErrorBodies = EndpointType['Errors'][number][1] (type) should match snapshot 1`] = `"any"`;
-
-exports[`type ErrorStatuses = EndpointType['Errors'][number][0] (type) should match snapshot 1`] = `"any"`;

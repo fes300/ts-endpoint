@@ -1,5 +1,5 @@
 import { GetFetchHTTPClient } from '../fetch';
-import { Endpoint, EndpointError } from 'ts-endpoint/lib';
+import { Endpoint } from 'ts-endpoint/lib';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { InferFetchResult } from '..';
@@ -41,10 +41,10 @@ const endpoints = {
       Query: { color: t.string },
       Params: { id: t.string },
     },
-    Errors: [
-      EndpointError(401, t.type({ foo: t.string })),
-      EndpointError(402, t.type({ baz: t.string })),
-    ],
+    Errors: {
+      401: t.type({ foo: t.string }),
+      402: t.type({ baz: t.string }),
+    },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),

@@ -25,26 +25,34 @@ export type KnownError = 'KnownError';
 
 export type CommunicationError = 'ClientError' | 'ServerError' | 'NetworkError';
 
-type ArrayType<T extends Array<any>> = T extends (infer U)[] ? U : never;
+type RecordValues<T extends Record<any, any>> = T extends Record<infer K, infer V>
+  ? K extends never
+    ? never
+    : V
+  : never;
 
-export type IOErrorDetails<KE extends { body: any; status: number }[] = never> = [KE] extends [
+export type IOErrorDetails<KE extends Record<string, t.Type<any, any>> = never> = [KE] extends [
   never
 ]
   ?
       | { kind: DecodingError; errors: t.Errors }
-      | { kind: CommunicationError; meta?: unknown; status: number }
+      | { kind: CommunicationError; meta?: unknown; status: string }
   :
       | { kind: DecodingError; errors: t.Errors }
-      | { kind: CommunicationError; meta?: unknown; status: number }
-      | ({ kind: KnownError } & ArrayType<KE>);
+      | { kind: CommunicationError; meta?: unknown; status: string }
+      | RecordValues<
+          {
+            [K in keyof KE]: KE[K] extends t.Type<any, any>
+              ? { kind: KnownError; status: K; body: t.TypeOf<KE[K]> }
+              : never;
+          }
+        >;
 
-export const NetworkErrorStatus = 99;
+export const NetworkErrorStatus = '99';
 
-export const DecodeErrorStatus = 600;
+export const DecodeErrorStatus = '600';
 
-const getDetailsStatus = <D extends { body: any; status: number }>(
-  d: IOErrorDetails<Array<D>>
-): number => {
+const getDetailsStatus = (d: IOErrorDetails<Record<string, t.Type<any, any>>>): string => {
   switch (d.kind) {
     case 'ClientError':
     case 'ServerError':
@@ -56,13 +64,18 @@ const getDetailsStatus = <D extends { body: any; status: number }>(
       return d.status;
   }
 };
-export class IOError<KE extends { body: any; status: number }[] | never = never> extends BaseError {
+
+export class IOError<
+  KE extends Record<string, t.Type<any, any>> | never = never
+> extends BaseError {
   details: IOErrorDetails<KE>;
 
   constructor(message: string, details: IOErrorDetails<KE>) {
-    super(getDetailsStatus(details), message);
+    const status = getDetailsStatus(details as IOErrorDetails<Record<string, t.Type<any, any>>>);
 
-    this.details = details;
+    super(parseInt(status), message);
+
+    this.details = { ...(details as any), status } as IOErrorDetails<KE>;
 
     if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, this.constructor);

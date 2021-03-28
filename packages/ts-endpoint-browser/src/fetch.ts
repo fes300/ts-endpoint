@@ -1,4 +1,4 @@
-import { errorIso, MinimalEndpoint, EndpointError } from 'ts-endpoint/lib';
+import { MinimalEndpoint, EndpointErrors } from 'ts-endpoint/lib';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/pipeable';
 import { PathReporter } from 'io-ts/PathReporter';
@@ -10,6 +10,7 @@ import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
 import * as t from 'io-ts';
+import { toArray } from 'fp-ts/lib/Record';
 
 export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
@@ -25,7 +26,7 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
     () => r.json(),
     () =>
       new IOError(r.statusText, {
-        status: r.status,
+        status: r.status.toString(),
         kind: 'ServerError',
         meta: { message: 'response is not a json.' },
       })
@@ -67,7 +68,7 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
           () => (r.body === null ? Promise.resolve(undefined) : r.json()),
           () => {
             return new IOError(r.statusText, {
-              status: r.status,
+              status: r.status.toString(),
               kind: 'ServerError',
               meta: { message: 'response is not a json.' },
             });
@@ -86,17 +87,17 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
         if (!r.ok) {
           if (e.Errors !== undefined) {
             const actualKnownError = pipe(
-              e.Errors as EndpointError<any, t.Type<any, any>>[],
-              findFirst((knownErr) => {
-                return (knownErr as any).types[0].value === r.status;
-              }),
-              O.map((v) => errorIso(v).unwrap(v))
+              e.Errors as EndpointErrors<string, t.Type<any, any>>,
+              toArray,
+              findFirst(([status]) => {
+                return status === r.status.toString();
+              })
             );
 
             if (O.isSome(actualKnownError)) {
               const parsedKnownError = pipe(
                 responseJsonWithDefault,
-                TA.map((body) => actualKnownError.value.decode([r.status, body])),
+                TA.map((body) => actualKnownError.value[1].decode(body)),
                 TA.chain((validation) => {
                   return pipe(
                     TA.fromEither(validation),
@@ -117,10 +118,10 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
 
                       (parsedError) => {
                         return TA.left(
-                          new IOError<{ status: any; body: any }[]>(r.statusText, {
+                          new IOError<any>(r.statusText, {
                             kind: 'KnownError',
-                            status: parsedError[0],
-                            body: parsedError[1],
+                            status: r.status.toString(),
+                            body: parsedError,
                           })
                         );
                       }
@@ -138,7 +139,11 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
               getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
               TA.chain((meta) => {
                 return TA.left(
-                  new IOError(r.statusText, { kind: 'ClientError', meta, status: r.status })
+                  new IOError(r.statusText, {
+                    kind: 'ClientError',
+                    meta,
+                    status: r.status.toString(),
+                  })
                 );
               })
             );
@@ -147,7 +152,11 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
               getResponseJson(r, options?.ignoreNonJSONResponse ?? false),
               TA.chain((meta) => {
                 return TA.left(
-                  new IOError(r.statusText, { kind: 'ServerError', meta, status: r.status })
+                  new IOError(r.statusText, {
+                    kind: 'ServerError',
+                    meta,
+                    status: r.status.toString(),
+                  })
                 );
               })
             );

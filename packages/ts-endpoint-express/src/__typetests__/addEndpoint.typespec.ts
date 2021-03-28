@@ -1,5 +1,5 @@
 import { AddEndpoint } from 'ts-endpoint-express/src';
-import { Endpoint, EndpointError } from 'ts-endpoint/lib';
+import { Endpoint } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { left, right } from 'fp-ts/Either';
@@ -31,10 +31,7 @@ const postEndpointWithErrors = Endpoint({
   Method: 'POST',
   getPath: () => `users/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Errors: [
-    EndpointError(404, t.type({ error: t.string })),
-    EndpointError(401, t.type({ baz: t.string })),
-  ],
+  Errors: { 404: t.type({ error: t.string }), 401: t.type({ baz: t.string }) },
 });
 
 const router = express.Router();
@@ -92,10 +89,10 @@ AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
   );
 });
 
-// @dts-jest:pass:snap you can return a well formatted error
 AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
   console.log(content);
   return Promise.resolve(
-    left(new IOError('error', { kind: 'KnownError', status: 404, body: { error: 'foo' } }))
+    // @dts-jest:pass:snap you can return a well formatted error
+    left(new IOError('error', { kind: 'KnownError', status: 401, body: { baz: 'foo' } }))
   );
 });

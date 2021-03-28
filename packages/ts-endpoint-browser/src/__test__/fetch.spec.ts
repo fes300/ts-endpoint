@@ -5,7 +5,6 @@ import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { isLeft } from 'fp-ts/Either';
 import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
-import { EndpointError } from 'ts-endpoint/lib/Endpoint';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -113,17 +112,17 @@ const endpoints = {
       Query: { color: t.string },
       Params: { id: t.string },
     },
-    Errors: [
-      EndpointError(401, t.type({ foo: t.string })),
-      EndpointError(401, t.type({ baz: t.string })),
-    ],
+    Errors: {
+      401: t.type({ foo: t.string }),
+      404: t.type({ baz: t.string }),
+    },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
   }),
 };
 
-const HandledError = new IOError('this is a handled error', { status: 112, kind: 'ClientError' });
+const HandledError = new IOError('this is a handled error', { status: '112', kind: 'ClientError' });
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
 });
@@ -297,7 +296,8 @@ describe('GetFetchHTTPClient', () => {
 
     expect(isLeft(patchResponse)).toBe(true);
     expect((patchResponse as any).left.details.kind).toBe('DecodingError');
-    expect((patchResponse as any).left.status).toBe(DecodeErrorStatus);
+    expect((patchResponse as any).left.status).toBe(parseInt(DecodeErrorStatus));
+    expect((patchResponse as any).left.details.status).toBe(DecodeErrorStatus);
 
     global.fetch = jest.fn().mockReturnValueOnce(lazyWrongBodyResponse());
     const getResponse = await noPortFetchClient.getEndpoint({
@@ -307,7 +307,8 @@ describe('GetFetchHTTPClient', () => {
 
     expect(isLeft(getResponse)).toBe(true);
     expect((getResponse as any).left.details.kind).toBe('DecodingError');
-    expect((getResponse as any).left.status).toBe(DecodeErrorStatus);
+    expect((getResponse as any).left.details.status).toBe(DecodeErrorStatus);
+    expect((getResponse as any).left.status).toBe(parseInt(DecodeErrorStatus));
   });
 
   it('returns the correct IOError when decoding a server KnownError', async () => {
@@ -329,7 +330,7 @@ describe('GetFetchHTTPClient', () => {
 
     expect(isLeft(wrongKnownErrorResponse)).toBe(true);
     expect((wrongKnownErrorResponse as any).left.details.kind).toBe('DecodingError');
-    expect((wrongKnownErrorResponse as any).left.status).toBe(DecodeErrorStatus);
+    expect((wrongKnownErrorResponse as any).left.status).toBe(parseInt(DecodeErrorStatus));
 
     global.fetch = jest.fn().mockReturnValueOnce(lazyCorrectKnownErrorResponse());
     const correctKnownErrorResponse = await noPortFetchClient.knownErrorEndpoint({
@@ -341,7 +342,7 @@ describe('GetFetchHTTPClient', () => {
     expect((correctKnownErrorResponse as any).left.status).toBe(401);
     expect((correctKnownErrorResponse as any).left.details).toEqual({
       kind: 'KnownError',
-      status: 401,
+      status: '401',
       body: { foo: 'baz' },
     });
   });
@@ -388,7 +389,8 @@ describe('GetFetchHTTPClient', () => {
 
     expect(isLeft(getResponse)).toBe(true);
     expect((getResponse as any).left.details.kind).toBe('NetworkError');
-    expect((getResponse as any).left.status).toBe(NetworkErrorStatus);
+    expect((getResponse as any).left.details.status).toBe(NetworkErrorStatus);
+    expect((getResponse as any).left.status).toBe(parseInt(NetworkErrorStatus));
   });
 
   it('returns the response body in the ClientError meta', async () => {

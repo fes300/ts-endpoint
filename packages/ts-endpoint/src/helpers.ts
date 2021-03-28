@@ -1,8 +1,7 @@
 import * as t from 'io-ts';
 import { EndpointInstance, HTTPMethod } from '.';
 import { RequiredKeys } from 'typelevel-ts';
-import { AnyNewtype } from 'newtype-ts';
-import { Endpoint, EndpointError } from './Endpoint';
+import { Endpoint } from './Endpoint';
 
 export const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
@@ -19,11 +18,10 @@ export type TypeOfEndpointInstance<E extends MinimalEndpoint> = {
   Errors: E['Errors'] extends undefined
     ? undefined
     : {
-        [k in keyof E['Errors']]: E['Errors'][k] extends AnyNewtype
-          ? t.TypeOf<E['Errors'][k]['_A']>
+        [k in keyof E['Errors']]: E['Errors'][k] extends t.Type<any, any>
+          ? t.TypeOf<E['Errors'][k]>
           : never;
       };
-
   Input: {
     [k in keyof E['Input']]: E['Input'][k] extends t.Type<any, any, any>
       ? t.TypeOf<E['Input'][k]>
@@ -38,17 +36,14 @@ export type EncodedPropsType<P> = P extends {}
 
 export type KnownErrorStatus<W> = undefined extends W
   ? undefined
-  : W extends Array<infer EE>
-  ? EE extends EndpointError<infer S, any>
-    ? S
-    : undefined
+  : W extends Record<infer K, any>
+  ? K
   : undefined;
+
 export type KnownErrorBody<W> = undefined extends W
   ? undefined
-  : W extends Array<infer EE>
-  ? EE extends EndpointError<any, infer B>
-    ? B
-    : undefined
+  : W extends Record<any, infer V>
+  ? V
   : undefined;
 
 export type DecodedInput<E extends MinimalEndpoint> = DecodedPropsType<E['Input']>;

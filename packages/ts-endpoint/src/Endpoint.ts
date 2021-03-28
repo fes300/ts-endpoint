@@ -1,8 +1,6 @@
 import * as t from 'io-ts';
 import { identity } from 'fp-ts/function';
 import { addSlash, InferEndpointParams } from './helpers';
-import { iso, Newtype } from 'newtype-ts';
-import { MinimalEndpoint } from '.';
 
 export const HTTPMethod = t.keyof(
   {
@@ -28,7 +26,7 @@ export interface Endpoint<
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends Array<EndpointError<any, any>> | undefined = undefined
+  E extends EndpointErrors<string, t.Type<any, any, any>> | undefined = undefined
 > {
   /* utils to get the full path given a set of query params */
   getPath: P extends undefined
@@ -52,7 +50,7 @@ type GenericEndpoint = Endpoint<
   { [k: string]: t.Type<any, any, any> } | undefined,
   t.Type<any, any, any> | undefined,
   { [k: string]: t.Type<any, any, any> } | undefined,
-  Array<EndpointError<any, any>> | undefined
+  EndpointErrors<string, t.Type<any, any, any>> | undefined
 >;
 
 /**
@@ -133,32 +131,8 @@ export type EndpointInstance<E extends GenericEndpoint> = {
 
 export type GenericEndpointInstance = EndpointInstance<GenericEndpoint>;
 
-type _EndpointError<S extends number, B extends t.Type<any, any, any>> = t.TupleC<
-  [t.LiteralC<S>, B]
->;
-export interface EndpointError<S extends number, B extends t.Type<any, any, any>>
-  extends Newtype<{ readonly EndpointError: unique symbol }, _EndpointError<S, B>> {}
+export type EndpointErrors<S extends string, B extends t.Type<any, any, any>> = Record<S, B>;
 
-export const errorIso = <S extends number, B extends t.Type<any, any, any>>(
-  _: EndpointError<S, B>
-) => iso<EndpointError<S, B>>();
-
-type ErrorBody<K> = K extends EndpointError<infer S, infer B>
-  ? { status: S; body: t.TypeOf<B> }
-  : never;
-
-export type EndpointInstanceError<EI extends MinimalEndpoint> = EI['Errors'] extends undefined
-  ? never
-  : ErrorBody<NonNullable<EI['Errors']>[number]>;
-
-export const EndpointError = <S extends number, B extends t.Type<any, any, any>>(
-  status: S,
-  body: B
-) => {
-  const isoEndpointError = iso<EndpointError<S, B>>();
-
-  return isoEndpointError.wrap(t.tuple([t.literal(status), body]));
-};
 /**
  * Constructor function for an endpoint
  * @returns an EndpointInstance
@@ -170,7 +144,7 @@ export function Endpoint<
   Q extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   B extends t.Type<any, any, any> | undefined = undefined,
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
-  E extends Array<EndpointError<any, any>> | undefined = undefined
+  E extends EndpointErrors<string, t.Type<any, any, any>> | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
   return ({
     ...e,

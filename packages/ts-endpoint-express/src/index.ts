@@ -1,4 +1,4 @@
-import { InferEndpointInstanceParams, EndpointError, MinimalEndpoint } from 'ts-endpoint/lib';
+import { InferEndpointInstanceParams, MinimalEndpoint } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { Controller } from './Controller';
@@ -40,19 +40,13 @@ export type ErrorMeta = {
   errors?: t.Errors;
 };
 
-type ErrorsOrNever<E> = E extends Array<infer EE>
-  ? EE extends EndpointError<infer S, infer B>
-    ? { status: S; body: t.TypeOf<B> }
-    : never
-  : never;
-
 export type AddEndpoint = (
   router: express.Router,
   ...m: express.RequestHandler[]
 ) => <E extends MinimalEndpoint>(
   e: E,
   c: Controller<
-    IOError<ErrorsOrNever<E['Errors']>[]>,
+    IOError<E['Errors']>,
     OutputOrNever<InferEndpointInstanceParams<E>['params']>,
     OutputOrNever<InferEndpointInstanceParams<E>['headers']>,
     OutputOrNever<InferEndpointInstanceParams<E>['query']>,

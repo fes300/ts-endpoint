@@ -1,4 +1,4 @@
-import { Endpoint, EndpointError } from '..';
+import { Endpoint } from '..';
 import * as t from 'io-ts';
 import { TypeOfEndpointInstance } from '../helpers';
 
@@ -39,11 +39,11 @@ const endpointWithErrors = Endpoint({
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Errors: [
-    EndpointError(401, t.undefined),
-    EndpointError(404, t.type({ message: t.string })),
-    EndpointError(500, t.type({ foo: t.number })),
-  ],
+  Errors: {
+    401: t.undefined,
+    404: t.type({ message: t.string }),
+    500: t.type({ foo: t.number }),
+  },
 });
 
 // @dts-jest:pass:snap resulting EndpointInstances typings are correct
@@ -61,11 +61,6 @@ endpointInstance.Output.props.crayons;
 
 // @dts-jest:pass:snap Errors are well formatted
 endpointWithErrors.Errors;
-
-endpointWithErrors.Errors.map((e) => {
-  // @dts-jest:fail:snap You cannot access potentially non existing values
-  e._A.types[1].props.message;
-});
 
 // @dts-jest:fail:snap getPath cannot be called with no args if there are params defined in the endpoint
 endpointWithParam.getPath();
@@ -89,7 +84,3 @@ endpointWithoutParam.getStaticPath();
 
 // @dts-jest:pass:snap
 type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors>;
-// @dts-jest:pass:snap
-type ErrorStatuses = EndpointType['Errors'][number][0];
-// @dts-jest:pass:snap
-type ErrorBodies = EndpointType['Errors'][number][1];
