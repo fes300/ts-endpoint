@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint",
-  "version": "2.0.0-alpha.18",
+  "version": "2.0.0-alpha.19",
   "description": "Simple endpoint definition for fullstack safety.",
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint",
@@ -29,6 +29,5 @@
     "newtype-ts": "^0.3.4",
     "ts-shared": "^2.0.0-alpha.6",
     "typelevel-ts": "^0.4.0"
-  },
-  "devDependencies": {}
+  }
 }

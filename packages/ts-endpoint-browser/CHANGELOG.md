@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.21](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.20...ts-endpoint-browser@2.0.0-alpha.21) (2021-03-29)
+
+
+### Features
+
+* log an error when defining headers with spaces ([a4168d9](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/a4168d94487f681d65f389e948acf45219d7a02e))
+
+
+
+
+
 # [2.0.0-alpha.20](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.19...ts-endpoint-browser@2.0.0-alpha.20) (2021-03-28)
 
 **Note:** Version bump only for package ts-endpoint-browser

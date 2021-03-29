@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.19](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.18...ts-endpoint@2.0.0-alpha.19) (2021-03-29)
+
+
+### Features
+
+* log an error when defining headers with spaces ([a4168d9](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/a4168d94487f681d65f389e948acf45219d7a02e))
+
+
+
+
+
 # [2.0.0-alpha.18](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.17...ts-endpoint@2.0.0-alpha.18) (2021-03-28)
 
 
