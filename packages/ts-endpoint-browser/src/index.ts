@@ -36,7 +36,7 @@ export type GetHTTPClientOptions = {
    * individually handling them.
    *
    */
-  handleError?: <E extends MinimalEndpoint>(err: any, e: E) => any;
+  handleError?: (err: IOError<any>, e: MinimalEndpoint) => any;
   /**
    * If true a non-JSON response will be treated like
    * a JSON response returning undefined. Defaults to false.
