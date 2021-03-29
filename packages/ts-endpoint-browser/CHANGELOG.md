@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.22](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.21...ts-endpoint-browser@2.0.0-alpha.22) (2021-03-29)
+
+
+### Features
+
+* improve handleError types ([d2e353a](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/d2e353a7a40bb7a9077330fd12017070f8a32f38))
+
+
+
+
+
 # [2.0.0-alpha.21](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.20...ts-endpoint-browser@2.0.0-alpha.21) (2021-03-29)
 
 
