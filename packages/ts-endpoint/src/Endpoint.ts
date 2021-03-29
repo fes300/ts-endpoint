@@ -1,5 +1,6 @@
 import * as t from 'io-ts';
-import { identity } from 'fp-ts/function';
+import { identity, pipe } from 'fp-ts/function';
+import * as R from 'fp-ts/Record';
 import { addSlash, InferEndpointParams } from './helpers';
 
 export const HTTPMethod = t.keyof(
@@ -146,6 +147,16 @@ export function Endpoint<
   P extends { [k: string]: t.Type<any, any, any> } | undefined = undefined,
   E extends EndpointErrors<string, t.Type<any, any, any>> | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
+  const headersWithWhiteSpaces = pipe(
+    e.Input?.Headers ?? {},
+    R.filterWithIndex((k: string) => k.indexOf(' ') !== -1),
+    R.keys
+  );
+
+  if (headersWithWhiteSpaces.length > 0) {
+    console.error('white spaces are not allowed in Headers names:', headersWithWhiteSpaces);
+  }
+
   return ({
     ...e,
     getPath: ((i: never) => {

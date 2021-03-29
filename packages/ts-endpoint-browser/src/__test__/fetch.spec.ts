@@ -1,3 +1,5 @@
+const errorMock = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
 import 'isomorphic-fetch';
 import { GetFetchHTTPClient } from '../fetch';
 import { Endpoint } from 'ts-endpoint/lib';
@@ -472,5 +474,18 @@ describe('GetFetchHTTPClient', () => {
     })();
 
     expect(getResponse._tag).toEqual('Right');
+  });
+
+  it('logs an error when defining headers with spaces', () => {
+    GetFetchHTTPClient(options, endpoints, {
+      defaultHeaders: { 'Content type': 'application/json' },
+    });
+
+    expect(errorMock.mock.calls[0][0]).toBe(
+      'white spaces are not allowed in defaultHeaders names:'
+    );
+    expect(errorMock.mock.calls[0][1]).toEqual(['Content type']);
+
+    errorMock.mockRestore();
   });
 });
