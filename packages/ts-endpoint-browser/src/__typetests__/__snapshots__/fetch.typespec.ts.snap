@@ -38,6 +38,8 @@ exports[`should not allow empty-object as input (type) should match snapshot 1`]
 
 exports[`should not allow to add Body when not declared in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'never'."`;
 
+exports[`should pass an error and an endpoint instance to handleError (type) should match snapshot 1`] = `"(err: IOError<never> | IOError<{ 401: TypeC<{ foo: StringC; }>; 402: TypeC<{ baz: StringC; }>; }>, e: EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, { color: StringC; }, undefined, { id: StringC; }, undefined>> | EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, { color: StringC; }, undefined, undefined, undefined>> | EndpointInstance<Endpoint<\\"GET\\", TypeC<{ noInput: ArrayC<StringC>; }>, undefined, undefined, undefined, undefined, undefined>> | EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, { color: StringC; }, undefined, { id: StringC; }, { 401: TypeC<{ foo: StringC; }>; 402: TypeC<{ baz: StringC; }>; }>>) => void"`;
+
 exports[`you can access KnownErrors with the correct typeguard (type) should match snapshot 1`] = `"string"`;
 
 exports[`you cannot access KnownErrors without the correct typeguard (type) should match snapshot 1`] = `"Property 'baz' does not exist on type '{ foo: string; }'."`;

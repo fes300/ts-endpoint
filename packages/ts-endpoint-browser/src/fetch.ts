@@ -15,7 +15,7 @@ import { toArray } from 'fp-ts/lib/Record';
 export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  options?: GetHTTPClientOptions
+  options?: GetHTTPClientOptions<A>
 ) => GetHTTPClient(config, endpoints, useBrowserFetch, options);
 
 const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
@@ -43,7 +43,7 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
 export const useBrowserFetch = <E extends MinimalEndpoint>(
   baseURL: string,
   e: E,
-  options?: GetHTTPClientOptions
+  options?: GetHTTPClientOptions<any>
 ): FetchClient<E> => {
   return ((i) => {
     const path = `${baseURL}${e.getPath(i?.Params)}${i.Query ? `?${qs.stringify(i.Query)}` : ''}`;

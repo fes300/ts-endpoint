@@ -52,7 +52,11 @@ const endpoints = {
 };
 
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
-  handleError: (err, e) => err,
+  // @dts-jest:pass:snap should pass an error and an endpoint instance to handleError
+  handleError: (err, e) => {
+    console.log(e);
+    console.log(err);
+  },
 });
 
 // @dts-jest:pass:snap should allow empty calls when input is not defined

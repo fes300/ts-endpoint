@@ -28,7 +28,13 @@ export type HTTPClient<A extends Record<string, MinimalEndpoint>> = {
   [K in keyof A]: FetchClient<A[K]>;
 };
 
-export type GetHTTPClientOptions = {
+type RecordValues<T extends Record<any, any>> = T extends Record<infer K, infer V>
+  ? K extends never
+    ? never
+    : V
+  : never;
+
+export type GetHTTPClientOptions<A extends { [key: string]: MinimalEndpoint }> = {
   defaultHeaders?: { [key: string]: string };
   /**
    * Used to perform side effect on api Errors,
@@ -36,7 +42,10 @@ export type GetHTTPClientOptions = {
    * individually handling them.
    *
    */
-  handleError?: <E extends MinimalEndpoint>(err: any, e: E) => any;
+  handleError?: (
+    err: RecordValues<{ [K in keyof A]: IOError<A[K]['Errors']> }>,
+    e: RecordValues<A>
+  ) => any;
   /**
    * If true a non-JSON response will be treated like
    * a JSON response returning undefined. Defaults to false.
@@ -55,9 +64,9 @@ export const GetHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
   getFetchClient: <E extends MinimalEndpoint>(
     baseURL: string,
     endpoint: E,
-    options?: GetHTTPClientOptions
+    options?: GetHTTPClientOptions<A>
   ) => FetchClient<E>,
-  options?: GetHTTPClientOptions
+  options?: GetHTTPClientOptions<A>
 ): HTTPClient<A> => {
   const headersWithWhiteSpaces = pipe(
     options?.defaultHeaders ?? {},
