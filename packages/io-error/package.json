@@ -1,9 +1,9 @@
 {
-  "name": "ts-shared",
-  "version": "2.0.0-alpha.6",
-  "description": "shared lib for ts-endpoint packages.",
+  "name": "io-error",
+  "version": "1.0.0",
+  "description": "defines errors incurring in client-server communication.",
   "main": "index.js",
-  "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-shared",
+  "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/io-error",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues"
   },
@@ -13,7 +13,9 @@
     "access": "public"
   },
   "scripts": {
-    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib && npm publish lib",
+    "npm-publish-beta": "npm publish lib --tag beta",
+    "npm-publish": "npm publish lib",
+    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
