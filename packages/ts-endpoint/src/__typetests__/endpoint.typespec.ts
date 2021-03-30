@@ -4,8 +4,8 @@ import { TypeOfEndpointInstance } from '../helpers';
 
 const endpointInstance = Endpoint({
   Input: {
-    Query: { color: t.string },
-    Params: { id: t.string },
+    Query: t.type({ color: t.string }),
+    Params: t.type({ id: t.string }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
@@ -14,8 +14,8 @@ const endpointInstance = Endpoint({
 
 const endpointWithParam = Endpoint({
   Input: {
-    Query: { color: t.string },
-    Params: { id: t.number },
+    Query: t.type({ color: t.string }),
+    Params: t.type({ id: t.number }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
@@ -24,7 +24,7 @@ const endpointWithParam = Endpoint({
 
 const endpointWithoutParam = Endpoint({
   Input: {
-    Query: { color: t.string },
+    Query: t.type({ color: t.string }),
   },
   Method: 'GET',
   getPath: () => `users/crayons`,
@@ -33,8 +33,8 @@ const endpointWithoutParam = Endpoint({
 
 const endpointWithErrors = Endpoint({
   Input: {
-    Query: { color: t.string },
-    Params: { id: t.number },
+    Query: t.type({ color: t.string }),
+    Params: t.type({ id: t.number }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,

@@ -6,8 +6,8 @@ import * as t from 'io-ts';
 describe('getStaticPath works as intended', () => {
   const endpointWithParam = Endpoint({
     Input: {
-      Query: { color: t.string },
-      Params: { id: t.number },
+      Query: t.type({ color: t.string }),
+      Params: t.type({ id: t.number }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id.toString()}/crayons`,
@@ -16,7 +16,7 @@ describe('getStaticPath works as intended', () => {
 
   const endpointWithoutParam = Endpoint({
     Input: {
-      Query: { color: t.string },
+      Query: t.type({ color: t.string }),
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
@@ -36,8 +36,8 @@ describe('getStaticPath works as intended', () => {
   it('logs an error when defining headers with spaces', () => {
     Endpoint({
       Input: {
-        Query: { color: t.string },
-        Headers: { 'Content type': t.string },
+        Query: t.type({ color: t.string }),
+        Headers: t.type({ 'Content type': t.string }),
       },
       Method: 'GET',
       getPath: () => `users/crayons`,

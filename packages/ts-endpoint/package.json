@@ -19,11 +19,11 @@
     "runtime-test": "jest --config=jest.config.js",
     "test": "yarn type-test && yarn runtime-test"
   },
-  "peerDependencies": {
-    "fp-ts": "^2.0.0",
+  "devDependencies": {
     "io-ts": "^2.2.7"
   },
   "dependencies": {
+    "fp-ts": "^2.0.0",
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",

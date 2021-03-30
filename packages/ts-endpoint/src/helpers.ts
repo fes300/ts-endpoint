@@ -2,32 +2,40 @@ import * as t from 'io-ts';
 import { EndpointInstance, HTTPMethod } from '.';
 import { RequiredKeys } from 'typelevel-ts';
 import { Endpoint } from './Endpoint';
+import { Codec, runtimeType } from './Codec';
 
 export const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
 export type MinimalEndpoint = Omit<
-  EndpointInstance<Endpoint<HTTPMethod, t.Type<any, any, any>, any, any, any, any, any>>,
+  Endpoint<HTTPMethod, Codec<any, any, any>, any, any, any, any, any>,
+  'getPath'
+> & { getPath: (i?: any) => string };
+
+export type MinimalEndpointInstance = Omit<
+  EndpointInstance<MinimalEndpoint>,
   'getPath' | 'getStaticPath'
 > & { getPath: (i?: any) => string; getStaticPath: (f: (i?: any) => string) => string };
 
-export type TypeOfEndpointInstance<E extends MinimalEndpoint> = {
+export type TypeOfEndpointInstance<E extends MinimalEndpointInstance> = {
   getPath: E['getPath'];
   getStaticPath: E['getStaticPath'];
   Method: E['Method'];
-  Output: t.TypeOf<E['Output']>;
+  Output: runtimeType<E['Output']>;
   Errors: {
     [k in keyof NonNullable<E['Errors']>]: NonNullable<E['Errors']>[k] extends t.Type<any, any>
-      ? t.TypeOf<NonNullable<E['Errors']>[k]>
+      ? runtimeType<NonNullable<E['Errors']>[k]>
       : never;
   };
   Input: {
     [k in keyof NonNullable<E['Input']>]: NonNullable<E['Input']>[k] extends t.Type<any, any, any>
-      ? t.TypeOf<NonNullable<E['Input']>[k]>
+      ? runtimeType<NonNullable<E['Input']>[k]>
       : never;
   };
 };
 
-export type DecodedPropsType<P> = P extends {} ? { [k in RequiredKeys<P>]: t.TypeOf<P[k]> } : never;
+export type DecodedPropsType<P> = P extends {}
+  ? { [k in RequiredKeys<P>]: runtimeType<P[k]> }
+  : never;
 export type EncodedPropsType<P> = P extends {}
   ? { [k in RequiredKeys<P>]: t.OutputOf<P[k]> }
   : never;
@@ -44,10 +52,10 @@ export type KnownErrorBody<W> = undefined extends W
   ? V
   : undefined;
 
-export type DecodedInput<E extends MinimalEndpoint> = DecodedPropsType<E['Input']>;
-export type EncodedInput<E extends MinimalEndpoint> = EncodedPropsType<E['Input']>;
-export type DecodedOutput<E extends MinimalEndpoint> = t.TypeOf<E['Output']>;
-export type EncodedOutput<E extends MinimalEndpoint> = t.TypeOf<E['Output']>;
+export type DecodedInput<E extends MinimalEndpointInstance> = DecodedPropsType<E['Input']>;
+export type EncodedInput<E extends MinimalEndpointInstance> = EncodedPropsType<E['Input']>;
+export type DecodedOutput<E extends MinimalEndpointInstance> = runtimeType<E['Output']>;
+export type EncodedOutput<E extends MinimalEndpointInstance> = runtimeType<E['Output']>;
 
 export type InferEndpointParams<E> = E extends Endpoint<
   infer M,

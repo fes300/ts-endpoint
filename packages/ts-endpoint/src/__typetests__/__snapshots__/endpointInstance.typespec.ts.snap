@@ -4,6 +4,8 @@ exports[`Errors are well formatted (type) should match snapshot 1`] = `"{ 401: U
 
 exports[`getPath args must have the same type as the Params defined in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'number'."`;
 
+exports[`getPath args must have the same type as the Params defined in the endpoint (type) should match snapshot 2`] = `"string"`;
+
 exports[`getPath can be called with no args if no Params are defined in the endpoint (type) should match snapshot 1`] = `"string"`;
 
 exports[`getPath cannot be called with args different from the Params defined in the endpoint (type) should match snapshot 1`] = `
