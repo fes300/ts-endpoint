@@ -43,13 +43,9 @@ jobs:
 
       - name: pre-release
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+          NPM_PASSWORD: ${{ secrets.NPM_PASSWORD }}
+          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-          echo _auth=$NPM_TOKEN >> .npmrc
-          echo email=federicosordillo@gmail.com >> .npmrc
-          echo always-auth=true >> .npmrc
           yarn pre-release
           yarn npm-publish-beta
