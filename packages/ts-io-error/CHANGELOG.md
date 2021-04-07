@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.25](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.24...ts-io-error@2.0.0-alpha.25) (2021-04-07)
+
+
+### Features
+
+* check ([56b69ad](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/commit/56b69ad032f8f60811a73015751f01fd2de72027))
+
+
+
+
+
 # [2.0.0-alpha.24](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.23...ts-io-error@2.0.0-alpha.24) (2021-04-07)
 
 
