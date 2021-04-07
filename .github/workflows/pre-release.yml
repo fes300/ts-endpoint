@@ -19,10 +19,10 @@ jobs:
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '13.x'
-          registry-url: 'https://registry.npmjs.org'
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '13.x'
+        registry-url: 'https://registry.npmjs.org'
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
@@ -43,10 +43,7 @@ jobs:
 
       - name: pre-release
         env:
-          NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
-          NPM_PASSWORD: ${{ secrets.NPM_PASSWORD }}
-          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn pre-release
           yarn npm-publish-beta
