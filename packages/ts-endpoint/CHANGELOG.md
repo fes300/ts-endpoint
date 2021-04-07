@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.20](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.19...ts-endpoint@2.0.0-alpha.20) (2021-04-07)
+
+
+### Bug Fixes
+
+* publish script ([9ec9445](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/9ec9445ff5d58dd2fd26797e4ea537b0294f342e))
+
+
+### Features
+
+* decouple ts-browser and ts-express ([46b30ce](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/46b30ce7fe56d4fd8b23ab9c1dc12c494d552893))
+* decouple ts-endpoint ([77ed660](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/77ed660633b94c9a6df1f15ed5f2c220141b3728))
+
+
+### BREAKING CHANGES
+
+* pretty much everything
+
+
+
+
+
 # [2.0.0-alpha.19](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.18...ts-endpoint@2.0.0-alpha.19) (2021-03-29)
 
 
