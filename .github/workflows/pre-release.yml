@@ -46,4 +46,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn pre-release
-          yarn npm-publish-beta
+          npm run npm-publish-beta
