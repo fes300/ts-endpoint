@@ -28,13 +28,13 @@ jobs:
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: install dependencies
-        run: yarn bootstrap-ci
+        run: npm run bootstrap-ci
 
       - name: build
-        run: yarn build
+        run: npm run build
 
       - name: test
-        run: yarn test
+        run: npm run test
 
       - name: git login
         uses: oleksiyrudenko/gha-git-credentials@v2
@@ -46,5 +46,5 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-          yarn release
-          yarn npm-publish
+          npm run release
+          npm run npm-publish

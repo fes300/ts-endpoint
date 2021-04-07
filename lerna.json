@@ -11,7 +11,7 @@
         "**/*.md",
         "**/*.spec.*",
         "**/*.typespec.*",
-        "**/yarn.lock"
+        "**/package-lock.json"
       ],
       "conventionalCommits": true,
       "message": "chore(release): publish",
