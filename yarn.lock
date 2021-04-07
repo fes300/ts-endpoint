@@ -3801,11 +3801,6 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
-io-ts-types@^0.5.8:
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.5.12.tgz#270487f6e0adfe0a597ca14e50fbab287e4bb266"
-  integrity sha512-8IC96BJBTMeHFIikM3Mh5poyl2NA6pgF1ncWBktrpS1xfCdoRZQeSWPDcUaiR8T8jYWfAYOt/KEcIsw2e1fufw==
-
 io-ts@^2.2.13:
   version "2.2.13"
   resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.13.tgz#e04016685e863dd5cffb2b5262c5c9c74432dfda"
@@ -5164,11 +5159,6 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-monocle-ts@^2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/monocle-ts/-/monocle-ts-2.3.3.tgz#1e6d83dcf42bcb96b74fdda07813c2a47ec6cfa4"
-  integrity sha512-pcQyauWO2vapxyZgbhTd73Dv8TmTELx1rL81bvrtPO2sUYTi1MIHmw3j/iMyeNaJwTmnGNAjqJpYV8Gq1Eu68g==
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -5221,11 +5211,6 @@ neo-async@^2.6.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
-
-newtype-ts@^0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/newtype-ts/-/newtype-ts-0.3.4.tgz#65c74b7d5195edaa9abfcdba6549a33a5c0e298d"
-  integrity sha512-lFJnWAt0oXX1j1ErNy9RU5+FPNtVyzugHW2MchaaMiOeeS9LEmqAAOqyHPFQ0Uw895jStSYGSCslrByzYxFJYQ==
 
 nice-try@^1.0.4:
   version "1.0.5"
