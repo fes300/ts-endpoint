@@ -10,7 +10,8 @@
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "npm-publish-beta": "cat $HOME/.npmrc && cat ./.npmrc && cat $PREFIX/etc/npmrc && npm get registry && npm set registry https://registry.npmjs.org --globalconfig && npm get registry && if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
