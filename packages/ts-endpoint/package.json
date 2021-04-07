@@ -29,7 +29,7 @@
     "io-ts-types": "^0.5.8",
     "monocle-ts": "^2.3.3",
     "newtype-ts": "^0.3.4",
-    "ts-shared": "^2.0.0-alpha.6",
+    "ts-io-error": "^1.0.0",
     "typelevel-ts": "^0.4.0"
   }
 }

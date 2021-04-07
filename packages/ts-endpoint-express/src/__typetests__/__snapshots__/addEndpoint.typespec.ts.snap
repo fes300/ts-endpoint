@@ -20,7 +20,7 @@ exports[`won't compile if output of controller is wrong (type) should match snap
 
 exports[`won't compile if trying to access non defined body (type) should match snapshot 1`] = `"Property 'foo' does not exist on type 'undefined'."`;
 
-exports[`won't compile if trying to access non existent param (type) should match snapshot 1`] = `"Property 'baz' does not exist on type 'CodecRecordOutput<{ auth: StringC; }>'."`;
+exports[`won't compile if trying to access non existent param (type) should match snapshot 1`] = `"Property 'bar' does not exist on type '{ id: string; }'."`;
 
 exports[`you can return a well formatted error (type) should match snapshot 1`] = `"<E = never, A = never>(e: E) => Either<E, A>"`;
 
@@ -34,8 +34,8 @@ exports[`you cannot return a badly formatted error (type) should match snapshot 
 `;
 
 exports[`you cannot return a badly formatted error (type) should match snapshot 2`] = `
-"Argument of type '{ kind: \\"KnownError\\"; error: string; }' is not assignable to parameter of type '{ kind: \\"DecodingError\\"; errors: Errors; } | { kind: CommunicationError; meta?: unknown; status: string; } | { kind: \\"KnownError\\"; status: 404; body: { error: string; }; } | { ...; }'.
-  Object literal may only specify known properties, and 'error' does not exist in type '{ kind: \\"DecodingError\\"; errors: Errors; } | { kind: CommunicationError; meta?: unknown; status: string; } | { kind: \\"KnownError\\"; status: 404; body: { error: string; }; } | { ...; }'."
+"Argument of type '{ kind: \\"KnownError\\"; error: string; }' is not assignable to parameter of type '{ kind: \\"DecodingError\\"; errors: unknown[]; } | { kind: CommunicationError; meta?: unknown; status: string; } | { kind: \\"KnownError\\"; status: 404; body: { error: string; }; } | { kind: \\"KnownError\\"; status: 401; body: { ...; }; }'.
+  Object literal may only specify known properties, and 'error' does not exist in type '{ kind: \\"DecodingError\\"; errors: unknown[]; } | { kind: CommunicationError; meta?: unknown; status: string; } | { kind: \\"KnownError\\"; status: 404; body: { error: string; }; } | { kind: \\"KnownError\\"; status: 401; body: { ...; }; }'."
 `;
 
 exports[`you cannot return a badly formatted error (type) should match snapshot 3`] = `

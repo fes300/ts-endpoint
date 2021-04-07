@@ -21,17 +21,17 @@
     "runtime-test": "jest --config=jest.config.js",
     "test": "yarn runtime-test && yarn type-test"
   },
+  "devDependencies": {
+    "io-ts": "^2.2.7",
+    "isomorphic-fetch": "^3.0.0",
+    "ts-endpoint": "^2.0.0-alpha.19"
+  },
   "peerDependencies": {
-    "fp-ts": "^2.0.0",
-    "io-ts": "^2.2.7"
+    "ts-endpoint": "^2.0.0-alpha.19"
   },
   "dependencies": {
-    "io-ts-types": "^0.5.8",
-    "isomorphic-fetch": "^3.0.0",
-    "monocle-ts": "^2.3.3",
-    "newtype-ts": "^0.3.4",
-    "ts-endpoint": "^2.0.0-alpha.19",
-    "ts-shared": "^2.0.0-alpha.6",
-    "typelevel-ts": "^0.4.0"
+    "fp-ts": "^2.0.0",
+    "ts-io-error": "^1.0.0",
+    "ts-endpoint": "^2.0.0-alpha.19"
   }
 }

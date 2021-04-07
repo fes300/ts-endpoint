@@ -3,12 +3,13 @@ import { Endpoint } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
 import * as express from 'express';
 import { left, right } from 'fp-ts/Either';
-import { IOError } from 'ts-shared/lib/errors';
+import { IOError } from 'ts-io-error/lib';
+import { Codec, RecordCodec } from 'ts-io-error/lib/Codec';
 
 const getEndpoint = Endpoint({
   Input: {
-    Params: { id: t.string },
-    Headers: { auth: t.string },
+    Params: t.type({ id: t.string }),
+    Headers: t.type({ auth: t.string }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id}/crayons`,
@@ -40,26 +41,31 @@ const router = express.Router();
 AddEndpoint();
 
 // @dts-jest:fail:snap won't compile if output of controller is wrong
-AddEndpoint(router)(getEndpoint, ({ headers: { auth }, params: { id } }) => () => {
-  console.log(auth, id);
+AddEndpoint(router)(getEndpoint, ({ params: { id } }) => () => {
+  console.log(id);
   return Promise.resolve(right({ body: { crayons: [22] }, statusCode: 200 }));
 });
 
 // @dts-jest:fail:snap won't compile if trying to access non existent param
-AddEndpoint(router)(getEndpoint, ({ headers: { baz }, params: { id } }) => () => {
-  console.log(baz, id);
+AddEndpoint(router)(getEndpoint, ({ params: { id, bar } }) => () => {
+  console.log(bar, id);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
 
 // @dts-jest:fail:snap won't compile if trying to access non defined body
-AddEndpoint(router)(getEndpoint, ({ headers: { auth }, params: { id }, body: { foo } }) => () => {
-  console.log(auth, id, foo);
+AddEndpoint(router)(getEndpoint, ({ params: { id }, body: { foo } }) => () => {
+  console.log(id, foo);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
 
+type OutputOrUndefined<T> = T extends RecordCodec<any, any, infer R> ? R : undefined;
+const v = t.type({ u: t.string });
+type a = OutputOrUndefined<typeof v>;
+const s: RecordCodec<any, any> = v;
+
 // @dts-jest:pass:snap correct constructions should work
-AddEndpoint(router)(getEndpoint, ({ headers: { auth }, params: { id } }) => () => {
-  console.log(auth, id);
+AddEndpoint(router)(getEndpoint, ({ params: { id } }) => () => {
+  console.log(id);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
 

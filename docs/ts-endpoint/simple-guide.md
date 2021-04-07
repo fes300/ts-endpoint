@@ -13,7 +13,7 @@ export const getUser = Endpoint({
   Input: {
     Params: { id: NumberFromString },
   },
-  Method: "GET",
+  Method: 'GET',
   getPath: ({ id }) => `user/${id}`,
   Output: t.strict({ user: User }),
 });
@@ -41,7 +41,7 @@ import { AddEndpoint } from 'ts-endpoint-express/lib';
 import * as TA from 'fp-ts/TaskEither';
 import * as E from 'fp-ts/Either';
 import { pipe } from 'fp-ts/pipeable';
-import { IOError } from 'ts-shared/lib/errors';
+import { IOError } from 'ts-io-error/lib/errors';
 
 const database = [
   { id: 1, name: 'John', surname: 'Doe', age: 22 },

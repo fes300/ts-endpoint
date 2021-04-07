@@ -4330,7 +4330,7 @@ ts-endpoint-browser@^1.1.0-alpha.17:
     newtype-ts "^0.3.4"
     swr "^0.3.5"
     ts-endpoint "^1.5.0-alpha.19"
-    ts-shared "^1.0.1-alpha.3"
+    ts-io-error "^1.0.1-alpha.3"
     typelevel-ts "^0.4.0"
 
 ts-endpoint-express@^1.1.0-alpha.18:
@@ -4342,7 +4342,7 @@ ts-endpoint-express@^1.1.0-alpha.18:
     monocle-ts "^2.3.3"
     newtype-ts "^0.3.4"
     ts-endpoint "^1.5.0-alpha.19"
-    ts-shared "^1.0.1-alpha.3"
+    ts-io-error "^1.0.1-alpha.3"
     typelevel-ts "^0.4.0"
 
 ts-endpoint@^1.5.0-alpha.19:
@@ -4356,7 +4356,7 @@ ts-endpoint@^1.5.0-alpha.19:
     newtype-ts "^0.3.4"
     qs "^6.9.4"
     rxjs "^6.6.0"
-    ts-shared "^1.0.1-alpha.3"
+    ts-io-error "^1.0.1-alpha.3"
     typelevel-ts "^0.4.0"
 
 ts-loader@^8.0.3:
@@ -4370,9 +4370,9 @@ ts-loader@^8.0.3:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
-ts-shared@^1.0.1-alpha.3:
+ts-io-error@^1.0.1-alpha.3:
   version "1.0.1-alpha.3"
-  resolved "https://registry.yarnpkg.com/ts-shared/-/ts-shared-1.0.1-alpha.3.tgz#6a3c6ebaa90e04b637bc9804b08df7b5601e10e6"
+  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1-alpha.3.tgz#6a3c6ebaa90e04b637bc9804b08df7b5601e10e6"
   integrity sha512-wsV5WjCBimM/Zu6JVFhRuGufGWQI/w5Eyj/4dnsoGVCWFiZVcrpQa0b2qr16IXJhuIVaQtKcsOtzmelYFYR+HQ==
   dependencies:
     io-ts "^2.2.7"

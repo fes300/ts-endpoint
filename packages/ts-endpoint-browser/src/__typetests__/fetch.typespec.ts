@@ -16,8 +16,8 @@ const options: StaticHTTPClientConfig = {
 const endpoints = {
   prova: Endpoint({
     Input: {
-      Query: { color: t.string },
-      Params: { id: t.string },
+      Query: t.type({ color: t.string }),
+      Params: t.type({ id: t.string }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
@@ -25,7 +25,7 @@ const endpoints = {
   }),
   provaNoParam: Endpoint({
     Input: {
-      Query: { color: t.string },
+      Query: t.type({ color: t.string }),
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
@@ -38,8 +38,8 @@ const endpoints = {
   }),
   provaWithError: Endpoint({
     Input: {
-      Query: { color: t.string },
-      Params: { id: t.string },
+      Query: t.type({ color: t.string }),
+      Params: t.type({ id: t.string }),
     },
     Errors: {
       401: t.type({ foo: t.string }),

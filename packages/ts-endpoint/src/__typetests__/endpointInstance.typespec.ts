@@ -72,15 +72,18 @@ endpointWithParam.getPath({ foo: '' });
 endpointWithParam.getPath({ id: '' });
 // @dts-jest:pass:snap getPath args must have the same type as the Params defined in the endpoint
 endpointWithParam.getPath({ id: 2 });
+
 // @dts-jest:fail:snap getStaticPath requires a mapping function if some Params are defined in the endpoint
 endpointWithParam.getStaticPath();
+
 // @dts-jest:pass:snap getStaticPath requires a mapping function if some Params are defined in the endpoint
 endpointWithParam.getStaticPath((param) => `:${param}`);
 
-// @dts-jest:pass:snap getPath can be called with no args if no Params are defined in the endpoint
-endpointWithoutParam.getPath();
 // @dts-jest:pass:snap getStaticPath requires no args if no Params are defined
 endpointWithoutParam.getStaticPath();
+
+// @dts-jest:pass:snap getPath can be called with no args if no Params are defined in the endpoint
+endpointWithoutParam.getPath();
 
 // @dts-jest:pass:snap
 type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors>;

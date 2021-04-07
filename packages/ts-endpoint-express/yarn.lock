@@ -4014,7 +4014,7 @@ ts-endpoint@^2.0.0-alpha.2:
     io-ts-types "^0.5.8"
     monocle-ts "^2.3.3"
     newtype-ts "^0.3.4"
-    ts-shared "^1.0.1"
+    ts-io-error "^1.0.1"
     typelevel-ts "^0.4.0"
 
 ts-jest@^26.1.1:
@@ -4034,9 +4034,9 @@ ts-jest@^26.1.1:
     semver "7.x"
     yargs-parser "18.x"
 
-ts-shared@^1.0.1:
+ts-io-error@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ts-shared/-/ts-shared-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
+  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
   integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
   dependencies:
     io-ts "^2.2.7"

@@ -4,7 +4,7 @@ import express from 'express';
 import * as TA from 'fp-ts/TaskEither';
 import * as E from 'fp-ts/Either';
 import { pipe } from 'fp-ts/pipeable';
-import { IOError } from 'ts-shared/lib/errors';
+import { IOError } from 'ts-io-error/lib/errors';
 
 const database = [
   { id: 1, name: 'John', surname: 'Doe', age: 22 },

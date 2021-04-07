@@ -1,7 +1,7 @@
 import { pipe } from 'fp-ts/function';
 import * as R from 'fp-ts/Record';
 import { addSlash, InferEndpointParams } from './helpers';
-import { Codec, runtimeType } from './Codec';
+import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';
 import { MinimalEndpoint } from '.';
 
 export type HTTPMethod = 'OPTIONS' | 'HEAD' | 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -12,10 +12,10 @@ export type HTTPMethod = 'OPTIONS' | 'HEAD' | 'GET' | 'POST' | 'PUT' | 'PATCH' |
 export interface Endpoint<
   M extends HTTPMethod,
   O extends Codec<any, any, any>,
-  H extends Codec<any, any, any> | undefined = undefined,
-  Q extends Codec<any, any, any> | undefined = undefined,
+  H extends RecordCodec<any, any> | undefined = undefined,
+  Q extends RecordCodec<any, any> | undefined = undefined,
   B extends Codec<any, any, any> | undefined = undefined,
-  P extends Codec<any, any, any> | undefined = undefined,
+  P extends RecordCodec<any, any> | undefined = undefined,
   E extends EndpointErrors<never, Codec<any, any, any>> | undefined = undefined
 > {
   /* utils to get the full path given a set of query params */
@@ -33,7 +33,6 @@ export interface Endpoint<
 
 /**
  * Data type representing an endpoint instance.
- * @public getStaticPath accepts a formatting function (param: string) -> string and returns
  **/
 export type EndpointInstance<E extends MinimalEndpoint> = {
   /**
@@ -116,14 +115,14 @@ export type EndpointErrors<S extends string, B extends Codec<any, any, any>> = R
 export function Endpoint<
   M extends HTTPMethod,
   O extends Codec<any, any, any>,
-  H extends Codec<any, any, any> | undefined = undefined,
-  Q extends Codec<any, any, any> | undefined = undefined,
+  H extends RecordCodec<any, any> | undefined = undefined,
+  Q extends RecordCodec<any, any> | undefined = undefined,
   B extends Codec<any, any, any> | undefined = undefined,
-  P extends Codec<any, any, any> | undefined = undefined,
+  P extends RecordCodec<any, any> | undefined = undefined,
   E extends EndpointErrors<never, Codec<any, any, any>> | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
   const headersWithWhiteSpaces = pipe(
-    e.Input?.Headers ?? {},
+    e.Input?.Headers?.props ?? {},
     R.filterWithIndex((k: string) => k.indexOf(' ') !== -1),
     R.keys
   );
@@ -136,22 +135,22 @@ export function Endpoint<
     ...e,
     getPath: ((i: any) => {
       const path = e.getPath(i);
+
       return addSlash(path);
     }) as typeof e.getPath,
     getStaticPath: (f: (paramName: any) => string) => {
-      const params: any = e.Input?.Params;
+      const params = e.Input?.Params;
 
-      if (params == undefined) {
-        return e.getPath(params);
+      if (params === undefined) {
+        return addSlash(e.getPath(undefined as any));
       }
 
-      const path = e.getPath(
-        pipe(
-          params,
-          R.mapWithIndex((k) => (f ? f(k) : k))
-        ) as any
+      return pipe(
+        params.props,
+        R.mapWithIndex((k) => (f ? f(k) : k)),
+        (v: any) => e.getPath(v),
+        addSlash
       );
-      return addSlash(path);
     },
     Output: e.Output,
     ...(e.Errors ? { Errors: e.Errors } : {}),

@@ -1,5 +1,4 @@
 import * as t from 'io-ts';
-import { PositiveNumber } from 'ts-shared/lib/PositiveNumber';
 
 export const HTTPProtocol = t.keyof(
   {
@@ -16,7 +15,7 @@ export const HTTPClientConfig = t.exact(
       protocol: HTTPProtocol,
       host: t.string,
     }),
-    t.partial({ port: t.union([PositiveNumber, t.undefined]) }),
+    t.partial({ port: t.union([t.number, t.undefined]) }),
   ]),
   'HTTPClientConfig'
 );

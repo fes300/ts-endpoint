@@ -396,7 +396,7 @@
         "signature": "770a77f1c65b4f225955752f7646c99cced74b7cf02dd3c28e4fd51ac39bdd1d",
         "affectsGlobalScope": false
       },
-      "../node_modules/ts-shared/lib/bearertoken.d.ts": {
+      "../node_modules/ts-io-error/lib/bearertoken.d.ts": {
         "version": "b923cf562ad9d2d6477acea7a90df18cfbb0a4485644f27e01a199d794654b67",
         "signature": "b923cf562ad9d2d6477acea7a90df18cfbb0a4485644f27e01a199d794654b67",
         "affectsGlobalScope": false
@@ -2681,7 +2681,7 @@
         "../node_modules/io-ts/lib/index.d.ts",
         "../node_modules/ts-endpoint/lib/endpoint/endpoint.d.ts",
         "../node_modules/ts-endpoint/lib/endpoint/index.d.ts",
-        "../node_modules/ts-shared/lib/bearertoken.d.ts"
+        "../node_modules/ts-io-error/lib/bearertoken.d.ts"
       ],
       "../node_modules/ts-endpoint/lib/index.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
@@ -2693,7 +2693,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/ts-endpoint/lib/endpoint/index.d.ts"
       ],
-      "../node_modules/ts-shared/lib/bearertoken.d.ts": [
+      "../node_modules/ts-io-error/lib/bearertoken.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -4734,7 +4734,7 @@
         "../node_modules/io-ts/lib/index.d.ts",
         "../node_modules/ts-endpoint/lib/endpoint/endpoint.d.ts",
         "../node_modules/ts-endpoint/lib/endpoint/index.d.ts",
-        "../node_modules/ts-shared/lib/bearertoken.d.ts"
+        "../node_modules/ts-io-error/lib/bearertoken.d.ts"
       ],
       "../node_modules/ts-endpoint/lib/index.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
@@ -4746,7 +4746,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts",
         "../node_modules/ts-endpoint/lib/endpoint/index.d.ts"
       ],
-      "../node_modules/ts-shared/lib/bearertoken.d.ts": [
+      "../node_modules/ts-io-error/lib/bearertoken.d.ts": [
         "../../../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
         "../node_modules/@types/node/ts3.1/process.d.ts",
@@ -5234,7 +5234,7 @@
       "../node_modules/ts-endpoint/lib/endpoint/index.d.ts",
       "../node_modules/ts-endpoint/lib/endpoint/withauth.d.ts",
       "../node_modules/ts-endpoint/lib/index.d.ts",
-      "../node_modules/ts-shared/lib/bearertoken.d.ts",
+      "../node_modules/ts-io-error/lib/bearertoken.d.ts",
       "../node_modules/typelevel-ts/lib/index.d.ts",
       "./src/index.ts",
       "../../../node_modules/@types/babel__core/index.d.ts",
