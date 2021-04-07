@@ -42,3 +42,4 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           yarn pre-release
+          yarn npm-publish-beta

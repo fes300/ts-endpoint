@@ -6,7 +6,7 @@ import { Endpoint } from 'ts-endpoint/lib';
 import { StaticHTTPClientConfig } from '../config';
 import * as t from 'io-ts';
 import { isLeft } from 'fp-ts/Either';
-import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-shared/lib/errors';
+import { IOError, DecodeErrorStatus, NetworkErrorStatus } from 'ts-io-error/lib';
 
 const options: StaticHTTPClientConfig = {
   protocol: 'http',
@@ -22,8 +22,8 @@ const noPortOptions: StaticHTTPClientConfig = {
 const endpoints = {
   getEndpoint: Endpoint({
     Input: {
-      Query: { color: t.string },
-      Params: { id: t.string },
+      Query: t.type({ color: t.string }),
+      Params: t.type({ id: t.string }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
@@ -31,7 +31,7 @@ const endpoints = {
   }),
   getEndpointNoParams: Endpoint({
     Input: {
-      Query: { color: t.string },
+      Query: t.type({ color: t.string }),
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
@@ -39,8 +39,8 @@ const endpoints = {
   }),
   getEndpointWithLargeQuery: Endpoint({
     Input: {
-      Query: { foo: t.string, bar: t.number, baz: t.string },
-      Params: { id: t.number, crayonSet: t.number },
+      Query: t.type({ foo: t.string, bar: t.number, baz: t.string }),
+      Params: t.type({ id: t.number, crayonSet: t.number }),
     },
     Method: 'GET',
     getPath: ({ id, crayonSet }) => `users/${id}/crayons/${crayonSet}`,
@@ -48,7 +48,7 @@ const endpoints = {
   }),
   postEndpoint: Endpoint({
     Input: {
-      Params: { id: t.string },
+      Params: t.type({ id: t.string }),
       Body: t.type({
         name: t.string,
         surname: t.string,
@@ -61,7 +61,7 @@ const endpoints = {
   }),
   postReturningUndefined: Endpoint({
     Input: {
-      Params: { id: t.string },
+      Params: t.type({ id: t.string }),
       Body: t.type({ foo: t.string }),
     },
     Method: 'POST',
@@ -70,7 +70,7 @@ const endpoints = {
   }),
   postReturningNull: Endpoint({
     Input: {
-      Params: { id: t.string },
+      Params: t.type({ id: t.string }),
       Body: t.type({ foo: t.string }),
     },
     Method: 'POST',
@@ -79,7 +79,7 @@ const endpoints = {
   }),
   putEndpoint: Endpoint({
     Input: {
-      Params: { id: t.string },
+      Params: t.type({ id: t.string }),
       Body: t.type({
         name: t.string,
         surname: t.string,
@@ -92,7 +92,7 @@ const endpoints = {
   }),
   deleteEndpoint: Endpoint({
     Input: {
-      Params: { id: t.string },
+      Params: t.type({ id: t.string }),
     },
     Method: 'DELETE',
     getPath: ({ id }) => `users/${id}`,
@@ -100,7 +100,7 @@ const endpoints = {
   }),
   patchEndpoint: Endpoint({
     Input: {
-      Params: { id: t.string },
+      Params: t.type({ id: t.string }),
       Body: t.type({
         name: t.string,
       }),
@@ -111,8 +111,8 @@ const endpoints = {
   }),
   knownErrorEndpoint: Endpoint({
     Input: {
-      Query: { color: t.string },
-      Params: { id: t.string },
+      Query: t.type({ color: t.string }),
+      Params: t.type({ id: t.string }),
     },
     Errors: {
       401: t.type({ foo: t.string }),

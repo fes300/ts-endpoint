@@ -1,12 +1,12 @@
-import { MinimalEndpoint, TypeOfEndpointInstance } from 'ts-endpoint/lib';
+import { MinimalEndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint/lib';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { Either } from 'fp-ts/Either';
 import * as R from 'fp-ts/Record';
-import * as t from 'io-ts';
 import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
-import { IOError } from 'ts-shared/lib/errors';
+import { IOError } from 'ts-io-error/lib';
 import { pipe } from 'fp-ts/function';
+import { Codec, runtimeType } from 'ts-io-error/lib/Codec';
 
 type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;
 
@@ -14,17 +14,15 @@ type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> 
 
 export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 
-type FetchClientError<E> = E extends Record<number, t.Type<any, any, unknown>>
-  ? IOError<E>
-  : IOError;
+type FetchClientError<E> = E extends Record<number, Codec<any, any, any>> ? IOError<E> : IOError;
 
-export type FetchClient<E extends MinimalEndpoint> = ReaderTaskEither<
+export type FetchClient<E extends MinimalEndpointInstance> = ReaderTaskEither<
   TypeOfEndpointInstance<E>['Input'],
   E['Errors'] extends undefined ? IOError : FetchClientError<E['Errors']>,
-  t.TypeOf<E['Output']>
+  runtimeType<E['Output']>
 >;
 
-export type HTTPClient<A extends Record<string, MinimalEndpoint>> = {
+export type HTTPClient<A extends Record<string, MinimalEndpointInstance>> = {
   [K in keyof A]: FetchClient<A[K]>;
 };
 
@@ -36,7 +34,7 @@ export type GetHTTPClientOptions = {
    * individually handling them.
    *
    */
-  handleError?: (err: IOError<any>, e: MinimalEndpoint) => any;
+  handleError?: (err: IOError<any>, e: MinimalEndpointInstance) => any;
   /**
    * If true a non-JSON response will be treated like
    * a JSON response returning undefined. Defaults to false.
@@ -49,10 +47,10 @@ export type GetHTTPClientOptions = {
   mapInput?: (a: any) => any;
 };
 
-export const GetHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
+export const GetHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  getFetchClient: <E extends MinimalEndpoint>(
+  getFetchClient: <E extends MinimalEndpointInstance>(
     baseURL: string,
     endpoint: E,
     options?: GetHTTPClientOptions

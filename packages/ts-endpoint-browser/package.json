@@ -13,23 +13,25 @@
     "access": "public"
   },
   "scripts": {
-    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib && npm publish lib",
+    "npm-publish-beta": "npm publish lib --tag beta",
+    "npm-publish": "npm publish lib",
+    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
     "test": "yarn runtime-test && yarn type-test"
   },
+  "devDependencies": {
+    "io-ts": "^2.2.7",
+    "isomorphic-fetch": "^3.0.0",
+    "ts-endpoint": "^2.0.0-alpha.19"
+  },
   "peerDependencies": {
-    "fp-ts": "^2.0.0",
-    "io-ts": "^2.2.7"
+    "ts-endpoint": "^2.0.0-alpha.19"
   },
   "dependencies": {
-    "io-ts-types": "^0.5.8",
-    "isomorphic-fetch": "^3.0.0",
-    "monocle-ts": "^2.3.3",
-    "newtype-ts": "^0.3.4",
-    "ts-endpoint": "^2.0.0-alpha.19",
-    "ts-shared": "^2.0.0-alpha.6",
-    "typelevel-ts": "^0.4.0"
+    "fp-ts": "^2.0.0",
+    "ts-io-error": "^1.0.0",
+    "ts-endpoint": "^2.0.0-alpha.19"
   }
 }

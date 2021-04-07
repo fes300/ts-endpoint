@@ -1,18 +1,18 @@
-import { MinimalEndpoint, EndpointErrors } from 'ts-endpoint/lib';
+import { EndpointErrors, MinimalEndpointInstance } from 'ts-endpoint/lib';
 import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { pipe } from 'fp-ts/pipeable';
 import { PathReporter } from 'io-ts/PathReporter';
 import * as TA from 'fp-ts/TaskEither';
 import * as O from 'fp-ts/Option';
 import qs from 'qs';
-import { IOError, NetworkErrorStatus } from 'ts-shared/lib/errors';
+import { IOError, NetworkErrorStatus } from 'ts-io-error/lib';
+import { Codec } from 'ts-io-error/lib/Codec';
 import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
 import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
-import * as t from 'io-ts';
 import { toArray } from 'fp-ts/lib/Record';
 
-export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpoint }>(
+export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   options?: GetHTTPClientOptions
@@ -40,16 +40,18 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
     : jsonResponse;
 };
 
-export const useBrowserFetch = <E extends MinimalEndpoint>(
+export const useBrowserFetch = <E extends MinimalEndpointInstance>(
   baseURL: string,
   e: E,
   options?: GetHTTPClientOptions
 ): FetchClient<E> => {
   return ((i) => {
-    const path = `${baseURL}${e.getPath(i?.Params)}${i.Query ? `?${qs.stringify(i.Query)}` : ''}`;
+    const path = `${baseURL}${e.getPath((i as any)?.Params)}${
+      i.Query ? `?${qs.stringify(i.Query)}` : ''
+    }`;
 
     const body = i.Body;
-    const headers = { ...(i.Headers !== undefined ? i.Headers : {}), ...options?.defaultHeaders };
+    const headers = { ...(i.Headers ?? {}), ...options?.defaultHeaders };
 
     const response = pipe(
       TA.tryCatch(
@@ -87,7 +89,7 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
         if (!r.ok) {
           if (e.Errors !== undefined) {
             const actualKnownError = pipe(
-              e.Errors as EndpointErrors<string, t.Type<any, any>>,
+              e.Errors as EndpointErrors<string, Codec<any, any, any>>,
               toArray,
               findFirst(([status]) => {
                 return status === r.status.toString();
@@ -102,17 +104,12 @@ export const useBrowserFetch = <E extends MinimalEndpoint>(
                   return pipe(
                     TA.fromEither(validation),
                     TA.fold(
-                      (errors: t.Errors) => {
+                      (errors: unknown[]) => {
                         return TA.left(
-                          new IOError(
-                            `Error decoding server KnownError response: ${PathReporter.report(
-                              E.left(errors)
-                            )}`,
-                            {
-                              kind: 'DecodingError',
-                              errors,
-                            }
-                          )
+                          new IOError(`Error decoding server KnownError response: ${errors}`, {
+                            kind: 'DecodingError',
+                            errors,
+                          })
                         );
                       },
 
