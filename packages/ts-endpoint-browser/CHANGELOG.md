@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.66](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.65...ts-endpoint-browser@2.0.0-alpha.66) (2021-04-07)
+
+
+### Features
+
+* bump deps ([52b134b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/52b134b646532aa16514c5f57c623efcc8b34a6f))
+
+
+
+
+
 # [2.0.0-alpha.65](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.64...ts-endpoint-browser@2.0.0-alpha.65) (2021-04-07)
 
 **Note:** Version bump only for package ts-endpoint-browser
