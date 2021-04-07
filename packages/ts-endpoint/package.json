@@ -13,7 +13,7 @@
     "access": "public"
   },
   "scripts": {
-    "test-package-in-lib": "test -f lib/package.json",
+    "test-package-in-lib": "test -f lib/package.json || echo \"no need to publish\"",
     "npm-publish-beta": "yarn test-package-in-lib && npm publish lib --tag beta",
     "npm-publish": "yarn test-package-in-lib && npm publish lib",
     "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",

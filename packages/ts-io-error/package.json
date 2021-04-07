@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error",
   "bugs": {
-    "url": "https://github.com/fes300/ts-endpoint/issues"
+    "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F10"
   },
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
@@ -13,7 +13,7 @@
     "access": "public"
   },
   "scripts": {
-    "test-package-in-lib": "test -f lib/package.json",
+    "test-package-in-lib": "test -f lib/package.json || echo \"no need to publish\"",
     "npm-publish-beta": "yarn test-package-in-lib && npm publish lib --tag beta",
     "npm-publish": "yarn test-package-in-lib && npm publish lib",
     "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",
