@@ -13,8 +13,9 @@
     "access": "public"
   },
   "scripts": {
-    "npm-publish-beta": "npm publish lib --tag beta",
-    "npm-publish": "npm publish lib",
+    "test-package-in-lib": "test -f lib/package.json",
+    "npm-publish-beta": "yarn test-package-in-lib && npm publish lib --tag beta",
+    "npm-publish": "yarn test-package-in-lib && npm publish lib",
     "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
