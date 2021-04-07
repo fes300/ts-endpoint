@@ -14,9 +14,9 @@
   },
   "scripts": {
     "test-package-in-lib": "test -f lib/package.json || echo \"no need to publish\"",
-    "npm-publish-beta": "ls ../../ && cp ../../.npmrc . && yarn test-package-in-lib && npm publish lib --tag beta",
+    "npm-publish-beta": "yarn test-package-in-lib && npm publish lib --tag beta",
     "npm-publish": "yarn test-package-in-lib && npm publish lib",
-    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",
+    "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
