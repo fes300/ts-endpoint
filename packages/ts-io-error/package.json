@@ -1,6 +1,6 @@
 {
   "name": "ts-io-error",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "defines errors incurring in client-server communication.",
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error",

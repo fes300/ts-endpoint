@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.5](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.4...ts-io-error@2.0.0-alpha.5) (2021-04-07)
+
+
+### Features
+
+* add setup node step ([2df2b7c](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/commit/2df2b7cba7db8f54732bc6c92f92e728efab5d75))
+
+
+
+
+
 # [2.0.0-alpha.4](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.3...ts-io-error@2.0.0-alpha.4) (2021-04-07)
 
 
