@@ -66,7 +66,7 @@ const getDetailsStatus = (d: IOErrorDetails<Record<string, Codec<any, any, any>>
 };
 
 /**
- * Contructor for HTTP IO-related errors
+ * Contructor for HTTP IO-related errors.
  */
 export class IOError<
   KE extends Record<string, Codec<any, any, any>> | never = never
