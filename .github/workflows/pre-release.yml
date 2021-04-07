@@ -47,5 +47,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          echo _auth=$NPM_TOKEN >> .npmrc
+          echo email=federicosordillo@gmail.com >> .npmrc
+          echo always-auth=true >> .npmrc
           yarn pre-release
           yarn npm-publish-beta
