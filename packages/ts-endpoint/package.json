@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "fp-ts": "^2.0.0",
-    "ts-io-error": "^1.0.0",
+    "ts-io-error": "^2.0.0-alpha.0",
     "typelevel-ts": "^0.4.0"
   }
 }
