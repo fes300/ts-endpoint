@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.21](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.20...ts-endpoint@2.0.0-alpha.21) (2021-04-07)
+
+
+### Bug Fixes
+
+* add lerna publish scripts ([11a6b62](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/11a6b62aa8c68c702c1dd24743b65cdadfcbe288))
+* only publish if package.json is in lib ([e47833a](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/e47833a007e7801b2538fb2e9f18cc04d7e57191))
+* ts-io-error dep version ([54ad1be](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/54ad1beb23b69b9faa81ecfebe5447d8d3092f93))
+
+
+
+
+
 # [2.0.0-alpha.20](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.19...ts-endpoint@2.0.0-alpha.20) (2021-04-07)
 
 
