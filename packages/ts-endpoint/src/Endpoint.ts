@@ -7,7 +7,7 @@ import { MinimalEndpoint } from '.';
 export type HTTPMethod = 'OPTIONS' | 'HEAD' | 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 /**
- * Represents an endpoint of our API
+ * Represents an HTTP endpoint of our API
  */
 export interface Endpoint<
   M extends HTTPMethod,

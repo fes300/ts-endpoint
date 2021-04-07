@@ -32,7 +32,6 @@ export type GetHTTPClientOptions = {
    * Used to perform side effect on api Errors,
    * like logging on external services, or to manipulate errors before
    * individually handling them.
-   *
    */
   handleError?: (err: IOError<any>, e: MinimalEndpointInstance) => any;
   /**

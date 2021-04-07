@@ -59,6 +59,9 @@ export type AddEndpoint = (
   >
 ) => void;
 
+/**
+ * Adds an endpoint to your router.
+ */
 export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
   const matcher = getRouterMatcher(router, e);
   const path = e.getStaticPath((param: string) => `:${param}`);
