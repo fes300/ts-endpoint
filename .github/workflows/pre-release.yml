@@ -19,10 +19,10 @@ jobs:
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '13.x'
-        registry-url: 'https://registry.npmjs.org'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '13.x'
+          registry-url: 'https://registry.npmjs.org'
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
