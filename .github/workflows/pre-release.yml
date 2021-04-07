@@ -46,6 +46,7 @@ jobs:
           NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
           NPM_PASSWORD: ${{ secrets.NPM_PASSWORD }}
           NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn pre-release
           yarn npm-publish-beta

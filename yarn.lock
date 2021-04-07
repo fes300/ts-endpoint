@@ -5336,11 +5336,6 @@ npm-bundled@^1.1.1:
   dependencies:
     npm-normalize-package-bin "^1.0.1"
 
-npm-ci-login@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/npm-ci-login/-/npm-ci-login-1.3.1.tgz#900e0061e00352978f191ace5052c91a7b84177e"
-  integrity sha512-ugAGvxOdpGevtFZtangu82H2VCXtsuSed/sMZWuxgZn0xVd7QYazDWpEvUD7rG7sLQasQItOREdNtc1j8QspWA==
-
 npm-install-checks@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/npm-install-checks/-/npm-install-checks-4.0.0.tgz#a37facc763a2fde0497ef2c6d0ac7c3fbe00d7b4"
