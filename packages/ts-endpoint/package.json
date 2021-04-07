@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint",
-  "version": "2.0.0-alpha.39",
+  "version": "2.0.0-alpha.40",
   "description": "Simple endpoint definition for fullstack safety.",
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "fp-ts": "^2.0.0",
-    "ts-io-error": "^2.0.0-alpha.19",
+    "ts-io-error": "^2.0.0-alpha.20",
     "typelevel-ts": "^0.4.0"
   }
 }
