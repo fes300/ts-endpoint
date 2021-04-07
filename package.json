@@ -18,8 +18,8 @@
   "scripts": {
     "postinstall": "husky install",
     "build": "lerna run build",
-    "bootstrap": "npm install && lerna bootstrap",
-    "bootstrap-ci": "npm install --frozen-lockfile && lerna bootstrap",
+    "bootstrap": "yarn && lerna bootstrap",
+    "bootstrap-ci": "yarn install --frozen-lockfile && lerna bootstrap",
     "release": "lerna publish --yes --conventional-graduate --force-publish --skip-npm",
     "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag next --skip-npm",
     "npm-publish": "lerna run npm-publish",
