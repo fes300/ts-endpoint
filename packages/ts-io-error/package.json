@@ -10,8 +10,7 @@
   "author": "Federico Sordillo <federicosordillo@gmail.com>",
   "license": "ISC",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "scripts": {
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
