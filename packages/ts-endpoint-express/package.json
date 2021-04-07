@@ -15,7 +15,7 @@
   "scripts": {
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
-    "postversion": "cp package.json lib && cp ../../.npmrc . && cp -r lib lib2 && mv lib2 lib/lib",
+    "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
