@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.17](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.16...ts-io-error@2.0.0-alpha.17) (2021-04-07)
+
+
+### Features
+
+* bump deps ([b3f0d5b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/commit/b3f0d5b97fe7ada9ed97b727d452f4959f3b2b6a))
+
+
+
+
+
 # [2.0.0-alpha.16](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.15...ts-io-error@2.0.0-alpha.16) (2021-04-07)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.37](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.36...ts-endpoint@2.0.0-alpha.37) (2021-04-07)
+
+
+### Features
+
+* bump deps ([b3f0d5b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/b3f0d5b97fe7ada9ed97b727d452f4959f3b2b6a))
+
+
+
+
+
 # [2.0.0-alpha.36](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.35...ts-endpoint@2.0.0-alpha.36) (2021-04-07)
 
 
