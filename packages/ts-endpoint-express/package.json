@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-express",
-  "version": "2.0.0-alpha.62",
+  "version": "2.0.0-alpha.63",
   "description": "Adds typesafe endpoints to your express app.",
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "fp-ts": "^2.0.0",
-    "ts-endpoint": "^2.0.0-alpha.59",
-    "ts-io-error": "^2.0.0-alpha.39"
+    "ts-endpoint": "^2.0.0-alpha.60",
+    "ts-io-error": "^2.0.0-alpha.40"
   }
 }
