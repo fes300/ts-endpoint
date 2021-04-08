@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.68](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.67...ts-endpoint-express@2.0.0-alpha.68) (2021-04-08)
+
+
+### Features
+
+* allow no input on fetch-client ([12f375c](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/12f375c4f267be8a0841037be66f19c3f5fb35c9))
+
+
+
+
+
 # [2.0.0-alpha.67](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.66...ts-endpoint-express@2.0.0-alpha.67) (2021-04-07)
 
 **Note:** Version bump only for package ts-endpoint-express
