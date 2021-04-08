@@ -20,6 +20,11 @@ const noPortOptions: StaticHTTPClientConfig = {
 };
 
 const endpoints = {
+  noInputEndpoint: Endpoint({
+    Method: 'GET',
+    getPath: () => `users/crayons`,
+    Output: t.type({ crayons: t.array(t.string) }),
+  }),
   getEndpoint: Endpoint({
     Input: {
       Query: t.type({ color: t.string }),
@@ -183,6 +188,7 @@ const lazyNetworkErrorRequest = () => Promise.reject('fail');
 describe('GetFetchHTTPClient', () => {
   it('implements all the endpoint definitions', () => {
     expect(Object.keys(fetchClient)).toEqual([
+      'noInputEndpoint',
       'getEndpoint',
       'getEndpointNoParams',
       'getEndpointWithLargeQuery',
@@ -194,6 +200,17 @@ describe('GetFetchHTTPClient', () => {
       'patchEndpoint',
       'knownErrorEndpoint',
     ]);
+  });
+
+  it('calls global.fetch with the correct params', async () => {
+    global.fetch = jest.fn().mockReturnValueOnce(lazySuccesfullQueryResponse());
+
+    await fetchClient.noInputEndpoint()();
+
+    expect(fetch).toBeCalledWith('http://test:2020/users/crayons', {
+      headers: { 'Content-type': 'application/json' },
+      method: 'GET',
+    });
   });
 
   it('calls global.fetch with the correct params', async () => {

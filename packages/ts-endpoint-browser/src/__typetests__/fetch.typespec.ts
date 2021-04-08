@@ -56,25 +56,25 @@ const fetchClient = GetFetchHTTPClient(options, endpoints, {
 });
 
 // @dts-jest:pass:snap should allow empty calls when input is not defined
-fetchClient.provaWithoutInput({});
+fetchClient.provaWithoutInput();
 
+// @dts-jest:fail:snap should not allow calls with Body when input is not defined
 fetchClient.provaWithoutInput({
-  // @dts-jest:fail:snap should not allow calls with Body when input is not defined
   Body: 1,
 });
 
+// @dts-jest:fail:snap should not allow calls with Query when input is not defined
 fetchClient.provaWithoutInput({
-  // @dts-jest:fail:snap should not allow calls with Query when input is not defined
   Query: 1,
 });
 
+// @dts-jest:fail:snap should not allow calls with Params when input is not defined
 fetchClient.provaWithoutInput({
-  // @dts-jest:fail:snap should not allow calls with Params when input is not defined
   Params: 1,
 });
 
+// @dts-jest:fail:snap should not allow calls with Header when input is not defined
 fetchClient.provaWithoutInput({
-  // @dts-jest:fail:snap should not allow calls with Header when input is not defined
   Headers: 1,
 });
 
@@ -84,7 +84,7 @@ fetchClient.prova();
 // @dts-jest:fail:snap should not allow empty-object as input
 fetchClient.prova({});
 
-// @dts-jest:fail:snap should not allow calls not specifing Query (if needed)
+// @dts-jest:fail:snap should not allow calls not specifing Query
 fetchClient.prova({
   Params: { id: '123' },
 });

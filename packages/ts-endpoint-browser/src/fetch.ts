@@ -45,13 +45,13 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
   e: E,
   options?: GetHTTPClientOptions
 ): FetchClient<E> => {
-  return ((i) => {
+  return ((i: any) => {
     const path = `${baseURL}${e.getPath((i as any)?.Params)}${
-      i.Query ? `?${qs.stringify(i.Query)}` : ''
+      i?.Query ? `?${qs.stringify(i?.Query)}` : ''
     }`;
 
-    const body = i.Body;
-    const headers = { ...(i.Headers ?? {}), ...options?.defaultHeaders };
+    const body = i?.Body;
+    const headers = { ...(i?.Headers ?? {}), ...options?.defaultHeaders };
 
     const response = pipe(
       TA.tryCatch(
@@ -61,7 +61,7 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
               headers,
               method: e.Method,
             },
-            ...(i.Body !== undefined ? { body: JSON.stringify(body) } : {}),
+            ...(i?.Body !== undefined ? { body: JSON.stringify(body) } : {}),
           }),
         () => new IOError('Network Error', { kind: 'NetworkError', status: NetworkErrorStatus })
       ),

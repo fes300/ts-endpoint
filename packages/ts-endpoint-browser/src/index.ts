@@ -8,6 +8,16 @@ import { IOError } from 'ts-io-error/lib';
 import { pipe } from 'fp-ts/function';
 import { Codec, runtimeType } from 'ts-io-error/lib/Codec';
 
+export declare type RequiredKeys<T> = {
+  [K in keyof T]: {} extends Pick<T, K> ? never : K;
+} extends {
+  [_ in keyof T]: infer U;
+}
+  ? {} extends U
+    ? never
+    : U
+  : never;
+
 type FunctionOutput<F> = F extends (args: any) => infer O ? O : never;
 
 type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> : never;
@@ -17,7 +27,7 @@ export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 type FetchClientError<E> = E extends Record<number, Codec<any, any, any>> ? IOError<E> : IOError;
 
 export type FetchClient<E extends MinimalEndpointInstance> = ReaderTaskEither<
-  TypeOfEndpointInstance<E>['Input'],
+  'Input' extends RequiredKeys<E> ? TypeOfEndpointInstance<E>['Input'] : void,
   E['Errors'] extends undefined ? IOError : FetchClientError<E['Errors']>,
   runtimeType<E['Output']>
 >;

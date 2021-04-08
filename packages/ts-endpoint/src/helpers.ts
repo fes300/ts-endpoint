@@ -1,20 +1,24 @@
 import { EndpointInstance, HTTPMethod } from '.';
 import { RequiredKeys } from 'typelevel-ts';
-import { Endpoint } from './Endpoint';
-import { Codec, runtimeType } from 'ts-io-error/lib/Codec';
+import { Endpoint, EndpointErrors } from './Endpoint';
+import { Codec, runtimeType, RecordCodec } from 'ts-io-error/lib/Codec';
 
 export const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
 export type MinimalEndpoint = Omit<
-  Endpoint<HTTPMethod, Codec<any, any, any>, any, any, any, any, any>,
+  Endpoint<
+    HTTPMethod,
+    Codec<any, any, any>,
+    RecordCodec<any, any>,
+    RecordCodec<any, any>,
+    Codec<any, any, any>,
+    RecordCodec<any, any>,
+    EndpointErrors<never, Codec<any, any, any>>
+  >,
   'getPath'
 > & { getPath: (i?: any) => string };
 
-export type MinimalEndpointInstance = Omit<
-  EndpointInstance<MinimalEndpoint>,
-  'getPath' | 'getStaticPath'
-> & {
-  getPath: (i?: any) => string;
+export type MinimalEndpointInstance = MinimalEndpoint & {
   getStaticPath: (f: (i?: any) => string) => string;
 };
 

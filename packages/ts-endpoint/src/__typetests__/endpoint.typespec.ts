@@ -46,6 +46,19 @@ const endpointWithErrors = Endpoint({
   },
 });
 
+const endpointWithoutInput = Endpoint({
+  Method: 'GET',
+  getPath: () => `users/crayons`,
+  Output: t.type({ crayons: t.array(t.string) }),
+});
+
+const endpointWithBody = Endpoint({
+  Method: 'POST',
+  getPath: () => `users/crayons`,
+  Output: t.type({ crayons: t.array(t.string) }),
+  Input: { Body: t.type({ id: t.number }) },
+});
+
 // @dts-jest:pass:snap resulting EndpointInstances typings are correct
 endpointInstance.Input.Params.props.id;
 // @dts-jest:pass:snap resulting EndpointInstances typings are correct
@@ -61,6 +74,9 @@ endpointInstance.Output.props.crayons;
 
 // @dts-jest:pass:snap Errors are well formatted
 endpointWithErrors.Errors;
+
+// @dts-jest:pass:snap endpointWithoutInput is well formatted
+endpointWithoutInput;
 
 // @dts-jest:fail:snap getPath cannot be called with no args if there are params defined in the endpoint
 endpointWithParam.getPath();
@@ -84,4 +100,7 @@ endpointWithoutParam.getStaticPath();
 endpointWithoutParam.getPath();
 
 // @dts-jest:pass:snap
-type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors>;
+type EndpointErrorType = TypeOfEndpointInstance<typeof endpointWithErrors>;
+
+// @dts-jest:pass:snap
+type EndpointBodyType = TypeOfEndpointInstance<typeof endpointWithBody>;

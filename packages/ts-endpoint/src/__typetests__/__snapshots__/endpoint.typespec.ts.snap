@@ -2,6 +2,8 @@
 
 exports[`Errors are well formatted (type) should match snapshot 1`] = `"{ 401: UndefinedC; 404: TypeC<{ message: StringC; }>; 500: TypeC<{ foo: NumberC; }>; }"`;
 
+exports[`endpointWithoutInput is well formatted (type) should match snapshot 1`] = `"EndpointInstance<Endpoint<\\"GET\\", TypeC<{ crayons: ArrayC<StringC>; }>, undefined, undefined, undefined, undefined, undefined>>"`;
+
 exports[`getPath args must have the same type as the Params defined in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'number'."`;
 
 exports[`getPath can be called with no args if no Params are defined in the endpoint (type) should match snapshot 1`] = `"string"`;
@@ -36,4 +38,6 @@ exports[`resulting EndpointInstances typings are correct (type) should match sna
 
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 5`] = `"ArrayC<StringC>"`;
 
-exports[`type EndpointType = TypeOfEndpointInstance<typeof endpointWithErrors> (type) should match snapshot 1`] = `"any"`;
+exports[`type EndpointBodyType = TypeOfEndpointInstance<typeof endpointWithBody> (type) should match snapshot 1`] = `"any"`;
+
+exports[`type EndpointErrorType = TypeOfEndpointInstance<typeof endpointWithErrors> (type) should match snapshot 1`] = `"any"`;

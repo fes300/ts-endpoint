@@ -11,7 +11,7 @@ exports[`InferFetchResult should return the type of the Endpoint.Output (type) s
 
 exports[`should allow empty calls when input is not defined (type) should match snapshot 1`] = `"TaskEither<IOError<never>, { noInput: string[]; }>"`;
 
-exports[`should not allow calls not specifing Query (if needed) (type) should match snapshot 1`] = `
+exports[`should not allow calls not specifing Query (type) should match snapshot 1`] = `
 "Argument of type '{ Params: { id: string; }; }' is not assignable to parameter of type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'.
   Property 'Query' is missing in type '{ Params: { id: string; }; }' but required in type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'."
 `;
@@ -21,13 +21,13 @@ exports[`should not allow calls specifing Params not declared in the endpoint (t
   Object literal may only specify known properties, and 'foo' does not exist in type '{ id: string; }'."
 `;
 
-exports[`should not allow calls with Body when input is not defined (type) should match snapshot 1`] = `"Type 'number' is not assignable to type 'never'."`;
+exports[`should not allow calls with Body when input is not defined (type) should match snapshot 1`] = `"Argument of type '{ Body: number; }' is not assignable to parameter of type 'void'."`;
 
-exports[`should not allow calls with Header when input is not defined (type) should match snapshot 1`] = `"Type 'number' is not assignable to type 'never'."`;
+exports[`should not allow calls with Header when input is not defined (type) should match snapshot 1`] = `"Argument of type '{ Headers: number; }' is not assignable to parameter of type 'void'."`;
 
-exports[`should not allow calls with Params when input is not defined (type) should match snapshot 1`] = `"Type 'number' is not assignable to type 'never'."`;
+exports[`should not allow calls with Params when input is not defined (type) should match snapshot 1`] = `"Argument of type '{ Params: number; }' is not assignable to parameter of type 'void'."`;
 
-exports[`should not allow calls with Query when input is not defined (type) should match snapshot 1`] = `"Type 'number' is not assignable to type 'never'."`;
+exports[`should not allow calls with Query when input is not defined (type) should match snapshot 1`] = `"Argument of type '{ Query: number; }' is not assignable to parameter of type 'void'."`;
 
 exports[`should not allow empty calls (type) should match snapshot 1`] = `"Expected 1 arguments, but got 0."`;
 

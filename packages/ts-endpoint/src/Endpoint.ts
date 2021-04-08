@@ -22,12 +22,14 @@ export interface Endpoint<
   getPath: [P] extends [undefined] ? (i?: {}) => string : (args: runtimeType<P>) => string;
   Method: M;
   Errors?: E;
-  Input?: {
-    Headers?: H;
-    Params?: P;
-    Query?: Q;
-    Body?: M extends 'POST' | 'PUT' | 'PATCH' ? B : never;
-  };
+  Input?: [H, P, Q, B] extends [undefined, undefined, undefined, undefined]
+    ? never
+    : {
+        Headers?: H;
+        Params?: P;
+        Query?: Q;
+        Body?: M extends 'POST' | 'PUT' | 'PATCH' ? B : never;
+      };
   Output: O;
 }
 

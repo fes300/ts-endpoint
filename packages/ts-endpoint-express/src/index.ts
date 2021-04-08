@@ -46,7 +46,7 @@ export type AddEndpoint = (
 ) => <E extends MinimalEndpointInstance>(
   e: E,
   c: Controller<
-    IOError<E['Errors']>,
+    IOError<NonNullable<E['Errors']>>,
     UndefinedOrRuntime<InferEndpointInstanceParams<E>['params']>,
     UndefinedOrRuntime<InferEndpointInstanceParams<E>['headers']>,
     UndefinedOrRuntime<InferEndpointInstanceParams<E>['query']>,
@@ -68,11 +68,12 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
 
   matcher.bind(router)(path, ...(m ?? []), async (req, res, next) => {
     const args = sequenceS(E.either)({
-      params: e.Input.Params === undefined ? E.right(undefined) : e.Input.Params.decode(req.params),
+      params:
+        e.Input?.Params === undefined ? E.right(undefined) : e.Input.Params.decode(req.params),
       headers:
-        e.Input.Headers === undefined ? E.right(undefined) : e.Input.Headers.decode(req.headers),
-      query: e.Input.Query === undefined ? E.right(undefined) : e.Input.Query.decode(req.query),
-      body: e.Input.Body === undefined ? E.right(undefined) : e.Input.Body.decode(req.body),
+        e.Input?.Headers === undefined ? E.right(undefined) : e.Input.Headers.decode(req.headers),
+      query: e.Input?.Query === undefined ? E.right(undefined) : e.Input.Query.decode(req.query),
+      body: e.Input?.Body === undefined ? E.right(undefined) : e.Input.Body.decode(req.body),
     });
 
     const taskRunner = pipe(

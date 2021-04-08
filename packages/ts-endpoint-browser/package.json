@@ -23,11 +23,10 @@
   },
   "devDependencies": {
     "io-ts": "^2.2.7",
-    "isomorphic-fetch": "^3.0.0",
-    "ts-endpoint": "^2.0.0-alpha.19"
+    "isomorphic-fetch": "^3.0.0"
   },
   "peerDependencies": {
-    "ts-endpoint": "^2.0.0-alpha.19"
+    "ts-endpoint": "^2.0.0-alpha.63"
   },
   "dependencies": {
     "fp-ts": "^2.0.0",
