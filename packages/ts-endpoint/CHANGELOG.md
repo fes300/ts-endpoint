@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.66](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.65...ts-endpoint@2.0.0-alpha.66) (2021-04-09)
+
+
+### Features
+
+* endpoint helpers type-tests ([7869290](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/7869290a9843ccb155ea288f8126233755cf6048))
+
+
+
+
+
 # [2.0.0-alpha.65](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.64...ts-endpoint@2.0.0-alpha.65) (2021-04-08)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.69](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.68...ts-endpoint-express@2.0.0-alpha.69) (2021-04-09)
+
+**Note:** Version bump only for package ts-endpoint-express
+
+
+
+
+
 # [2.0.0-alpha.68](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.67...ts-endpoint-express@2.0.0-alpha.68) (2021-04-08)
 
 
