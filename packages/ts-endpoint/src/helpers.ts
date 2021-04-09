@@ -32,11 +32,17 @@ export type TypeOfEndpointInstance<E extends MinimalEndpointInstance> = {
       ? runtimeType<NonNullable<E['Errors']>[k]>
       : never;
   };
-  Input: {
-    [k in keyof NonNullable<E['Input']>]: NonNullable<E['Input']>[k] extends Codec<any, any, any>
-      ? runtimeType<NonNullable<E['Input']>[k]>
-      : never;
-  };
+  Input: [RequiredKeys<E['Input']>] extends [never]
+    ? void
+    : {
+        [k in keyof NonNullable<E['Input']>]: NonNullable<E['Input']>[k] extends Codec<
+          any,
+          any,
+          any
+        >
+          ? runtimeType<NonNullable<E['Input']>[k]>
+          : never;
+      };
 };
 
 export type DecodedPropsType<P> = P extends {}
