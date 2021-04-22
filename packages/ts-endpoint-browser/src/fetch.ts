@@ -12,6 +12,12 @@ import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
 import { toArray } from 'fp-ts/lib/Record';
 
+declare module './HKT' {
+  interface URItoKind<A> {
+    IOError: A extends Record<string, Codec<any, any, any>> ? IOError<A> : never;
+  }
+}
+
 export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
@@ -44,11 +50,9 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
   baseURL: string,
   e: E,
   options?: GetHTTPClientOptions
-): FetchClient<E> => {
-  return ((i: any) => {
-    const path = `${baseURL}${e.getPath((i as any)?.Params)}${
-      i?.Query ? `?${qs.stringify(i?.Query)}` : ''
-    }`;
+): FetchClient<E, 'IOError'> => {
+  return (i: any) => {
+    const path = `${baseURL}${e.getPath(i?.Params)}${i?.Query ? `?${qs.stringify(i?.Query)}` : ''}`;
 
     const body = i?.Body;
     const headers = { ...(i?.Headers ?? {}), ...options?.defaultHeaders };
@@ -191,5 +195,5 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
     );
 
     return response;
-  }) as FetchClient<E>;
+  };
 };

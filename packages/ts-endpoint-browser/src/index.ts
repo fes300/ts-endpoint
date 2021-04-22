@@ -6,6 +6,7 @@ import * as R from 'fp-ts/Record';
 import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
 import { IOError } from 'ts-io-error/lib';
 import { pipe } from 'fp-ts/function';
+import { Kind, URIS } from './HKT';
 import { Codec, runtimeType } from 'ts-io-error/lib/Codec';
 
 export declare type RequiredKeys<T> = {
@@ -24,16 +25,18 @@ type ExtractEither<TA> = TA extends TaskEither<infer E, infer R> ? Either<E, R> 
 
 export type InferFetchResult<FC> = ExtractEither<FunctionOutput<FC>>;
 
-type FetchClientError<E> = E extends Record<number, Codec<any, any, any>> ? IOError<E> : IOError;
+type FetchClientError<E, M extends URIS> = E extends Record<number, Codec<any, any, any>>
+  ? Kind<M, E>
+  : Kind<M, never>;
 
-export type FetchClient<E extends MinimalEndpointInstance> = ReaderTaskEither<
+export type FetchClient<E extends MinimalEndpointInstance, M extends URIS> = ReaderTaskEither<
   'Input' extends RequiredKeys<E> ? TypeOfEndpointInstance<E>['Input'] : void,
-  E['Errors'] extends undefined ? IOError : FetchClientError<E['Errors']>,
+  E['Errors'] extends undefined ? IOError : FetchClientError<E['Errors'], M>,
   runtimeType<E['Output']>
 >;
 
-export type HTTPClient<A extends Record<string, MinimalEndpointInstance>> = {
-  [K in keyof A]: FetchClient<A[K]>;
+export type HTTPClient<A extends Record<string, MinimalEndpointInstance>, M extends URIS> = {
+  [K in keyof A]: FetchClient<A[K], M>;
 };
 
 export type GetHTTPClientOptions = {
@@ -56,16 +59,16 @@ export type GetHTTPClientOptions = {
   mapInput?: (a: any) => any;
 };
 
-export const GetHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }>(
+export const GetHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }, M extends URIS>(
   c: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   getFetchClient: <E extends MinimalEndpointInstance>(
     baseURL: string,
     endpoint: E,
     options?: GetHTTPClientOptions
-  ) => FetchClient<E>,
+  ) => FetchClient<E, M>,
   options?: GetHTTPClientOptions
-): HTTPClient<A> => {
+): HTTPClient<A, M> => {
   const headersWithWhiteSpaces = pipe(
     options?.defaultHeaders ?? {},
     R.filterWithIndex((k: string) => k.indexOf(' ') !== -1),
@@ -86,7 +89,7 @@ export const GetHTTPClient = <A extends { [key: string]: MinimalEndpointInstance
       ...acc,
       [k]: getFetchClient(baseURL, v, options),
     }),
-    {} as HTTPClient<A>
+    {} as HTTPClient<A, M>
   );
 
   return clientWithMethods;
