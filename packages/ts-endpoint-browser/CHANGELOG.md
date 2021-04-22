@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.71](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.70...ts-endpoint-browser@2.0.0-alpha.71) (2021-04-22)
+
+
+### Features
+
+* generic error for get-http-endpoint ([2a2e22b](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/commit/2a2e22bb01e08469f7684857707b5462cc1586dc))
+
+
+
+
+
 # [2.0.0-alpha.70](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser/compare/ts-endpoint-browser@2.0.0-alpha.69...ts-endpoint-browser@2.0.0-alpha.70) (2021-04-09)
 
 **Note:** Version bump only for package ts-endpoint-browser
