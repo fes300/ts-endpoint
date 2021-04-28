@@ -1,10 +1,11 @@
-import { AddEndpoint } from 'ts-endpoint-express/src';
+import { buildIOError, GetEndpointSubscriber } from 'ts-endpoint-express/src';
 import { Endpoint } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
+import * as O from 'fp-ts/Option';
 import * as express from 'express';
 import { left, right } from 'fp-ts/Either';
 import { IOError } from 'ts-io-error/lib';
-import { Codec, RecordCodec } from 'ts-io-error/lib/Codec';
+import { RecordCodec } from 'ts-io-error/lib/Codec';
 
 const getEndpoint = Endpoint({
   Input: {
@@ -36,24 +37,25 @@ const postEndpointWithErrors = Endpoint({
 });
 
 const router = express.Router();
+const registerRouter = GetEndpointSubscriber(buildIOError);
+const AddEndpoint = registerRouter(router);
 
 // @dts-jest:fail:snap should not allow empty calls
 AddEndpoint();
-
 // @dts-jest:fail:snap won't compile if output of controller is wrong
-AddEndpoint(router)(getEndpoint, ({ params: { id } }) => () => {
+AddEndpoint(getEndpoint, ({ params: { id } }) => () => {
   console.log(id);
   return Promise.resolve(right({ body: { crayons: [22] }, statusCode: 200 }));
 });
 
 // @dts-jest:fail:snap won't compile if trying to access non existent param
-AddEndpoint(router)(getEndpoint, ({ params: { id, bar } }) => () => {
+AddEndpoint(getEndpoint, ({ params: { id, bar } }) => () => {
   console.log(bar, id);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
 
 // @dts-jest:fail:snap won't compile if trying to access non defined body
-AddEndpoint(router)(getEndpoint, ({ params: { id }, body: { foo } }) => () => {
+AddEndpoint(getEndpoint, ({ params: { id }, body: { foo } }) => () => {
   console.log(id, foo);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
@@ -64,30 +66,30 @@ type a = OutputOrUndefined<typeof v>;
 const s: RecordCodec<any, any> = v;
 
 // @dts-jest:pass:snap correct constructions should work
-AddEndpoint(router)(getEndpoint, ({ params: { id } }) => () => {
+AddEndpoint(getEndpoint, ({ params: { id } }) => () => {
   console.log(id);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 200 }));
 });
 
 // @dts-jest:pass:snap correct constructions should work
-AddEndpoint(router)(postEndpoint, ({ body: { content } }) => () => {
+AddEndpoint(postEndpoint, ({ body: { content } }) => () => {
   console.log(content);
   return Promise.resolve(right({ body: { crayons: ['brown'] }, statusCode: 201 }));
 });
 
 // @dts-jest:fail:snap you cannot return a badly formatted error
-AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
+AddEndpoint(postEndpointWithErrors, ({ body: { content } }) => () => {
   console.log(content);
   return Promise.resolve(left({ foo: 'baz' }));
 });
 
-AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
+AddEndpoint(postEndpointWithErrors, ({ body: { content } }) => () => {
   console.log(content);
   // @dts-jest:fail:snap you cannot return a badly formatted error
   return Promise.resolve(left(new IOError('error', { kind: 'KnownError', error: 'foo' })));
 });
 
-AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
+AddEndpoint(postEndpointWithErrors, ({ body: { content } }) => () => {
   console.log(content);
   return Promise.resolve(
     // @dts-jest:fail:snap you cannot return a badly formatted error
@@ -95,10 +97,34 @@ AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
   );
 });
 
-AddEndpoint(router)(postEndpointWithErrors, ({ body: { content } }) => () => {
+AddEndpoint(postEndpointWithErrors, ({ body: { content } }) => () => {
   console.log(content);
   return Promise.resolve(
     // @dts-jest:pass:snap you can return a well formatted error
     left(new IOError('error', { kind: 'KnownError', status: 401, body: { baz: 'foo' } }))
   );
+});
+
+export const buildMaybeError = (errors: unknown[]) => {
+  return O.some({
+    kind: 'DecodingError',
+    errors,
+  });
+};
+
+declare module '../HKT' {
+  interface URItoKind<A> {
+    Option: O.Option<A>;
+  }
+}
+
+const maybeRouter = express.Router();
+const registerMaybeRouter = GetEndpointSubscriber<'Option'>(buildMaybeError);
+const AddMaybeEndpoint = registerMaybeRouter(maybeRouter);
+
+// @dts-jest:fail:snap you cannot return a badly formatted error with a different error builder
+AddMaybeEndpoint(postEndpointWithErrors, ({ body: { content } }) => () => {
+  console.log(content);
+
+  return Promise.resolve(left(O.some({ kind: 'KnownError', status: 401, body: { error: 'foo' } })));
 });

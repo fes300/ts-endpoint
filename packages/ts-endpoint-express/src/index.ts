@@ -11,6 +11,7 @@ import { pipe } from 'fp-ts/pipeable';
 import * as TA from 'fp-ts/TaskEither';
 import { IOError } from 'ts-io-error/lib';
 import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';
+import { Kind, URIS } from './HKT';
 
 const getRouterMatcher = <E extends MinimalEndpoint>(
   router: express.Router,
@@ -40,13 +41,19 @@ export type ErrorMeta<E> = {
   errors?: E;
 };
 
-export type AddEndpoint = (
+declare module './HKT' {
+  interface URItoKind<A> {
+    IOError: [A] extends [Record<string, Codec<any, any, any>>] ? IOError<A> : IOError<never>;
+  }
+}
+
+export type AddEndpoint<M extends URIS = 'IOError'> = (
   router: express.Router,
   ...m: express.RequestHandler[]
 ) => <E extends MinimalEndpointInstance>(
-  e: E,
-  c: Controller<
-    IOError<NonNullable<E['Errors']>>,
+  endpoint: E,
+  controller: Controller<
+    Kind<M, NonNullable<E['Errors']>>,
     UndefinedOrRuntime<InferEndpointInstanceParams<E>['params']>,
     UndefinedOrRuntime<InferEndpointInstanceParams<E>['headers']>,
     UndefinedOrRuntime<InferEndpointInstanceParams<E>['query']>,
@@ -59,10 +66,19 @@ export type AddEndpoint = (
   >
 ) => void;
 
+export const buildIOError = (errors: unknown[]) => {
+  return new IOError('error decoding args', {
+    kind: 'DecodingError',
+    errors,
+  });
+};
+
 /**
  * Adds an endpoint to your router.
  */
-export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
+export const GetEndpointSubscriber = <M extends URIS = 'IOError'>(
+  buildDecodeError: (e: unknown[]) => Kind<M, unknown>
+): AddEndpoint<M> => (router, ...m) => (e, controller) => {
   const matcher = getRouterMatcher(router, e);
   const path = e.getStaticPath((param: string) => `:${param}`);
 
@@ -76,13 +92,7 @@ export const AddEndpoint: AddEndpoint = (router, ...m) => (e, controller) => {
 
     const taskRunner = pipe(
       args,
-      E.mapLeft(
-        (errors) =>
-          new IOError('error decoding args', {
-            kind: 'DecodingError',
-            errors: errors as unknown[],
-          })
-      ),
+      E.mapLeft(buildDecodeError),
       TA.fromEither,
       TA.chain((args) => controller(args as any, req, res)),
       TA.bimap(
