@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0-alpha.71 (2021-04-28)
+
+
+### Features
+
+* use own higher kinded error contructor in ts-endpoint-express ([6667045](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/commit/6667045094ada1153bfdf62a3407d0b49c6c1a62))
+
+
+
+
+
 # [2.0.0-alpha.70](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.69...ts-endpoint-express@2.0.0-alpha.70) (2021-04-09)
 
 **Note:** Version bump only for package ts-endpoint-express
