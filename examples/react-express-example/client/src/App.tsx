@@ -69,6 +69,8 @@ const App: React.FC = () => {
                     apiClient
                       .getUser({ Params: { id: ID } })()
                       .then((response) => {
+                        console.log(111, response);
+
                         setResponse(O.some(response));
                         setLoading(false);
                       });
@@ -93,13 +95,14 @@ const App: React.FC = () => {
           O.fold(
             () => <span>there is no data to show yet!</span>,
             E.fold(
-              (error) => (
+              (error) => {
+                return (
                 <div>{`There was a problem fetching data: ${
                   error.details.kind === "DecodingError"
                     ? error.message
-                    : (error.details.meta as Meta).message
+                    : error.message
                 }`}</div>
-              ),
+              )},
               (result) => (
                 <>
                   <div

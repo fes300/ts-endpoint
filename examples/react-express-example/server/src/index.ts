@@ -1,10 +1,10 @@
 import { getUser } from 'shared';
-import { AddEndpoint } from 'ts-endpoint-express/lib';
+import { GetEndpointSubscriber } from 'ts-endpoint-express';
 import express from 'express';
 import * as TA from 'fp-ts/TaskEither';
 import * as E from 'fp-ts/Either';
 import { pipe } from 'fp-ts/pipeable';
-import { IOError } from 'ts-io-error/lib/errors';
+import { IOError } from 'ts-io-error';
 
 const database = [
   { id: 1, name: 'John', surname: 'Doe', age: 22 },
@@ -19,12 +19,20 @@ const app = express();
 
 const router = express.Router();
 
-AddEndpoint(router)(getUser, ({ params: { id } }) => {
+const registerRouter = GetEndpointSubscriber((errors) => {
+  return new IOError('error decoding args', {
+    kind: 'DecodingError',
+    errors,
+  });
+});
+const AddEndpoint = registerRouter(router);
+
+AddEndpoint(getUser, ({ params: { id } }) => {
   const user = getUserFromDB(id);
 
   return pipe(
     user,
-    TA.mapLeft((e) => new IOError(404, e, { kind: 'ClientError' })),
+    TA.mapLeft((e) => new IOError('user not found.', { kind: 'ClientError', status: '404' })),
     TA.map((userFromDB) => ({
       body: { user: userFromDB },
       statusCode: 200,

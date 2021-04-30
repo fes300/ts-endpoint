@@ -1,6 +1,6 @@
-import * as t from "io-ts";
-import { NumberFromString } from "io-ts-types/lib/NumberFromString";
-import { Endpoint } from "ts-endpoint";
+import * as t from 'io-ts';
+import { NumberFromString } from 'io-ts-types/lib/NumberFromString';
+import { Endpoint } from 'ts-endpoint';
 
 const User = t.strict({
   name: t.string,
@@ -9,10 +9,10 @@ const User = t.strict({
 });
 
 export const getUser = Endpoint({
-  Method: "GET",
+  Method: 'GET',
   getPath: ({ id }) => `user/${id}`,
   Output: t.strict({ user: User }),
   Input: {
-    Params: { id: NumberFromString },
+    Params: t.type({ id: NumberFromString }),
   },
 });

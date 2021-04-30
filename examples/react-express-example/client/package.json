@@ -15,8 +15,8 @@
     "fp-ts": "^2.8.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "ts-endpoint": "^1.5.0-alpha.19",
-    "ts-endpoint-browser": "^1.1.0-alpha.17"
+    "ts-endpoint": "^2.0.0-alpha.67",
+    "ts-endpoint-browser": "^2.0.0-alpha.71"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
