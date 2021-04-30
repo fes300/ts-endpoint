@@ -10,12 +10,6 @@ sidebar_label: setting up `ts-endpoint`
 $> yarn add ts-endpoint
 ```
 
-### peerDependencies
-
-- "fp-ts": "^2.0.0",
-- "io-ts": "^2.2.7"
-
 ### description
 
-`ts-endpoint` lets you define endpoints just once for both client and server, thus allowing full-stack safety.
-In doing so it also exposes some utilities to automate the most repetitive tasks that you usually need to perform manually.
+`ts-endpoint` gives you a consistent way of defining every aspect of an `HTTP` endpoint from both the client (whose payload is the endpoint "Input") and the server (whose returning value is the endpoint "Output")

@@ -10,12 +10,6 @@ sidebar_label: setting up `ts-endpoint-browser`
 $> yarn add ts-endpoint-browser
 ```
 
-### peerDependencies
-
-- "fp-ts": "^2.0.0",
-- "io-ts": "^2.2.7"
-
 ### description
 
-`ts-endpoint-browser` works in tandem with `ts-endpoint` in order to let you define endpoints just once for both client and server.
-It provides a client for your endpoints using the browser's `fetch` API but it also exposes utilities to creaate you own implementation.
+`ts-endpoint-browser` works in tandem with `ts-endpoint` to create an HTTP client to query your Endpoints effortlessly and without any duplication.

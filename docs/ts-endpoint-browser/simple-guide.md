@@ -4,47 +4,23 @@ title: simple-guide to start with `ts-endpoint-browser`
 sidebar_label: using `ts-endpoint` in your browser
 ---
 
-First define your endpoints:
+Once you have defined your endpoints with `ts-endpoint`, you may want to use those definitions for something useful, that's where `ts-endpoint-browser` comes into play.
+
+If you want to derive an HTTP client with zero effort, you can use the utility `GetFetchHTTPClient` and pass your endpoints to it:
+
+(**N.B.:** `GetFetchHTTPClient` is quite opinionated on how it will handle errors, if you need more control you can use the lower-level API `GetHTTPClient`)
 
 ```ts
-import * as t from 'io-ts';
-import { Endpoint } from 'ts-endpoint';
-
-const getCrayons = Endpoint({
-  Input: {
-    Query: { color: t.string },
-    Params: { id: t.string },
-  },
-  Method: 'GET',
-  getPath: ({ id }) => `users/${id}/crayons`,
-  Output: t.type({ crayons: t.array(t.string) }),
-});
-
-const createUser = Endpoint({
-  Input: {
-    Body: t.strict({
-      name: t.string,
-      surname: t.string,
-      age: t.number,
-    }),
-  },
-  Method: 'POST',
-  getPath: () => 'users',
-  Output: { id: t.string },
-});
-```
-
-Then derive your fetch client for it:
-
-```ts
+import { getCrayons, createUser } from "./endpoints"
 import { GetFetchHTTPClient } from 'ts-endpoint-browser/lib/fetch';
 
 const fetchClient = GetFetchHTTPClient(
-  { protocol: 'http', host: 'test' },
+  { protocol: 'http', host: 'google' },
   { getCrayons, createUser },
-  { 'Content-type': 'application/json' }
+  { defaultHeaders: { 'Content-type': 'application/json' } }
 );
 ```
+
 
 And use it in your browser:
 
@@ -83,11 +59,12 @@ const createdUserId: TaskEither<IOError, { id: string }> = fetchClient.createUse
 
 `GetFetchHTTPClient` formats errors in its own opinionated way, returning:
 
+- **KnownError** when the response status coincide with one of those defined in the Endpoint definition (in this case the payload is validated against the corresponding Error Codec).
 - **NetworkError** if the request fails without info about the failure
 - **ClientError** if the response status is >= 400 and <= 451),
 - **DecodingError** if the body of the response is different from the specification in the `Endpoint` definition, or a
 - **ServerError** (in all other cases).
 
-The only difference between each error is the `kind` (accessible under the error `details`) and the fact that if the error kind is `DecodingError` it will also expose an array of errors in its `details` object.
 
-**N.B.**: if you need a less opinionated version of `GetFetchHTTPClient` you can derive your own implementation using `GetHTTPClient`.
+The only difference between each error is the `kind` and the fact that if the error kind is `DecodingError` it will also expose an array of errors in its `details` object.
+

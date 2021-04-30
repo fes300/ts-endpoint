@@ -6,7 +6,6 @@ import * as O from "fp-ts/Option";
 import { pipe } from "fp-ts/pipeable";
 
 type APIResult = InferFetchResult<typeof apiClient.getUser>;
-type Meta = { message: string };
 
 const App: React.FC = () => {
   const [userID, setUserID] = React.useState<O.Option<number>>(O.none);

@@ -4,32 +4,19 @@ title: simple-guide to start with `ts-endpoint-express`
 sidebar_label: using `ts-endpoint` with an `express` app.
 ---
 
-First define your endpoints with `ts-endpoint`:
+Once you have defined your endpoints with `ts-endpoint` you can add them to your `express` router using the `GetEndpointSubscriber` util:
 
 ```ts
-import * as t from 'io-ts';
-import { Endpoint } from 'ts-endpoint';
-
-const getCrayons = Endpoint({
-  Input: {
-    Params: { id: t.string },
-  },
-  Method: 'GET',
-  getPath: ({ id }) => `users/${id}/crayons`,
-  Output: t.strict({ crayons: t.array(t.string) }),
-});
-```
-
-Then build add the endpoints to your `express` router:
-
-```ts
-import { AddEndpoint } from 'ts-endpoint-express';
+import { GetEndpointSubscriber } from 'ts-endpoint-express';
 import * as express from 'express';
 import * as TA from 'fp-ts/TaskEither';
+import { userService } from './services'
 
 const router = express.Router();
+const registerRouter = GetEndpointSubscriber(buildIOError);
+const AddEndpoint = registerRouter(router);
 
-AddEndpoint(router)(getCrayons, ({ params: { id } }) => {
+AddEndpoint(getCrayons, ({ params: { id } }) => {
   const user: TA.TaskEither<unknown, { crayons: string[] }> = userService.getByID(id);
 
   return pipe(

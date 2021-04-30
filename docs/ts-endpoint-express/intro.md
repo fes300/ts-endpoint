@@ -12,11 +12,9 @@ $> yarn add ts-endpoint-express
 
 ### peerDependencies
 
-- "fp-ts": "^2.0.0"
-- "io-ts": "^2.2.7"
 - "express": "^4.17.1"
 
 ### description
 
-`ts-endpoint-express` works in tandem with `ts-endpoint` in order to let you define endpoints just once for both client and server.
+`ts-endpoint-express` works in tandem with `ts-endpoint` to allow you to write your server endpoint implementations in a typesafe manner.
 It is specifically developed to target the `express` framework.
