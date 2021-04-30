@@ -15,8 +15,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "fp-ts": "^2.8.2",
-    "ts-endpoint": "^2.0.0-alpha.67",
-    "ts-endpoint-express": "^2.0.0-alpha.71",
-    "ts-io-error": "^2.0.0-alpha.44"
+    "ts-endpoint": "^2.0.0",
+    "ts-endpoint-express": "^2.0.0",
+    "ts-io-error": "^2.0.0"
   }
 }

@@ -23,6 +23,7 @@
     "release": "lerna publish --yes --conventional-graduate --force-publish --skip-npm",
     "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag beta --skip-npm",
     "npm-publish": "lerna run npm-publish",
+    "postversion": "lerna run postversion",
     "npm-publish-beta": "lerna run npm-publish-beta",
     "test": "lerna run test"
   },

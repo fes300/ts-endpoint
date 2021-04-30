@@ -4260,37 +4260,37 @@ traverse@0.6.6:
   resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
-ts-endpoint-browser@^2.0.0-alpha.71:
-  version "2.0.0-alpha.71"
-  resolved "https://registry.npmjs.org/ts-endpoint-browser/-/ts-endpoint-browser-2.0.0-alpha.71.tgz#8f94fc4b89d69de2c36046d775f22998ff92bcb3"
-  integrity sha512-74AcyAv4X592eWITTAwqThcRDAUc94H6Mo5EaUo61Qo3/aETM78kUZZvzqSrATlc4S06Rkh84PMzbkOtAhhmJw==
+ts-endpoint-browser@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/ts-endpoint-browser/-/ts-endpoint-browser-2.0.0.tgz#89fee3a426d99cf3f39e55455d8a4b22fe5d5fbf"
+  integrity sha512-L9JKuDr0J4d0B30WlppzfvFJp5SOI2C+yZPlRZwXgUBDmvA42JCJfWQQnIMX03EOjA5tozJISVJ0QGwuPvBSmQ==
   dependencies:
     fp-ts "^2.0.0"
-    ts-endpoint "^2.0.0-alpha.67"
-    ts-io-error "^2.0.0-alpha.44"
+    ts-endpoint "^2.0.0"
+    ts-io-error "^2.0.0"
 
-ts-endpoint-express@^2.0.0-alpha.71:
-  version "2.0.0-alpha.71"
-  resolved "https://registry.npmjs.org/ts-endpoint-express/-/ts-endpoint-express-2.0.0-alpha.71.tgz#b7dbaecad28355304027c41a15406e5b4e1d1378"
-  integrity sha512-byW1ww6uhmCiM2qqq1/VpONwM1/yZll+UxK/OnFFUW2UiZS4ltZhw7CU2lU8wuy4O5kjWILOQG7sT033bQqm/g==
+ts-endpoint-express@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/ts-endpoint-express/-/ts-endpoint-express-2.0.0.tgz#8f4ffa347b88f5178d27628f4a81aada54d83f9b"
+  integrity sha512-fBv+WjXAziqXgrKtT+jnDzc7i9/V6zJ/CaEuVnd7pQ9gX96PYb+u69g2Ub7mOwOUN4Yd82dc9B5js3PlcNuKbA==
   dependencies:
     fp-ts "^2.0.0"
-    ts-endpoint "^2.0.0-alpha.67"
-    ts-io-error "^2.0.0-alpha.44"
+    ts-endpoint "^2.0.0"
+    ts-io-error "^2.0.0"
 
-ts-endpoint@^2.0.0-alpha.67:
-  version "2.0.0-alpha.67"
-  resolved "https://registry.npmjs.org/ts-endpoint/-/ts-endpoint-2.0.0-alpha.67.tgz#b7e19352bd677912843e450fce81eed966fc9643"
-  integrity sha512-SYwFBV7LoyjuEYUl1+iJQtjZ67Lq1jd8PSVwfqDG26XfPZRxNPDvW3D8qUGhKnzLuvjYQWfogW9gP2LNPj8wXg==
+ts-endpoint@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/ts-endpoint/-/ts-endpoint-2.0.0.tgz#50508f109fc336d547f4bf7af43a1386bbc63d36"
+  integrity sha512-s8vaqvYXuR8/KbcPiCp1ma8YGS003MQelb9O3JM6o7YpeqZlP6WAWTZzMtn5n7v8hLx8l3HLoHpES/jxVRZf6g==
   dependencies:
     fp-ts "^2.0.0"
-    ts-io-error "^2.0.0-alpha.44"
+    ts-io-error "^2.0.0"
     typelevel-ts "^0.4.0"
 
-ts-io-error@^2.0.0-alpha.44:
-  version "2.0.0-alpha.44"
-  resolved "https://registry.npmjs.org/ts-io-error/-/ts-io-error-2.0.0-alpha.44.tgz#13b7072231f31d5562f729e414669286913d6fde"
-  integrity sha512-CLD5lQu1rWm7fLw+pXp10F33EKPZuWxPlMipLtJZ5+7Vdhhh8bTfyKUXhcuF8bYlroWgBgXzNbiEG7TlLTa5ZQ==
+ts-io-error@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/ts-io-error/-/ts-io-error-2.0.0.tgz#224a3602bcd8a7c6bdc4176d87959a555107b26e"
+  integrity sha512-NOROR8NaUlDhBnB1yShobR0rv9t6fLSON5hKovA4iMXUTauIC5ZDAAYIoRIU0pQnuhMWcATEc/PR1o12/6bMeg==
 
 ts-loader@^8.0.3:
   version "8.0.3"
