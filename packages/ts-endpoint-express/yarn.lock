@@ -3928,10 +3928,10 @@ throat@^5.0.0:
   resolved "https://registry.yarnpkg.com/throat/-/throat-5.0.0.tgz#c5199235803aad18754a667d659b5e72ce16764b"
   integrity sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==
 
-tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+tmpl@1.0.5, tmpl@1.0.x:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
@@ -4017,6 +4017,19 @@ ts-endpoint@^2.0.0-alpha.2:
     ts-io-error "^1.0.1"
     typelevel-ts "^0.4.0"
 
+ts-io-error@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
+  integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
+  dependencies:
+    io-ts "^2.2.7"
+    io-ts-types "^0.5.8"
+    monocle-ts "^2.3.3"
+    newtype-ts "^0.3.4"
+    qs "^6.9.4"
+    rxjs "^6.6.0"
+    typelevel-ts "^0.4.0"
+
 ts-jest@^26.1.1:
   version "26.3.0"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.3.0.tgz#6b2845045347dce394f069bb59358253bc1338a9"
@@ -4033,19 +4046,6 @@ ts-jest@^26.1.1:
     mkdirp "1.x"
     semver "7.x"
     yargs-parser "18.x"
-
-ts-io-error@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
-  integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
-  dependencies:
-    io-ts "^2.2.7"
-    io-ts-types "^0.5.8"
-    monocle-ts "^2.3.3"
-    newtype-ts "^0.3.4"
-    qs "^6.9.4"
-    rxjs "^6.6.0"
-    typelevel-ts "^0.4.0"
 
 tslib@^1.7.1, tslib@^1.9.0:
   version "1.14.1"
