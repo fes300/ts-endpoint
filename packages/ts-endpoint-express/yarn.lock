@@ -1298,10 +1298,10 @@ decimal.js@^10.2.0:
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.2.0.tgz#39466113a9e036111d02f82489b5fd6b0b5ed231"
   integrity sha512-vDPw+rDgn3bZe1+F/pyEwb1oMG2XTlRVgAa6B4KccTEpYgF8w6eQllVbQcfIJnZyvzFtFpxnpGtx8dd7DJp/Rw==
 
-decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+decode-uri-component@0.2.2, decode-uri-component@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 deep-is@~0.1.3:
   version "0.1.3"
@@ -4017,6 +4017,19 @@ ts-endpoint@^2.0.0-alpha.2:
     ts-io-error "^1.0.1"
     typelevel-ts "^0.4.0"
 
+ts-io-error@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
+  integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
+  dependencies:
+    io-ts "^2.2.7"
+    io-ts-types "^0.5.8"
+    monocle-ts "^2.3.3"
+    newtype-ts "^0.3.4"
+    qs "^6.9.4"
+    rxjs "^6.6.0"
+    typelevel-ts "^0.4.0"
+
 ts-jest@^26.1.1:
   version "26.3.0"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.3.0.tgz#6b2845045347dce394f069bb59358253bc1338a9"
@@ -4033,19 +4046,6 @@ ts-jest@^26.1.1:
     mkdirp "1.x"
     semver "7.x"
     yargs-parser "18.x"
-
-ts-io-error@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
-  integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
-  dependencies:
-    io-ts "^2.2.7"
-    io-ts-types "^0.5.8"
-    monocle-ts "^2.3.3"
-    newtype-ts "^0.3.4"
-    qs "^6.9.4"
-    rxjs "^6.6.0"
-    typelevel-ts "^0.4.0"
 
 tslib@^1.7.1, tslib@^1.9.0:
   version "1.14.1"
