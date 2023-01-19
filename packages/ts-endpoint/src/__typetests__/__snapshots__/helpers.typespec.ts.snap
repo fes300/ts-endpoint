@@ -8,11 +8,11 @@ exports[`resulting TypeOfEndpointInstance typings are correct (type) should matc
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 4`] = `"(args: { id: number; }) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 5`] = `"(f: (paramName: \\"id\\") => string) => string"`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 5`] = `"(f: (paramName: "id") => string) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 6`] = `"\\"Input\\" | \\"Errors\\" | \\"Output\\" | \\"getPath\\" | \\"getStaticPath\\" | \\"Method\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 6`] = `""Input" | "Errors" | "getPath" | "Method" | "Output" | "getStaticPath""`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 7`] = `"\\"Params\\" | \\"Query\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 7`] = `""Params" | "Query""`;
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 8`] = `"{}"`;
 
@@ -24,9 +24,9 @@ exports[`resulting TypeOfEndpointInstance typings are correct (type) should matc
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 12`] = `"(i?: {}) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 13`] = `"\\"Input\\" | \\"Errors\\" | \\"Output\\" | \\"getPath\\" | \\"getStaticPath\\" | \\"Method\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 13`] = `""Input" | "Errors" | "getPath" | "Method" | "Output" | "getStaticPath""`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 14`] = `"\\"Query\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 14`] = `""Query""`;
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 15`] = `"{}"`;
 
@@ -38,7 +38,7 @@ exports[`resulting TypeOfEndpointInstance typings are correct (type) should matc
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 19`] = `"(i?: {}) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 20`] = `"\\"Input\\" | \\"Errors\\" | \\"Output\\" | \\"getPath\\" | \\"getStaticPath\\" | \\"Method\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 20`] = `""Input" | "Errors" | "getPath" | "Method" | "Output" | "getStaticPath""`;
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 21`] = `"never"`;
 
@@ -52,9 +52,9 @@ exports[`resulting TypeOfEndpointInstance typings are correct (type) should matc
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 26`] = `"(i?: {}) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 27`] = `"\\"Input\\" | \\"Errors\\" | \\"Output\\" | \\"getPath\\" | \\"getStaticPath\\" | \\"Method\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 27`] = `""Input" | "Errors" | "getPath" | "Method" | "Output" | "getStaticPath""`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 28`] = `"\\"Body\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 28`] = `""Body""`;
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 29`] = `"{ 401: undefined; 404: { message: string; }; 500: { foo: number; }; }"`;
 
@@ -64,8 +64,8 @@ exports[`resulting TypeOfEndpointInstance typings are correct (type) should matc
 
 exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 32`] = `"(args: { id: number; }) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 33`] = `"(f: (paramName: \\"id\\") => string) => string"`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 33`] = `"(f: (paramName: "id") => string) => string"`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 34`] = `"\\"Input\\" | \\"Errors\\" | \\"Output\\" | \\"getPath\\" | \\"getStaticPath\\" | \\"Method\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 34`] = `""Input" | "Errors" | "getPath" | "Method" | "Output" | "getStaticPath""`;
 
-exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 35`] = `"\\"Params\\" | \\"Query\\""`;
+exports[`resulting TypeOfEndpointInstance typings are correct (type) should match snapshot 35`] = `""Params" | "Query""`;

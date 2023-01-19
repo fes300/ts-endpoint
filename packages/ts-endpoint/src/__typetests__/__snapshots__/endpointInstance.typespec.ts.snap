@@ -30,7 +30,7 @@ exports[`resulting EndpointInstances typings are correct (type) should match sna
 
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 2`] = `"StringC"`;
 
-exports[`resulting EndpointInstances typings are correct (type) should match snapshot 3`] = `"(f: (paramName: \\"id\\") => string) => string"`;
+exports[`resulting EndpointInstances typings are correct (type) should match snapshot 3`] = `"(f: (paramName: "id") => string) => string"`;
 
 exports[`resulting EndpointInstances typings are correct (type) should match snapshot 4`] = `"Property 'prova' does not exist on type 'never'."`;
 
