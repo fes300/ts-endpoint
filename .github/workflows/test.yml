@@ -8,15 +8,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
         with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          node-version: "16"
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
 
       - name: install dependencies
-        run: yarn bootstrap-ci
+        run: yarn
 
       - name: build
         run: yarn build
