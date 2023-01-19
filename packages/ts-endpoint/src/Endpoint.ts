@@ -28,7 +28,7 @@ export interface Endpoint<
         Headers?: H;
         Params?: P;
         Query?: Q;
-        Body?: M extends 'POST' | 'PUT' | 'PATCH' ? B : never;
+        Body?: M extends 'POST' | 'PUT' | 'PATCH' | 'DELETE' ? B : never;
       };
   Output: O;
 }
