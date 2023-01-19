@@ -22,14 +22,14 @@
     "test": "yarn runtime-test && yarn type-test"
   },
   "devDependencies": {
-    "io-ts": "^2.2.7",
+    "io-ts": "^2.2.20",
     "isomorphic-fetch": "^3.0.0"
   },
   "peerDependencies": {
     "ts-endpoint": "^2.0.0-alpha.63"
   },
   "dependencies": {
-    "fp-ts": "^2.0.0",
+    "fp-ts": "^2.13.1",
     "ts-endpoint": "^2.0.0",
     "ts-io-error": "^2.0.0"
   }

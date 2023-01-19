@@ -28,8 +28,8 @@
     "test": "lerna run test"
   },
   "dependencies": {
-    "fp-ts": "^2.9.0",
-    "io-ts": "^2.2.13"
+    "fp-ts": "^2.13.1",
+    "io-ts": "^2.2.20"
   },
   "packageManager": "yarn@3.3.0"
 }
