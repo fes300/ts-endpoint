@@ -1,11 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "target": "es5",
     "lib": ["esnext"],
+    "baseUrl": "./",
+    "rootDir": "./src",
     "outDir": "./lib",
+    "tsBuildInfoFile": "./lib/.tsbuildinfo",
     "esModuleInterop": true,
   },
-  "include": ["src"],
+  "include": ["./src"],
   "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*", "lib"]
 }

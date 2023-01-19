@@ -16,14 +16,15 @@
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
-    "build": "rm -rf ./lib && tsc",
+    "build": "rm -rf ./lib && tsc -b",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
     "test": "yarn runtime-test --passWithNoTests && yarn type-test"
   },
   "peerDependencies": {
     "express": "^4.17.1",
-    "ts-endpoint": "^2.0.0-alpha.19"
+    "ts-endpoint": "^2.0.0",
+    "ts-io-error": "^2.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.15",
@@ -31,8 +32,6 @@
     "jest": "^29.5.0"
   },
   "dependencies": {
-    "fp-ts": "^2.13.1",
-    "ts-endpoint": "^2.0.0",
-    "ts-io-error": "^2.0.0"
+    "fp-ts": "^2.13.1"
   }
 }
