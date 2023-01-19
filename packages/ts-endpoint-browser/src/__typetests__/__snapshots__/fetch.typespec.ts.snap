@@ -36,7 +36,7 @@ exports[`should not allow empty-object as input (type) should match snapshot 1`]
   Type '{}' is missing the following properties from type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }': Params, Query"
 `;
 
-exports[`should not allow to add Body when not declared in the endpoint (type) should match snapshot 1`] = `"Type 'string' is not assignable to type 'never'."`;
+exports[`should not allow to add Body when not declared in the endpoint (type) should match snapshot 1`] = `"Type '{ foo: string; }' is not assignable to type 'never'."`;
 
 exports[`you can access KnownErrors with the correct typeguard (type) should match snapshot 1`] = `"string"`;
 
