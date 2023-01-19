@@ -4863,12 +4863,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "husky@npm:5.2.0"
+"husky@npm:^8.0.3":
+  version: 8.0.3
+  resolution: "husky@npm:8.0.3"
   bin:
     husky: lib/bin.js
-  checksum: 80af5b882c3f37d72d775f15dc8d5a74f27856881f92338278ac017ab447695ee0d958cffec22ba4d0ae96532fb8ee5f99f4ca7b869bc91285e5adc0b8cdfeb3
+  checksum: 837bc7e4413e58c1f2946d38fb050f5d7324c6f16b0fd66411ffce5703b294bd21429e8ba58711cd331951ee86ed529c5be4f76805959ff668a337dbfa82a1b0
   languageName: node
   linkType: hard
 
@@ -8405,7 +8405,7 @@ __metadata:
     "@types/jest": ^26.0.7
     dts-jest: ^23.3.0
     fp-ts: ^2.13.1
-    husky: ^5.2.0
+    husky: ^8.0.3
     io-ts: ^2.2.20
     jest: ^26.4.2
     lerna: ^4.0.0
