@@ -2,7 +2,13 @@ name: Test
 
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - "master"
+      - "chore/*"
+      - "build/*"
+      - "fix/*"
+      - "feat/*"
+
 
 jobs:
   test:
