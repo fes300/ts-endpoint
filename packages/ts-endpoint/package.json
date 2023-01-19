@@ -22,10 +22,10 @@
     "test": "yarn type-test && yarn runtime-test"
   },
   "devDependencies": {
-    "io-ts": "^2.2.7"
+    "io-ts": "^2.2.20"
   },
   "dependencies": {
-    "fp-ts": "^2.0.0",
+    "fp-ts": "^2.13.1",
     "ts-io-error": "^2.0.0",
     "typelevel-ts": "^0.4.0"
   }
