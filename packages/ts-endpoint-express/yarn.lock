@@ -2915,11 +2915,6 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
-
 mixin-deep@^1.2.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-1.3.2.tgz#1120b43dc359a785dce65b55b82e257ccf479566"
@@ -4017,6 +4012,19 @@ ts-endpoint@^2.0.0-alpha.2:
     ts-io-error "^1.0.1"
     typelevel-ts "^0.4.0"
 
+ts-io-error@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
+  integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
+  dependencies:
+    io-ts "^2.2.7"
+    io-ts-types "^0.5.8"
+    monocle-ts "^2.3.3"
+    newtype-ts "^0.3.4"
+    qs "^6.9.4"
+    rxjs "^6.6.0"
+    typelevel-ts "^0.4.0"
+
 ts-jest@^26.1.1:
   version "26.3.0"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.3.0.tgz#6b2845045347dce394f069bb59358253bc1338a9"
@@ -4033,19 +4041,6 @@ ts-jest@^26.1.1:
     mkdirp "1.x"
     semver "7.x"
     yargs-parser "18.x"
-
-ts-io-error@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ts-io-error/-/ts-io-error-1.0.1.tgz#862409704260314de801174e25572086543ffbf9"
-  integrity sha512-iyR+SWMgDIQDG/KvAnFgDl6RTeGMw4bS2Ie/J6G8cL9sNnjGwf9IvaDEQo1z44vvSwxeTxNqHFsJ7fdB3wny6A==
-  dependencies:
-    io-ts "^2.2.7"
-    io-ts-types "^0.5.8"
-    monocle-ts "^2.3.3"
-    newtype-ts "^0.3.4"
-    qs "^6.9.4"
-    rxjs "^6.6.0"
-    typelevel-ts "^0.4.0"
 
 tslib@^1.7.1, tslib@^1.9.0:
   version "1.14.1"
