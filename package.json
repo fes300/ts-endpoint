@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "website"
   ],
   "devDependencies": {
     "@commitlint/cli": "^12.0.0",
@@ -16,7 +17,8 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "ts-endpoint": "yarn packages/ts-endpoint",
+    "ts-endpoint": "yarn workspace packages/ts-endpoint",
+    "website": "yarn workspace @ts-endpoint/docs",
     "prepare": "husky install",
     "build": "lerna run build",
     "bootstrap": "yarn && lerna bootstrap",
