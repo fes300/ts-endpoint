@@ -1,0 +1,26 @@
+{
+  "name": "ts-endpoint-swagger",
+  "scripts": {
+    "clean": "rm -rf lib",
+    "build": "tsc -b",
+    "tsc": "tsc",
+    "generate-sample": "ts-node bin/generate-sample.ts"
+  },
+  "peerDependencies": {
+    "fp-ts": "^2.13.1",
+    "io-ts": "^2.2.20",
+    "io-ts-types": "^0.5.19",
+    "ts-endpoint-express": "^2.0.0",
+    "ts-io-error": "^2.0.0"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4"
+  },
+  "devDependencies": {
+    "io-ts": "^2.2.20",
+    "io-ts-types": "^0.5.19",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^4.9.5"
+  }
+}

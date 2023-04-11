@@ -14,21 +14,28 @@
     "jest": "^29.5.0",
     "lerna": "^4.0.0",
     "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "ts-endpoint": "yarn workspace packages/ts-endpoint",
-    "website": "yarn workspace @ts-endpoint/docs",
+    "ts-endpoint": "yarn workspace ts-endpoint",
+    "ts-io-error": "yarn workspace ts-io-error",
+    "website": "yarn workspace ts-endpoint-docs",
+    "swagger": "yarn workspace ts-endpoint-swagger",
+    "express": "yarn workspace ts-endpoint-express",
     "prepare": "husky install",
-    "build": "lerna run build",
+    "clean": "yarn workspaces foreach -v run clean",
+    "build": "yarn workspaces foreach -v run build",
+    "test:types": "jest --config jest.typetests-config.js",
+    "test:spec": "jest --config jest.config.js",
+    "test": "yarn test:types && yarn test:spec",
     "bootstrap": "yarn && lerna bootstrap",
     "bootstrap-ci": "yarn install --frozen-lockfile && lerna bootstrap",
     "release": "lerna publish --yes --conventional-graduate --force-publish --skip-npm",
     "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag beta --skip-npm",
     "npm-publish": "lerna run npm-publish",
     "postversion": "lerna run postversion",
-    "npm-publish-beta": "lerna run npm-publish-beta",
-    "test": "lerna run test"
+    "npm-publish-beta": "lerna run npm-publish-beta"
   },
   "dependencies": {
     "fp-ts": "^2.13.1",

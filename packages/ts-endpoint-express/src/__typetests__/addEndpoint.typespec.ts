@@ -1,4 +1,4 @@
-import { buildIOError, GetEndpointSubscriber } from 'ts-endpoint-express/src';
+import { buildIOError, GetEndpointSubscriber } from '../addEndpoint';
 import { Endpoint } from 'ts-endpoint/lib';
 import * as t from 'io-ts';
 import * as O from 'fp-ts/Option';

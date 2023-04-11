@@ -1,7 +1,7 @@
-import { Endpoint } from '..';
 import * as t from 'io-ts';
-import { MinimalEndpoint, MinimalEndpointInstance, TypeOfEndpointInstance } from '../helpers';
 import { RequiredKeys } from 'typelevel-ts';
+import { Endpoint } from '../Endpoint';
+import { TypeOfEndpointInstance } from '../helpers';
 
 const endpointWithParam = Endpoint({
   Input: {

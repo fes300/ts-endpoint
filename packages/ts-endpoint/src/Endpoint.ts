@@ -6,6 +6,12 @@ import { MinimalEndpoint } from '.';
 
 export type HTTPMethod = 'OPTIONS' | 'HEAD' | 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
+interface EndpointInfo {
+  title?: string;
+  description?: string | { path: string };
+  tags?: string[];
+}
+
 /**
  * Represents an HTTP endpoint of our API
  */
@@ -17,7 +23,7 @@ export interface Endpoint<
   B extends Codec<any, any, any> | undefined = undefined,
   P extends RecordCodec<any, any> | undefined = undefined,
   E extends EndpointErrors<never, Codec<any, any, any>> | undefined = undefined
-> {
+> extends EndpointInfo {
   /* utils to get the full path given a set of query params */
   getPath: [P] extends [undefined] ? (i?: {}) => string : (args: runtimeType<P>) => string;
   Method: M;
@@ -133,7 +139,7 @@ export function Endpoint<
     console.error('white spaces are not allowed in Headers names:', headersWithWhiteSpaces);
   }
 
-  return ({
+  return {
     ...e,
     getPath: ((i: any) => {
       const path = e.getPath(i);
@@ -162,5 +168,5 @@ export function Endpoint<
       ...(e.Input?.Params ? { Params: e.Input.Params } : {}),
       ...(e.Input?.Query ? { Query: e.Input.Query } : {}),
     },
-  } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>;
+  } as unknown as EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>;
 }

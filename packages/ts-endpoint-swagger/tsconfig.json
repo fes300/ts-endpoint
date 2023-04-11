@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["esnext"],
+    "outDir": "./lib",
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"],
+  "references": [
+    {
+      "path": "../ts-io-error"
+    },
+    {
+      "path": "../ts-endpoint"
+    }
+  ],
+  "ts-node": {
+    "files": true
+  }
+}

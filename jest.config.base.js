@@ -1,5 +1,4 @@
 module.exports = {
-  verbose: true,
   preset: 'ts-jest',
   transform: {
     '^.+\\.ts?$': [
@@ -12,5 +11,4 @@ module.exports = {
   },
   roots: ['<rootDir>/src'],
   testMatch: ['**/+(*.)*(spec).ts'],
-  verbose: true,
 };
