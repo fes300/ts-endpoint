@@ -24,8 +24,8 @@
   "devDependencies": {
     "io-ts": "^2.2.20",
     "isomorphic-fetch": "^3.0.0",
-    "jest": "^29.3.1",
-    "jest-environment-jsdom": "^29.3.1"
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0"
   },
   "peerDependencies": {
     "ts-endpoint": "^2.0.0-alpha.63"
