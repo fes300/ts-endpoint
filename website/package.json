@@ -1,4 +1,5 @@
 {
+  "name": "@ts-endpoint/docs",
   "scripts": {
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",

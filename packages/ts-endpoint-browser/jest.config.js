@@ -2,6 +2,6 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
   ...base,
-  name: 'ts-endpoint-browser',
+  testEnvironment: 'jsdom',
   displayName: 'ts-endpoint-browser',
 };
