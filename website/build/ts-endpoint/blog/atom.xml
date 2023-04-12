@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://your-docusaurus-test-site.com/blog</id>
+    <id>https://ts-endpoint.federicosordillo.com/blog</id>
     <title>ts-endpoint Blog</title>
-    <updated>2017-10-24T06:00:00.000Z</updated>
+    <updated>2017-10-24T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
-    <subtitle>The best place to stay up-to-date with the latest ts-endpoint news and events.</subtitle>
-    <logo>https://your-docusaurus-test-site.com/img/favicon.ico</logo>
-    <rights>Copyright © 2023 Federico Sordillo</rights>
+    <link rel="alternate" href="https://ts-endpoint.federicosordillo.com/blog"/>
+    <subtitle>ts-endpoint Blog</subtitle>
+    <icon>https://ts-endpoint.federicosordillo.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[New Version 1.0.0]]></title>
-        <id>https://your-docusaurus-test-site.com/blog/2017/10/24/new-version-1.0.0.html</id>
-        <link href="https://your-docusaurus-test-site.com/blog/2017/10/24/new-version-1.0.0.html"/>
-        <updated>2017-10-24T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>This blog post will test file name parsing issues when periods are present.</p> ]]></summary>
+        <id>https://ts-endpoint.federicosordillo.com/blog/2017/10/24/new-version-1.0.0</id>
+        <link href="https://ts-endpoint.federicosordillo.com/blog/2017/10/24/new-version-1.0.0"/>
+        <updated>2017-10-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This blog post will test file name parsing issues when periods are present.]]></summary>
+        <content type="html"><![CDATA[<p>This blog post will test file name parsing issues when periods are present.</p>]]></content>
         <author>
             <name>Eric Nakagawa</name>
             <uri>http://twitter.com/ericnakagawa</uri>
@@ -21,10 +21,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Adding RSS Support]]></title>
-        <id>https://your-docusaurus-test-site.com/blog/2017/09/26/adding-rss.html</id>
-        <link href="https://your-docusaurus-test-site.com/blog/2017/09/26/adding-rss.html"/>
-        <updated>2017-09-26T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>This is a test post.</p> <p>A whole bunch of other information.</p> ]]></summary>
+        <id>https://ts-endpoint.federicosordillo.com/blog/2017/09/26/adding-rss</id>
+        <link href="https://ts-endpoint.federicosordillo.com/blog/2017/09/26/adding-rss"/>
+        <updated>2017-09-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is a test post.]]></summary>
+        <content type="html"><![CDATA[<p>This is a test post.</p><p>A whole bunch of other information.</p>]]></content>
         <author>
             <name>Eric Nakagawa</name>
             <uri>http://twitter.com/ericnakagawa</uri>
@@ -32,12 +33,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Adding RSS Support - RSS Truncation Test]]></title>
-        <id>https://your-docusaurus-test-site.com/blog/2017/09/25/testing-rss.html</id>
-        <link href="https://your-docusaurus-test-site.com/blog/2017/09/25/testing-rss.html"/>
-        <updated>2017-09-25T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</p>
-<p>This should be truncated.</p>
-]]></summary>
+        <id>https://ts-endpoint.federicosordillo.com/blog/2017/09/25/testing-rss</id>
+        <link href="https://ts-endpoint.federicosordillo.com/blog/2017/09/25/testing-rss"/>
+        <updated>2017-09-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890]]></summary>
+        <content type="html"><![CDATA[<p>1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</p><p>This should be truncated.</p><p>This line should never render in XML.</p>]]></content>
         <author>
             <name>Eric Nakagawa</name>
             <uri>http://twitter.com/ericnakagawa</uri>
@@ -45,11 +45,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[New Blog Post]]></title>
-        <id>https://your-docusaurus-test-site.com/blog/2017/04/10/blog-post-two.html</id>
-        <link href="https://your-docusaurus-test-site.com/blog/2017/04/10/blog-post-two.html"/>
-        <updated>2017-04-10T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
-]]></summary>
+        <id>https://ts-endpoint.federicosordillo.com/blog/2017/04/10/blog-post-two</id>
+        <link href="https://ts-endpoint.federicosordillo.com/blog/2017/04/10/blog-post-two"/>
+        <updated>2017-04-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.]]></summary>
+        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p><p>Mauris vestibulum ullamcorper nibh, ut semper purus pulvinar ut. Donec volutpat orci sit amet mauris malesuada, non pulvinar augue aliquam. Vestibulum ultricies at urna ut suscipit. Morbi iaculis, erat at imperdiet semper, ipsum nulla sodales erat, eget tincidunt justo dui quis justo. Pellentesque dictum bibendum diam at aliquet. Sed pulvinar, dolor quis finibus ornare, eros odio facilisis erat, eu rhoncus nunc dui sed ex. Nunc gravida dui massa, sed ornare arcu tincidunt sit amet. Maecenas efficitur sapien neque, a laoreet libero feugiat ut.</p><p>Nulla facilisi. Maecenas sodales nec purus eget posuere. Sed sapien quam, pretium a risus in, porttitor dapibus erat. Sed sit amet fringilla ipsum, eget iaculis augue. Integer sollicitudin tortor quis ultricies aliquam. Suspendisse fringilla nunc in tellus cursus, at placerat tellus scelerisque. Sed tempus elit a sollicitudin rhoncus. Nulla facilisi. Morbi nec dolor dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras et aliquet lectus. Pellentesque sit amet eros nisi. Quisque ac sapien in sapien congue accumsan. Nullam in posuere ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin lacinia leo a nibh fringilla pharetra.</p><p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin venenatis lectus dui, vel ultrices ante bibendum hendrerit. Aenean egestas feugiat dui id hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur in tellus laoreet, eleifend nunc id, viverra leo. Proin vulputate non dolor vel vulputate. Curabitur pretium lobortis felis, sit amet finibus lorem suscipit ut. Sed non mollis risus. Duis sagittis, mi in euismod tincidunt, nunc mauris vestibulum urna, at euismod est elit quis erat. Phasellus accumsan vitae neque eu placerat. In elementum arcu nec tellus imperdiet, eget maximus nulla sodales. Curabitur eu sapien eget nisl sodales fermentum.</p><p>Phasellus pulvinar ex id commodo imperdiet. Praesent odio nibh, sollicitudin sit amet faucibus id, placerat at metus. Donec vitae eros vitae tortor hendrerit finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vitae purus dolor. Duis suscipit ac nulla et finibus. Phasellus ac sem sed dui dictum gravida. Phasellus eleifend vestibulum facilisis. Integer pharetra nec enim vitae mattis. Duis auctor, lectus quis condimentum bibendum, nunc dolor aliquam massa, id bibendum orci velit quis magna. Ut volutpat nulla nunc, sed interdum magna condimentum non. Sed urna metus, scelerisque vitae consectetur a, feugiat quis magna. Donec dignissim ornare nisl, eget tempor risus malesuada quis.</p>]]></content>
         <author>
             <name>Blog Author</name>
             <uri>http://twitter.com/</uri>
@@ -57,11 +57,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Blog Title]]></title>
-        <id>https://your-docusaurus-test-site.com/blog/2016/03/11/blog-post.html</id>
-        <link href="https://your-docusaurus-test-site.com/blog/2016/03/11/blog-post.html"/>
-        <updated>2016-03-11T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
-]]></summary>
+        <id>https://ts-endpoint.federicosordillo.com/blog/2016/03/11/blog-post</id>
+        <link href="https://ts-endpoint.federicosordillo.com/blog/2016/03/11/blog-post"/>
+        <updated>2016-03-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.]]></summary>
+        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p><p>Mauris vestibulum ullamcorper nibh, ut semper purus pulvinar ut. Donec volutpat orci sit amet mauris malesuada, non pulvinar augue aliquam. Vestibulum ultricies at urna ut suscipit. Morbi iaculis, erat at imperdiet semper, ipsum nulla sodales erat, eget tincidunt justo dui quis justo. Pellentesque dictum bibendum diam at aliquet. Sed pulvinar, dolor quis finibus ornare, eros odio facilisis erat, eu rhoncus nunc dui sed ex. Nunc gravida dui massa, sed ornare arcu tincidunt sit amet. Maecenas efficitur sapien neque, a laoreet libero feugiat ut.</p><p>Nulla facilisi. Maecenas sodales nec purus eget posuere. Sed sapien quam, pretium a risus in, porttitor dapibus erat. Sed sit amet fringilla ipsum, eget iaculis augue. Integer sollicitudin tortor quis ultricies aliquam. Suspendisse fringilla nunc in tellus cursus, at placerat tellus scelerisque. Sed tempus elit a sollicitudin rhoncus. Nulla facilisi. Morbi nec dolor dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras et aliquet lectus. Pellentesque sit amet eros nisi. Quisque ac sapien in sapien congue accumsan. Nullam in posuere ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin lacinia leo a nibh fringilla pharetra.</p><p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin venenatis lectus dui, vel ultrices ante bibendum hendrerit. Aenean egestas feugiat dui id hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur in tellus laoreet, eleifend nunc id, viverra leo. Proin vulputate non dolor vel vulputate. Curabitur pretium lobortis felis, sit amet finibus lorem suscipit ut. Sed non mollis risus. Duis sagittis, mi in euismod tincidunt, nunc mauris vestibulum urna, at euismod est elit quis erat. Phasellus accumsan vitae neque eu placerat. In elementum arcu nec tellus imperdiet, eget maximus nulla sodales. Curabitur eu sapien eget nisl sodales fermentum.</p><p>Phasellus pulvinar ex id commodo imperdiet. Praesent odio nibh, sollicitudin sit amet faucibus id, placerat at metus. Donec vitae eros vitae tortor hendrerit finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vitae purus dolor. Duis suscipit ac nulla et finibus. Phasellus ac sem sed dui dictum gravida. Phasellus eleifend vestibulum facilisis. Integer pharetra nec enim vitae mattis. Duis auctor, lectus quis condimentum bibendum, nunc dolor aliquam massa, id bibendum orci velit quis magna. Ut volutpat nulla nunc, sed interdum magna condimentum non. Sed urna metus, scelerisque vitae consectetur a, feugiat quis magna. Donec dignissim ornare nisl, eget tempor risus malesuada quis.</p>]]></content>
         <author>
             <name>Blog Author</name>
             <uri>http://twitter.com/</uri>
