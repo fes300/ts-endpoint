@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-express",
-  "version": "2.0.1-alpha.1",
+  "version": "2.0.0",
   "description": "Adds typesafe endpoints to your express app.",
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express",
