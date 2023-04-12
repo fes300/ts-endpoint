@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_ts_endpoint_docs=self.webpackChunk_ts_endpoint_docs||[]).push([[195],{8598:(e,n,t)=>{t.r(n),t.d(n,{default:()=>u});var s=t(8788),c=t(7378);const u=function(){return c.createElement(s.Z,null)}}}]);
