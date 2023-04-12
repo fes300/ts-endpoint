@@ -7,7 +7,7 @@ import * as express from 'express';
 import { Controller } from './Controller';
 import * as E from 'fp-ts/Either';
 import { sequenceS } from 'fp-ts/Apply';
-import { pipe } from 'fp-ts/pipeable';
+import { pipe } from 'fp-ts/function';
 import * as TA from 'fp-ts/TaskEither';
 import { IOError } from 'ts-io-error/lib';
 import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';

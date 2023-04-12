@@ -4,8 +4,23 @@
     "target": "es5",
     "lib": ["dom", "esnext"],
     "outDir": "./lib",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "paths": {
+      "ts-io-error/lib": ["../../ts-io-error/src/index"],
+      "ts-io-error/lib/*": ["../../ts-io-error/src/*"],
+      "ts-endpoint/lib": ["../../ts-endpoint/src/index"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"]
+  "include": ["./src"],
+  "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"],
+  "references": [
+    {
+      "path": "../ts-io-error"
+    },
+    {
+      "path": "../ts-endpoint"
+    }
+  ]
 }
