@@ -6,13 +6,14 @@ sidebar_label: setting up `ts-endpoint-express`
 
 ### install
 
-```
-$> yarn add ts-endpoint-express
+```sh
+# install ts-endpoint-express
+$ yarn add ts-endpoint-express
 ```
 
 ### peerDependencies
 
-- "express": "^4.17.1"
+- "express": "^4"
 
 ### description
 
