@@ -4,8 +4,14 @@
     "target": "es5",
     "lib": ["esnext"],
     "outDir": "./lib",
+    "rootDir": "./src",
     "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"]
+  "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"],
+  "references": [
+    {
+      "path": "../ts-endpoint"
+    }
+  ]
 }

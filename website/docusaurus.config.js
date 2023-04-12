@@ -32,7 +32,18 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    [
+      'docusaurus-plugin-openapi',
+      /** @type {import('docusaurus-plugin-openapi').Options} */
+      {
+        id: 'swagger-example',
+        path: '../packages/ts-endpoint-swagger/examples/open-api.json',
+        routeBasePath: '/docs/ts-endpoint-swagger/example',
+      },
+    ],
+  ],
+  themes: ['docusaurus-theme-openapi'],
   themeConfig: {
     navbar: {
       title: 'ts-endpoint',
@@ -53,6 +64,11 @@ module.exports = {
         {
           to: 'docs/ts-endpoint-browser/intro',
           label: 'ts-endpoint-browser',
+          position: 'left',
+        },
+        {
+          to: 'docs/ts-endpoint-swagger/intro',
+          label: 'ts-endpoint-swagger',
           position: 'left',
         },
       ],

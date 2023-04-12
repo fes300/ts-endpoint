@@ -68,7 +68,6 @@ const App: React.FC = () => {
                     apiClient
                       .getUser({ Params: { id: ID } })()
                       .then((response) => {
-                        console.log(111, response);
 
                         setResponse(O.some(response));
                         setLoading(false);

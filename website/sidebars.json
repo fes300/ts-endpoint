@@ -1,20 +1,25 @@
 {
   "docs": {
     "setup": ["ts-endpoint/intro"],
-    "simple guide": [
-      "ts-endpoint/simple-guide"
-    ]
+    "simple guide": ["ts-endpoint/simple-guide"]
   },
   "ts-endpoint-express": {
     "setup": ["ts-endpoint-express/intro"],
-    "simple guide": [
-      "ts-endpoint-express/simple-guide"
-    ]
+    "simple guide": ["ts-endpoint-express/simple-guide"]
   },
   "ts-endpoint-browser": {
     "setup": ["ts-endpoint-browser/intro"],
-    "simple guide": [
-      "ts-endpoint-browser/simple-guide"
+    "simple guide": ["ts-endpoint-browser/simple-guide"]
+  },
+  "ts-endpoint-swagger": {
+    "setup": ["ts-endpoint-swagger/intro"],
+    "simple guide": ["ts-endpoint-swagger/simple-guide"],
+    "example": [
+      {
+        "type": "link",
+        "label": "Example",
+        "href": "/docs/ts-endpoint-swagger/example"
+      }
     ]
   }
 }

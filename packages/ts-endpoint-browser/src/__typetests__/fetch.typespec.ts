@@ -14,7 +14,7 @@ const options: StaticHTTPClientConfig = {
 };
 
 const endpoints = {
-  prova: Endpoint({
+  dummy: Endpoint({
     Input: {
       Query: t.type({ color: t.string }),
       Params: t.type({ id: t.string }),
@@ -23,7 +23,7 @@ const endpoints = {
     getPath: ({ id }) => `users/${id}/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
   }),
-  provaNoParam: Endpoint({
+  dummyNoParam: Endpoint({
     Input: {
       Query: t.type({ color: t.string }),
     },
@@ -31,12 +31,12 @@ const endpoints = {
     getPath: () => `users/crayons`,
     Output: t.type({ crayons: t.array(t.string) }),
   }),
-  provaWithoutInput: Endpoint({
+  dummyWithoutInput: Endpoint({
     Method: 'GET',
     getPath: () => `users`,
     Output: t.type({ noInput: t.array(t.string) }),
   }),
-  provaWithError: Endpoint({
+  dummyWithError: Endpoint({
     Input: {
       Query: t.type({ color: t.string }),
       Params: t.type({ id: t.string }),
@@ -56,46 +56,46 @@ const fetchClient = GetFetchHTTPClient(options, endpoints, {
 });
 
 // @dts-jest:pass:snap should allow empty calls when input is not defined
-fetchClient.provaWithoutInput();
+fetchClient.dummyWithoutInput();
 
 // @dts-jest:fail:snap should not allow calls with Body when input is not defined
-fetchClient.provaWithoutInput({
+fetchClient.dummyWithoutInput({
   Body: 1,
 });
 
 // @dts-jest:fail:snap should not allow calls with Query when input is not defined
-fetchClient.provaWithoutInput({
+fetchClient.dummyWithoutInput({
   Query: 1,
 });
 
 // @dts-jest:fail:snap should not allow calls with Params when input is not defined
-fetchClient.provaWithoutInput({
+fetchClient.dummyWithoutInput({
   Params: 1,
 });
 
 // @dts-jest:fail:snap should not allow calls with Header when input is not defined
-fetchClient.provaWithoutInput({
+fetchClient.dummyWithoutInput({
   Headers: 1,
 });
 
 // @dts-jest:fail:snap should not allow empty calls
-fetchClient.prova();
+fetchClient.dummy();
 
 // @dts-jest:fail:snap should not allow empty-object as input
-fetchClient.prova({});
+fetchClient.dummy({});
 
 // @dts-jest:fail:snap should not allow calls not specifing Query
-fetchClient.prova({
+fetchClient.dummy({
   Params: { id: '123' },
 });
 
-fetchClient.prova({
+fetchClient.dummy({
   // @dts-jest:fail:snap should not allow calls specifing Params not declared in the endpoint
   Params: { id: '123', foo: 'baz' },
   Query: { color: 'marrone' },
 });
 
-fetchClient.prova({
+fetchClient.dummy({
   Params: { id: '123' },
   Query: { color: 'marrone' },
   // @dts-jest:fail:snap should not allow to add Body when not declared in the endpoint
@@ -103,15 +103,15 @@ fetchClient.prova({
 });
 
 // @dts-jest:fail:snap InferFetchResult should return the type of the Endpoint.Output
-const provaResultWrong: InferFetchResult<typeof fetchClient.prova> = right({});
+const dummyResultWrong: InferFetchResult<typeof fetchClient.dummy> = right({});
 
 // @dts-jest:pass:snap InferFetchResult should return the type of the Endpoint.Output
-const provaResultCorrect: InferFetchResult<typeof fetchClient.prova> = right({
+const dummyResultCorrect: InferFetchResult<typeof fetchClient.dummy> = right({
   crayons: ['brown'],
 });
 
-const provaWithError = pipe(
-  fetchClient.provaWithError({
+pipe(
+  fetchClient.dummyWithError({
     Params: { id: '123' },
     Query: { color: 'marrone' },
   }),

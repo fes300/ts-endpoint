@@ -1,10 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "target": "es5",
     "lib": ["esnext"],
+    "rootDir": "./src",
     "outDir": "./lib",
     "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
+    "tsBuildInfoFile": "lib/.tsbuildinfo",
     "esModuleInterop": true
   },
   "include": ["src"],

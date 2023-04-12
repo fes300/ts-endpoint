@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateDoc should output open api doc with many paths 1`] = `
+{
+  "components": {
+    "schemas": {
+      "DummyOutput": {
+        "description": "DummyOutput",
+        "properties": {
+          "name": {
+            "description": "string",
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+      "GETDummyParams": {
+        "description": "GETDummyParams",
+        "properties": {
+          "id": {
+            "description": "string",
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+      "any": {
+        "description": "any value",
+        "type": "object",
+      },
+      "boolean": {
+        "description": "A \`true | false\` value",
+        "type": "boolean",
+      },
+      "string": {
+        "description": "A string value",
+        "type": "string",
+      },
+      "url": {
+        "description": "A valid URL",
+        "type": "string",
+      },
+    },
+    "securitySchemes": {
+      "jwt": {
+        "in": "header",
+        "name": "authorization",
+        "type": "apiKey",
+      },
+    },
+  },
+  "info": {
+    "description": "Base doc config",
+    "title": "Doc Config",
+    "version": "v0",
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/dummy/": {
+      "post": {
+        "description": undefined,
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GETDummyParams",
+              },
+            },
+          },
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DummyOutput",
+                },
+              },
+            },
+            "description": "DummyOutput",
+          },
+        },
+        "security": [],
+        "summary": "Create dummy resource",
+        "tags": [
+          "all",
+        ],
+      },
+    },
+    "/dummy/{id}": {
+      "get": {
+        "description": undefined,
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "string",
+              "type": "string",
+            },
+          },
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DummyOutput",
+                },
+              },
+            },
+            "description": "DummyOutput",
+          },
+        },
+        "security": [],
+        "summary": "GET dummy resource",
+        "tags": [
+          "all",
+        ],
+      },
+    },
+  },
+  "security": [
+    {
+      "jwt": [],
+    },
+  ],
+  "servers": [
+    {
+      "description": "Node Server",
+      "url": "{protocol}://{host}{port}/{basePath}",
+      "variables": {
+        "basePath": {
+          "default": "/",
+        },
+        "host": {
+          "default": "localhost",
+        },
+        "port": {
+          "default": 8000,
+          "enum": [
+            8000,
+            "443",
+          ],
+        },
+        "protocol": {
+          "default": "http",
+        },
+      },
+    },
+  ],
+}
+`;

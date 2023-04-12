@@ -2,7 +2,7 @@
   "name": "ts-io-error",
   "version": "2.0.0",
   "description": "defines errors incurring in client-server communication.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F10"

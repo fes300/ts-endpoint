@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sample Open API",
+    "description": "Sample server of dummy objects",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "{protocol}://{host}{port}/{basePath}",
+      "description": "Node Server",
+      "variables": {
+        "protocol": {
+          "default": "http"
+        },
+        "host": {
+          "default": "localhost"
+        },
+        "port": {
+          "default": 3005,
+          "enum": [
+            3005,
+            "443"
+          ]
+        },
+        "basePath": {
+          "default": "/"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "jwt": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "jwt": {
+        "in": "header",
+        "type": "http",
+        "name": "Authorization",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "any": {
+        "type": "object",
+        "description": "any value"
+      },
+      "string": {
+        "type": "string",
+        "description": "A string value"
+      },
+      "url": {
+        "type": "string",
+        "description": "A valid URL"
+      },
+      "boolean": {
+        "type": "boolean",
+        "description": "A `true | false` value"
+      },
+      "CreateDummyBody": {
+        "type": "object",
+        "description": "CreateDummyBody",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "string"
+          }
+        }
+      },
+      "Dummy": {
+        "type": "object",
+        "description": "Dummy",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "GetDummyParams": {
+        "type": "object",
+        "description": "GetDummyParams",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/dummy": {
+      "get": {
+        "summary": "GetDummies",
+        "description": "GET: /dummy",
+        "tags": [
+          "dummy"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Dummy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "description": "Dummy",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "string"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "PostDummy",
+        "description": "POST: /dummy",
+        "tags": [
+          "dummy"
+        ],
+        "parameters": [],
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "description": "CreateDummyBody",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Dummy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "description": "Dummy",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "string"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dummy/{id}": {
+      "get": {
+        "summary": "GET dummy sample",
+        "description": "GET dummy sample",
+        "tags": [
+          "dummy"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "string"
+            }
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Dummy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "description": "Dummy",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "string"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

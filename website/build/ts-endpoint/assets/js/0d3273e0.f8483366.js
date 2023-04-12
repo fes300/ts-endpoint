@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkts_endpoint_docs=self.webpackChunkts_endpoint_docs||[]).push([[94],{85218:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-openapi","id":"swagger-example"}')}}]);

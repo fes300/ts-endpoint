@@ -1,11 +1,17 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "target": "es5",
     "lib": ["esnext"],
     "outDir": "./lib",
+    "rootDir": "./src",
+    "tsBuildInfoFile": "lib/.tsbuildinfo",
     "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"],
+  "references": [{
+    "path": "../ts-io-error"
+  }]
 }

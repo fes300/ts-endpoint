@@ -76,3 +76,9 @@ export type InferEndpointParams<E> = E extends Endpoint<
 export type InferEndpointInstanceParams<EI> = EI extends EndpointInstance<infer E>
   ? InferEndpointParams<E>
   : never;
+
+export declare type UndefinedOrRuntime<N> = N extends RecordCodec<any, any>
+  ? {
+      [k in keyof N['props']]: runtimeType<N['props'][k]>;
+    }
+  : undefined;
