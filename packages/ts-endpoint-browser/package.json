@@ -31,7 +31,7 @@
     "ts-endpoint": "^2.0.0-alpha.63"
   },
   "dependencies": {
-    "fp-ts": "^2.13.1",
+    "fp-ts": "^2.16.1",
     "ts-endpoint": "^2.0.0",
     "ts-io-error": "^2.0.0"
   }
