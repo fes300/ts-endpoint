@@ -26,12 +26,12 @@
     "ts-endpoint": "^2.0.0-alpha.19"
   },
   "devDependencies": {
-    "@types/express": "^4.17.15",
+    "@types/express": "^4.17.17",
     "io-ts": "^2.2.20",
-    "jest": "^29.5.0"
+    "jest": "^29.7.0"
   },
   "dependencies": {
-    "fp-ts": "^2.13.1",
+    "fp-ts": "^2.16.1",
     "ts-endpoint": "^2.0.0",
     "ts-io-error": "^2.0.0"
   }
