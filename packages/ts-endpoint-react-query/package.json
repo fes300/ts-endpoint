@@ -1,0 +1,40 @@
+{
+  "name": "ts-endpoint-react-query",
+  "version": "2.0.1-alpha.0",
+  "description": "Adds typesafe endpoints to your browser.",
+  "main": "index.js",
+  "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser",
+  "bugs": {
+    "url": "https://github.com/fes300/ts-endpoint/issues?q=project%3Afes300%2Fts-endpoint%2F6"
+  },
+  "author": "Federico Sordillo <federicosordillo@gmail.com>",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
+    "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
+    "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
+    "build": "rm -rf ./lib && tsc",
+    "type-test": "jest --config=jest.typetests-config.js",
+    "runtime-test": "jest --config=jest.config.js",
+    "test": "yarn runtime-test && yarn type-test"
+  },
+  "devDependencies": {
+    "io-ts": "^2.2.21",
+    "isomorphic-fetch": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-mock-extended": "^3.0.5"
+  },
+  "peerDependencies": {
+    "ts-endpoint": "^2.0.0-alpha.63"
+  },
+  "dependencies": {
+    "fp-ts": "^2.16.2",
+    "ts-endpoint": "^2.0.0",
+    "ts-endpoint-rest-client": "^2.0.0",
+    "ts-io-error": "^2.0.0"
+  }
+}
