@@ -8255,6 +8255,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fp-ts@npm:^2.16.2":
+  version: 2.16.2
+  resolution: "fp-ts@npm:2.16.2"
+  checksum: 5c2e3f096ba4be5646bda38a43e3e8ca3bd7693fefb26e6c4d4c451efbc9a227f7f7cad562b087cb134d4e41f4ae615602f0b17890e9e40a9e83f2f8822da666
+  languageName: node
+  linkType: hard
+
 "fraction.js@npm:^4.2.0":
   version: 4.2.0
   resolution: "fraction.js@npm:4.2.0"
@@ -9537,6 +9544,15 @@ __metadata:
   peerDependencies:
     fp-ts: ^2.5.0
   checksum: 72517bf72ab1ad61b81960cb37f46e7a9f6dc84235b7d9b62f346ca84120dd89134b652fc3a0b9751129331084fd3e059349561bb96587d91ba7b40985fe7aac
+  languageName: node
+  linkType: hard
+
+"io-ts@npm:^2.2.21":
+  version: 2.2.21
+  resolution: "io-ts@npm:2.2.21"
+  peerDependencies:
+    fp-ts: ^2.5.0
+  checksum: c6ae5237e313f7428c874fa5667b3656adaa5ec29f7f34194ad8ea8894b525c89322a5b74ca560e7cd66f8334b0b48cae6c4dc517c662de72da86110140646d4
   languageName: node
   linkType: hard
 
@@ -15923,6 +15939,22 @@ __metadata:
   peerDependencies:
     express: ^4.17.1
     ts-endpoint: ^2.0.0-alpha.19
+  languageName: unknown
+  linkType: soft
+
+"ts-endpoint-rest-client@workspace:packages/ts-endpoint-rest-client":
+  version: 0.0.0-use.local
+  resolution: "ts-endpoint-rest-client@workspace:packages/ts-endpoint-rest-client"
+  dependencies:
+    fp-ts: ^2.16.2
+    io-ts: ^2.2.21
+    isomorphic-fetch: ^3.0.0
+    jest: ^29.7.0
+    jest-environment-jsdom: ^29.7.0
+    ts-endpoint: ^2.0.0
+    ts-io-error: ^2.0.0
+  peerDependencies:
+    ts-endpoint: ^2.0.0-alpha.63
   languageName: unknown
   linkType: soft
 
