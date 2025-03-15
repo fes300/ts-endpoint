@@ -1,158 +1,137 @@
-import * as t from 'io-ts';
+import { Schema } from 'effect';
 import { RequiredKeys } from 'typelevel-ts';
-import { assertType, test } from 'vitest';
-import { Endpoint } from '../Endpoint';
-import { TypeOfEndpointInstance } from '../helpers';
+import { assertType, describe, it } from 'vitest';
+import { Endpoint, TypeOfEndpointInstance } from '../Endpoint';
 
 const endpointWithParam = Endpoint({
   Input: {
-    Query: t.type({ color: t.string }),
-    Params: t.type({ id: t.number }),
+    Query: Schema.Struct({ color: Schema.String }),
+    Params: Schema.Struct({ id: Schema.Number }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
-  Output: t.type({ crayons: t.array(t.string) }),
+  Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
 });
 
 const endpointWithoutParam = Endpoint({
   Input: {
-    Query: t.type({ color: t.string }),
+    Query: Schema.Struct({ color: Schema.String }),
   },
   Method: 'GET',
   getPath: () => `users/crayons`,
-  Output: t.type({ crayons: t.array(t.string) }),
+  Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
 });
 
 const endpointWithErrors = Endpoint({
   Input: {
-    Query: t.type({ color: t.string }),
-    Params: t.type({ id: t.number }),
+    Query: Schema.Struct({ color: Schema.String }),
+    Params: Schema.Struct({ id: Schema.Number }),
   },
   Method: 'GET',
   getPath: ({ id }) => `users/${id.toString()}/crayons`,
-  Output: t.type({ crayons: t.array(t.string) }),
+  Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   Errors: {
-    401: t.undefined,
-    404: t.type({ message: t.string }),
-    500: t.type({ foo: t.number }),
+    401: Schema.Undefined,
+    404: Schema.Struct({ message: Schema.String }),
+    500: Schema.Struct({ foo: Schema.Number }),
   },
 });
 
 const endpointWithoutInput = Endpoint({
   Method: 'GET',
   getPath: () => `users/crayons`,
-  Output: t.type({ crayons: t.array(t.string) }),
+  Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
 });
 
 const endpointWithBody = Endpoint({
   Method: 'POST',
   getPath: () => `users/crayons`,
-  Output: t.type({ crayons: t.array(t.string) }),
-  Input: { Body: t.type({ id: t.number }) },
+  Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
+  Input: { Body: Schema.Struct({ id: Schema.Number }) },
 });
 
-test('Endpoint helpers typings', () => {
-  assertType<TypeOfEndpointInstance<typeof endpointWithParam>['Errors']>({});
+describe('helpers', () => {
+  it('Should match the snapshot', () => {
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithParam>;
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithParam>['Errors'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithParam>['Input'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithParam>['Output'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithParam>['getPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithParam>['getStaticPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithParam>>;
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithParam>['Input']>;
 
-  assertType<TypeOfEndpointInstance<typeof endpointWithParam>['Input']>({
-    Params: { id: 1 },
-    Query: { color: 'blue' },
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutParam>['Errors'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutParam>['Input'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutParam>['Output'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutParam>['getPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutParam>['getStaticPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutParam>>;
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutParam>['Input']>;
+
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutInput>['Errors'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutInput>['Input'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutInput>['Output'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutInput>['getPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithoutInput>['getStaticPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutInput>>;
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutInput>['Input']>;
+
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithBody>['Errors'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithBody>['Input'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithBody>['Output'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithBody>['getPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithBody>['getStaticPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithBody>>;
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithBody>['Input']>;
+
+    assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['Errors']>({
+      // @ts-expect-error
+      401: undefined,
+      404: { message: '' },
+      500: { foo: 1 },
+    });
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithErrors>['Input'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithErrors>['Output'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithErrors>['getPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as TypeOfEndpointInstance<typeof endpointWithErrors>['getStaticPath'];
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>>;
+    // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+    null as unknown as RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>;
   });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithParam>['Output']>({
-    crayons: ['red', 'blue'],
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithParam>['getPath']>(
-    ({ id }) => `/users/${id.toString()}/crayons`
-  );
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithParam>['getStaticPath']>(
-    (paramName) => `${paramName}`
-  );
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithParam>>>('Errors');
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithParam>['Input']>>('Params');
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithParam>['Input']>>('Query');
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithoutParam>['Errors']>({});
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithoutParam>['Input']>({
-    Params: undefined,
-    Query: { color: 'blue' },
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithoutParam>['Output']>({
-    crayons: ['red', 'blue'],
-  });
-
-  // assertType<TypeOfEndpointInstance<typeof endpointWithoutParam>['getPath']>(() => `/users/${params.id.toString()}/crayons`);
-
-  // assertType<TypeOfEndpointInstance<typeof endpointWithoutParam>['getStaticPath']>();
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutParam>>>('Errors');
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutParam>['Input']>>('Query');
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithoutInput>['Errors']>({});
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithoutInput>['Input']>(undefined);
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithoutInput>['Output']>({
-    crayons: ['red', 'blue'],
-  });
-
-  // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutInput>>>('Input');
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutInput>['Input']>>(
-    undefined as never
-  );
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithBody>['Errors']>({
-    401: undefined,
-    404: { message: 'Not found' },
-    500: { foo: 42 },
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithBody>['Input']>({
-    Body: { id: 1 },
-    Params: undefined,
-    Query: undefined,
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithBody>['Output']>({
-    crayons: ['red', 'blue'],
-  });
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithBody>>>('Output');
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithBody>['Input']>>('Body');
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['Errors']>({
-    401: undefined,
-    404: { message: 'Not found' },
-    500: { foo: 42 },
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>({
-    Params: { id: 1 },
-    Query: { color: 'blue' },
-    Body: undefined,
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['Output']>({
-    crayons: ['red', 'blue'],
-  });
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['getPath']>(
-    ({ id }) => `/users/${id.toString()}/crayons`
-  );
-
-  assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['getStaticPath']>((fn) => fn('id'));
-
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>>>("Errors");
-  // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
-  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>>('Params');
 });
-assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>>('Query');

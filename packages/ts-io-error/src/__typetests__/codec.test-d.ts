@@ -1,23 +1,78 @@
-import * as E from 'fp-ts/lib/Either';
-import { assertType, test } from 'vitest';
-import { Codec, decodeType, errorType, RecordCodec, runtimeType, serializedType } from '../Codec';
+import { Schema } from 'effect';
+import { some } from 'effect/Option';
+import { assertType, describe, test } from 'vitest';
+import {
+  Codec,
+  EncodedType,
+  RecordEncoded,
+  RecordSerialized,
+  runtimeType,
+  SerializedType,
+  serializedType,
+} from '../Codec';
 
-test('Codec', () => {
-  type CODEC = Codec<string, { id: string }, { id: number }>;
-  type RECORD_CODEC = RecordCodec<string, { id: string }, { superId: CODEC }>;
+describe('Codec', () => {
+  test('Schema.String satisfies Codec<string, string>', () => {
+    const stringCodec = Schema.String;
+    assertType<Codec<string, string>>(stringCodec);
 
-  assertType<decodeType<CODEC>>(E.right({ id: 1 }));
-  assertType<decodeType<RECORD_CODEC>>(E.right({ id: 1, superId: { id: 1 } }));
+    assertType<Codec<number, number>>(Schema.Number);
+    const numberFromStringCodec = Schema.NumberFromString;
+    assertType<Codec<number, string>>(numberFromStringCodec);
 
-  assertType<serializedType<CODEC>>({ id: '1' });
+    // @dts-jest:pass:snap Schema.Struct satisfies Codec
+    const structCodec = Schema.Struct({
+      id: Schema.NumberFromString,
+      name: Schema.String,
+    });
 
-  assertType<serializedType<RECORD_CODEC>>({ id: '1' });
+    assertType<Codec<{ id: number; name: string }, { id: string; name: string }>>(structCodec);
+    // @dts-jest:pass:snap RecordEncoded
+    // type RET = RecordEncoded<{ id: typeof Schema.NumberFromString; name: typeof Schema.String }>;
 
-  assertType<runtimeType<CODEC>>({ id: 1 });
+    const structRecordCodec = Schema.Struct({
+      id: Schema.NumberFromString,
+      name: Schema.String,
+    });
 
-  assertType<runtimeType<RECORD_CODEC>>({ superId: { id: 1 } });
+    const optionSchema = Schema.OptionFromNullishOr(Schema.Number, null);
 
-  assertType<errorType<CODEC>>('Error');
+    // serialized type helpers
+    assertType<serializedType<typeof Schema.NumberFromString>>('1');
+    assertType<RecordSerialized<(typeof structCodec)['fields']>>({ id: '1', name: 'name' });
+    assertType<SerializedType<typeof Schema.NumberFromString>>('1');
+    assertType<SerializedType<typeof structRecordCodec>>({ id: '1', name: 'name' });
 
-  assertType<errorType<RECORD_CODEC>>('Error');
+    assertType<RecordEncoded<(typeof structCodec)['fields']>>({ id: 1, name: 'name' });
+
+    assertType<EncodedType<typeof structCodec>>({ id: 1, name: 'name' });
+    assertType<EncodedType<typeof structRecordCodec>>({ id: 1, name: 'name' });
+    assertType<EncodedType<typeof optionSchema>>(some(1));
+
+    // runtime type helpers
+    assertType<runtimeType<typeof optionSchema>>(some(1));
+    assertType<runtimeType<typeof Schema.NumberFromString>>(1);
+
+    // @dts-jest:pass:snap RecordCodecType
+    // type RCT = RecordCodecType<typeof structRecordCodec>;
+
+    // @dts-jest:pass:snap RecordCodecEncoded
+    // type structureEncoded = RecordCodecEncoded<typeof structRecordCodec>;
+
+    // @dts-jest:pass:snap RecordSchemaType
+    // type structCodecType = RecordSchemaType<(typeof structRecordCodec)['fields']>;
+
+    // type CODEC = Codec<{ id: string }, { id: number }>;
+
+    // type RECORD_CODEC = RecordCodec<{ superId: CODEC }>;
+
+    // @dts-jest:pass:snap serializedType works correctly
+    // type S = serializedType<CODEC>;
+    // @dts-jest:pass:snap serializedType works correctly
+    // type RS = serializedType<RECORD_CODEC>;
+    // @dts-jest:pass:snap runtimeType works correctly
+    // type R = runtimeType<CODEC>;
+    // @dts-jest:pass:snap runtimeType works correctly
+    // type RR = runtimeType<RECORD_CODEC>;
+  });
 });

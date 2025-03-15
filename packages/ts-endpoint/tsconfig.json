@@ -1,13 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
     "lib": ["esnext"],
-    "outDir": "./lib",
     "rootDir": "./src",
-    "baseUrl": "./src",
+    "outDir": "./lib",
+    "tsBuildInfoFile": "lib/.tsbuildinfo",
     "esModuleInterop": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules"],
+  "include": ["src"]
 }

@@ -1,23 +1,19 @@
-import * as t from 'io-ts';
+import { Schema } from 'effect';
 
-export const HTTPProtocol = t.keyof(
-  {
-    http: null,
-    https: null,
-  },
-  'HTTPProtocol'
-);
-export type HTTPProtocol = t.TypeOf<typeof HTTPProtocol>;
+export const HTTPProtocol = Schema.Union(Schema.Literal("http"), Schema.Literal("https")).annotations({
+  title: 'HTTPProtocol',
+});
+export type HTTPProtocol = typeof HTTPProtocol.Type;
 
-export const HTTPClientConfig = t.exact(
-  t.intersection([
-    t.type({
-      protocol: HTTPProtocol,
-      host: t.string,
-    }),
-    t.partial({ port: t.union([t.number, t.undefined]) }),
-  ]),
-  'HTTPClientConfig'
-);
-export type HTTPClientConfig = t.TypeOf<typeof HTTPClientConfig>;
-export type StaticHTTPClientConfig = t.OutputOf<typeof HTTPClientConfig>;
+export const HTTPClientConfig = Schema.extend(
+  Schema.Struct({
+    protocol: HTTPProtocol,
+    host: Schema.String,
+  }),
+  Schema.partial(Schema.Struct({ port: Schema.Union(Schema.Number, Schema.Undefined) }))
+).annotations({
+  title: 'HTTPClientConfig',
+});
+
+export type HTTPClientConfig = typeof HTTPClientConfig.Type;
+export type StaticHTTPClientConfig = typeof HTTPClientConfig.Encoded;
