@@ -33,15 +33,9 @@ exports[`you cannot return a badly formatted error (type) should match snapshot 
           Type '{ foo: string; }' is missing the following properties from type 'IOError<{ 404: TypeC<{ error: StringC; }>; 401: TypeC<{ baz: StringC; }>; }>': details, status, name, message"
 `;
 
-exports[`you cannot return a badly formatted error (type) should match snapshot 2`] = `
-"Argument of type '{ kind: "KnownError"; error: string; }' is not assignable to parameter of type '{ kind: "DecodingError"; errors: unknown[]; } | { kind: CommunicationError; meta?: unknown; status: string; } | { kind: "KnownError"; status: 404; body: { error: string; }; } | { kind: "KnownError"; status: 401; body: { ...; }; }'.
-  Object literal may only specify known properties, and 'error' does not exist in type '{ kind: "DecodingError"; errors: unknown[]; } | { kind: CommunicationError; meta?: unknown; status: string; } | { kind: "KnownError"; status: 404; body: { error: string; }; } | { kind: "KnownError"; status: 401; body: { ...; }; }'."
-`;
+exports[`you cannot return a badly formatted error (type) should match snapshot 2`] = `"Object literal may only specify known properties, and 'error' does not exist in type '{ kind: "KnownError"; status: 404; body: { error: string; }; } | { kind: "KnownError"; status: 401; body: { baz: string; }; }'."`;
 
-exports[`you cannot return a badly formatted error (type) should match snapshot 3`] = `
-"Type '{ error: string; }' is not assignable to type '{ baz: string; }'.
-  Object literal may only specify known properties, and 'error' does not exist in type '{ baz: string; }'."
-`;
+exports[`you cannot return a badly formatted error (type) should match snapshot 3`] = `"Object literal may only specify known properties, and 'error' does not exist in type '{ baz: string; }'."`;
 
 exports[`you cannot return a badly formatted error with a different error builder (type) should match snapshot 1`] = `
 "Type '() => Promise<Either<O.Option<{ kind: string; status: number; body: { error: string; }; }>, HTTPResponse<{ crayons: string[]; }>>>' is not assignable to type 'TaskEither<Option<{ 404: TypeC<{ error: StringC; }>; 401: TypeC<{ baz: StringC; }>; }>, HTTPResponse<{ crayons: string[]; }>>'.
