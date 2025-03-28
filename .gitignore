@@ -4,6 +4,8 @@ lib
 .idea
 dist
 
+coverage
+
 .yarn/*
 !.yarn/cache
 !.yarn/patches
