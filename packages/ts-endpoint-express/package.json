@@ -16,9 +16,10 @@
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
+    "typecheck": "tsc --noEmit",
     "build": "tsc -b tsconfig.build.json",
-    "type-test": "jest --config=jest.typetests-config.js",
-    "runtime-test": "jest --config=jest.config.js",
+    "type-test": "vitest --typecheck.enabled=true",
+    "runtime-test": "vitest",
     "test": "pnpm runtime-test --passWithNoTests && pnpm type-test"
   },
   "peerDependencies": {
@@ -26,8 +27,8 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.15",
-    "io-ts": "^2.2.20",
-    "jest": "^29.5.0"
+    "io-ts": "^2.2.22",
+    "vitest": "^3.0.9"
   },
   "dependencies": {
     "fp-ts": "^2.13.1",

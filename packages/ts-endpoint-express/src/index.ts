@@ -1,16 +1,16 @@
+import * as express from 'express';
+import { sequenceS } from 'fp-ts/Apply';
+import * as E from 'fp-ts/Either';
+import { pipe } from 'fp-ts/pipeable';
+import * as TA from 'fp-ts/TaskEither';
 import {
   InferEndpointInstanceParams,
   MinimalEndpoint,
   MinimalEndpointInstance,
 } from 'ts-endpoint/lib';
-import * as express from 'express';
-import { Controller } from './Controller';
-import * as E from 'fp-ts/Either';
-import { sequenceS } from 'fp-ts/Apply';
-import { pipe } from 'fp-ts/pipeable';
-import * as TA from 'fp-ts/TaskEither';
 import { IOError } from 'ts-io-error/lib';
 import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';
+import { Controller } from './Controller';
 import { Kind, URIS } from './HKT';
 
 const getRouterMatcher = <E extends MinimalEndpoint>(
@@ -77,7 +77,7 @@ export const buildIOError = (errors: unknown[]) => {
  * Adds an endpoint to your router.
  */
 export const GetEndpointSubscriber = <M extends URIS = 'IOError'>(
-  buildDecodeError: (e: unknown[]) => Kind<M, unknown>
+  buildDecodeError: (e: unknown[]) => Kind<M, any>
 ): AddEndpoint<M> => (router, ...m) => (e, controller) => {
   const matcher = getRouterMatcher(router, e);
   const path = e.getStaticPath((param: string) => `:${param}`);

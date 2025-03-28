@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
     "lib": ["dom", "esnext"],
     "outDir": "./lib",
     "rootDir": "./src",
@@ -9,5 +8,5 @@
     "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.*", "**/*.typespec.*"]
+  "exclude": ["node_modules", "vitest.config.mjs"]
 }
