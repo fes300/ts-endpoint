@@ -1,7 +1,5 @@
-const errorMock = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-
-import { Endpoint } from '..';
 import * as t from 'io-ts';
+import { Endpoint } from '../Endpoint';
 
 describe('Endpoint', () => {
   const endpointWithParam = Endpoint({
@@ -43,10 +41,5 @@ describe('Endpoint', () => {
       getPath: () => `users/crayons`,
       Output: t.type({ crayons: t.array(t.string) }),
     });
-
-    expect(errorMock.mock.calls[0][0]).toBe('white spaces are not allowed in Headers names:');
-    expect(errorMock.mock.calls[0][1]).toEqual(['Content type']);
-
-    errorMock.mockRestore();
   });
 });

@@ -11,8 +11,9 @@
     "client"
   ],
   "scripts": {
-    "server": "yarn workspace server",
-    "client": "yarn workspace client",
-    "shared": "yarn workspace shared"
-  }
+    "server": "pnpm --filter server",
+    "client": "pnpm --filter client",
+    "shared": "pnpm --filter shared"
+  },
+  "packageManager": "pnpm@10.6.4"
 }

@@ -19,14 +19,14 @@
     "build": "rm -rf ./lib && tsc",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
-    "test": "yarn type-test && yarn runtime-test"
+    "test": "pnpm type-test && pnpm runtime-test"
   },
   "devDependencies": {
     "io-ts": "^2.2.20"
   },
   "dependencies": {
     "fp-ts": "^2.13.1",
-    "ts-io-error": "^2.0.0",
+    "ts-io-error": "workspace:*",
     "typelevel-ts": "^0.4.0"
   }
 }

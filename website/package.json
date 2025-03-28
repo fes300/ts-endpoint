@@ -4,7 +4,7 @@
     "clean": "rm -rf build/*",
     "examples": "docusaurus-examples",
     "start": "docusaurus start",
-    "build": "docusaurus build && yarn post:build",
+    "build": "docusaurus build && pnpm post:build",
     "post:build": "mkdir build/ts-endpoint && mv build/!(ts-endpoint) build/ts-endpoint/",
     "publish-gh-pages": "docusaurus-publish",
     "write-translations": "docusaurus-write-translations",

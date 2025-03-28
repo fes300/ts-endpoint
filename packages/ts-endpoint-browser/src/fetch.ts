@@ -7,7 +7,7 @@ import * as O from 'fp-ts/Option';
 import qs from 'qs';
 import { IOError, NetworkErrorStatus } from 'ts-io-error/lib';
 import { Codec } from 'ts-io-error/lib/Codec';
-import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from '.';
+import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from './GetHTTPClient';
 import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
 import { toArray } from 'fp-ts/lib/Record';

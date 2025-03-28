@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "start": "yarn corsproxy & webpack-dev-server --open"
+    "start": "pnpm corsproxy & webpack-dev-server --open"
   },
   "dependencies": {
     "@types/react": "^16.9.49",

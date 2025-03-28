@@ -13,27 +13,21 @@ jobs:
           # pulls all commits (needed for lerna / semantic release to correctly version)
           fetch-depth: '0'
 
-      - uses: actions/cache@v4
+      - uses: ./.github/actions/install-deps
         with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
+          hash: ${{ hashFiles('**/pnpm-lock.yaml') }}
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: install dependencies
-        run: yarn bootstrap-ci
+        run: pnpm install
 
       - name: build
-        run: yarn build
+        run: pnpm build
 
       - name: test
-        run: yarn test
+        run: pnpm test
 
       - name: git login
         uses: oleksiyrudenko/gha-git-credentials@v2
@@ -44,5 +38,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn pre-release
-          yarn npm-publish-beta
+          pnpm pre-release
+          pnpm npm-publish-beta

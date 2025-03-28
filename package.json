@@ -17,27 +17,27 @@
     "typescript": "^5.8.2"
   },
   "scripts": {
-    "ts-endpoint": "yarn workspace ts-endpoint",
-    "ts-endpoint-express": "yarn workspace ts-endpoint-express",
-    "ts-endpoint-browser": "yarn workspace ts-endpoint-browser",
-    "website": "yarn workspace @ts-endpoint/docs",
+    "ts-endpoint": "pnpm --filter ts-endpoint",
+    "ts-io-error": "pnpm --filter ts-io-error",
+    "ts-endpoint-browser": "pnpm --filter ts-endpoint-browser",
+    "ts-endpoint-express": "pnpm --filter ts-endpoint-express",
+    "website": "pnpm --filter @ts-endpoint/docs",
     "prepare": "husky install",
-    "build": "lerna run build",
-    "bootstrap": "yarn && lerna bootstrap",
-    "bootstrap-ci": "yarn install --frozen-lockfile && lerna bootstrap",
+    "build": "pnpm -r run build",
+    "build:packages": "pnpm --filter 'ts-*' run build",
     "release": "lerna publish --yes --conventional-graduate --force-publish --skip-npm",
     "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag beta --skip-npm",
-    "npm-publish": "lerna run npm-publish",
-    "postversion": "lerna run postversion",
-    "npm-publish-beta": "lerna run npm-publish-beta",
-    "test": "lerna run test"
+    "npm-publish": "pnpm -r run npm-publish",
+    "postversion": "pnpm -r run postversion",
+    "npm-publish-beta": "pnpm -r run npm-publish-beta",
+    "test": "pnpm -r run test"
   },
   "dependencies": {
     "fp-ts": "^2.13.1",
     "io-ts": "^2.2.20"
   },
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "pnpm@10.6.4",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }

@@ -6,8 +6,9 @@ sidebar_label: setting up `ts-endpoint`
 
 ### install
 
-```
-$> yarn add ts-endpoint
+```sh
+# add ts-endpoint dep
+$ pnpm add ts-endpoint
 ```
 
 ### description
