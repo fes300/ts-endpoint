@@ -4,6 +4,8 @@
     "target": "es5",
     "lib": ["esnext"],
     "outDir": "./lib",
+    "rootDir": "./src",
+    "baseUrl": "./src",
     "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
     "esModuleInterop": true
   },
