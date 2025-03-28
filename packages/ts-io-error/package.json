@@ -23,6 +23,6 @@
     "test": "yarn runtime-test --passWithNoTests && yarn type-test --passWithNoTests"
   },
   "devDependencies": {
-    "@types/node": "^16"
+    "@types/node": "^18"
   }
 }

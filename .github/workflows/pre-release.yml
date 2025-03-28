@@ -21,8 +21,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '13.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 16
 
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
