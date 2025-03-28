@@ -5,7 +5,7 @@ import {
   RecordCodec,
   runtimeType,
   serializedType,
-} from '../../lib/Codec';
+} from '../Codec';
 
 type CODEC = Codec<string, { id: string }, { id: number }>;
 type RECORD_CODEC = RecordCodec<string, { id: string }, { superId: CODEC }>;

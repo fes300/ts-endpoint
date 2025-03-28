@@ -14,7 +14,7 @@
   },
   "scripts": {
     "clean": "rm -rf lib/*",
-    "build": "tsc -b",
+    "build": "tsc -b tsconfig.build.json",
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
