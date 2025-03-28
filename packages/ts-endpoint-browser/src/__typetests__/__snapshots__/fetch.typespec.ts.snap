@@ -16,10 +16,7 @@ exports[`should not allow calls not specifing Query (type) should match snapshot
   Property 'Query' is missing in type '{ Params: { id: string; }; }' but required in type '{ Params: { id: string; }; Headers?: never; Query: { color: string; }; Body?: never; }'."
 `;
 
-exports[`should not allow calls specifing Params not declared in the endpoint (type) should match snapshot 1`] = `
-"Type '{ id: string; foo: string; }' is not assignable to type '{ id: string; }'.
-  Object literal may only specify known properties, and 'foo' does not exist in type '{ id: string; }'."
-`;
+exports[`should not allow calls specifing Params not declared in the endpoint (type) should match snapshot 1`] = `"Object literal may only specify known properties, and 'foo' does not exist in type '{ id: string; }'."`;
 
 exports[`should not allow calls with Body when input is not defined (type) should match snapshot 1`] = `"Argument of type '{ Body: number; }' is not assignable to parameter of type 'void'."`;
 
