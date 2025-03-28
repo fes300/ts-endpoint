@@ -6,8 +6,8 @@ sidebar_label: setting up `ts-endpoint-browser`
 
 ### install
 
-```
-$> yarn add ts-endpoint-browser
+```sh
+$> pnpm add ts-endpoint-browser
 ```
 
 ### description

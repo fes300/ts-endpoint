@@ -8,7 +8,7 @@ sidebar_label: setting up `ts-endpoint-express`
 
 ```sh
 # install ts-endpoint-express
-$ yarn add ts-endpoint-express
+$ pnpm add ts-endpoint-express
 ```
 
 ### peerDependencies

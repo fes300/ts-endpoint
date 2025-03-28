@@ -20,7 +20,7 @@
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
     "type-test": "jest --config=jest.typetests-config.js",
     "runtime-test": "jest --config=jest.config.js",
-    "test": "yarn runtime-test --passWithNoTests && yarn type-test --passWithNoTests"
+    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests"
   },
   "devDependencies": {
     "@types/node": "^18"

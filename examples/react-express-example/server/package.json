@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --build",
-    "start": "yarn build && node dist/index.js"
+    "start": "pnpm build && node dist/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",
@@ -15,8 +15,8 @@
   "dependencies": {
     "express": "^4.17.3",
     "fp-ts": "^2.8.2",
-    "ts-endpoint": "^2.0.0",
-    "ts-endpoint-express": "^2.0.0",
-    "ts-io-error": "^2.0.0"
+    "ts-endpoint": "workspace:*",
+    "ts-endpoint-express": "workspace:*",
+    "ts-io-error": "workspace:*"
   }
 }

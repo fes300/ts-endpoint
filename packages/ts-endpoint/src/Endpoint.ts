@@ -1,8 +1,8 @@
 import { pipe } from 'fp-ts/function';
 import * as R from 'fp-ts/Record';
-import { addSlash, InferEndpointParams } from './helpers';
 import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';
 import { MinimalEndpoint } from '.';
+import { addSlash, InferEndpointParams } from './helpers';
 
 export type HTTPMethod = 'OPTIONS' | 'HEAD' | 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
@@ -123,15 +123,16 @@ export function Endpoint<
   P extends RecordCodec<any, any> | undefined = undefined,
   E extends EndpointErrors<never, Codec<any, any, any>> | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
-  const headersWithWhiteSpaces = pipe(
-    e.Input?.Headers?.props ?? {},
-    R.filterWithIndex((k: string) => k.indexOf(' ') !== -1),
-    R.keys
-  );
+  // TODO: check if the headers are valid?
+  // const headersWithWhiteSpaces = pipe(
+  //   e.Input?.Headers?.props ?? {},
+  //   R.filterWithIndex((k: string) => k.indexOf(' ') !== -1),
+  //   R.keys
+  // );
 
-  if (headersWithWhiteSpaces.length > 0) {
-    console.error('white spaces are not allowed in Headers names:', headersWithWhiteSpaces);
-  }
+  // if (headersWithWhiteSpaces.length > 0) {
+  //   console.error('white spaces are not allowed in Headers names:', headersWithWhiteSpaces);
+  // }
 
   return ({
     ...e,

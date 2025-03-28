@@ -16,17 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: ./.github/actions/install-deps
         with:
-          node-version: 16
-          cache: "yarn"
-          cache-dependency-path: yarn.lock
-
-      - name: install dependencies
-        run: yarn
+          hash: ${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: build
-        run: yarn build
+        run: pnpm build
 
       - name: test
-        run: yarn test
+        run: pnpm test
