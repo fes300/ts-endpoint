@@ -5,8 +5,9 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "baseUrl": "./src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "tsBuildInfoFile": "lib/.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "vitest.config.mjs"]
+  "exclude": ["node_modules"]
 }

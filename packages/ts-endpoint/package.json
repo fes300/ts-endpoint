@@ -1,8 +1,12 @@
 {
   "name": "ts-endpoint",
-  "version": "2.0.1-alpha.0",
+  "version": "3.0.0",
   "description": "Simple endpoint definition for fullstack safety.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F3"
@@ -16,18 +20,18 @@
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
-    "typecheck": "tsc --noEmit",
     "build": "tsc -b tsconfig.build.json",
     "type-test": "vitest --typecheck.enabled=true",
     "runtime-test": "vitest",
-    "test": "pnpm type-test && pnpm runtime-test"
+    "test": "pnpm type-test && pnpm runtime-test",
+    "clean": "rm -rf ./lib"
   },
   "devDependencies": {
-    "io-ts": "^2.2.22",
-    "vitest": "^3.0.9"
+    "io-ts": "^2.2.0",
+    "effect": "^3.14.2"
   },
   "dependencies": {
-    "fp-ts": "^2.13.1",
+    "fp-ts": "^2.16.9",
     "ts-io-error": "workspace:*",
     "typelevel-ts": "^0.4.0"
   }

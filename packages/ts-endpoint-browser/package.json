@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-browser",
-  "version": "2.0.1-alpha.0",
+  "version": "3.0.0",
   "description": "Adds typesafe endpoints to your browser.",
   "main": "index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser",
@@ -25,13 +25,13 @@
   "devDependencies": {
     "@types/qs": "^6.9.7",
     "io-ts": "^2.2.22",
+    "effect" : "^3.14.0",
     "isomorphic-fetch": "^3.0.0",
     "vitest": "^3.0.9",
     "jsdom": "^26.0.0"
   },
   "dependencies": {
-    "fp-ts": "^2.13.1",
-    "qs": "^6.14.0",
+    "fp-ts": "^2.16.9",
     "ts-endpoint": "workspace:*",
     "ts-io-error": "workspace:*"
   }

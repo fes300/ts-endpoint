@@ -1,27 +1,24 @@
-import { EndpointErrors, MinimalEndpointInstance } from 'ts-endpoint/lib';
-import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { pipe } from 'fp-ts/pipeable';
-import { PathReporter } from 'io-ts/PathReporter';
-import * as TA from 'fp-ts/TaskEither';
-import * as O from 'fp-ts/Option';
-import qs from 'qs';
-import { IOError, NetworkErrorStatus } from 'ts-io-error/lib';
-import { Codec } from 'ts-io-error/lib/Codec';
-import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from './GetHTTPClient';
-import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
 import { toArray } from 'fp-ts/lib/Record';
+import * as O from 'fp-ts/Option';
+import { pipe } from 'fp-ts/pipeable';
+import * as TA from 'fp-ts/TaskEither';
+import qs from 'qs';
+import { EndpointErrors, MinimalEndpointInstance } from 'ts-endpoint';
+import { Codec, IOError, NetworkErrorStatus } from 'ts-io-error';
+import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
+import { FetchClient, GetHTTPClient, GetHTTPClientOptions } from './GetHTTPClient';
 
 declare module './HKT' {
   interface URItoKind<A> {
-    IOError: A extends Record<string, Codec<any, any, any>> ? IOError<A> : never;
+    IOError: A extends Record<string, Codec<any, any, never>> ? IOError<A> : never;
   }
 }
 
 export const GetFetchHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }>(
   config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
-  options?: GetHTTPClientOptions
+  options: GetHTTPClientOptions
 ) => GetHTTPClient(config, endpoints, useBrowserFetch, options);
 
 const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
@@ -49,7 +46,7 @@ const getResponseJson = (r: Response, ignoreNonJSONResponse: boolean) => {
 export const useBrowserFetch = <E extends MinimalEndpointInstance>(
   baseURL: string,
   e: E,
-  options?: GetHTTPClientOptions
+  options: GetHTTPClientOptions
 ): FetchClient<E, 'IOError'> => {
   return (i: any) => {
     const path = `${baseURL}${e.getPath(i?.Params)}${i?.Query ? `?${qs.stringify(i?.Query)}` : ''}`;
@@ -93,7 +90,7 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
         if (!r.ok) {
           if (e.Errors !== undefined) {
             const actualKnownError = pipe(
-              e.Errors as EndpointErrors<string, Codec<any, any, any>>,
+              e.Errors as EndpointErrors<string, Codec<any, any>>,
               toArray,
               findFirst(([status]) => {
                 return status === r.status.toString();
@@ -103,18 +100,13 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
             if (O.isSome(actualKnownError)) {
               const parsedKnownError = pipe(
                 responseJsonWithDefault,
-                TA.map((body) => actualKnownError.value[1].decode(body)),
+                TA.map((body) => options.decode(actualKnownError.value[1])(body)),
                 TA.chain((validation) => {
                   return pipe(
                     TA.fromEither(validation),
                     TA.fold(
-                      (errors: unknown[]) => {
-                        return TA.left(
-                          new IOError(`Error decoding server KnownError response: ${errors}`, {
-                            kind: 'DecodingError',
-                            errors,
-                          })
-                        );
+                      (error) => {
+                        return TA.left(error);
                       },
 
                       (parsedError) => {
@@ -169,17 +161,8 @@ export const useBrowserFetch = <E extends MinimalEndpointInstance>(
           TA.chain((json) => {
             return pipe(
               options?.mapInput ? options.mapInput(json) : json,
-              e.Output.decode,
+              options.decode(e.Output),
               TA.fromEither,
-              TA.mapLeft((errors) => {
-                return new IOError(
-                  `Error decoding server response: ${PathReporter.report(E.left(errors))}`,
-                  {
-                    kind: 'DecodingError',
-                    errors,
-                  }
-                );
-              })
             );
           })
         );

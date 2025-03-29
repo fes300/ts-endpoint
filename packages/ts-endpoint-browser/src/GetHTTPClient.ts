@@ -1,13 +1,12 @@
-import { MinimalEndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint/lib';
-import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { TaskEither } from 'fp-ts/TaskEither';
 import { Either } from 'fp-ts/Either';
-import * as R from 'fp-ts/Record';
-import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
-import { IOError } from 'ts-io-error/lib';
 import { pipe } from 'fp-ts/function';
+import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
+import * as R from 'fp-ts/Record';
+import { TaskEither } from 'fp-ts/TaskEither';
+import { MinimalEndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint';
+import { Codec, IOError, runtimeType } from 'ts-io-error';
+import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 import { Kind, URIS } from './HKT';
-import { Codec, runtimeType } from 'ts-io-error/lib/Codec';
 
 export declare type RequiredKeys<T> = {
   [K in keyof T]: {} extends Pick<T, K> ? never : K;
@@ -57,17 +56,25 @@ export type GetHTTPClientOptions = {
    * N.B. This is a last resource and you should avoid it since it holds no static guarantee
    */
   mapInput?: (a: any) => any;
+
+  /**
+   * Used to map the response JSON before parsing it with the Endpoint codecs.
+   * N.B. This is a last resource and you should avoid it since it holds no static guarantee
+   */
+  decode: <A, I, C = never>(
+    schema: Codec<A, I, C>,
+  ) => (input: unknown) => Either<IOError, I>;
 };
 
 export const GetHTTPClient = <A extends { [key: string]: MinimalEndpointInstance }, M extends URIS>(
-  c: HTTPClientConfig | StaticHTTPClientConfig,
+  config: HTTPClientConfig | StaticHTTPClientConfig,
   endpoints: A,
   getFetchClient: <E extends MinimalEndpointInstance>(
     baseURL: string,
     endpoint: E,
-    options?: GetHTTPClientOptions
+    options: GetHTTPClientOptions
   ) => FetchClient<E, M>,
-  options?: GetHTTPClientOptions
+  options: GetHTTPClientOptions
 ): HTTPClient<A, M> => {
   const headersWithWhiteSpaces = pipe(
     options?.defaultHeaders ?? {},
@@ -78,8 +85,7 @@ export const GetHTTPClient = <A extends { [key: string]: MinimalEndpointInstance
   if (headersWithWhiteSpaces.length > 0) {
     console.error('white spaces are not allowed in defaultHeaders names:', headersWithWhiteSpaces);
   }
-
-  const config = HTTPClientConfig.is(c) ? HTTPClientConfig.encode(c) : c;
+;
   const baseURL = `${config.protocol}://${config.host}${
     config.port !== undefined ? `:${config.port.toString()}` : ''
   }`;

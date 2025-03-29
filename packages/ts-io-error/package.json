@@ -1,8 +1,22 @@
 {
   "name": "ts-io-error",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "defines errors incurring in client-server communication.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    },
+    "./Codec": {
+      "import": "./lib/Codec.js",
+      "require": "./lib/Codec.js"
+    }
+  },
+  "files": [
+    "lib"
+  ],
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F10"
@@ -19,12 +33,15 @@
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
-    "type-test": "vitest --typecheck.enabled=true",
-    "runtime-test": "vitest",
-    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests"
+    "type-test": "vitest --typecheck",
+    "runtime-test": "vitest run --typecheck.enabled=false",
+    "test": "vitest run"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "vitest": "^3.0.9"
+    "@types/node": "^20.17.24",
+    "vitest": "^3.0.8"
+  },
+  "dependencies": {
+    "effect": "^3.14.2"
   }
 }
