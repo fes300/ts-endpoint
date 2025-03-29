@@ -11,7 +11,7 @@
         "**/node_modules/**",
         "**/*.md",
         "**/*.spec.*",
-        "**/*.typespec.*",
+        "**/*.test-d.*",
         "**/package.json"
       ],
       "conventionalCommits": true,

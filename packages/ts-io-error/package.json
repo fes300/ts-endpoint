@@ -14,15 +14,17 @@
   },
   "scripts": {
     "clean": "rm -rf lib/*",
+    "typecheck": "tsc --noEmit",
     "build": "tsc -b tsconfig.build.json",
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
-    "type-test": "jest --config=jest.typetests-config.js",
-    "runtime-test": "jest --config=jest.config.js",
+    "type-test": "vitest --typecheck.enabled=true",
+    "runtime-test": "vitest",
     "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests"
   },
   "devDependencies": {
-    "@types/node": "^20"
+    "@types/node": "^20",
+    "vitest": "^3.0.9"
   }
 }

@@ -7,13 +7,15 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "typeRoots": ["node_modules/@types", "node_modules/vitest/globals"]
   },
-  "exclude": ["node_modules", "**/.stories.tsx"],
+  "exclude": ["node_modules", "**/.stories.tsx", "vitest.config.mjs", "vitest.workspace.mts"],
   "files": ["./typings.d.ts"]
 }

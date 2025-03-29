@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { describe, expect, it } from 'vitest';
 import { Endpoint } from '../Endpoint';
 
 describe('Endpoint', () => {
