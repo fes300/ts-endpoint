@@ -1,6 +1,6 @@
 import { right } from 'fp-ts/Either';
 import * as t from 'io-ts';
-import { Endpoint } from 'ts-endpoint/lib';
+import { Endpoint } from 'ts-endpoint';
 import { assertType, describe, expectTypeOf, it } from 'vitest';
 import { StaticHTTPClientConfig } from '../config';
 import { GetFetchHTTPClient } from '../fetch';

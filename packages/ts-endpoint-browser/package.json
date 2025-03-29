@@ -2,7 +2,7 @@
   "name": "ts-endpoint-browser",
   "version": "2.0.1-alpha.0",
   "description": "Adds typesafe endpoints to your browser.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=project%3Afes300%2Fts-endpoint%2F6"
@@ -12,6 +12,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
     "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",

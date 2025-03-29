@@ -1,6 +1,6 @@
 import { pipe } from 'fp-ts/function';
 import * as R from 'fp-ts/Record';
-import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';
+import { Codec, RecordCodec, runtimeType } from 'ts-io-error';
 import { MinimalEndpoint } from '.';
 import { addSlash, InferEndpointParams } from './helpers';
 
