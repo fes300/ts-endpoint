@@ -2,8 +2,8 @@ import * as express from 'express';
 import { left, right } from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import * as t from 'io-ts';
-import { Endpoint } from 'ts-endpoint/lib';
-import { IOError } from 'ts-io-error/lib';
+import { Endpoint } from 'ts-endpoint';
+import { IOError } from 'ts-io-error';
 import { assertType, expectTypeOf, test } from 'vitest';
 import { buildIOError, GetEndpointSubscriber } from '../index';
 

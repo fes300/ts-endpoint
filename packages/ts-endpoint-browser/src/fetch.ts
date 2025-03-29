@@ -1,16 +1,15 @@
-import { EndpointErrors, MinimalEndpointInstance } from 'ts-endpoint/lib';
-import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { pipe } from 'fp-ts/pipeable';
-import { PathReporter } from 'io-ts/PathReporter';
-import * as TA from 'fp-ts/TaskEither';
-import * as O from 'fp-ts/Option';
-import qs from 'qs';
-import { IOError, NetworkErrorStatus } from 'ts-io-error/lib';
-import { Codec } from 'ts-io-error/lib/Codec';
-import { GetHTTPClient, FetchClient, GetHTTPClientOptions } from './GetHTTPClient';
-import * as E from 'fp-ts/Either';
 import { findFirst } from 'fp-ts/Array';
+import * as E from 'fp-ts/Either';
 import { toArray } from 'fp-ts/lib/Record';
+import * as O from 'fp-ts/Option';
+import { pipe } from 'fp-ts/pipeable';
+import * as TA from 'fp-ts/TaskEither';
+import { PathReporter } from 'io-ts/PathReporter';
+import qs from 'qs';
+import { EndpointErrors, MinimalEndpointInstance } from 'ts-endpoint';
+import { Codec, IOError, NetworkErrorStatus } from 'ts-io-error';
+import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
+import { FetchClient, GetHTTPClient, GetHTTPClientOptions } from './GetHTTPClient';
 
 declare module './HKT' {
   interface URItoKind<A> {

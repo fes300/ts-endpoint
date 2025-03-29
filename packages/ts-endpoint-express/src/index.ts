@@ -7,9 +7,8 @@ import {
   InferEndpointInstanceParams,
   MinimalEndpoint,
   MinimalEndpointInstance,
-} from 'ts-endpoint/lib';
-import { IOError } from 'ts-io-error/lib';
-import { Codec, RecordCodec, runtimeType } from 'ts-io-error/lib/Codec';
+} from 'ts-endpoint';
+import { Codec, IOError, RecordCodec, runtimeType } from 'ts-io-error';
 import { Controller } from './Controller';
 import { Kind, URIS } from './HKT';
 

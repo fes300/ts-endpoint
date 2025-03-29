@@ -1,13 +1,12 @@
-import { MinimalEndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint/lib';
-import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
-import { TaskEither } from 'fp-ts/TaskEither';
 import { Either } from 'fp-ts/Either';
-import * as R from 'fp-ts/Record';
 import { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
-import { IOError } from 'ts-io-error/lib';
+import * as R from 'fp-ts/Record';
+import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
+import { MinimalEndpointInstance, TypeOfEndpointInstance } from 'ts-endpoint';
+import { Codec, IOError, runtimeType } from 'ts-io-error';
 import { Kind, URIS } from './HKT';
-import { Codec, runtimeType } from 'ts-io-error/lib/Codec';
+import { HTTPClientConfig, StaticHTTPClientConfig } from './config';
 
 export declare type RequiredKeys<T> = {
   [K in keyof T]: {} extends Pick<T, K> ? never : K;

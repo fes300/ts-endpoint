@@ -1,8 +1,8 @@
 import { isLeft } from 'fp-ts/Either';
 import * as t from 'io-ts';
 import 'isomorphic-fetch';
-import { Endpoint } from 'ts-endpoint/lib';
-import { DecodeErrorStatus, IOError, NetworkErrorStatus } from 'ts-io-error/lib';
+import { Endpoint } from 'ts-endpoint';
+import { DecodeErrorStatus, IOError, NetworkErrorStatus } from 'ts-io-error';
 import { describe, expect, it, vi } from 'vitest';
 import { StaticHTTPClientConfig } from '../config';
 import { GetFetchHTTPClient } from '../fetch';

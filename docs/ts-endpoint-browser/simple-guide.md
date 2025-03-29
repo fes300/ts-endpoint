@@ -12,7 +12,7 @@ If you want to derive an HTTP client with zero effort, you can use the utility `
 
 ```ts
 import { getCrayons, createUser } from "./endpoints"
-import { GetFetchHTTPClient } from 'ts-endpoint-browser/lib/fetch';
+import { GetFetchHTTPClient } from 'ts-endpoint-browser';
 
 const fetchClient = GetFetchHTTPClient(
   { protocol: 'http', host: 'google' },

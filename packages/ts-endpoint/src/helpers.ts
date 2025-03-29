@@ -1,7 +1,6 @@
-import { EndpointInstance, HTTPMethod } from '.';
+import { Codec, RecordCodec, runtimeType } from 'ts-io-error';
 import { RequiredKeys } from 'typelevel-ts';
-import { Endpoint, EndpointErrors } from './Endpoint';
-import { Codec, runtimeType, RecordCodec } from 'ts-io-error/lib/Codec';
+import { Endpoint, EndpointErrors, EndpointInstance, HTTPMethod } from './Endpoint';
 
 export const addSlash = (s: string) => (s.substr(0, 1) === '/' ? s : `/${s}`);
 
