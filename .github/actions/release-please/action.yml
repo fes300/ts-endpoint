@@ -1,0 +1,64 @@
+---
+name: "Release libs"
+description: "Automate releases based on conventional commits"
+
+inputs:
+  build-path:
+    description: "Build a release from a path other than the repository's root"
+    default: "."
+  github-npm-registry-token:
+    description: ""
+    required: false
+  github-token:
+    description: "GitHub OAuth Token"
+    required: false
+  node-version:
+    description: "The version of node to use"
+    default: "18"
+  path:
+    description: "Create a release from a path other than the repository's root"
+    default: "."
+
+outputs:
+  releases_created:
+    description: "true if the release was created, false otherwise"
+    value: ${{ steps.create_output.outputs.releases_created }}
+  pr:
+    description: "The JSON string of the PullRequest object (undefined if no release created)"
+    value: ${{ steps.create_output.outputs.pr }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout ${{ github.repository }}"
+      uses: actions/checkout@v4
+      with:
+        fetch-tags: true
+
+    - name: "Setup node${{ inputs.node-version }} and GitHub npm registry"
+      uses: actions/setup-node@v4
+      if: ${{ env.NODE == 'true' }}
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: ${{ steps.package-manager-info.outputs.package-manager }}
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.github-npm-registry-token }}
+
+    - name: "Run ${{ steps.package-manager-info.outputs.package-manager }} release"
+      if: ${{ env.NODE == 'true' }}
+      shell: bash
+      run: cd ${{ inputs.build-path }} && ${{ steps.package-manager-info.outputs.package-manager }} release
+
+    - name: "Run release-please"
+      uses: googleapis/release-please-action@v4
+      id: release
+      with:
+        release-type: ${{ env.MANIFEST != 'true' && inputs.release-type || '' }}
+        path: ""
+
+    - name: "Generate output"
+      id: create_output
+      shell: bash
+      run: |
+        echo "releases_created=$(echo ${{ steps.release.outputs.releases_created }})" >> $GITHUB_OUTPUT
+        echo "pr=$(echo ${{ steps.release.outputs.pr }})" >> $GITHUB_OUTPUT

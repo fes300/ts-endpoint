@@ -1,6 +1,9 @@
 {
   "name": "root",
   "private": true,
+  "repository": {
+    "url": "https://github.com/fes300/ts-endpoint"
+  },
   "workspaces": [
     "packages/*",
     "website"
@@ -15,8 +18,8 @@
     "typecheck": "pnpm -r run typecheck",
     "build": "pnpm -r run build",
     "build:packages": "pnpm --filter 'ts-*' run build",
-    "release": "lerna publish --yes --conventional-graduate --force-publish --skip-npm",
-    "pre-release": "lerna publish --yes --conventional-prerelease --npm-tag beta --skip-npm",
+    "release:dry-run": "pnpm publish -r --dry-run",
+    "pre-release": "release-please release-pr --prerelease-type alpha --dry-run --repo-url https://github.com/fes300/ts-endpoint --target-branch chore/setup-release-please",
     "npm-publish": "pnpm -r run npm-publish",
     "postversion": "pnpm -r run postversion",
     "npm-publish-beta": "pnpm -r run npm-publish-beta",
@@ -32,12 +35,12 @@
     "@commitlint/cli": "^12.0.0",
     "@commitlint/config-conventional": "^12.0.0",
     "husky": "^8.0.3",
-    "lerna": "^4.0.0",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.9"
+    "vitest": "^3.0.9",
+    "release-please": "^17.0.0"
   },
   "packageManager": "pnpm@10.6.4",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-browser",
-  "version": "2.0.1-alpha.0",
+  "version": "2.0.0",
   "description": "Adds typesafe endpoints to your browser.",
   "main": "lib/index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-browser",
@@ -23,7 +23,9 @@
     "build": "tsc -b tsconfig.build.json",
     "type-test": "vitest --typecheck.enabled=true",
     "runtime-test": "vitest",
-    "test": "pnpm runtime-test && pnpm type-test"
+    "test": "pnpm runtime-test && pnpm type-test",
+    "clean": "rm -rf lib/*",
+    "prepublishOnly": "pnpm clean && pnpm build"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",

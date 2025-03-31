@@ -24,7 +24,8 @@
     "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
     "type-test": "vitest --typecheck.enabled=true",
     "runtime-test": "vitest",
-    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests"
+    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests",
+    "prepublish": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    ".": {
+      "exclude-paths": ["packages"]
+    },
+    "packages/ts-io-error": {
+      "component": "ts-io-error",
+      "initial-version": "2.0.0"
+    },
+    "packages/ts-endpoint": {
+      "component": "ts-endpoint",
+      "initial-version": "2.0.0"
+    },
+    "packages/ts-endpoint-express": {
+      "component": "ts-endpoint-express",
+      "initial-version": "2.0.0"
+    },
+    "packages/ts-endpoint-browser": {
+      "component": "ts-endpoint-browser",
+      "initial-version": "2.0.0"
+    }
+  },
+  "include-v-in-tag": false,
+  "tag-separator": "@",
+  "plugins": ["node-workspace"],
+  "changelog-sections": [
+    {
+      "type": "chore",
+      "section": "Miscellaneous Chores",
+      "hidden": false
+    },
+    {
+      "type": "feat",
+      "section": "Features",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes",
+      "hidden": false
+    }
+  ]
+}
