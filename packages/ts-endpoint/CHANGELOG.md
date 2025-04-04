@@ -1,17 +1,7 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## [2.0.1-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0...ts-endpoint@2.0.1-alpha.0) (2023-01-26)
-
-
-### Bug Fixes
-
-* accept body also for endpoint with 'DELETE' method ([#139](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/issues/139)) ([6c83305](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/commit/6c833050ccab10f68390f45793ff2f6471f9d91b))
-
-
-
 
 
 # [2.0.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint/compare/ts-endpoint@2.0.0-alpha.68...ts-endpoint@2.0.0) (2021-04-30)

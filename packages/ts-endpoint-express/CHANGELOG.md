@@ -1,23 +1,7 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## [2.0.1-alpha.1](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.1-alpha.0...ts-endpoint-express@2.0.1-alpha.1) (2023-04-11)
-
-**Note:** Version bump only for package ts-endpoint-express
-
-
-
-
-
-## [2.0.1-alpha.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0...ts-endpoint-express@2.0.1-alpha.0) (2023-01-26)
-
-**Note:** Version bump only for package ts-endpoint-express
-
-
-
-
 
 # [2.0.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express/compare/ts-endpoint-express@2.0.0-alpha.72...ts-endpoint-express@2.0.0) (2021-04-30)
 

@@ -13,18 +13,17 @@
     "access": "public"
   },
   "files": [
-    "lib"
+    "lib/**/*.js",
+    "lib/**/*.d.ts"
   ],
   "scripts": {
     "clean": "rm -rf lib/*",
     "typecheck": "tsc --noEmit",
     "build": "tsc -b tsconfig.build.json",
-    "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
-    "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
-    "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
     "type-test": "vitest --typecheck.enabled=true",
     "runtime-test": "vitest",
-    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests"
+    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test --passWithNoTests",
+    "prepublish": "pnpm clean && pnpm build"
   },
   "devDependencies": {
     "@types/node": "^20",
