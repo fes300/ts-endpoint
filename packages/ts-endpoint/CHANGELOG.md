@@ -987,6 +987,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [2.0.1](https://github.com/fes300/ts-endpoint/compare/ts-endpoint@2.0.0...ts-endpoint@2.0.1) (2025-04-06)
+
+
+### Miscellaneous Chores
+
+* bump typescript to 5.8.2 ([#171](https://github.com/fes300/ts-endpoint/issues/171)) ([52fd3ea](https://github.com/fes300/ts-endpoint/commit/52fd3ea54a8c3c963e985ddafe47b6dbebd612fb))
+* defined proper tsconfig.build.json files ([#174](https://github.com/fes300/ts-endpoint/issues/174)) ([1d641bd](https://github.com/fes300/ts-endpoint/commit/1d641bd0fc931a6f1ac89b5f768aae19d553752f))
+* packages correct main file export ([#176](https://github.com/fes300/ts-endpoint/issues/176)) ([e5521c7](https://github.com/fes300/ts-endpoint/commit/e5521c7470d76da5df0991d591d5ecdb09713feb))
+* replaced jest with vitest ([#173](https://github.com/fes300/ts-endpoint/issues/173)) ([8a6a7ca](https://github.com/fes300/ts-endpoint/commit/8a6a7ca08427035b2f02e4bce38d0892cf3e0f1d))
+* replaced yarn with pnpm ([#168](https://github.com/fes300/ts-endpoint/issues/168)) ([4d66064](https://github.com/fes300/ts-endpoint/commit/4d66064a3bea8cf040fbdeeb62efd064e6e1cdf1))
+* setup release-please ([#179](https://github.com/fes300/ts-endpoint/issues/179)) ([07ed0b3](https://github.com/fes300/ts-endpoint/commit/07ed0b32c72fe0a7b52b3a52590c3fdeeb3e367e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * ts-io-error bumped to 2.0.1
+
 ## 1.4.1-alpha.0 (2020-07-17)
 
 **Note:** Version bump only for package ts-endpoint
