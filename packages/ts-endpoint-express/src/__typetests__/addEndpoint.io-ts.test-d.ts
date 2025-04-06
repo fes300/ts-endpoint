@@ -1,9 +1,11 @@
 import * as express from 'express';
 import { left, right } from 'fp-ts/Either';
+import * as E from 'fp-ts/lib/Either';
+import { pipe } from 'fp-ts/lib/function';
 import * as O from 'fp-ts/Option';
 import * as t from 'io-ts';
 import { Endpoint } from 'ts-endpoint';
-import { IOError } from 'ts-io-error';
+import { IOError, IOTSCodec } from 'ts-io-error';
 import { assertType, expectTypeOf, test } from 'vitest';
 import { buildIOError, GetEndpointSubscriber } from '../index';
 
@@ -33,13 +35,26 @@ const postEndpointWithErrors = Endpoint({
   Method: 'POST',
   getPath: () => `users/crayons`,
   Output: t.type({ crayons: t.array(t.string) }),
-  Errors: { 404: t.type({ error: t.string }), 401: t.type({ baz: t.string }) },
+  Errors: {
+    404: t.type({ error: t.string }),
+    401: t.type({ baz: t.string })
+  },
 });
 
 const router = express.Router();
-const registerRouter = GetEndpointSubscriber(buildIOError);
+const registerRouter = GetEndpointSubscriber({
+  buildDecodeError: buildIOError,
+  decode: (schema) => (input: unknown) => {
+    return pipe(
+      input,
+      (schema as IOTSCodec<any, any>).decode,
+      E.mapLeft((errors) => {
+        return new IOError('error', { kind: 'DecodingError', errors });
+      })
+    );
+  },
+});
 const AddEndpoint = registerRouter(router);
-
 
 declare module '../HKT' {
   interface URItoKind<A> {
@@ -136,7 +151,18 @@ test('Should work with Option kind', () => {
   };
 
   const maybeRouter = express.Router();
-  const registerMaybeRouter = GetEndpointSubscriber<'Option'>(buildMaybeError);
+  const registerMaybeRouter = GetEndpointSubscriber<'Option'>({
+    buildDecodeError: buildMaybeError,
+    decode: (schema) => (input: unknown) => {
+      return pipe(
+        input,
+        (schema as IOTSCodec<any, any>).decode,
+        E.mapLeft((errors) => {
+          return O.some(new IOError('error', { kind: 'DecodingError', errors }));
+        })
+      );
+    },
+  });
   const AddMaybeEndpoint = registerMaybeRouter(maybeRouter);
 
   assertType(

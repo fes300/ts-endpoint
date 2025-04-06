@@ -1,8 +1,7 @@
 import * as t from 'io-ts';
 import { RequiredKeys } from 'typelevel-ts';
 import { assertType, test } from 'vitest';
-import { Endpoint } from '../Endpoint';
-import { TypeOfEndpointInstance } from '../helpers';
+import { Endpoint, TypeOfEndpointInstance } from '../Endpoint';
 
 const endpointWithParam = Endpoint({
   Input: {
@@ -102,7 +101,6 @@ test('Endpoint helpers typings', () => {
     crayons: ['red', 'blue'],
   });
 
-  // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
   assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutInput>>>('Input');
 
   assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithoutInput>['Input']>>(
@@ -152,7 +150,9 @@ test('Endpoint helpers typings', () => {
   assertType<TypeOfEndpointInstance<typeof endpointWithErrors>['getStaticPath']>((fn) => fn('id'));
 
   assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>>>("Errors");
-  // @dts-jest:pass:snap resulting TypeOfEndpointInstance typings are correct
+
   assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>>('Params');
+
+  assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>>('Query');
 });
-assertType<RequiredKeys<TypeOfEndpointInstance<typeof endpointWithErrors>['Input']>>('Query');
+

@@ -1,25 +1,35 @@
 import { pipe } from 'fp-ts/function';
 import * as R from 'fp-ts/Record';
-import { Codec, RecordCodec, runtimeType } from 'ts-io-error';
-import { MinimalEndpoint } from '.';
-import { addSlash, InferEndpointParams } from './helpers';
+import {
+  Codec,
+  RecordCodec,
+  RecordCodecEncoded,
+  RecordCodecSerialized,
+  runtimeType,
+  serializedType,
+  UndefinedsToPartial,
+} from 'ts-io-error';
+import { RequiredKeys } from 'typelevel-ts';
+import { addSlash } from './helpers.js';
 
 export type HTTPMethod = 'OPTIONS' | 'HEAD' | 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+
+export type EndpointErrors<S extends string, B extends Codec<any, any>> = Record<S, B>;
 
 /**
  * Represents an HTTP endpoint of our API
  */
 export interface Endpoint<
   M extends HTTPMethod,
-  O extends Codec<any, any, any>,
-  H extends RecordCodec<any, any> | undefined = undefined,
-  Q extends RecordCodec<any, any> | undefined = undefined,
-  B extends Codec<any, any, any> | undefined = undefined,
-  P extends RecordCodec<any, any> | undefined = undefined,
-  E extends EndpointErrors<never, Codec<any, any, any>> | undefined = undefined
+  O extends Codec<any, any>,
+  H extends RecordCodec<any> | undefined,
+  Q extends RecordCodec<any> | undefined,
+  B extends Codec<any, any> | undefined,
+  P extends RecordCodec<any> | undefined,
+  E extends EndpointErrors<never, Codec<any, any>> | undefined
 > {
   /* utils to get the full path given a set of query params */
-  getPath: [P] extends [undefined] ? (i?: {}) => string : (args: runtimeType<P>) => string;
+  getPath: [P] extends [undefined] ? (i?: undefined) => string : (args: runtimeType<P>) => string;
   Method: M;
   Errors?: E;
   Input?: [H, P, Q, B] extends [undefined, undefined, undefined, undefined]
@@ -32,6 +42,39 @@ export interface Endpoint<
       };
   Output: O;
 }
+
+export type MinimalEndpoint = Omit<
+  Endpoint<
+    HTTPMethod,
+    Codec<any, any>,
+    RecordCodec<any>,
+    RecordCodec<any>,
+    Codec<any, any>,
+    RecordCodec<any>,
+    EndpointErrors<never, Codec<any, any>>
+  >,
+  'getPath'
+> & { getPath: (i?: any) => string };
+
+export type InferEndpointParams<E> = E extends Endpoint<
+  infer M,
+  infer O,
+  infer H,
+  infer Q,
+  infer B,
+  infer P,
+  infer E
+>
+  ? {
+      method: M;
+      headers: H;
+      params: P;
+      query: Q;
+      body: B;
+      output: O;
+      errors: E;
+    }
+  : never;
 
 /**
  * Data type representing an endpoint instance.
@@ -106,9 +149,7 @@ export type EndpointInstance<E extends MinimalEndpoint> = {
           ? { Body?: never }
           : { Body: NonNullable<InferEndpointParams<E>['body']> });
     }) &
-  (E['Errors'] extends undefined ? { Errors?: never } : { Errors: E['Errors'] });
-
-export type EndpointErrors<S extends string, B extends Codec<any, any, any>> = Record<S, B>;
+  (E['Errors'] extends undefined ? { Errors?: never } : { Errors: NonNullable<E['Errors']> });
 
 /**
  * Constructor function for an endpoint
@@ -116,12 +157,12 @@ export type EndpointErrors<S extends string, B extends Codec<any, any, any>> = R
  */
 export function Endpoint<
   M extends HTTPMethod,
-  O extends Codec<any, any, any>,
-  H extends RecordCodec<any, any> | undefined = undefined,
-  Q extends RecordCodec<any, any> | undefined = undefined,
-  B extends Codec<any, any, any> | undefined = undefined,
-  P extends RecordCodec<any, any> | undefined = undefined,
-  E extends EndpointErrors<never, Codec<any, any, any>> | undefined = undefined
+  O extends Codec<any, any>,
+  Q extends RecordCodec<any> | undefined = undefined,
+  H extends RecordCodec<any> | undefined = undefined,
+  B extends Codec<any, any> | undefined = undefined,
+  P extends RecordCodec<any> | undefined = undefined,
+  E extends EndpointErrors<never, Codec<any, any>> | undefined = undefined
 >(e: Endpoint<M, O, H, Q, B, P, E>): EndpointInstance<Endpoint<M, O, H, Q, B, P, E>> {
   // TODO: check if the headers are valid?
   // const headersWithWhiteSpaces = pipe(
@@ -134,7 +175,7 @@ export function Endpoint<
   //   console.error('white spaces are not allowed in Headers names:', headersWithWhiteSpaces);
   // }
 
-  return ({
+  return {
     ...e,
     getPath: ((i: any) => {
       const path = e.getPath(i);
@@ -148,8 +189,9 @@ export function Endpoint<
         return addSlash(e.getPath(undefined as any));
       }
 
+      const fields = (params as any).fields ?? (params as any).props;
       return pipe(
-        params.props,
+        fields,
         R.mapWithIndex((k) => (f ? f(k) : k)),
         (v: any) => e.getPath(v),
         addSlash
@@ -163,5 +205,61 @@ export function Endpoint<
       ...(e.Input?.Params ? { Params: e.Input.Params } : {}),
       ...(e.Input?.Query ? { Query: e.Input.Query } : {}),
     },
-  } as unknown) as EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>;
+  } as unknown as EndpointInstance<Endpoint<M, O, H, Q, B, P, E>>;
 }
+
+export type MinimalEndpointInstance = MinimalEndpoint & {
+  getStaticPath: (f: (i?: any) => string) => string;
+};
+
+export type TypeOfEndpointInstanceInput<E extends MinimalEndpointInstance> = [
+  RequiredKeys<E['Input']>
+] extends [never]
+  ? void
+  : {
+      [K in keyof NonNullable<E['Input']>]: NonNullable<E['Input']>[K] extends Codec<any, any>
+        ? UndefinedsToPartial<serializedType<NonNullable<E['Input']>[K]>>
+        : never;
+    };
+
+export type TypeOfEndpointInstance<E extends MinimalEndpointInstance> = {
+  getPath: E['getPath'];
+  getStaticPath: E['getStaticPath'];
+  Method: E['Method'];
+  Input: TypeOfEndpointInstanceInput<E>;
+  Output: serializedType<E['Output']>;
+  Errors: {
+    [K in keyof NonNullable<E['Errors']>]: NonNullable<E['Errors']>[K] extends RecordCodec<any>
+      ? RecordCodecSerialized<NonNullable<E['Errors']>[K]>
+      : NonNullable<E['Errors']>[K] extends Codec<any, any>
+      ? serializedType<NonNullable<E['Errors']>[K]>
+      : never;
+  };
+};
+
+export type EndpointInstanceEncodedInputs<E extends MinimalEndpointInstance> = [
+  RequiredKeys<E['Input']>
+] extends [never]
+  ? void
+  : {
+      [K in keyof NonNullable<E['Input']>]: NonNullable<E['Input']>[K] extends Codec<any, any, any>
+        ? runtimeType<NonNullable<E['Input']>[K]>
+        : never;
+    };
+
+export type EndpointInstanceEncodedParams<E extends MinimalEndpointInstance> = {
+  getPath: E['getPath'];
+  getStaticPath: E['getStaticPath'];
+  Method: E['Method'];
+  Input: EndpointInstanceEncodedInputs<E>;
+  Output: runtimeType<E['Output']>;
+  Errors: {
+    [k in keyof NonNullable<E['Errors']>]: NonNullable<E['Errors']>[k] extends RecordCodec<any>
+      ? RecordCodecEncoded<NonNullable<E['Errors']>[k]>
+      : never;
+  };
+};
+
+export type InferEndpointInstanceParams<EI> = EI extends EndpointInstance<infer E>
+  ? InferEndpointParams<E>
+  : never;

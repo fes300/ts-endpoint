@@ -102,6 +102,6 @@ test('Endpoint', () => {
   expectTypeOf(endpointWithoutParam.getStaticPath).parameter(0).toEqualTypeOf<{} | undefined>();
 
   // @dts-jest:pass:snap getPath can be called with no args if no Params are defined in the endpoint
-  expectTypeOf(endpointWithoutParam.getPath).parameter(0).toEqualTypeOf<{} | undefined>();
+  expectTypeOf(endpointWithoutParam.getPath).parameter(0).toEqualTypeOf<undefined>();
 });
 
