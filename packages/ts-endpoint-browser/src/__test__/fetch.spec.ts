@@ -1,21 +1,23 @@
+import { Schema } from 'effect';
 import { isLeft } from 'fp-ts/Either';
-import * as t from 'io-ts';
+import * as E from 'fp-ts/lib/Either';
+import { pipe } from 'fp-ts/lib/function';
 import 'isomorphic-fetch';
 import { Endpoint } from 'ts-endpoint';
-import { DecodeErrorStatus, IOError, NetworkErrorStatus } from 'ts-io-error';
+import { Codec, DecodeErrorStatus, IOError, NetworkErrorStatus } from 'ts-io-error';
 import { describe, expect, it, vi } from 'vitest';
-import { StaticHTTPClientConfig } from '../config';
+import { HTTPClientConfig } from '../config';
 import { GetFetchHTTPClient } from '../fetch';
 
 const errorMock = vi.spyOn(globalThis.console, 'error').mockImplementation(() => {});
 
-const options: StaticHTTPClientConfig = {
+const options: HTTPClientConfig = {
   protocol: 'http',
   host: 'test',
   port: 2020,
 };
 
-const noPortOptions: StaticHTTPClientConfig = {
+const noPortOptions: HTTPClientConfig = {
   protocol: 'http',
   host: 'test',
 };
@@ -24,128 +26,149 @@ const endpoints = {
   noInputEndpoint: Endpoint({
     Method: 'GET',
     getPath: () => `users/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
   getEndpoint: Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
-      Params: t.type({ id: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
+      Params: Schema.Struct({ id: Schema.String }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
   getEndpointNoParams: Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
   getEndpointWithLargeQuery: Endpoint({
     Input: {
-      Query: t.type({ foo: t.string, bar: t.number, baz: t.string }),
-      Params: t.type({ id: t.number, crayonSet: t.number }),
+      Query: Schema.Struct({ foo: Schema.String, bar: Schema.Number, baz: Schema.String }),
+      Params: Schema.Struct({ id: Schema.Number, crayonSet: Schema.Number }),
     },
     Method: 'GET',
     getPath: ({ id, crayonSet }) => `users/${id}/crayons/${crayonSet}`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
   postEndpoint: Endpoint({
     Input: {
-      Params: t.type({ id: t.string }),
-      Body: t.type({
-        name: t.string,
-        surname: t.string,
-        age: t.number,
+      Params: Schema.Struct({ id: Schema.String }),
+      Body: Schema.Struct({
+        name: Schema.String,
+        surname: Schema.String,
+        age: Schema.Number,
       }),
     },
     Method: 'POST',
     getPath: () => 'users',
-    Output: t.type({ id: t.string }),
+    Output: Schema.Struct({ id: Schema.String }),
   }),
   postReturningUndefined: Endpoint({
     Input: {
-      Params: t.type({ id: t.string }),
-      Body: t.type({ foo: t.string }),
+      Params: Schema.Struct({ id: Schema.String }),
+      Body: Schema.Struct({ foo: Schema.String }),
     },
     Method: 'POST',
     getPath: () => 'users',
-    Output: t.undefined,
+    Output: Schema.Undefined,
   }),
   postReturningNull: Endpoint({
     Input: {
-      Params: t.type({ id: t.string }),
-      Body: t.type({ foo: t.string }),
+      Params: Schema.Struct({ id: Schema.String }),
+      Body: Schema.Struct({ foo: Schema.String }),
     },
     Method: 'POST',
     getPath: () => 'users',
-    Output: t.null,
+    Output: Schema.Null,
   }),
   putEndpoint: Endpoint({
     Input: {
-      Params: t.type({ id: t.string }),
-      Body: t.type({
-        name: t.string,
-        surname: t.string,
-        age: t.number,
+      Params: Schema.Struct({ id: Schema.String }),
+      Body: Schema.Struct({
+        name: Schema.String,
+        surname: Schema.String,
+        age: Schema.Number,
       }),
     },
     Method: 'PUT',
     getPath: ({ id }) => `users/${id}`,
-    Output: t.type({ userId: t.string }),
+    Output: Schema.Struct({ userId: Schema.String }),
   }),
   deleteEndpoint: Endpoint({
     Input: {
-      Params: t.type({ id: t.string }),
+      Params: Schema.Struct({ id: Schema.String }),
     },
     Method: 'DELETE',
     getPath: ({ id }) => `users/${id}`,
-    Output: t.type({ id: t.string }),
+    Output: Schema.Struct({ id: Schema.String }),
   }),
   patchEndpoint: Endpoint({
     Input: {
-      Params: t.type({ id: t.string }),
-      Body: t.type({
-        name: t.string,
+      Params: Schema.Struct({ id: Schema.String }),
+      Body: Schema.Struct({
+        name: Schema.String,
       }),
     },
     Method: 'PATCH',
     getPath: ({ id }) => `users/${id}`,
-    Output: t.type({ id: t.string }),
+    Output: Schema.Struct({ id: Schema.String }),
   }),
   knownErrorEndpoint: Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
-      Params: t.type({ id: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
+      Params: Schema.Struct({ id: Schema.String }),
     },
     Errors: {
-      401: t.type({ foo: t.string }),
-      404: t.type({ baz: t.string }),
+      401: Schema.Struct({ foo: Schema.String }),
+      404: Schema.Struct({ baz: Schema.String }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
 };
+
+const decode =
+  <A, I, C = never>(s: Codec<A, I, C>) =>
+  (input: unknown): E.Either<IOError, any> => {
+    return pipe(
+      input,
+      Schema.decodeUnknownEither(s as Schema.Schema<any>),
+      E.mapLeft(
+        (err) => {
+         return new IOError('Parse error', {
+            kind: 'DecodingError',
+            errors: [err],
+          })
+        }
+      )
+    );
+  };
 
 const HandledError = new IOError('this is a handled error', { status: '112', kind: 'ClientError' });
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
+  decode,
 });
 const fetchClientIgnoreNonJSONResponse = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
   ignoreNonJSONResponse: true,
+  decode,
 });
 const handleErrorClient = GetFetchHTTPClient(options, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
   handleError: () => {
     return HandledError;
   },
+  decode,
 });
 const noPortFetchClient = GetFetchHTTPClient(noPortOptions, endpoints, {
   defaultHeaders: { 'Content-type': 'application/json' },
+  decode,
 });
 
 const lazySuccesfullQueryResponse = () =>
@@ -160,8 +183,7 @@ const lazySuccesfullNonJSONResponse = () =>
     new Response(new Blob(), {
       headers: {
         'content-type': 'image/png',
-        link:
-          '<https://www.gravatar.com/avatar/d0638b61ec94e9bf48e38117ce1a1290?d=404>; rel="canonical"',
+        link: '<https://www.gravatar.com/avatar/d0638b61ec94e9bf48e38117ce1a1290?d=404>; rel="canonical"',
       },
     })
   );
@@ -497,6 +519,7 @@ describe('GetFetchHTTPClient', () => {
   it('logs an error when defining headers with spaces', () => {
     GetFetchHTTPClient(options, endpoints, {
       defaultHeaders: { 'Content type': 'application/json' },
+      decode,
     });
 
     expect(errorMock.mock.calls[0][0]).toBe(

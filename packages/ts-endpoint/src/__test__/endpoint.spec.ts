@@ -1,25 +1,25 @@
-import * as t from 'io-ts';
+import { Schema } from 'effect';
 import { describe, expect, it } from 'vitest';
 import { Endpoint } from '../Endpoint';
 
 describe('Endpoint', () => {
   const endpointWithParam = Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
-      Params: t.type({ id: t.number }),
+      Query: Schema.Struct({ color: Schema.String }),
+      Params: Schema.Struct({ id: Schema.Number }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id.toString()}/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   });
 
   const endpointWithoutParam = Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   });
 
   it('adds the params correctly', () => {
@@ -35,12 +35,12 @@ describe('Endpoint', () => {
   it('Endpoint logs an error when defining headers with spaces', () => {
     Endpoint({
       Input: {
-        Query: t.type({ color: t.string }),
-        Headers: t.type({ 'Content type': t.string }),
+        Query: Schema.Struct({ color: Schema.String }),
+        Headers: Schema.Struct({ 'Content type': Schema.String }),
       },
       Method: 'GET',
       getPath: () => `users/crayons`,
-      Output: t.type({ crayons: t.array(t.string) }),
+      Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
     });
   });
 });

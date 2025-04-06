@@ -1,8 +1,19 @@
 {
   "name": "ts-io-error",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "defines errors incurring in client-server communication.",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    },
+    "./Codec": {
+      "import": "./lib/Codec.js",
+      "require": "./lib/Codec.js"
+    }
+  },
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error",
   "bugs": {
     "url": "https://github.com/fes300/ts-endpoint/issues?q=is%3Aopen+is%3Aissue+project%3Afes300%2Fts-endpoint%2F10"
@@ -26,7 +37,10 @@
     "prepublish": "pnpm clean && pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.17.24",
+    "effect": "^3.14.2",
+    "io-ts": "^2.2.22",
+    "io-ts-types": "^0.5.19",
     "vitest": "^3.0.9"
   }
 }

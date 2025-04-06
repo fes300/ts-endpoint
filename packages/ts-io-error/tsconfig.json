@@ -1,12 +1,14 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "es6",
     "lib": ["esnext"],
-    "outDir": "./lib",
     "rootDir": "./src",
-    "baseUrl": "./src",
-    "esModuleInterop": true
+    "outDir": "./lib",
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
+    "esModuleInterop": true,
+    "tsBuildInfoFile": "lib/.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "vitest.config.mjs",]
+  "exclude": ["node_modules"]
 }

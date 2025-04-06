@@ -4,9 +4,8 @@
     "lib": ["esnext"],
     "outDir": "./lib",
     "rootDir": "./src",
-    "baseUrl": "./src",
-    "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"]
+    "tsBuildInfoFile": "lib/.tsbuildinfo",
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]

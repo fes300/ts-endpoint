@@ -1,8 +1,8 @@
+import { Schema } from 'effect';
 import { mapLeft, right } from 'fp-ts/Either';
-import { pipe } from 'fp-ts/lib/function';
-import * as t from 'io-ts';
+import { pipe } from 'fp-ts/function';
 import { Endpoint } from 'ts-endpoint';
-import { IOError, IOTSCodec } from 'ts-io-error';
+import { IOError } from 'ts-io-error';
 import { assertType, describe, expectTypeOf, it } from 'vitest';
 import { HTTPClientConfig } from '../config';
 import { GetFetchHTTPClient } from '../fetch';
@@ -17,48 +17,55 @@ const options: HTTPClientConfig = {
 const endpoints = {
   prova: Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
-      Params: t.type({ id: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
+      Params: Schema.Struct({ id: Schema.String }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
   provaNoParam: Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
     },
     Method: 'GET',
     getPath: () => `users/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
   provaWithoutInput: Endpoint({
     Method: 'GET',
     getPath: () => `users`,
-    Output: t.type({ noInput: t.array(t.string) }),
+    Output: Schema.Struct({ noInput: Schema.Array(Schema.String) }),
   }),
   provaWithError: Endpoint({
     Input: {
-      Query: t.type({ color: t.string }),
-      Params: t.type({ id: t.string }),
+      Query: Schema.Struct({ color: Schema.String }),
+      Params: Schema.Struct({ id: Schema.String }),
     },
     Errors: {
-      401: t.type({ foo: t.string }),
-      402: t.type({ baz: t.string }),
+      401: Schema.Struct({ foo: Schema.String }),
+      402: Schema.Struct({ baz: Schema.String }),
     },
     Method: 'GET',
     getPath: ({ id }) => `users/${id}/crayons`,
-    Output: t.type({ crayons: t.array(t.string) }),
+    Output: Schema.Struct({ crayons: Schema.Array(Schema.String) }),
   }),
 };
 
 const fetchClient = GetFetchHTTPClient(options, endpoints, {
-  handleError: (err) => err,
   decode: (schema) => (input) =>
     pipe(
-      (schema as IOTSCodec<any, any>).decode(input),
-      mapLeft((e) => new IOError(e.join(', '), { kind: "DecodingError", errors: e }))
+      input,
+      Schema.decodeUnknownEither(schema as Schema.Schema<any>),
+      mapLeft(
+        (_) =>
+          new IOError('Validation error', {
+            kind: 'DecodingError',
+            errors: [],
+          })
+      )
     ),
+  handleError: (err) => err,
 });
 
 describe('FetchClient', () => {
