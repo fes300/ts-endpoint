@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple endpoint definition for fullstack safety.",
   "main": "lib/index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint",

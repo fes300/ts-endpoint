@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/fes300/ts-endpoint/compare/ts-io-error@2.0.0...ts-io-error@2.0.1) (2025-04-06)
+
+
+### Miscellaneous Chores
+
+* bump node to 18 ([#170](https://github.com/fes300/ts-endpoint/issues/170)) ([128cdc5](https://github.com/fes300/ts-endpoint/commit/128cdc5017ba5b7ac348c625ee2c04637945e31d))
+* bump node to 20 ([#175](https://github.com/fes300/ts-endpoint/issues/175)) ([56137f4](https://github.com/fes300/ts-endpoint/commit/56137f419ea70caaee13dc20b572d279465733fa))
+* defined proper tsconfig.build.json files ([#174](https://github.com/fes300/ts-endpoint/issues/174)) ([1d641bd](https://github.com/fes300/ts-endpoint/commit/1d641bd0fc931a6f1ac89b5f768aae19d553752f))
+* packages correct main file export ([#176](https://github.com/fes300/ts-endpoint/issues/176)) ([e5521c7](https://github.com/fes300/ts-endpoint/commit/e5521c7470d76da5df0991d591d5ecdb09713feb))
+* replaced jest with vitest ([#173](https://github.com/fes300/ts-endpoint/issues/173)) ([8a6a7ca](https://github.com/fes300/ts-endpoint/commit/8a6a7ca08427035b2f02e4bce38d0892cf3e0f1d))
+* replaced yarn with pnpm ([#168](https://github.com/fes300/ts-endpoint/issues/168)) ([4d66064](https://github.com/fes300/ts-endpoint/commit/4d66064a3bea8cf040fbdeeb62efd064e6e1cdf1))
+* setup release-please ([#179](https://github.com/fes300/ts-endpoint/issues/179)) ([07ed0b3](https://github.com/fes300/ts-endpoint/commit/07ed0b32c72fe0a7b52b3a52590c3fdeeb3e367e))
+* upgrade docusaurus@^2 ([#146](https://github.com/fes300/ts-endpoint/issues/146)) ([2d8a126](https://github.com/fes300/ts-endpoint/commit/2d8a126749daab59234ea2fc3fd54f91c1e3a48e))
+
 ## [2.0.0](https://github.com/fes300/ts-endpoint/tree/master/packages/ts-io-error/compare/ts-io-error@2.0.0-alpha.45...ts-io-error@2.0.0) (2021-04-30)
 
 **Note:** Version bump only for package ts-io-error
