@@ -3,6 +3,7 @@ import { coverageConfigDefaults, defineConfig } from "vitest/config";
 const config = defineConfig({
   test: {
     globals: true,
+    watch: false,
     coverage: {
       exclude: [
         ...coverageConfigDefaults.exclude,

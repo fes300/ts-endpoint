@@ -6,6 +6,10 @@ inputs:
   hash:
     required: true
     description: "The hash obtain from hashFiles('**/pnpm-lock.yaml')"
+  registry-url:
+    description: "The NPM registry URL to use"
+  github-token:
+    description: "GitHub OAuth Token"
 
 runs:
   using: "composite"

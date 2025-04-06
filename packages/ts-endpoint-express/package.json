@@ -1,6 +1,6 @@
 {
   "name": "ts-endpoint-express",
-  "version": "2.0.1-alpha.1",
+  "version": "2.0.0",
   "description": "Adds typesafe endpoints to your express app.",
   "main": "lib/index.js",
   "repository": "https://github.com/fes300/ts-endpoint/tree/master/packages/ts-endpoint-express",
@@ -13,17 +13,17 @@
     "access": "public"
   },
   "files": [
-    "lib"
+    "lib/**/*.js",
+    "lib/**/*.d.ts"
   ],
   "scripts": {
-    "npm-publish-beta": "if [ -f lib/package.json ] ; then npm publish ./lib --tag beta; else echo echo \"no need to publish\"; fi",
-    "npm-publish": "if [ -f lib/package.json ] ; then npm publish ./lib; else echo echo \"no need to publish\"; fi",
-    "postversion": "cp package.json lib && cp -r lib lib2 && mv lib2 lib/lib",
     "typecheck": "tsc --noEmit",
     "build": "tsc -b tsconfig.build.json",
     "type-test": "vitest --typecheck.enabled=true",
     "runtime-test": "vitest",
-    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test"
+    "test": "pnpm runtime-test --passWithNoTests && pnpm type-test",
+    "clean": "rm -rf lib/*",
+    "prepublishOnly": "pnpm clean && pnpm build"
   },
   "peerDependencies": {
     "express": "^4.17.1"

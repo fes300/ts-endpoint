@@ -1,0 +1,62 @@
+---
+name: "Release libs"
+description: "Automate releases based on conventional commits"
+
+inputs:
+  build-path:
+    description: "Build a release from a path other than the repository's root"
+    default: "."
+  github-token:
+    description: "GitHub OAuth Token"
+    required: true
+  prerelease:
+    description: "Pre release version"
+  node-version:
+    description: "The version of node to use"
+    default: "20"
+  path:
+    description: "Create a release from a path other than the repository's root"
+    default: "."
+
+outputs:
+  releases_created:
+    description: "true if the release was created, false otherwise"
+    value: ${{ steps.create_output.outputs.releases_created }}
+  pr:
+    description: "The JSON string of the PullRequest object (undefined if no release created)"
+    value: ${{ steps.create_output.outputs.pr }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout ${{ github.repository }}"
+      uses: actions/checkout@v4
+      with:
+        fetch-tags: true
+
+    - uses: ./.github/actions/install-deps
+      with:
+        hash: ${{ hashFiles('**/pnpm-lock.yaml') }}
+
+    - name: "Run release-please"
+      uses: googleapis/release-please-action@v4
+      id: release
+
+    - name: "Generate output"
+      id: create_output
+      shell: bash
+      run: |
+        echo "releases_created=$(echo ${{ steps.release.outputs.releases_created }})" >> $GITHUB_OUTPUT
+        echo "pr=$(echo ${{ steps.release.outputs.pr }})" >> $GITHUB_OUTPUT
+
+    - name: "Setup npm registry with github token"
+      uses: actions/setup-node@v4
+      if: ${{ steps.release.outputs.releases_created == 'true' }}
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: pnpm
+
+    - name: "Publish npm packages"
+      if: ${{ steps.release.outputs.releases_created == 'true' }}
+      shell: bash
+      run: pnpm release
